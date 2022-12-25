@@ -114,3 +114,25 @@ func input() -> void:
 	# Checks for jump
 	if Input.is_action_just_pressed("jump"):
 		jump_input = 1
+
+
+func _on_RoomDetector_area_entered(area: Area2D) -> void:
+	# Gets collision shape and size of room
+	var collision_shape: CollisionShape2D = area.get_node("CollisionShape2D")
+	var size: Vector2 = collision_shape.shape.extents * 2
+	
+	# Check if room size is smaller than screen size 
+	var view_size = get_viewport_rect().size
+	if size.y < view_size.y:
+		size.y = view_size.y
+		
+	if size.x < view_size.x:
+		size.x = view_size.x
+	
+	# Change camera extents based on collision shape position and size of room
+	var camera := $Camera2D
+	camera.limit_top = collision_shape.global_position.y - size.y/2
+	camera.limit_left = collision_shape.global_position.x - size.x/2
+	
+	camera.limit_bottom = camera.limit_top + size.y
+	camera.limit_right = camera.limit_left + size.x

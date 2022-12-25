@@ -47,6 +47,10 @@ right={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_8="Room"
+
 [physics]
 
 common/enable_pause_aware_picking=true
