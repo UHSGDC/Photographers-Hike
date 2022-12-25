@@ -174,7 +174,7 @@ position = Vector2( 24, 192 )
 cell_size = Vector2( 16, 16 )
 format = 1
 
-[node name="Interactable" type="TileMap" parent="."]
+[node name="Level" type="TileMap" parent="."]
 tile_set = SubResource( 2 )
 cell_size = Vector2( 16, 16 )
 format = 1
