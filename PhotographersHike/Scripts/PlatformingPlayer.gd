@@ -32,13 +32,20 @@ var coyote_time_length: float = 0.15
 var jump_was_pressed: bool = false
 var remember_jump_length: float = 0.1
 
+# Camera
+var camera: Camera2D
+
+
+func _ready() -> void:
+	camera = Global.player_camera
+
 
 # Delta is the time since physics_process was last called
 # I multiply things by delta so things move correctly no matter the frame rate
 func _physics_process(delta: float) -> void:
 	input()
 	move(delta)
-	
+
 	
 func move(delta: float) -> void:
 	# Horizontal Movement
@@ -121,18 +128,10 @@ func _on_RoomDetector_area_entered(area: Area2D) -> void:
 	var collision_shape: CollisionShape2D = area.get_node("CollisionShape2D")
 	var size: Vector2 = collision_shape.shape.extents * 2
 	
-	# Check if room size is smaller than screen size 
-	var view_size = get_viewport_rect().size
-	if size.y < view_size.y:
-		size.y = view_size.y
-		
-	if size.x < view_size.x:
-		size.x = view_size.x
+	# Changes camera's current room and size. check PlayerCamera script for more info
+	camera.current_room_center = collision_shape.global_position
+	camera.current_room_size = size
 	
-	# Change camera extents based on collision shape position and size of room
-	var camera := $Camera2D
-	camera.limit_top = collision_shape.global_position.y - size.y/2
-	camera.limit_left = collision_shape.global_position.x - size.x/2
+
+
 	
-	camera.limit_bottom = camera.limit_top + size.y
-	camera.limit_right = camera.limit_left + size.x
