@@ -15,6 +15,7 @@ onready var view_size: Vector2 = get_viewport_rect().size
 func _ready() -> void:
 	# Sets smoothing to 1 and back to follow_smoothing
 	# I do this so the camera appears as if it starts at the first room not at (0, 0)
+
 	smoothing_enabled = false
 	smoothing = 1
 	yield(get_tree().create_timer(0.1),"timeout")

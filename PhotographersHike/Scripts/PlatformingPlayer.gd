@@ -33,7 +33,9 @@ var jump_was_pressed: bool = false
 var remember_jump_length: float = 0.1
 
 # Camera
+
 var camera: Camera2D
+
 
 
 func _ready() -> void:
