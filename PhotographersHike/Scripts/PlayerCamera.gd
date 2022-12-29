@@ -10,6 +10,7 @@ var current_room_center: Vector2
 var current_room_size: Vector2
 
 onready var view_size: Vector2 = get_viewport_rect().size
+var zoom_view_size: Vector2
 
 
 func _ready() -> void:
@@ -23,6 +24,9 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	# Get view size considering camera zoom
+	zoom_view_size = view_size * zoom
+	
 	# Get target position
 	var target_position := calculate_target_position(current_room_center, current_room_size)
 	
@@ -33,13 +37,13 @@ func _physics_process(delta: float) -> void:
 func calculate_target_position(room_center: Vector2, room_size: Vector2) -> Vector2:
 	# The distance from the center of the room to the camera boundary on one side
 	# when the room is the same size as the screen the x and y bound are zero
-	var x_bound: float = (room_size.x - view_size.x) / 2
-	var y_bound: float = (room_size.y - view_size.y) / 2
+	var x_bound: float = (room_size.x - zoom_view_size.x) / 2
+	var y_bound: float = (room_size.y - zoom_view_size.y) / 2
 	
 	
 	var return_position: Vector2 = Vector2.ZERO
 	
-	# if the view_size >= room_size the camera position should just be room center
+	# if the zoom_view_size >= room_size the camera position should just be room center
 	if x_bound <= 0:
 		return_position.x = room_center.x
 	# Clamps the return position to the left and right limits if the x_bound is positive
