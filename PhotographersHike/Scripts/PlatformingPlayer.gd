@@ -24,10 +24,9 @@ onready var fall_gravity: float = - (-2 * jump_height) / (fall_duration * fall_d
 onready var jump_gravity: float =  - (-2 * jump_height) / (jump_duration * jump_duration)
 onready var jump_velocity: float = - (2 * jump_height) / jump_duration
 
-var reset_y_velocity: bool = true
 var can_jump: bool = true
 
-# Quality of life
+# Quality of life jumping behavior
 var coyote_time_length: float = 0.15
 var jump_was_pressed: bool = false
 var remember_jump_length: float = 0.1
@@ -58,9 +57,6 @@ func move(delta: float) -> void:
 	
 	#Jumping
 	if is_on_floor():
-		if reset_y_velocity:
-			velocity.y = 0.1
-			reset_y_velocity = false
 		can_jump = true
 		if jump_was_pressed:
 			jump()
@@ -72,11 +68,10 @@ func move(delta: float) -> void:
 			jump()
 	
 	if !is_on_floor():
-		reset_y_velocity = true
 		coyote_time()
 		apply_gravity(delta)
 	
-	move_and_slide(velocity, Vector2.UP)
+	velocity = move_and_slide(velocity, Vector2.UP)
 	
 	
 func apply_gravity(delta: float) -> void:
