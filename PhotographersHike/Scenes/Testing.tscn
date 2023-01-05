@@ -181,7 +181,7 @@ extents = Vector2( 480, 288 )
 [node name="testing" type="Node2D"]
 
 [node name="PlatformingPlayer" parent="." instance=ExtResource( 1 )]
-position = Vector2( 856, 248 )
+position = Vector2( 637, 144 )
 
 [node name="Decoration" type="TileMap" parent="."]
 cell_size = Vector2( 16, 16 )

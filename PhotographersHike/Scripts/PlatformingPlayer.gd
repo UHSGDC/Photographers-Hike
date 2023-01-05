@@ -46,7 +46,10 @@ func _ready() -> void:
 # I multiply things by delta so things move correctly no matter the frame rate
 func _physics_process(delta: float) -> void:
 	input()
-	move(delta)
+	
+	# Pause player movement between rooms
+	if !Global.room_pause:
+		move(delta)
 
 	
 func move(delta: float) -> void:
@@ -131,8 +134,7 @@ func _on_RoomDetector_area_entered(area: Area2D) -> void:
 	var size: Vector2 = collision_shape.shape.extents * 2
 	
 	# Changes camera's current room and size. check PlayerCamera script for more info
-	camera.current_room_center = collision_shape.global_position
-	camera.current_room_size = size
+	Global.change_room(collision_shape.global_position, size)
 	
 
 
