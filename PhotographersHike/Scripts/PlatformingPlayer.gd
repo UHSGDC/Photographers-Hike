@@ -31,15 +31,6 @@ var coyote_time_length: float = 0.15
 var jump_was_pressed: bool = false
 var remember_jump_length: float = 0.1
 
-# Camera
-
-var camera: Camera2D
-
-
-
-func _ready() -> void:
-	camera = Global.player_camera
-
 
 # Delta is the time since physics_process was last called
 # I multiply things by delta so things move correctly no matter the frame rate
