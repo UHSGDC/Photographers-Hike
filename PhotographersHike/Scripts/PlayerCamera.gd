@@ -13,6 +13,7 @@ onready var view_size: Vector2 = get_viewport_rect().size
 var zoom_view_size: Vector2
 
 
+
 func _ready() -> void:
 	# Sets smoothing to 1 and back to follow_smoothing
 	# I do this so the camera appears as if it starts at the first room not at (0, 0)
@@ -32,33 +33,33 @@ func _physics_process(delta: float) -> void:
 	
 	# Interpolate(lerp) camera position to target position by the smoothing
 	position = lerp(position, target_position, smoothing)
-
+	
+	
 
 func calculate_target_position(room_center: Vector2, room_size: Vector2) -> Vector2:
-	# The distance from the center of the room to the camera boundary on one side
-	# when the room is the same size as the screen the x and y bound are zero
-	var x_bound: float = (room_size.x - zoom_view_size.x) / 2
-	var y_bound: float = (room_size.y - zoom_view_size.y) / 2
+	# The distance from the center of the room to the camera boundary on one side.
+	# When the room is the same size as the screen the x and y margin are zero
+	var x_margin: float = (room_size.x - zoom_view_size.x) / 2
+	var y_margin: float = (room_size.y - zoom_view_size.y) / 2
 	
 	
 	var return_position: Vector2 = Vector2.ZERO
 	
 	# if the zoom_view_size >= room_size the camera position should just be room center
-	if x_bound <= 0:
+	if x_margin <= 0:
 		return_position.x = room_center.x
-	# Clamps the return position to the left and right limits if the x_bound is positive
+	# Clamps the return position to the left and right limits if the x_margin is positive
 	else:
-		var left_limit: float = room_center.x - x_bound
-		var right_limit: float = room_center.x + x_bound
+		var left_limit: float = room_center.x - x_margin
+		var right_limit: float = room_center.x + x_margin
 		return_position.x = clamp(Global.platforming_player.position.x, left_limit, right_limit)
 
 
-	if y_bound <= 0:
+	if y_margin <= 0:
 		return_position.y = room_center.y
 	else:
-		var top_limit: float = room_center.y - y_bound
-		var bottom_limit: float = room_center.y + y_bound
+		var top_limit: float = room_center.y - y_margin
+		var bottom_limit: float = room_center.y + y_margin
 		return_position.y = clamp(Global.platforming_player.position.y, top_limit, bottom_limit)
-	
 	
 	return return_position
