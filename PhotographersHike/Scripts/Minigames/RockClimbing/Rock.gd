@@ -1,9 +1,9 @@
 extends Area2D
 
+class_name Rock
 
-
+var in_range: bool = false
 var touching_mouse: bool = false
-var occupied: bool = false
 
 func _on_Rock_mouse_entered() -> void:
 	$Light2D.enabled = true
