@@ -16,7 +16,7 @@ signal next
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#show_text(test, 8)
+	
 	yield(text_dialog("Hello World (Use the 'space' or 'enter' keys, or just click the textbox)", 15, 0.1, "Test Subject"), "completed")
 	yield(text_dialog("This is a very basic text engine", 15, 0.1, "Test Subject"), "completed")
 	yield(text_dialog("I hope this is okay", 15, 0.1, "Test Subject"), "completed")
@@ -30,66 +30,7 @@ func wait(seconds: float):
 	#DO NOT use the 'wait' function alone.
 	yield(get_tree().create_timer(seconds), "timeout")
 
-#func translate_string_to_ASCII_list(string: String) -> Array:
-#	var stringlist = Array()
-#	for i in string:
-#		stringlist.append(ord(i))
-#	return stringlist
-#
-#func load_image(path: String) -> ImageTexture:
-#	var image = Image.new()
-#	var texture: ImageTexture = ImageTexture.new()
-#	image.load(path)
-#	texture.create_from_image(image)
-#	return texture
-#
-#
-#func get_ASCII_image(ASCII_id: int) -> Sprite:
-#	var ASCII_string
-#	if len(str(ASCII_id)) < 3:
-#		ASCII_string = "0" + str(ASCII_id)
-#	else:
-#		ASCII_string = str(ASCII_id)
-#
-#	var texture: ImageTexture = load_image("res://Art//ASCII Characters (Transparent Background)//tile" + ASCII_string + ".png")
-#	var image_sprite = Sprite.new()
-#	image_sprite.texture = texture
-#	return image_sprite
-#
-#
-#func get_Image_list(string: String) -> Array:
-#	var ImageArray = Array()
-#	for character in string:
-#		ImageArray.append(get_ASCII_image(ord(character)))
-#	return ImageArray
-#
-#func show_text(string: String, size: int, delay: int = 0):
-#	var image_list = get_Image_list(string)
-#	var start_coords = Vector2(0, 50)
-## warning-ignore:unused_variable
-#	var separation
-#	prints("size:", size)
-#	image_list[0].position = start_coords
-#	image_list[0].show()
-#	for i in range(1, len(image_list)):
-#		image_list[i].position = image_list[i-1].position
-#		if image_list[i].position.x + size > screen_dimensions.x:
-#			image_list[i].position.y += image_list[i-1].texture.get_height()/2 + image_list[i].texture.get_height()/2 + 1
-#			image_list[i].position.x = start_coords.x
-#		else:
-#			image_list[i].position.x += image_list[i-1].texture.get_width()/2 #image_list[i].texture.get_width()/2
-#		print("image_list[", i, "].position: ", image_list[i].position)
-#	for char_image in image_list:
-#		add_child(char_image)
-#		char_image.show()
-#		yield(wait(delay), "completed")
-#
-#
-#	print(image_list)
-#
-#	return
-#
-#never mind, maybe using a text label would be a better idea...
+
 
 func get_json(file, key: String): #unfinished
 	var contents: String = $FileOpener.load_file(file)
@@ -110,10 +51,7 @@ func text_dialog(string: String, size: int = label_style.size, delay: float = 0.
 			$TextOutput.text += character
 			yield(wait(delay), "completed")
 	
-#	while not Input.is_action_pressed("ui_accept"):
-#		pass
-		#I did some research and couldn't find a better way to do this...
-		#BUT, this may not be a good way to solve this... because the window will think that Godot is not responding
+
 	
 	yield(self, "next")
 	
