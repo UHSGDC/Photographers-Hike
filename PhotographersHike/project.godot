@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="PhotographersHike"
-run/main_scene="res://Scenes/Testing.tscn"
+run/main_scene="res://Scenes/MainMenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]

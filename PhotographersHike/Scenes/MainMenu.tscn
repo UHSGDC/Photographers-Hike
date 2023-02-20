@@ -1,0 +1,123 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scripts/Play.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Menu.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Info.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0, 0, 0, 1 )
+shadow_color = Color( 1, 0, 0, 0 )
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 2.0
+margin_bottom = 2.0
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_left = -13.0
+margin_top = 175.0
+margin_right = 489.0
+margin_bottom = 299.0
+rect_pivot_offset = Vector2( 336, 101 )
+color = Color( 0.0862745, 0.662745, 0.529412, 1 )
+
+[node name="Menu Options" type="VBoxContainer" parent="."]
+margin_left = 3.0
+margin_top = 224.0
+margin_right = 69.0
+margin_bottom = 292.0
+
+[node name="Play" type="Button" parent="Menu Options"]
+show_behind_parent = true
+margin_right = 66.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 1 )
+custom_styles/normal = SubResource( 5 )
+text = "PLAY"
+script = ExtResource( 2 )
+
+[node name="Menu" type="Button" parent="Menu Options"]
+margin_top = 20.0
+margin_right = 66.0
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 6 )
+text = "MENU"
+script = ExtResource( 3 )
+
+[node name="Info" type="Button" parent="Menu Options"]
+margin_top = 40.0
+margin_right = 66.0
+margin_bottom = 56.0
+custom_fonts/font = SubResource( 3 )
+custom_styles/normal = SubResource( 7 )
+text = "INFO"
+script = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = -12.0
+margin_top = 118.0
+margin_right = 489.0
+margin_bottom = 176.0
+custom_fonts/font = SubResource( 4 )
+custom_styles/normal = SubResource( 8 )
+text = "Photographers Hike "
+align = 1
+valign = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -12.0
+margin_top = -8.0
+margin_right = 488.0
+margin_bottom = 118.0
+rect_pivot_offset = Vector2( 317, 97 )
+color = Color( 0.0862745, 0.662745, 0.529412, 1 )
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 170.0
+margin_top = 249.0
+margin_right = 474.0
+margin_bottom = 265.0
+size_flags_horizontal = 5
+custom_fonts/font = SubResource( 4 )
+custom_styles/normal = SubResource( 8 )
+text = "Made By: UHS GDC"
+align = 1
+valign = 1
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 170.0
+margin_top = 268.0
+margin_right = 474.0
+margin_bottom = 284.0
+size_flags_horizontal = 5
+custom_fonts/font = SubResource( 4 )
+custom_styles/normal = SubResource( 8 )
+text = "2022-2033"
+align = 1
+valign = 1
