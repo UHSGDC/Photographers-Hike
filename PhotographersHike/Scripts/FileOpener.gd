@@ -13,9 +13,12 @@ func file_write(filepath, content) -> void:
 	file.open(filepath, File.WRITE)
 	file.store_string(content)
 	file.close()
+
+func file_append(filepath, content) -> void:
+        file_write(read_file(filepath) + content)
 	
 
-func load_file(filepath) -> String:
+func read_file(filepath) -> String:
 	var file = File.new()
 	file.open(filepath, File.READ)
 	var content = file.get_as_text()
