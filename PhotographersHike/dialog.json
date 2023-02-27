@@ -1,0 +1,8 @@
+{
+  "Test Subject": {
+	"0": "This is being read from a JSON file",
+	"1": "That's about it.",
+	"2": "There is a sound feature that is being planned, but sounds need to be created in order to implement it", 
+	"Farewell": "That is it for now, bye."
+  }
+}
