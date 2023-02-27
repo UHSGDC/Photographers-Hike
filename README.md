@@ -7,5 +7,9 @@
 * Created title and buttons (play, menu and settings)
 * Created game developed credits. 
 * Code for main menu functionality - soon to be developed. 
-* Output: 
-* ![image](https://user-images.githubusercontent.com/95515701/220010512-8e96a8a6-be81-4368-a1f4-6f4040f8b6a4.png)
+
+#### Date: 2-26-23
+* Created Functionality Navigation For All Three Buttons in Main Menu 
+* Started working on the Info Menu. I'm trying to credit and showcase our club. Please provide me any links that we can use to showcase our club.
+* The Play button navigation works but there's a problem with the player scene.
+* Main Menu Screen Template Created - Just a wireframe.
