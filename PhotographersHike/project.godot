@@ -8,16 +8,6 @@
 
 config_version=4
 
-_global_script_classes=[ {
-"base": "Area2D",
-"class": "Rock",
-"language": "GDScript",
-"path": "res://Scripts/Minigames/RockClimbing/Rock.gd"
-} ]
-_global_script_class_icons={
-"Rock": ""
-}
-
 [application]
 
 config/name="PhotographersHike"
@@ -70,6 +60,7 @@ select={
 
 2d_physics/layer_8="Room"
 2d_physics/layer_10="RockClimbing"
+2d_physics/layer_12="Minigame"
 
 [physics]
 
