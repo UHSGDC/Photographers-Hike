@@ -12,7 +12,9 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
 
 
-func _on_Info_pressed():
-	get_tree().change_scene("res://Scenes/InfoMenu.tscn")
+func _on_Quit_pressed():
+	get_tree().quit()
