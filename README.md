@@ -13,3 +13,11 @@
 * Started working on the Info Menu. I'm trying to credit and showcase our club. Please provide me any links that we can use to showcase our club.
 * The Play button navigation works but there's a problem with the player scene.
 * Main Menu Screen Template Created - Just a wireframe.
+
+#### Date: 3-4-23
+* Created a quit button
+* Finished Info Menu Screen
+  * Added a credits scroll menu box
+  * Waiting For Credits, So that I can update
+* Created ESC functionality to go back screens
+* Next, will work on the settings menu of the game.
