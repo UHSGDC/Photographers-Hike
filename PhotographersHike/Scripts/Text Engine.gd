@@ -1,5 +1,5 @@
-extends Node2D
-
+extends Control
+#I know that the head node is a control node (not Node2D), but I didn't want to create issues by renaming the node
 
 
 
@@ -19,8 +19,9 @@ var strlist
 signal next
 
 
-# Called when the node enters the scene tree for the first time.
+# Important thing to note: if you want the background to pause, use yield(func, "completed") like I do here
 func _ready():
+	#$TextOutput.max_lines_visible = 4
 	yield(text_dialog("Hello World (Use the 'space' or 'enter' keys, or just click the textbox)", 15, 0.05, "Test Subject"), "completed")
 	yield(text_dialog("An indicator arrow will appear at the bottom of the textbox... now!", 15, 0.05, "Test Subject"), "completed")
 	yield(text_dialog("Text can go really fast...", 15, 0.01, "Test Subject"), "completed")
@@ -31,6 +32,7 @@ func _ready():
 	for index in range(3):
 		yield(json_text_dialog("Test Subject", str(index), 15, 0.05), "completed")
 	yield(json_text_dialog("Test Subject", "Farewell", 15, 0.05), "completed")
+	yield(text_dialog("Line1\nLine2\nLine3\nLine4\nLine5\nLine6", 15, 0.05, "Tester"), "completed")
 
 func wait(seconds: float):
 	#use it like this: yield(wait(1), "completed")
@@ -84,9 +86,12 @@ func _process(_delta):
 	pass
 
 func _input(event):
-	if event.is_action_pressed("ui_accept"):
+	if event.is_action_released("ui_accept"):
 		emit_signal("next")
 
-func _on_Area2D_input_event(_viewport, event, _shape_idx):
-	if event is InputEventMouseButton or (event is InputEventKey and event.scancode in accepted_keys):
-		emit_signal("next")
+#func _on_Area2D_input_event(_viewport, event, _shape_idx):
+#	if event is InputEventMouseButton or (event is InputEventKey and event.scancode in accepted_keys):
+#		emit_signal("next")
+
+func _on_ClickDetection_pressed():
+	emit_signal("next")
