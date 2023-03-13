@@ -21,3 +21,7 @@
   * Waiting For Credits, So that I can update
 * Created ESC functionality to go back screens
 * Next, will work on the settings menu of the game.
+
+#### Date: 3/12/23
+* Finished Info Menu. Credits Updated and Updating...
+* Started on Menu Settings Screen
