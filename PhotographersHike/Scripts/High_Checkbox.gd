@@ -1,4 +1,4 @@
-extends Control
+extends CheckBox
 
 
 # Declare member variables here. Examples:
@@ -12,9 +12,5 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if Input.is_action_just_pressed("Esc"):
-		get_tree().change_scene("res://Scenes/MainMenu.tscn")
-
-func _on_High_Checkbox_toggled(button_pressed):
-	pass # Replace with function body.
+#func _process(delta):
+#	pass

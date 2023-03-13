@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/SettingsMenu.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/High_Checkbox.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 12
 font_data = ExtResource( 1 )
 
 [node name="Settings" type="Control"]
@@ -20,14 +25,162 @@ margin_bottom = 6.0
 color = Color( 0.0862745, 0.662745, 0.529412, 1 )
 
 [node name="Settings Title Window" type="MarginContainer" parent="Background"]
-margin_right = 486.0
-margin_bottom = 53.0
+anchor_top = 0.18
+anchor_right = 0.982
+anchor_bottom = 0.975
+margin_top = -52.92
+margin_right = 7.76596
+margin_bottom = -249.65
 
 [node name="Settings Title" type="Label" parent="Background/Settings Title Window"]
 modulate = Color( 0, 0, 0, 1 )
-margin_top = 14.0
+margin_top = 6.0
 margin_right = 486.0
-margin_bottom = 38.0
+margin_bottom = 30.0
 custom_fonts/font = SubResource( 1 )
 text = "Settings"
 align = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Background"]
+anchor_top = 0.116
+anchor_right = 0.986
+anchor_bottom = 0.976
+margin_top = -0.104
+margin_right = 0.817963
+margin_bottom = 1.05597
+
+[node name="Volume" type="Label" parent="Background"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_top = 0.204
+anchor_right = 0.977
+anchor_bottom = 0.248
+margin_left = 14.0
+margin_top = 0.0239983
+margin_right = 20.201
+margin_bottom = 0.0879974
+rect_pivot_offset = Vector2( 98, 7 )
+custom_fonts/font = SubResource( 2 )
+text = "Volume: "
+
+[node name="Brightness" type="Label" parent="Background"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_top = 0.136
+anchor_right = 0.98
+anchor_bottom = 0.18
+margin_left = 15.0
+margin_top = 0.0159988
+margin_right = 19.74
+margin_bottom = 0.079998
+rect_pivot_offset = Vector2( 98, 7 )
+custom_fonts/font = SubResource( 2 )
+text = "Brightness:"
+
+[node name="Music" type="Label" parent="Background"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_top = 0.262
+anchor_right = 0.977
+anchor_bottom = 0.345
+margin_left = 14.0
+margin_top = 0.971992
+margin_right = 20.201
+margin_bottom = -9.43001
+rect_pivot_offset = Vector2( 98, 7 )
+custom_fonts/font = SubResource( 2 )
+text = "Music: "
+
+[node name="Graphics" type="Label" parent="Background"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_top = 0.262
+anchor_right = 0.977
+anchor_bottom = 0.345
+margin_left = 14.0
+margin_top = 19.972
+margin_right = 20.201
+margin_bottom = 9.56999
+rect_pivot_offset = Vector2( 98, 7 )
+custom_fonts/font = SubResource( 2 )
+text = "Graphics Quality: "
+
+[node name="High" type="Label" parent="Background/Graphics"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_top = 0.262
+anchor_right = 0.977
+anchor_bottom = 0.345
+margin_top = 12.332
+margin_right = -398.914
+margin_bottom = 23.17
+rect_pivot_offset = Vector2( 21, 6 )
+custom_fonts/font = SubResource( 2 )
+text = "High: "
+
+[node name="Medium" type="Label" parent="Background/Graphics"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_top = 0.262
+anchor_right = 0.977
+anchor_bottom = 0.345
+margin_top = 28.332
+margin_right = -374.914
+margin_bottom = 39.17
+rect_pivot_offset = Vector2( 19, 14 )
+custom_fonts/font = SubResource( 2 )
+text = "Medium: "
+
+[node name="Low" type="Label" parent="Background/Graphics"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_top = 0.262
+anchor_right = 0.977
+anchor_bottom = 0.345
+margin_left = -1.0
+margin_top = 42.332
+margin_right = -411.914
+margin_bottom = 53.17
+rect_pivot_offset = Vector2( 19, 14 )
+custom_fonts/font = SubResource( 2 )
+text = "Low: "
+
+[node name="Medium_Checkbox" type="CheckBox" parent="Background/Graphics"]
+margin_left = 81.0
+margin_top = 25.0
+margin_right = 105.0
+margin_bottom = 49.0
+
+[node name="Low_Checkbox" type="CheckBox" parent="Background/Graphics"]
+margin_left = 42.0
+margin_top = 40.0
+margin_right = 66.0
+margin_bottom = 64.0
+
+[node name="High_Checkbox" type="CheckBox" parent="Background/Graphics"]
+margin_left = 57.0
+margin_top = 9.0
+margin_right = 81.0
+margin_bottom = 33.0
+script = ExtResource( 3 )
+
+[node name="Brightness_Value" type="SpinBox" parent="Background"]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 145.0
+margin_top = 39.0
+margin_right = 479.0
+margin_bottom = 63.0
+rect_scale = Vector2( 1, 0.5 )
+rounded = true
+
+[node name="Volume_Value" type="SpinBox" parent="Background"]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 96.0
+margin_top = 71.0
+margin_right = 479.0
+margin_bottom = 95.0
+rect_scale = Vector2( 1, -0.5 )
+
+[node name="Brightness_Value2" type="SpinBox" parent="Background"]
+self_modulate = Color( 0, 0, 0, 1 )
+light_mask = 5
+margin_left = 85.0
+margin_top = 77.0
+margin_right = 479.0
+margin_bottom = 101.0
+rect_scale = Vector2( 1, 0.5 )
+
+[connection signal="toggled" from="Background/Graphics/High_Checkbox" to="." method="_on_High_Checkbox_toggled"]
