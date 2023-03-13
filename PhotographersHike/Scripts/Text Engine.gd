@@ -40,6 +40,12 @@ func wait(seconds: float):
 	yield(get_tree().create_timer(seconds), "timeout")
 
 
+func appear():
+	pass
+
+func disappear():
+	pass
+
 func text_dialog(string: String, size: int = label_style.size, delay: float = 0.0, speaker_name: String = "Nobody", sound = null):
 	#'sound' parameter should be AudioStreamPlayer2D. Not implemented yet.	
 	#should make it so it sounds like Celeste, but I need sounds in order to test it out and implement this
@@ -71,6 +77,15 @@ func text_dialog(string: String, size: int = label_style.size, delay: float = 0.
 func json_text_dialog(speaker_name: String = "", key = "", size: int = label_style.size, delay: float = 0.0, sound = null) -> void:
 	yield(text_dialog($FileOpener.read_json(dialog_json_filepath)[speaker_name][key], size, delay, speaker_name, sound), "completed")
 	return
+
+
+func question_dialog(string: String, size: int = label_style.size, delay: float = 0.0, speaker_name: String = "Nobody", options: Array = ["Yes", "No"], sound = null):
+	pass
+	#I may need to create some buttons for response options
+	
+
+func input_dialog():
+	pass
 
 
 #func set_size(size: int):

@@ -26,3 +26,4 @@ func read_json(file) -> Dictionary:
 	#var json_data = JSON.parse(contents).get_result()
 	
 	return JSON.parse(file_read(file)).get_result()
+

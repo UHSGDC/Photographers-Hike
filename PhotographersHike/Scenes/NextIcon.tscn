@@ -4,8 +4,8 @@
 [ext_resource path="res://Scripts/NextIcon.gd" type="Script" id=2]
 
 [node name="NextIcon" type="Sprite"]
-position = Vector2( 451.88, 277 )
-scale = Vector2( 0.0978261, 0.0978261 )
+position = Vector2( 454.978, 275 )
+scale = Vector2( 0.0869565, 0.0869565 )
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
 
