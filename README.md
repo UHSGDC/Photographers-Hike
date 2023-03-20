@@ -25,3 +25,7 @@
 #### Date: 3/12/23
 * Finished Info Menu. Credits Updated and Updating...
 * Started on Menu Settings Screen
+
+#### Date: 3/19/2023
+* Created settings
+* Soon to code the functionality
