@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/SettingsMenu.gd" type="Script" id=2]
-[ext_resource path="res://Scripts/High_Checkbox.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
@@ -35,7 +34,7 @@ margin_bottom = -249.65
 [node name="Settings Title" type="Label" parent="Background/Settings Title Window"]
 modulate = Color( 0, 0, 0, 1 )
 margin_top = 6.0
-margin_right = 486.0
+margin_right = 485.0
 margin_bottom = 30.0
 custom_fonts/font = SubResource( 1 )
 text = "Settings"
@@ -75,28 +74,15 @@ rect_pivot_offset = Vector2( 98, 7 )
 custom_fonts/font = SubResource( 2 )
 text = "Brightness:"
 
-[node name="Music" type="Label" parent="Background"]
-modulate = Color( 0, 0, 0, 1 )
-anchor_top = 0.262
-anchor_right = 0.977
-anchor_bottom = 0.345
-margin_left = 14.0
-margin_top = 0.971992
-margin_right = 20.201
-margin_bottom = -9.43001
-rect_pivot_offset = Vector2( 98, 7 )
-custom_fonts/font = SubResource( 2 )
-text = "Music: "
-
 [node name="Graphics" type="Label" parent="Background"]
 modulate = Color( 0, 0, 0, 1 )
 anchor_top = 0.262
 anchor_right = 0.977
 anchor_bottom = 0.345
-margin_left = 14.0
-margin_top = 19.972
-margin_right = 20.201
-margin_bottom = 9.56999
+margin_left = 13.0
+margin_top = 2.972
+margin_right = 19.201
+margin_bottom = -7.43001
 rect_pivot_offset = Vector2( 98, 7 )
 custom_fonts/font = SubResource( 2 )
 text = "Graphics Quality: "
@@ -106,24 +92,36 @@ modulate = Color( 0, 0, 0, 1 )
 anchor_top = 0.262
 anchor_right = 0.977
 anchor_bottom = 0.345
-margin_top = 12.332
+margin_top = 15.332
 margin_right = -398.914
-margin_bottom = 23.17
+margin_bottom = 26.17
 rect_pivot_offset = Vector2( 21, 6 )
 custom_fonts/font = SubResource( 2 )
 text = "High: "
+
+[node name="High_Checkbox" type="CheckBox" parent="Background/Graphics/High"]
+margin_left = 57.0
+margin_top = -7.0
+margin_right = 81.0
+margin_bottom = 17.0
 
 [node name="Medium" type="Label" parent="Background/Graphics"]
 modulate = Color( 0, 0, 0, 1 )
 anchor_top = 0.262
 anchor_right = 0.977
 anchor_bottom = 0.345
-margin_top = 28.332
+margin_top = 32.332
 margin_right = -374.914
-margin_bottom = 39.17
+margin_bottom = 43.17
 rect_pivot_offset = Vector2( 19, 14 )
 custom_fonts/font = SubResource( 2 )
 text = "Medium: "
+
+[node name="Medium_Checkbox" type="CheckBox" parent="Background/Graphics/Medium"]
+margin_left = 81.0
+margin_top = -7.0
+margin_right = 105.0
+margin_bottom = 17.0
 
 [node name="Low" type="Label" parent="Background/Graphics"]
 modulate = Color( 0, 0, 0, 1 )
@@ -131,56 +129,47 @@ anchor_top = 0.262
 anchor_right = 0.977
 anchor_bottom = 0.345
 margin_left = -1.0
-margin_top = 42.332
+margin_top = 48.332
 margin_right = -411.914
-margin_bottom = 53.17
+margin_bottom = 59.17
 rect_pivot_offset = Vector2( 19, 14 )
 custom_fonts/font = SubResource( 2 )
 text = "Low: "
 
-[node name="Medium_Checkbox" type="CheckBox" parent="Background/Graphics"]
-margin_left = 81.0
-margin_top = 25.0
-margin_right = 105.0
-margin_bottom = 49.0
+[node name="Low_Checkbox" type="CheckBox" parent="Background/Graphics/Low"]
+margin_left = 43.0
+margin_top = -6.0
+margin_right = 67.0
+margin_bottom = 18.0
 
-[node name="Low_Checkbox" type="CheckBox" parent="Background/Graphics"]
-margin_left = 42.0
-margin_top = 40.0
-margin_right = 66.0
-margin_bottom = 64.0
+[node name="FullScreen" type="Label" parent="Background"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 12.0
+margin_top = 151.0
+margin_right = 479.0
+margin_bottom = 163.0
+rect_pivot_offset = Vector2( 123, 6 )
+custom_fonts/font = SubResource( 2 )
+text = "Fullscreen: "
 
-[node name="High_Checkbox" type="CheckBox" parent="Background/Graphics"]
-margin_left = 57.0
-margin_top = 9.0
-margin_right = 81.0
-margin_bottom = 33.0
-script = ExtResource( 3 )
+[node name="CheckBox" type="CheckBox" parent="Background/FullScreen"]
+margin_left = 127.0
+margin_top = -7.0
+margin_right = 151.0
+margin_bottom = 19.0
 
-[node name="Brightness_Value" type="SpinBox" parent="Background"]
-self_modulate = Color( 0, 0, 0, 1 )
+[node name="Brightness_Value" type="HSlider" parent="Background"]
 margin_left = 145.0
-margin_top = 39.0
-margin_right = 479.0
-margin_bottom = 63.0
-rect_scale = Vector2( 1, 0.5 )
-rounded = true
+margin_top = 38.0
+margin_right = 465.0
+margin_bottom = 54.0
 
-[node name="Volume_Value" type="SpinBox" parent="Background"]
-self_modulate = Color( 0, 0, 0, 1 )
-margin_left = 96.0
-margin_top = 71.0
-margin_right = 479.0
-margin_bottom = 95.0
-rect_scale = Vector2( 1, -0.5 )
+[node name="Volume_Value" type="HSlider" parent="Background"]
+margin_left = 98.0
+margin_top = 57.0
+margin_right = 465.0
+margin_bottom = 73.0
+value = 75.0
 
-[node name="Brightness_Value2" type="SpinBox" parent="Background"]
-self_modulate = Color( 0, 0, 0, 1 )
-light_mask = 5
-margin_left = 85.0
-margin_top = 77.0
-margin_right = 479.0
-margin_bottom = 101.0
-rect_scale = Vector2( 1, 0.5 )
-
-[connection signal="toggled" from="Background/Graphics/High_Checkbox" to="." method="_on_High_Checkbox_toggled"]
+[connection signal="toggled" from="Background/Graphics/High/High_Checkbox" to="." method="_on_High_Checkbox_toggled"]
+[connection signal="value_changed" from="Background/Volume_Value" to="Background/Volume_Value" method="_on_Volume_Value_value_changed"]

@@ -17,6 +17,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Global="*res://Scenes/Global.tscn"
+SoundManager="*res://addons/sound_manager/sound_manager.tscn"
 
 [display]
 
@@ -26,6 +27,10 @@ window/size/test_width=1440
 window/size/test_height=864
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/sound_manager/plugin.cfg" )
 
 [gui]
 
