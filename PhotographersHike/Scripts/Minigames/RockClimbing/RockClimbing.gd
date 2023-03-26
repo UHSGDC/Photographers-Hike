@@ -95,7 +95,7 @@ func charge_jump(delta: float) -> void:
 	
 	current_jump_velocity += jump_charge_speed * jump_charge_direction * delta
 	
-	jump_arrow.get_children()[0].scale = 2 * Vector2.ONE * current_jump_velocity / max_jump_velocity
+	jump_arrow.get_children()[0].scale.x = 2 * current_jump_velocity / max_jump_velocity
 
 
 func exit_minigame() -> void:
