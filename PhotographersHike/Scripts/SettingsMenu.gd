@@ -1,17 +1,26 @@
 extends Control
 
-
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
-
+	pass   
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_pressed("Esc"):
 		get_tree().change_scene("res://Scenes/MainMenu.tscn")
+
+
+func _on_Full_Checkbox_pressed():
+	OS.window_fullscreen = !OS.window_fullscreen
+
+
+func _on_Border_Checkbox_pressed():
+	OS.window_borderless = !OS.window_borderless
+
+
+func _on_VSYNC_Checkbox_pressed():
+	OS.vsync_enabled = !OS.vsync_enabled
