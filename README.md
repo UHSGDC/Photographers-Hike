@@ -29,3 +29,6 @@
 #### Date: 3/19/2023
 * Created settings
 * Soon to code the functionality
+
+#### Date: 3/26/2023
+* Added Settings to Settings Menu.
