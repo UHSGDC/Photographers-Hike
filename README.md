@@ -32,3 +32,7 @@
 
 #### Date: 3/26/2023
 * Added Settings to Settings Menu.
+
+#### Date: 3/27/2023: 
+* Started Working on the settings functionality, 
+* Started on keybinds for the game and its functionality also. 
