@@ -1,9 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/SettingsMenu.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/Volume_Value.gd" type="Script" id=3]
-[ext_resource path="res://Scenes/Jump_Button.tscn" type="PackedScene" id=4]
+[ext_resource path="res://addons/input_helper/examples/remapbinds.tscn" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
@@ -11,18 +11,6 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 12
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=3]
-size = 14
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=4]
-size = 14
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=5]
-size = 14
 font_data = ExtResource( 1 )
 
 [node name="Settings" type="Control"]
@@ -133,44 +121,25 @@ margin_top = 102.0
 margin_right = 100.0
 margin_bottom = 126.0
 
-[node name="HFlowContainer" type="HFlowContainer" parent="."]
-margin_left = 9.0
-margin_top = 125.0
-margin_right = 93.0
-margin_bottom = 241.0
+[node name="Jump" parent="Settings_Menu" instance=ExtResource( 4 )]
+margin_top = 133.0
+margin_right = -6.0
+margin_bottom = -143.0
+action_name = "jump"
 
-[node name="Key Labels" type="VBoxContainer" parent="HFlowContainer"]
-margin_right = 84.0
-margin_bottom = 50.0
+[node name="Left" parent="Settings_Menu" instance=ExtResource( 4 )]
+margin_left = 36.0
+margin_top = 156.0
+margin_right = -43.0
+margin_bottom = -120.0
+action_name = "left"
 
-[node name="Jump" type="Label" parent="HFlowContainer/Key Labels"]
-modulate = Color( 0, 0, 0, 1 )
-margin_right = 84.0
-margin_bottom = 14.0
-custom_fonts/font = SubResource( 3 )
-text = "Jump:"
-
-[node name="Left" type="Label" parent="HFlowContainer/Key Labels"]
-modulate = Color( 0, 0, 0, 1 )
-margin_top = 18.0
-margin_right = 84.0
-margin_bottom = 32.0
-custom_fonts/font = SubResource( 4 )
-text = "Left:"
-
-[node name="Right" type="Label" parent="HFlowContainer/Key Labels"]
-modulate = Color( 0, 0, 0, 1 )
-margin_top = 36.0
-margin_right = 84.0
-margin_bottom = 50.0
-custom_fonts/font = SubResource( 5 )
-text = "Right:"
-
-[node name="Jump" parent="." instance=ExtResource( 4 )]
-margin_left = 100.0
-margin_top = 124.0
-margin_right = 192.0
-margin_bottom = 143.0
+[node name="Right" parent="Settings_Menu" instance=ExtResource( 4 )]
+margin_left = 86.0
+margin_top = 181.0
+margin_right = -89.0
+margin_bottom = -95.0
+action_name = "right"
 
 [connection signal="value_changed" from="Settings_Menu/Volume_Value" to="Settings_Menu/Volume_Value" method="_on_Volume_Value_value_changed"]
 [connection signal="pressed" from="Settings_Menu/Full_Checkbox" to="." method="_on_Full_Checkbox_pressed"]
