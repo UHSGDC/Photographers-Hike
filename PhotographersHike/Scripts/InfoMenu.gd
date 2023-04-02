@@ -15,3 +15,7 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("Esc"):
 		get_tree().change_scene("res://Scenes/MainMenu.tscn")
+
+
+func _on_LinkButton_pressed():
+	OS.shell_open("https://github.com/Aj-Cdr/Photographer-s-Hike-UHSGDC-Info")
