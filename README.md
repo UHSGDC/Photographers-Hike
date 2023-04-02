@@ -35,4 +35,10 @@
 
 #### Date: 3/27/2023: 
 * Started Working on the settings functionality, 
-* Started on keybinds for the game and its functionality also. 
+* Started on keybinds for the game and its functionality also.
+
+#### Date: 4/1/2023: 
+* Added more keybinds to the settings menu 
+* Created and finished the pause menu
+* Organized code and minimized the amount of scripts organized
+* code organization/clutter minimization.
