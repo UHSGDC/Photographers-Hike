@@ -19,3 +19,7 @@ func _process(delta):
 
 func _on_LinkButton_pressed():
 	OS.shell_open("https://github.com/Aj-Cdr/Photographer-s-Hike-UHSGDC-Info")
+
+
+func _on_Control_gui_input():
+	pass # Replace with function body.

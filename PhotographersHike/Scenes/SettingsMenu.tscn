@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/SettingsMenu.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/Volume_Value.gd" type="Script" id=3]
 [ext_resource path="res://addons/input_helper/examples/remapbinds.tscn" type="PackedScene" id=4]
+[ext_resource path="res://addons/input_helper/examples/device_tester.gd" type="Script" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
@@ -19,6 +20,20 @@ font_data = ExtResource( 1 )
 [sub_resource type="DynamicFont" id=4]
 size = 5
 font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 12
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=12]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 8
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0, 0, 0, 1 )
 
 [node name="Settings" type="Control"]
 pause_mode = 2
@@ -147,31 +162,55 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "Note: Esc key is used for navigating previous pages & to toggle the pause menu."
 
+[node name="Current_Device_Input" type="Control" parent="Settings_Menu"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 5 )
+
+[node name="Vbox" type="VBoxContainer" parent="Settings_Menu/Current_Device_Input"]
+margin_left = 10.0
+margin_top = 156.0
+margin_right = 178.0
+margin_bottom = 188.0
+
+[node name="Label" type="Label" parent="Settings_Menu/Current_Device_Input/Vbox"]
+margin_right = 168.0
+margin_bottom = 12.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 11 )
+text = "CURRENT DEVICE"
+align = 1
+
+[node name="CurrentDevice" type="Label" parent="Settings_Menu/Current_Device_Input/Vbox"]
+margin_top = 16.0
+margin_right = 168.0
+margin_bottom = 32.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 12 )
+text = "Keyboard"
+
 [node name="Keybinds Scroller" type="ScrollContainer" parent="Settings_Menu"]
 self_modulate = Color( 0, 0, 0, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 155.0
-margin_right = -13.0
-margin_bottom = -92.0
+margin_left = 6.0
+margin_top = 190.0
+margin_right = -25.0
+margin_bottom = -72.0
 scroll_horizontal_enabled = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Settings_Menu/Keybinds Scroller"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Settings_Menu/Keybinds Scroller"]
 margin_right = 124.0
 margin_bottom = 68.0
-size_flags_vertical = 2
-size_flags_stretch_ratio = 2.0
-alignment = 1
 
-[node name="Jump" parent="Settings_Menu/Keybinds Scroller/VBoxContainer" instance=ExtResource( 4 )]
+[node name="Jump" parent="Settings_Menu/Keybinds Scroller/VBoxContainer2" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 124.0
 margin_bottom = 14.0
 action_name = "jump"
 
-[node name="Left" parent="Settings_Menu/Keybinds Scroller/VBoxContainer" instance=ExtResource( 4 )]
+[node name="Left" parent="Settings_Menu/Keybinds Scroller/VBoxContainer2" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 18.0
@@ -179,7 +218,7 @@ margin_right = 124.0
 margin_bottom = 32.0
 action_name = "left"
 
-[node name="Right" parent="Settings_Menu/Keybinds Scroller/VBoxContainer" instance=ExtResource( 4 )]
+[node name="Right" parent="Settings_Menu/Keybinds Scroller/VBoxContainer2" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 36.0
@@ -187,7 +226,7 @@ margin_right = 124.0
 margin_bottom = 50.0
 action_name = "right"
 
-[node name="Esc" parent="Settings_Menu/Keybinds Scroller/VBoxContainer" instance=ExtResource( 4 )]
+[node name="Esc" parent="Settings_Menu/Keybinds Scroller/VBoxContainer2" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 54.0
@@ -195,7 +234,21 @@ margin_right = 124.0
 margin_bottom = 68.0
 action_name = "Esc"
 
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings_Menu"]
+margin_left = 377.0
+margin_top = 277.0
+margin_right = 473.0
+margin_bottom = 285.0
+
+[node name="Back_to_game" type="Button" parent="Settings_Menu/HBoxContainer"]
+margin_right = 96.0
+margin_bottom = 8.0
+custom_fonts/font = SubResource( 9 )
+custom_styles/normal = SubResource( 10 )
+text = "Back To Game"
+
 [connection signal="value_changed" from="Settings_Menu/Volume_Value" to="Settings_Menu/Volume_Value" method="_on_Volume_Value_value_changed"]
 [connection signal="pressed" from="Settings_Menu/Full_Checkbox" to="." method="_on_Full_Checkbox_pressed"]
 [connection signal="pressed" from="Settings_Menu/Border_Checkbox" to="." method="_on_Border_Checkbox_pressed"]
 [connection signal="pressed" from="Settings_Menu/VSYNC_Checkbox" to="." method="_on_VSYNC_Checkbox_pressed"]
+[connection signal="pressed" from="Settings_Menu/HBoxContainer/Back_to_game" to="." method="_on_Back_to_game_pressed"]
