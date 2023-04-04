@@ -46,3 +46,10 @@
 #### Date: 4/2/2023: 
 * Worked on the menu's 
 * added a device input detection system.
+
+#### Date: 4/3/2023:
+* Clutter Minimization 
+* Keybinds Check & Organization 
+* Checked everything done so far
+* Almost done, ready to merge
+* Going to create a splash screen for the game. Link: https://www.youtube.com/watch?v=Kg01ozgn2h8&t=198s&ab_channel=Kron
