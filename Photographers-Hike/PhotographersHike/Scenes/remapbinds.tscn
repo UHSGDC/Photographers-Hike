@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scripts/remap.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 8
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 8
+font_data = ExtResource( 1 )
+
+[node name="Remap" type="CenterContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 4.0
+script = ExtResource( 2 )
+
+[node name="PressAKeyLabel" type="Label" parent="."]
+margin_left = 190.0
+margin_top = 140.0
+margin_right = 294.0
+margin_bottom = 148.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Press a key: "
+
+[node name="VBox" type="HBoxContainer" parent="."]
+margin_left = 180.0
+margin_top = 137.0
+margin_right = 304.0
+margin_bottom = 151.0
+size_flags_horizontal = 3
+custom_constants/separation = 40
+
+[node name="CurrentKeyLabel" type="Label" parent="VBox"]
+margin_top = 3.0
+margin_bottom = 11.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+
+[node name="Button" type="Button" parent="VBox"]
+margin_left = 40.0
+margin_right = 124.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 2 )
+text = "Change..."
+
+[connection signal="pressed" from="VBox/Button" to="." method="_on_Button_pressed"]
