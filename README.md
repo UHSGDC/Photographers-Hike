@@ -52,4 +52,8 @@
 * Keybinds Check & Organization 
 * Checked everything done so far
 * Almost done, ready to merge
-* Going to create a splash screen for the game. Link: https://www.youtube.com/watch?v=Kg01ozgn2h8&t=198s&ab_channel=Kron
+* Going to create a splash screen for the game.
+
+#### Date: 4/5/2023: 
+* created splash intro screen 
+* Finished splash screen
