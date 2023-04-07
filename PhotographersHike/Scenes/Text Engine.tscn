@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/Text Engine.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Scenes/FileOpener.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Art/TextBox3.png" type="Texture" id=5]
 [ext_resource path="res://Art/Outline.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/Answer Option.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Input.tscn" type="PackedScene" id=8]
 
 [sub_resource type="StyleBoxEmpty" id=4]
 
@@ -85,4 +87,20 @@ texture = ExtResource( 6 )
 
 [node name="FileOpener" parent="." instance=ExtResource( 4 )]
 
+[node name="Answer Option" parent="." instance=ExtResource( 7 )]
+visible = false
+margin_left = 402.0
+margin_top = 199.0
+margin_right = 402.0
+margin_bottom = 199.0
+rect_scale = Vector2( 0.4, 0.23 )
+
+[node name="Input" parent="." instance=ExtResource( 8 )]
+visible = false
+margin_left = 240.0
+margin_top = 150.0
+margin_right = 240.0
+margin_bottom = 150.0
+
 [connection signal="pressed" from="TextOutput/TextBox/ClickDetection" to="." method="_on_ClickDetection_pressed"]
+[connection signal="input_completed" from="Input" to="." method="_on_Answer_Selected"]
