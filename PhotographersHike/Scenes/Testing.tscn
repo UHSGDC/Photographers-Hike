@@ -168,6 +168,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 6/z_index = 0
 
 [sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 240, 144 )
 
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 240, 144 )
