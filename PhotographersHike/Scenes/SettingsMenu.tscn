@@ -1,0 +1,254 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scripts/SettingsMenu.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Volume_Value.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/remapbinds.tscn" type="PackedScene" id=4]
+[ext_resource path="res://addons/input_helper/device_tester.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 12
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 5
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 12
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=12]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 8
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0, 0, 0, 1 )
+
+[node name="Settings" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="Settings_Menu" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 7.0
+margin_bottom = 6.0
+color = Color( 0.0862745, 0.662745, 0.529412, 1 )
+
+[node name="Settings Title Window" type="MarginContainer" parent="Settings_Menu"]
+anchor_top = 0.18
+anchor_right = 0.982
+anchor_bottom = 0.975
+margin_top = -52.92
+margin_right = 7.76599
+margin_bottom = -232.65
+
+[node name="Settings Title" type="Label" parent="Settings_Menu/Settings Title Window"]
+modulate = Color( 0, 0, 0, 1 )
+margin_top = 14.0
+margin_right = 486.0
+margin_bottom = 38.0
+custom_fonts/font = SubResource( 1 )
+text = "Settings"
+align = 1
+
+[node name="Settings Window" type="MarginContainer" parent="Settings_Menu"]
+anchor_top = 0.116
+anchor_right = 0.986
+anchor_bottom = 0.976
+margin_top = -0.104
+margin_right = 0.817963
+margin_bottom = 1.05597
+
+[node name="Volume" type="Label" parent="Settings_Menu"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_top = 0.204
+anchor_right = 0.977
+anchor_bottom = 0.248
+margin_left = 11.0
+margin_top = 0.0240059
+margin_right = 17.201
+margin_bottom = 0.0880051
+rect_pivot_offset = Vector2( 98, 7 )
+custom_fonts/font = SubResource( 2 )
+text = "Volume: "
+
+[node name="Volume_Value" type="HSlider" parent="Settings_Menu"]
+margin_left = 98.0
+margin_top = 57.0
+margin_right = 465.0
+margin_bottom = 73.0
+max_value = 1.0
+step = 0.05
+ticks_on_borders = true
+script = ExtResource( 3 )
+
+[node name="FullScreen" type="Label" parent="Settings_Menu"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 12.0
+margin_top = 77.0
+margin_right = 479.0
+margin_bottom = 89.0
+rect_pivot_offset = Vector2( 123, 6 )
+custom_fonts/font = SubResource( 2 )
+text = "Fullscreen: "
+
+[node name="Full_Checkbox" type="CheckBox" parent="Settings_Menu"]
+margin_left = 137.0
+margin_top = 70.0
+margin_right = 161.0
+margin_bottom = 94.0
+
+[node name="BorderLess" type="Label" parent="Settings_Menu"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 12.0
+margin_top = 93.0
+margin_right = 479.0
+margin_bottom = 105.0
+rect_pivot_offset = Vector2( 123, 6 )
+custom_fonts/font = SubResource( 2 )
+text = "Borderless:"
+
+[node name="Border_Checkbox" type="CheckBox" parent="Settings_Menu"]
+margin_left = 137.0
+margin_top = 86.0
+margin_right = 161.0
+margin_bottom = 110.0
+
+[node name="VSYNC" type="Label" parent="Settings_Menu"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 11.0
+margin_top = 109.0
+margin_right = 478.0
+margin_bottom = 121.0
+rect_pivot_offset = Vector2( 123, 6 )
+custom_fonts/font = SubResource( 2 )
+text = "VSYNC: "
+
+[node name="VSYNC_Checkbox" type="CheckBox" parent="Settings_Menu"]
+margin_left = 76.0
+margin_top = 102.0
+margin_right = 100.0
+margin_bottom = 126.0
+
+[node name="Label" type="Label" parent="Settings_Menu"]
+margin_left = 12.0
+margin_top = 126.0
+margin_right = 158.0
+margin_bottom = 142.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "KEYBINDS:"
+
+[node name="Esc Note" type="Label" parent="Settings_Menu"]
+margin_left = 10.0
+margin_top = 145.0
+margin_right = 484.0
+margin_bottom = 151.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "Note: backspace key is used for navigating previous pages & to toggle the pause menu."
+
+[node name="Current_Device_Input" type="Control" parent="Settings_Menu"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 5 )
+
+[node name="Vbox" type="VBoxContainer" parent="Settings_Menu/Current_Device_Input"]
+margin_left = 10.0
+margin_top = 156.0
+margin_right = 178.0
+margin_bottom = 188.0
+
+[node name="Label" type="Label" parent="Settings_Menu/Current_Device_Input/Vbox"]
+margin_right = 168.0
+margin_bottom = 12.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 11 )
+text = "CURRENT DEVICE"
+align = 1
+
+[node name="CurrentDevice" type="Label" parent="Settings_Menu/Current_Device_Input/Vbox"]
+margin_top = 16.0
+margin_right = 168.0
+margin_bottom = 32.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 12 )
+text = "Keyboard"
+
+[node name="Keybinds Scroller" type="ScrollContainer" parent="Settings_Menu"]
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 6.0
+margin_top = 190.0
+margin_right = -13.0
+margin_bottom = -51.0
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Settings_Menu/Keybinds Scroller"]
+margin_right = 124.0
+margin_bottom = 68.0
+
+[node name="Jump" parent="Settings_Menu/Keybinds Scroller/VBoxContainer2" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 124.0
+margin_bottom = 14.0
+action_name = "jump"
+
+[node name="Left" parent="Settings_Menu/Keybinds Scroller/VBoxContainer2" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 18.0
+margin_right = 124.0
+margin_bottom = 32.0
+action_name = "left"
+
+[node name="Right" parent="Settings_Menu/Keybinds Scroller/VBoxContainer2" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 36.0
+margin_right = 124.0
+margin_bottom = 50.0
+action_name = "right"
+
+[node name="Esc" parent="Settings_Menu/Keybinds Scroller/VBoxContainer2" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 54.0
+margin_right = 124.0
+margin_bottom = 68.0
+action_name = "Esc"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings_Menu"]
+margin_left = 378.0
+margin_top = 277.0
+margin_right = 474.0
+margin_bottom = 285.0
+
+[node name="Back_to_game" type="Button" parent="Settings_Menu/HBoxContainer"]
+margin_right = 96.0
+margin_bottom = 8.0
+custom_fonts/font = SubResource( 9 )
+custom_styles/normal = SubResource( 10 )
+text = "Back To Game"
+
+[connection signal="value_changed" from="Settings_Menu/Volume_Value" to="Settings_Menu/Volume_Value" method="_on_Volume_Value_value_changed"]
+[connection signal="pressed" from="Settings_Menu/Full_Checkbox" to="." method="_on_Full_Checkbox_pressed"]
+[connection signal="pressed" from="Settings_Menu/Border_Checkbox" to="." method="_on_Border_Checkbox_pressed"]
+[connection signal="pressed" from="Settings_Menu/VSYNC_Checkbox" to="." method="_on_VSYNC_Checkbox_pressed"]
+[connection signal="pressed" from="Settings_Menu/HBoxContainer/Back_to_game" to="." method="_on_Back_to_game_pressed"]
