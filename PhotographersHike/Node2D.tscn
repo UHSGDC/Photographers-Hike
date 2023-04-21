@@ -1,8 +1,0 @@
-[gd_scene format=2]
-
-[node name="Node2D" type="Node2D"]
-
-[node name="ProgressBar" type="ProgressBar" parent="."]
-margin_right = 4.0
-margin_bottom = 14.0
-value = 50.0
