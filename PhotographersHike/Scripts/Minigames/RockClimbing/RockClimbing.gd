@@ -56,7 +56,7 @@ func move(delta: float) -> void:
 	if !current_rock:
 		apply_gravity(delta)
 
-	if player.is_on_floor():
+	if player.is_on_floor() && !player.get_floor_angle():
 		exit_minigame()
 
 	

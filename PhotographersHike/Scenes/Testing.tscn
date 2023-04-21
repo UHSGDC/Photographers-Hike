@@ -250,3 +250,21 @@ script = ExtResource( 2 )
 
 [node name="RockClimbing" parent="." instance=ExtResource( 3 )]
 position = Vector2( -480, -64 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( -400, 168 )
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 16, -16, -16, 16, 16, 16 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 16, -16, -16, 16, 16, 16 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2( -288, 192 )
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D2"]
+polygon = PoolVector2Array( 16, -16, -16, 16, 16, 16 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
+polygon = PoolVector2Array( 16, -16, -16, 16, 16, 16 )
