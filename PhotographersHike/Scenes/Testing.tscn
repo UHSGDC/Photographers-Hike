@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scenes/PlatformingPlayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/PlayerCamera.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Minigames/RockClimbing/RockClimbing.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Vine.tscn" type="PackedScene" id=4]
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 4, 0, 4 )
@@ -199,6 +200,7 @@ tile_data = PoolIntArray( -1900585, 1, 0, -1835049, 1, 0, -1769513, 1, 0, -17039
 
 [node name="Room1" type="Area2D" parent="."]
 position = Vector2( 240, 144 )
+z_index = 2
 collision_layer = 128
 collision_mask = 0
 monitoring = false
@@ -208,6 +210,7 @@ shape = SubResource( 10 )
 
 [node name="Room2" type="Area2D" parent="."]
 position = Vector2( 720, 96 )
+z_index = 2
 collision_layer = 128
 collision_mask = 0
 monitoring = false
@@ -217,6 +220,7 @@ shape = SubResource( 11 )
 
 [node name="Room3" type="Area2D" parent="."]
 position = Vector2( 1040, 40 )
+z_index = 2
 collision_layer = 128
 collision_mask = 0
 monitoring = false
@@ -226,6 +230,7 @@ shape = SubResource( 12 )
 
 [node name="Room4" type="Area2D" parent="."]
 position = Vector2( 960, 528 )
+z_index = 2
 collision_layer = 128
 collision_mask = 0
 monitoring = false
@@ -235,6 +240,7 @@ shape = SubResource( 13 )
 
 [node name="Room5" type="Area2D" parent="."]
 position = Vector2( -320, 144 )
+z_index = 2
 collision_layer = 128
 collision_mask = 0
 monitoring = false
@@ -268,3 +274,48 @@ polygon = PoolVector2Array( 16, -16, -16, 16, 16, 16 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
 polygon = PoolVector2Array( 16, -16, -16, 16, 16, 16 )
+
+[node name="Vine" parent="." instance=ExtResource( 4 )]
+position = Vector2( -520, 128 )
+
+[node name="Vine2" parent="." instance=ExtResource( 4 )]
+position = Vector2( -504, 128 )
+
+[node name="Vine3" parent="." instance=ExtResource( 4 )]
+position = Vector2( -520, 144 )
+
+[node name="Vine4" parent="." instance=ExtResource( 4 )]
+position = Vector2( -504, 144 )
+
+[node name="Vine5" parent="." instance=ExtResource( 4 )]
+position = Vector2( -520, 160 )
+
+[node name="Vine6" parent="." instance=ExtResource( 4 )]
+position = Vector2( -480, 88 )
+
+[node name="Vine7" parent="." instance=ExtResource( 4 )]
+position = Vector2( -424, 88 )
+
+[node name="Vine8" parent="." instance=ExtResource( 4 )]
+position = Vector2( -424, 104 )
+
+[node name="Vine9" parent="." instance=ExtResource( 4 )]
+position = Vector2( -408, 88 )
+
+[node name="Vine10" parent="." instance=ExtResource( 4 )]
+position = Vector2( -408, 104 )
+
+[node name="Vine11" parent="." instance=ExtResource( 4 )]
+position = Vector2( -440, 104 )
+
+[node name="Vine12" parent="." instance=ExtResource( 4 )]
+position = Vector2( -472, 120 )
+
+[node name="Vine13" parent="." instance=ExtResource( 4 )]
+position = Vector2( -472, 216 )
+
+[node name="Vine14" parent="." instance=ExtResource( 4 )]
+position = Vector2( -472, 200 )
+
+[node name="Vine15" parent="." instance=ExtResource( 4 )]
+position = Vector2( -424, 216 )

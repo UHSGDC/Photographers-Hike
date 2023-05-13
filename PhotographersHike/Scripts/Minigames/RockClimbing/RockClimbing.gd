@@ -60,11 +60,11 @@ func move(delta: float) -> void:
 		exit_minigame()
 
 	
-	velocity = player.move_and_slide(velocity, Vector2.UP)
+	player.velocity = player.move_and_slide(player.velocity, Vector2.UP)
 	
 		
 func apply_gravity(delta: float) -> void:
-	velocity.y += gravity * delta
+	player.velocity.y += gravity * delta
 	
 		
 func jump() -> void:
@@ -72,7 +72,7 @@ func jump() -> void:
 	
 	var jump_direction: Vector2 = (get_global_mouse_position() - player.global_position).normalized()
 	
-	velocity = current_jump_velocity * jump_direction
+	player.velocity = current_jump_velocity * jump_direction
 	
 	
 	# Resetting Jump
@@ -101,19 +101,17 @@ func charge_jump(delta: float) -> void:
 func exit_minigame() -> void:
 	current_rock = null
 	player.in_minigame = false
-	player.velocity = velocity
 	print("exited minigame")
 
 
 func start_minigame() -> void:
 	player.in_minigame = true
-	velocity = player.velocity
 	
 
 func _on_Rock_touched(body: Node) -> void:
 	
 	if body.is_in_group("rock"):
-		if velocity.length_squared() > max_attach_speed_squared && player.in_minigame:
+		if player.velocity.length_squared() > max_attach_speed_squared && player.in_minigame:
 			return
 			
 		if !player.in_minigame:
@@ -121,8 +119,8 @@ func _on_Rock_touched(body: Node) -> void:
 			
 		jump_arrow.show()
 		current_rock = body
-		velocity.x = 0
-		velocity.y = 0
+		player.velocity.x = 0
+		player.velocity.y = 0
 
 
 func _on_RockClimbing_body_entered(body: Node) -> void:
