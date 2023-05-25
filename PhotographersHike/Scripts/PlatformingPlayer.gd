@@ -34,6 +34,8 @@ var remember_jump_length: float = 0.1
 
 # Room swapping
 
+var current_room: Area2D
+
 enum Touching_Side {
 	BOTH,
 	HORIZONTAL,
@@ -66,7 +68,11 @@ func move(delta: float) -> void:
 			velocity.x -= idle_deacceleration * sign(velocity.x) * delta
 	
 	# Clamps velocity.x to max_move_speed
-	velocity.x = clamp(velocity.x, -max_move_speed, max_move_speed)
+	if velocity.x > max_move_speed:
+		velocity.x = lerp(velocity.x, max_move_speed, 0.4)
+	elif velocity.x < -max_move_speed:
+		velocity.x = lerp(velocity.x, -max_move_speed, 0.4)
+		
 	
 	#Jumping
 	if is_on_floor():
@@ -137,6 +143,7 @@ func _on_RoomDetector_area_entered(area: Area2D) -> void:
 			velocity.y = jump_velocity
 	
 	# Changes camera's current room and size. check PlayerCamera script for more info
+	current_room = area
 	Global.change_room(collision_shape.global_position, size)
 
 
@@ -185,5 +192,6 @@ func check_room_edge(a_center: Vector2, a_size: Vector2, b_center: Vector2, b_si
 				push_error("rooms touching horizontally, but at same x coordinate")
 				
 	# Fail safe
+	push_error("Room switching fail safe")
 	return Global.RIGHT
 	
