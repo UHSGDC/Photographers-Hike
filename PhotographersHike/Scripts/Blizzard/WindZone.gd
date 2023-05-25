@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 	if player.is_on_floor() && player.velocity.x == 0:
 		player.velocity.x += strength * delta * direction
 	if !player.is_on_floor():
-		player.velocity.x += strength * delta * 2  * direction
+		player.velocity.x += strength * delta * 1.5  * direction
 
 
 func _on_WindZone_area_entered(area: Area2D) -> void:
@@ -34,9 +34,11 @@ func _on_WindZone_area_entered(area: Area2D) -> void:
 		wind_particles.global_position = global_position
 		wind_particles.global_position.x += - wind_particles.x_offset * direction
 		
-		wind_particles.direction.x = self.direction
+		wind_particles.direction.x = direction
 		
-		yield(get_tree().create_timer(0.1),"timeout")
+		wind_particles.speed_scale = strength / 500
+		
+		yield(get_tree().create_timer(0.2),"timeout")
 		in_wind = true
 
 
