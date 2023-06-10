@@ -14,17 +14,45 @@ export var punch_cooldown: float
 export var fist_amount: int
 
 
+enum STATES {
+	IDLE
+	FOLLOWING
+	CHARGING
+	CHARGINGPUNCHING
+	PUNCHING
+}
+
+var current_state: int = STATES.IDLE
+
+
 func _ready() -> void:
 	active = true
 
 
 func _process(delta: float) -> void:
+	
+	current_state = get_state()
+	print(current_state)
+	
 	if active:
 		check_distance()
 		if !punches:
 			follow_player()
 		if is_near_player and punches < fist_amount and can_punch:
 			punch()
+
+			
+func get_state() -> int:
+	if !punches:
+		return STATES.FOLLOWING
+	elif punches > 1:
+		return STATES.CHARGINGPUNCHING
+	elif punches == 1 and can_punch:
+		return STATES.PUNCHING
+	elif punches == 1 and !can_punch:
+		return STATES.CHARGING
+	else:
+		return STATES.IDLE
 			
 			
 func follow_player() -> void:
