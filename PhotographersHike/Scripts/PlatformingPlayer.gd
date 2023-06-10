@@ -193,4 +193,3 @@ func check_room_edge(a_center: Vector2, a_size: Vector2, b_center: Vector2, b_si
 
 func die() -> void:
 	print("player died")
-	queue_free()

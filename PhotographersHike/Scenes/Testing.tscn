@@ -187,6 +187,7 @@ extents = Vector2( 392, 208 )
 
 [node name="PlatformingPlayer" parent="." instance=ExtResource( 1 )]
 position = Vector2( 152, 232 )
+collision_layer = 5
 
 [node name="Decoration" type="TileMap" parent="."]
 cell_size = Vector2( 16, 16 )
