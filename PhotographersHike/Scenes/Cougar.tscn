@@ -1,6 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://Art/Game Assets/cougar animation/cougar walk.png" type="Texture" id=1]
+[ext_resource path="res://Art/Game Assets/cougar animation/Cougar Walk/tile006.png" type="Texture" id=1]
+[ext_resource path="res://Art/Game Assets/cougar animation/Cougar Walk/tile002.png" type="Texture" id=2]
+[ext_resource path="res://Art/Game Assets/cougar animation/Cougar Walk/tile007.png" type="Texture" id=3]
+[ext_resource path="res://Art/Game Assets/cougar animation/Cougar Walk/tile008.png" type="Texture" id=4]
+[ext_resource path="res://Art/Game Assets/cougar animation/Cougar Walk/tile004.png" type="Texture" id=5]
+[ext_resource path="res://Art/Game Assets/cougar animation/Cougar Walk/tile005.png" type="Texture" id=6]
+[ext_resource path="res://Art/Game Assets/cougar animation/Cougar Walk/tile001.png" type="Texture" id=7]
+[ext_resource path="res://Art/Game Assets/cougar animation/Cougar Walk/tile003.png" type="Texture" id=8]
+[ext_resource path="res://Art/Game Assets/cougar animation/Cougar Walk/tile000.png" type="Texture" id=9]
+[ext_resource path="res://Scripts/Cougar.gd" type="Script" id=10]
+[ext_resource path="res://Scripts/VisionCone.gd" type="Script" id=11]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 29.8688
@@ -8,13 +18,14 @@ height = 116.266
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 1 ) ],
+"frames": [ ExtResource( 9 ), ExtResource( 7 ), ExtResource( 2 ), ExtResource( 8 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 1 ), ExtResource( 3 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
 [node name="Cougar" type="Node2D"]
+script = ExtResource( 10 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -24,5 +35,12 @@ rotation = 1.57275
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 231, 175 )
+position = Vector2( 289, 108 )
+scale = Vector2( 6.45313, 6.45313 )
 frames = SubResource( 2 )
+
+[node name="VisionCone" type="Area2D" parent="."]
+script = ExtResource( 11 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisionCone"]
+position = Vector2( 213, 200 )

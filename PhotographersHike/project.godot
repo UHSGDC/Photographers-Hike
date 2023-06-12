@@ -8,6 +8,22 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "SensorCone",
+"language": "GDScript",
+"path": "res://Scripts/SensorCone.gd"
+}, {
+"base": "Area2D",
+"class": "VisionCone",
+"language": "GDScript",
+"path": "res://Scripts/VisionCone.gd"
+} ]
+_global_script_class_icons={
+"SensorCone": "",
+"VisionCone": ""
+}
+
 [application]
 
 config/name="PhotographersHike"
