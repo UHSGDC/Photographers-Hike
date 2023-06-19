@@ -1,13 +1,13 @@
 [gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://Scripts/Text Engine.gd" type="Script" id=1]
+[ext_resource path="res://Dialog/Text Engine.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Fonts/Text Engine.tres" type="DynamicFont" id=3]
-[ext_resource path="res://Scenes/FileOpener.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Dialog/FileOpener.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Art/TextBox3.png" type="Texture" id=5]
 [ext_resource path="res://Art/Outline.png" type="Texture" id=6]
-[ext_resource path="res://Scenes/Answer Option.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scenes/Input.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Dialog/Answer Option.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Dialog/Input.tscn" type="PackedScene" id=8]
 
 [sub_resource type="StyleBoxEmpty" id=4]
 

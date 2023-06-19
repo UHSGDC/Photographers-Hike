@@ -2,7 +2,7 @@ extends Control
 #I know that the head node is a control node (not Node2D), but I didn't want to create issues by renaming the node
 
 
-const AnswerOptionScene = preload("res://Scenes//Answer Option.tscn")
+const AnswerOptionScene = preload("res://Dialog//Answer Option.tscn")
 const accepted_keys: Array = [KEY_SPACE, KEY_ENTER]
 const dialog_json_filepath: String = "res://dialog.json" #don't have the file yet
 
@@ -11,7 +11,7 @@ const OptionScale = Vector2(0.4, 0.2)
 
 
 
-var next_indicator = load("res://Scenes//NextIcon.tscn")
+var next_indicator = load("res://Dialog//NextIcon.tscn")
 
 onready var screen_dimensions = get_viewport_rect().size
 
@@ -58,8 +58,6 @@ func wait(seconds: float):
 
 
 
-
-
 func text_output(string: String, size: int = label_style.size, delay: float = 0.0, speaker_name: String = "", sound = null) -> void:
 	#does not return anything, just saves some typing
 	$Input.hide()
@@ -77,6 +75,7 @@ func text_output(string: String, size: int = label_style.size, delay: float = 0.
 		for character in string:
 			$TextOutput.text += character
 			yield(wait(delay), "completed")
+
 
 func text_disappear():
 	$CharacterName.hide()
