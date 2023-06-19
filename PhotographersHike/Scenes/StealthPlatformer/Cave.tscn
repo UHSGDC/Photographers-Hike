@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/StealthPlatformer/Cougar.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Cave.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/StealthPlatformer/Cave.gd" type="Script" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/PlatformingPlayer.tscn" type="PackedScene" id=4]
 
@@ -50,7 +50,7 @@ navpoly = SubResource( 2 )
 
 [node name="Cougar" parent="Cougars" instance=ExtResource( 1 )]
 position = Vector2( 57, 84 )
-initial_state = 0
+initial_state = 1
 
 [node name="Position2D" type="Position2D" parent="Cougars/Cougar/PatrolPoints" index="0"]
 position = Vector2( 378, 62 )
