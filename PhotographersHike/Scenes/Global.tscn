@@ -1,10 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Scripts/Global.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Global.gd" type="Script" id=1]
 
 [node name="Global" type="Node"]
-script = ExtResource( 3 )
-
-[node name="Master" type="AudioStreamPlayer" parent="."]
-volume_db = 1.0
-autoplay = true
+script = ExtResource( 1 )
