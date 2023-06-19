@@ -41,6 +41,9 @@ enum Touching_Side {
 	NONE
 }
 
+func _ready() -> void:
+	Global.platforming_player = self
+
 
 # Delta is the time since physics_process was last called
 # I multiply things by delta so things move correctly no matter the frame rate
