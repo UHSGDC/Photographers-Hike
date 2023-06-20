@@ -44,8 +44,6 @@ script = ExtResource( 2 )
 [node name="Settings_Menu" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 7.0
-margin_bottom = 6.0
 color = Color( 0.0862745, 0.662745, 0.529412, 1 )
 
 [node name="Settings Title Window" type="MarginContainer" parent="Settings_Menu"]
@@ -58,9 +56,9 @@ margin_bottom = -232.65
 
 [node name="Settings Title" type="Label" parent="Settings_Menu/Settings Title Window"]
 modulate = Color( 0, 0, 0, 1 )
-margin_top = 14.0
-margin_right = 486.0
-margin_bottom = 38.0
+margin_top = 12.0
+margin_right = 479.0
+margin_bottom = 36.0
 custom_fonts/font = SubResource( 1 )
 text = "Settings"
 align = 1
@@ -226,13 +224,13 @@ margin_right = 124.0
 margin_bottom = 50.0
 action_name = "right"
 
-[node name="Esc" parent="Settings_Menu/Keybinds Scroller/VBoxContainer2" instance=ExtResource( 4 )]
+[node name="Pause" parent="Settings_Menu/Keybinds Scroller/VBoxContainer2" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 54.0
 margin_right = 124.0
 margin_bottom = 68.0
-action_name = "Esc"
+action_name = "pause"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Settings_Menu"]
 margin_left = 378.0

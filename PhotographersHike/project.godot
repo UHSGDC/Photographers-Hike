@@ -11,12 +11,13 @@ config_version=4
 [application]
 
 config/name="PhotographersHike"
-run/main_scene="res://Scenes/Testing.tscn"
+run/main_scene="res://Scenes/Game_Splash_Intro.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 Global="*res://Scenes/Global.tscn"
+InputHelper="*res://addons/input_helper/input_helper.gd"
 
 [display]
 
@@ -26,6 +27,10 @@ window/size/test_width=1440
 window/size/test_height=864
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/input_helper/plugin.cfg" )
 
 [gui]
 
