@@ -42,37 +42,30 @@ enum Touching_Side {
 }
 
 
-# Dialog
+signal dialog_trigger_interacted(speaker, level_id, dialog_number)
 
-enum Level {
-	BASE,
-	DENSE,
-	SPARSE,
-	SNOWY,
-	SUMMIT
-}
-
-signal dialog_trigger_interacted(level)
-
+var dialog_playing: bool = false
 
 func _ready() -> void:
 	Global.platforming_player = self
 
 
-func _unhandled_input(event: InputEvent) -> void:
-	var dialog_info: Array = [Level.BASE, "base_camp_character", 0]
-	
+func _unhandled_input(event: InputEvent) -> void:	
+	if dialog_playing:
+		return
 	if event.is_action_pressed("interact"):
-		emit_signal("dialog_trigger_interacted", dialog_info)
+		emit_signal("dialog_trigger_interacted", "old_man", DialogBox.Levels.BASE, 1)
+		dialog_playing = true
 
 
 # Delta is the time since physics_process was last called
 # I multiply things by delta so things move correctly no matter the frame rate
 func _physics_process(delta: float) -> void:
+	
 	input()
 	
 	# Pause player movement between rooms
-	if !Global.room_pause:
+	if !Global.room_pause and !dialog_playing:
 		move(delta)
 
 	
