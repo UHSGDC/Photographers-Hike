@@ -1,7 +1,7 @@
 [gd_scene format=2]
 
 [node name="AnswerButton" type="Button"]
-margin_right = 60.0
+margin_right = 128.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 60, 20 )
 size_flags_horizontal = 0
