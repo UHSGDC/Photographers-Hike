@@ -41,8 +41,29 @@ enum Touching_Side {
 	NONE
 }
 
+
+# Dialog
+
+enum Level {
+	BASE,
+	DENSE,
+	SPARSE,
+	SNOWY,
+	SUMMIT
+}
+
+signal dialog_trigger_interacted(level)
+
+
 func _ready() -> void:
 	Global.platforming_player = self
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	var dialog_info: Array = [Level.BASE, "base_camp_character", 0]
+	
+	if event.is_action_pressed("interact"):
+		emit_signal("dialog_trigger_interacted", dialog_info)
 
 
 # Delta is the time since physics_process was last called
