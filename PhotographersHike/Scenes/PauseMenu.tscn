@@ -15,13 +15,13 @@ font_data = ExtResource( 1 )
 bg_color = Color( 0, 0, 0, 1 )
 
 [node name="Pause" type="Control"]
-margin_right = 482.0
-margin_bottom = 292.0
+margin_right = 480.0
+margin_bottom = 288.0
 script = ExtResource( 2 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 488.0
-margin_bottom = 296.0
+margin_right = 480.0
+margin_bottom = 288.0
 color = Color( 0.0862745, 0.662745, 0.529412, 1 )
 
 [node name="Label" type="Label" parent="ColorRect"]
