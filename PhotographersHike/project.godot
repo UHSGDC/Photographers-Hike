@@ -8,6 +8,22 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "NinePatchRect",
+"class": "DialogBox",
+"language": "GDScript",
+"path": "res://Dialog/DialogBox.gd"
+}, {
+"base": "Node",
+"class": "JSONOpener",
+"language": "GDScript",
+"path": "res://Dialog/JSONOpener.gd"
+} ]
+_global_script_class_icons={
+"DialogBox": "",
+"JSONOpener": ""
+}
+
 [application]
 
 config/name="PhotographersHike"
@@ -18,6 +34,7 @@ config/icon="res://icon.png"
 
 Global="*res://Scenes/Global.tscn"
 InputHelper="*res://addons/input_helper/input_helper.gd"
+JsonOpener="*res://Dialog/JSONOpener.gd"
 
 [display]
 

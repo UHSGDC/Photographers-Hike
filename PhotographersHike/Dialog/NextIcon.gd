@@ -1,12 +1,16 @@
-extends Sprite
+extends TextureRect
+
+
 
 
 func _ready():
-	visible = true
+	modulate.a = 255
 	$Timer.connect("timeout", self, "_on_Timer_timeout")
 
 
 
 func _on_Timer_timeout():
-	visible = not visible
-
+	if modulate.a:
+		modulate.a = 0
+	else:
+		modulate.a = 255

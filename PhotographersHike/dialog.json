@@ -1,122 +1,47 @@
-[
-	{
-		"old_man" : [
+{
+	"old_guy" : 
+	[
+		true,
+		[
 			[
-				"dsadadafa",
-				"dfsafas"
+				[
+					["Yo man, afhBASEDnuijasbn afnujiasb afbas jkfbash asbdjkasbfkasf sfbjkasb", 1],
+					["nu huh", 1]
+				],
+				[
+					["Yo lady, afhnuBAZEijasbn afnujiasb afbas jkfbash asbdjkasbfkasf sfbjkasb", 1],
+					["nu huh", 1]
+				],	
 			],
 			[
-				"whatsbmskx",
-				"HEHEH"
+				[
+					["Yo this is level 1 DENSE, afhnuijasbn afnujiasb afbas jkfbash asbdjkasbfkasf sfbjkasb", 3],
+					["nu huh", 1]
+				],							
+			],
+		]
+	],
+	"old_man" : 
+	[
+		false,
+		[
+			[
+				[
+					["Yo guy, afDFDFDFDFDFDhBASEDnuijasbn afnujiasb afbas jkfbash asbdjkasbfkasf sfbjkasb", 1],
+					["nu huh", 1]
+				],
+				[
+					["Yo lady, afhnuBAZEijasbn afnujiasb afbas jkfbash asbdjkasbfkasf sfbjkasb", 1],
+					["nu huh", 1]
+				],	
 			],
 			[
-				"GEEGEE",
-				"bye",
-				"I SAID BYE NOW!"
-			]
-		]
-		"plant" : [
-			[
-				"im a plant",
-				"nothing else"
-			]
-		]
-			
-	},
-	{
-		"old_man" : [
-			[
-				"dsadadafa",
-				"dfsafas"
+				[
+					["Yo this is level 1 DENSE, afhnuijasbn afnujiasb afbas jkfbash asbdjkasbfkasf sfbjkasb", 3],
+					["nu huh", 1]
+				],							
 			],
-			[
-				"whatsbmskx",
-				"HEHEH"
-			],
-			[
-				"GEEGEE",
-				"bye",
-				"I SAID BYE NOW!"
-			]
 		]
-		"plant" : [
-			[
-				"im a plant",
-				"nothing else"
-			]
-		]
-			
-	},
-	{
-		"old_man" : [
-			[
-				"dsadadafa",
-				"dfsafas"
-			],
-			[
-				"whatsbmskx",
-				"HEHEH"
-			],
-			[
-				"GEEGEE",
-				"bye",
-				"I SAID BYE NOW!"
-			]
-		]
-		"plant" : [
-			[
-				"im a plant",
-				"nothing else"
-			]
-		]
-			
-	},
-	{
-		"old_man" : [
-			[
-				"dsadadafa",
-				"dfsafas"
-			],
-			[
-				"whatsbmskx",
-				"HEHEH"
-			],
-			[
-				"GEEGEE",
-				"bye",
-				"I SAID BYE NOW!"
-			]
-		]
-		"plant" : [
-			[
-				"im a plant",
-				"nothing else"
-			]
-		]
-			
-	},
-	{
-		"old_man" : [
-			[
-				"dsadadafa",
-				"dfsafas"
-			],
-			[
-				"whatsbmskx",
-				"HEHEH"
-			],
-			[
-				"GEEGEE",
-				"bye",
-				"I SAID BYE NOW!"
-			]
-		]
-		"plant" : [
-			[
-				"im a plant",
-				"nothing else"
-			]
-		]
-			
-	}
-]
+	],
+	
+}
