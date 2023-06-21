@@ -22,14 +22,20 @@ min_jump_velocity = 150.0
 max_jump_velocity = 350.0
 jump_charge_speed = 200.0
 air_speed = 100.0
-max_attach_speed_squared = 70000.0
-gravity = 800.0
+max_attach_speed = 300.0
 rock_detector_scene = ExtResource( 4 )
 jump_arrow_scene = ExtResource( 5 )
 
 [node name="WallSprite" type="Sprite" parent="."]
 scale = Vector2( 12, 36 )
 texture = SubResource( 1 )
+
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+process_parent = true
+physics_process_parent = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
 
 [node name="Rocks" type="Node2D" parent="."]
 
@@ -68,13 +74,6 @@ position = Vector2( -22, 166 )
 
 [node name="Rock12" parent="Rocks" instance=ExtResource( 2 )]
 position = Vector2( -6, 122 )
-
-[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
-process_parent = true
-physics_process_parent = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 2 )
 
 [connection signal="body_entered" from="." to="." method="_on_RockClimbing_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_RockClimbing_body_exited"]

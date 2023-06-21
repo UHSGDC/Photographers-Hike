@@ -12,9 +12,7 @@ var current_jump_velocity: float
 var jump_charge_direction: int = 1
 
 export var air_speed: float
-export var max_attach_speed_squared: float 
-
-export var gravity: float
+export var max_attach_speed: float 
 
 var can_jump: bool = true
 
@@ -37,10 +35,9 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if player.in_minigame:
 		move(delta)
-		
-		
+
+
 func move(delta: float) -> void:
-	
 	if current_rock:
 		player.position = lerp(player.global_position, current_rock.global_position, 0.2)
 		jump_arrow.look_at(get_global_mouse_position())
@@ -54,17 +51,13 @@ func move(delta: float) -> void:
 		jump()
 	
 	if !current_rock:
-		apply_gravity(delta)
+		player.apply_gravity(delta)
 
 	if player.is_on_floor() && !player.get_floor_angle():
 		exit_minigame()
 
 	
 	player.velocity = player.move_and_slide(player.velocity, Vector2.UP)
-	
-		
-func apply_gravity(delta: float) -> void:
-	player.velocity.y += gravity * delta
 	
 		
 func jump() -> void:
@@ -111,7 +104,7 @@ func start_minigame() -> void:
 func _on_Rock_touched(body: Node) -> void:
 	
 	if body.is_in_group("rock"):
-		if player.velocity.length_squared() > max_attach_speed_squared && player.in_minigame:
+		if player.velocity.length_squared() > pow(max_attach_speed, 2) && player.in_minigame:
 			return
 			
 		if !player.in_minigame:
