@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 
 export var max_vine_speed: Vector2
@@ -15,7 +15,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta):
-	if player:
+	if vines:
 		if abs(player.velocity.x) > max_vine_speed.x:
 			player.velocity.x = lerp(abs(player.velocity.x), max_vine_speed.x, deacceleration.x * delta) * sign(player.velocity.x)
 		if abs(player.velocity.y) > max_vine_speed.y:

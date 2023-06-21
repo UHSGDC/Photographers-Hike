@@ -31,6 +31,7 @@ scale = Vector2( 12, 36 )
 texture = SubResource( 1 )
 
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+rect = Rect2( -200, -500, 400, 1000 )
 process_parent = true
 physics_process_parent = true
 

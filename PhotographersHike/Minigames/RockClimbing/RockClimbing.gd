@@ -94,7 +94,6 @@ func charge_jump(delta: float) -> void:
 func exit_minigame() -> void:
 	current_rock = null
 	player.in_minigame = false
-	print("exited minigame")
 
 
 func start_minigame() -> void:
