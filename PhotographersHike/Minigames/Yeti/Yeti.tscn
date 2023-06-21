@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Art/yeti body placeholder.png" type="Texture" id=1]
-[ext_resource path="res://Scripts/Yeti/Yeti.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/Yeti/YetiFist.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Minigames/Yeti/Yeti.gd" type="Script" id=2]
+[ext_resource path="res://Minigames/Yeti/YetiFist.tscn" type="PackedScene" id=3]
 
 [node name="Yeti" type="Sprite"]
 z_index = -1
