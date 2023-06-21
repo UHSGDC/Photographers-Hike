@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scenes/StealthPlatformer/Cougar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/StealthPlatformer/Cave.gd" type="Script" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/PlatformingPlayer.tscn" type="PackedScene" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 139.5, 10 )
+
+[sub_resource type="NavigationPolygon" id=2]
+vertices = PoolVector2Array( 123, 84, 7, 81, -11, 56, 144, 3, 244, 68, 524, 16, 520, 66, 7, 88, 241, 88 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 3, 5, 6, 4 ), PoolIntArray( 0, 7, 1 ), PoolIntArray( 0, 4, 8 ) ]
+outlines = [ PoolVector2Array( 7, 81, 7, 88, 123, 84, 241, 88, 244, 68, 520, 66, 524, 16, 144, 3, -11, 56 ) ]
+
+[node name="Cave" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 130.5, 100 )
+scale = Vector2( 4.35937, 0.3125 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 130.5, 100 )
+scale = Vector2( 0.997968, 1.00269 )
+shape = SubResource( 1 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2( 254, -20 )
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D2"]
+position = Vector2( 130.5, 100 )
+scale = Vector2( 4.35937, 0.3125 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2( 130.5, 100 )
+scale = Vector2( 0.997968, 1.00269 )
+shape = SubResource( 1 )
+
+[node name="Navigation2D" type="Navigation2D" parent="."]
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
+navpoly = SubResource( 2 )
+
+[node name="Cougars" type="Node" parent="."]
+
+[node name="Cougar" parent="Cougars" instance=ExtResource( 1 )]
+position = Vector2( 57, 84 )
+initial_state = 1
+
+[node name="Position2D" type="Position2D" parent="Cougars/Cougar/PatrolPoints" index="0"]
+position = Vector2( 378, 62 )
+
+[node name="Position2D2" type="Position2D" parent="Cougars/Cougar/PatrolPoints" index="1"]
+position = Vector2( 207, 84 )
+
+[node name="PlatformingPlayer" parent="." instance=ExtResource( 4 )]
+position = Vector2( 236, 81 )
+collision_layer = 512
+
+[editable path="Cougars/Cougar"]

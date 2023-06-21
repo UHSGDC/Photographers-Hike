@@ -9,19 +9,19 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "Cougar",
+"language": "GDScript",
+"path": "res://Scripts/StealthPlatformer/Cougar.gd"
+}, {
 "base": "Node2D",
 "class": "SensorCone",
 "language": "GDScript",
 "path": "res://Scripts/SensorCone.gd"
-}, {
-"base": "Area2D",
-"class": "VisionCone",
-"language": "GDScript",
-"path": "res://Scripts/VisionCone.gd"
 } ]
 _global_script_class_icons={
-"SensorCone": "",
-"VisionCone": ""
+"Cougar": "",
+"SensorCone": ""
 }
 
 [application]
