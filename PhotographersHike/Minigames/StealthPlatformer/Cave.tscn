@@ -60,6 +60,5 @@ position = Vector2( 207, 84 )
 
 [node name="PlatformingPlayer" parent="." instance=ExtResource( 4 )]
 position = Vector2( 236, 81 )
-collision_layer = 512
 
 [editable path="Cougars/Cougar"]
