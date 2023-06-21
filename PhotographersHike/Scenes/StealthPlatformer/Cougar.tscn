@@ -17,7 +17,7 @@ max_patrol_speed = 60.0
 patrol_acceleration = 800.0
 patrol_points_path = NodePath("PatrolPoints")
 point_distance_tolerance = 2.0
-max_chase_speed = 80.0
+max_chase_speed = 140.0
 chase_acceleration = 1000.0
 idle_deacceleration = 600.0
 jump_height = 40.0
@@ -79,7 +79,7 @@ enabled = true
 cast_to = Vector2( 0, 8 )
 
 [node name="PathCalculationTimer" type="Timer" parent="."]
-wait_time = 0.4
+wait_time = 0.2
 autostart = true
 
 [connection signal="body_entered" from="VisionCone" to="." method="_on_VisionCone_body_entered"]

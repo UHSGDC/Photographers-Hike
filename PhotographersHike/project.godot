@@ -13,15 +13,9 @@ _global_script_classes=[ {
 "class": "Cougar",
 "language": "GDScript",
 "path": "res://Scripts/StealthPlatformer/Cougar.gd"
-}, {
-"base": "Node2D",
-"class": "SensorCone",
-"language": "GDScript",
-"path": "res://Scripts/SensorCone.gd"
 } ]
 _global_script_class_icons={
-"Cougar": "",
-"SensorCone": ""
+"Cougar": ""
 }
 
 [application]
