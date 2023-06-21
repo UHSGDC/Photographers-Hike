@@ -15,6 +15,8 @@ var zoom_view_size: Vector2
 
 
 func _ready() -> void:
+	Global.player_camera = self
+	
 	# Sets smoothing to 1 and back to follow_smoothing
 	# I do this so the camera appears as if it starts at the first room not at (0, 0)
 
