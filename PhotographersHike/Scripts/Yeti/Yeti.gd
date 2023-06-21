@@ -30,10 +30,8 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	
 	current_state = get_state()
-	print(current_state)
-	
+
 	if active:
 		check_distance()
 		if !punches:

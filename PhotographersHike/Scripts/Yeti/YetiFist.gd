@@ -19,4 +19,4 @@ func punch(yeti: Sprite) -> void:
 
 
 func _on_YetiFist_body_entered(body: Node) -> void:
-	Global.platforming_player.die()
+	print_debug("kill player")

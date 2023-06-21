@@ -190,6 +190,3 @@ func check_room_edge(a_center: Vector2, a_size: Vector2, b_center: Vector2, b_si
 	# Fail safe
 	return Global.RIGHT
 	
-
-func die() -> void:
-	print("player died")
