@@ -44,13 +44,30 @@ enum Touching_Side {
 }
 
 
+signal dialog_trigger_interacted(speaker, level_id, dialog_number)
+
+var dialog_playing: bool = false
+
+func _ready() -> void:
+	Global.platforming_player = self
+
+
+func _unhandled_input(event: InputEvent) -> void:	
+	if dialog_playing:
+		return
+	if event.is_action_pressed("interact"):
+		emit_signal("dialog_trigger_interacted", "old_man", DialogBox.Levels.BASE, 1)
+		dialog_playing = true
+
+
 # Delta is the time since physics_process was last called
 # I multiply things by delta so things move correctly no matter the frame rate
 func _physics_process(delta: float) -> void:
+	
 	input()
 	
-	# Pause player movement between rooms
-	if !Global.room_pause:
+	# Pause player movement between rooms or when playing dialog
+	if !Global.room_pause and !dialog_playing:
 		if !in_minigame:
 			move(delta)
 
@@ -69,7 +86,11 @@ func move(delta: float) -> void:
 			velocity.x -= idle_deacceleration * sign(velocity.x) * delta
 	
 	# Clamps velocity.x to max_move_speed
-	velocity.x = clamp(velocity.x, -max_move_speed, max_move_speed)
+	if velocity.x > max_move_speed:
+		velocity.x = lerp(velocity.x, max_move_speed, 0.4)
+	elif velocity.x < -max_move_speed:
+		velocity.x = lerp(velocity.x, -max_move_speed, 0.4)
+		
 	
 	#Jumping
 	if is_on_floor():
@@ -85,7 +106,8 @@ func move(delta: float) -> void:
 	
 	if !is_on_floor():
 		coyote_time()
-		apply_gravity(delta)
+	
+	apply_gravity(delta)
 	
 	velocity = move_and_slide(velocity, Vector2.UP)
 	

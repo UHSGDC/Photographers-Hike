@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Minigames/Blizzard/WindZone.gd" type="Script" id=1]
+[ext_resource path="res://Minigames/Blizzard/WindParticles.tscn" type="PackedScene" id=2]
+
+[node name="WindZone" type="Area2D"]
+collision_layer = 0
+collision_mask = 384
+monitorable = false
+script = ExtResource( 1 )
+direction = 1
+strength = 500.0
+wind_particles_scene = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+self_modulate = Color( 0.886275, 0.141176, 0.141176, 1 )
+
+[connection signal="area_entered" from="." to="." method="_on_WindZone_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_WindZone_area_exited"]

@@ -9,9 +9,11 @@ extents = Vector2( 3, 8 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 0, 0 )
 
+
 [node name="PlatformingPlayer" type="KinematicBody2D" groups=["player"]]
 z_index = 2
-collision_layer = 2049
+collision_layer = 516
+
 script = ExtResource( 2 )
 max_move_speed = 100.0
 move_acceleration = 1500.0
@@ -34,6 +36,14 @@ collision_layer = 0
 collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomDetector"]
+shape = SubResource( 2 )
+
+[node name="WindDetector" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WindDetector"]
 shape = SubResource( 2 )
 
 [connection signal="area_entered" from="RoomDetector" to="." method="_on_RoomDetector_area_entered"]
