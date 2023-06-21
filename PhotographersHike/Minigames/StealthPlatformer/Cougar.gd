@@ -74,8 +74,11 @@ var facing_right: bool = false
 onready var vision_cone_offset: float = $VisionCone.position.x
 
 func _ready() -> void:
-	player = Global.platforming_player
+	call_deferred("_set_player_reference")
 	change_state(initial_state)
+	
+func _set_player_reference() -> void:
+	player = Global.platforming_player
 
 
 func _physics_process(delta: float) -> void:
@@ -96,7 +99,6 @@ func look() -> void:
 func change_state(new_state: int) -> void:
 	if new_state != STATES.NONE:
 		current_state = new_state
-		print(new_state)
 		entering_state = true
 	
 	

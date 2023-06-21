@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "Cougar",
 "language": "GDScript",
-"path": "res://Scripts/StealthPlatformer/Cougar.gd"
+"path": "res://Minigames/StealthPlatformer/Cougar.gd"
 }, {
 "base": "NinePatchRect",
 "class": "DialogBox",
@@ -25,9 +25,9 @@ _global_script_classes=[ {
 "path": "res://Dialog/JSONOpener.gd"
 } ]
 _global_script_class_icons={
+"Cougar": "",
 "DialogBox": "",
-"JSONOpener": "",
-"Cougar": ""
+"JSONOpener": ""
 }
 
 [application]
