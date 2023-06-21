@@ -34,8 +34,6 @@ var remember_jump_length: float = 0.1
 
 # Room swapping
 
-var current_room: Area2D
-
 enum Touching_Side {
 	BOTH,
 	HORIZONTAL,
@@ -161,7 +159,6 @@ func _on_RoomDetector_area_entered(area: Area2D) -> void:
 			velocity.y = jump_velocity
 	
 	# Changes camera's current room and size. check PlayerCamera script for more info
-	current_room = area
 	Global.change_room(collision_shape.global_position, size)
 
 
