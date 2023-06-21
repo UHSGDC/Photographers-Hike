@@ -88,7 +88,8 @@ func move(delta: float) -> void:
 	
 	if !is_on_floor():
 		coyote_time()
-		apply_gravity(delta)
+	
+	apply_gravity(delta)
 	
 	velocity = move_and_slide(velocity, Vector2.UP)
 	
@@ -192,6 +193,5 @@ func check_room_edge(a_center: Vector2, a_size: Vector2, b_center: Vector2, b_si
 				push_error("rooms touching horizontally, but at same x coordinate")
 				
 	# Fail safe
-	push_error("Room switching fail safe")
 	return Global.RIGHT
 	

@@ -1,18 +1,25 @@
 extends Area2D
 
-
-export var strength: float
-
 ## right is 1 and left is -1
 export var direction: int
+export var strength: float
+
+const ground_multiplier: float = 0.5
 
 
-onready var player = Global.platforming_player
+var player = Global.platforming_player
 
 export var wind_particles_scene: PackedScene
 var wind_particles: CPUParticles2D
 
-var in_wind: bool
+var in_wind: bool = false
+
+func _ready() -> void:
+	call_deferred("_set_player_reference")
+
+
+func _set_player_reference() -> void:
+	player = Global.platforming_player
 
 
 func _physics_process(delta: float) -> void:
@@ -20,11 +27,10 @@ func _physics_process(delta: float) -> void:
 	if !in_wind:
 		return
 	
-	
-	if player.is_on_floor() && player.velocity.x == 0:
-		player.velocity.x += strength * delta * direction
+	if player.is_on_floor() && abs(player.velocity.x) >= 10:
+		player.velocity.x += strength * delta * direction * ground_multiplier
 	if !player.is_on_floor():
-		player.velocity.x += strength * delta * 1.5  * direction
+		player.velocity.x += strength * delta * direction
 
 
 func _on_WindZone_area_entered(area: Area2D) -> void:
