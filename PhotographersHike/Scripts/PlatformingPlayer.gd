@@ -32,6 +32,8 @@ var jump_was_pressed: bool = false
 var remember_jump_length: float = 0.1
 
 
+var in_minigame: bool = false
+
 # Room swapping
 
 enum Touching_Side {
@@ -64,11 +66,12 @@ func _physics_process(delta: float) -> void:
 	
 	input()
 	
-	# Pause player movement between rooms
+	# Pause player movement between rooms or when playing dialog
 	if !Global.room_pause and !dialog_playing:
-		move(delta)
+		if !in_minigame:
+			move(delta)
 
-	
+
 func move(delta: float) -> void:
 	# Horizontal Movement
 	

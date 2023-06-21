@@ -9,8 +9,11 @@ extents = Vector2( 3, 8 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 0, 0 )
 
-[node name="PlatformingPlayer" type="KinematicBody2D"]
+
+[node name="PlatformingPlayer" type="KinematicBody2D" groups=["player"]]
+z_index = 2
 collision_layer = 516
+
 script = ExtResource( 2 )
 max_move_speed = 100.0
 move_acceleration = 1500.0
