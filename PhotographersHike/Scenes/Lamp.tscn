@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Art/Game Assets/Leafy/Leafy_Base.png" type="Texture" id=1]
+
+[node name="Lamp" type="Node2D"]
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 234, 138 )
+scale = Vector2( 17.25, 17.25 )
+texture = ExtResource( 1 )
+energy = 16.0
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Light2D"]
