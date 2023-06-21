@@ -4,7 +4,7 @@ extends Area2D
 export var direction: int
 export var strength: float
 
-const ground_multiplier: float = 0.5
+const air_multiplier: float = 2.0
 
 
 var player = Global.platforming_player
@@ -28,9 +28,9 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	if player.is_on_floor() && abs(player.velocity.x) >= 10:
-		player.velocity.x += strength * delta * direction * ground_multiplier
-	if !player.is_on_floor():
 		player.velocity.x += strength * delta * direction
+	if !player.is_on_floor():
+		player.velocity.x += strength * delta * direction * air_multiplier
 
 
 func _on_WindZone_area_entered(area: Area2D) -> void:
