@@ -10,7 +10,7 @@ func _ready():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_pressed("Esc"):
+	if Input.is_action_just_pressed("pause"):
 		get_tree().change_scene("res://Scenes/MainMenu.tscn")
 	
 func _on_Full_Checkbox_pressed():

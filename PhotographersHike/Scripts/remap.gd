@@ -19,6 +19,7 @@ func _ready() -> void:
 func _unhandled_input(event) -> void:
 	if not is_waiting_for_key: return
 	
+	
 	if event is InputEventKey and event.is_pressed():
 		accept_event()
 		InputHelper.set_action_key(action_name, event.as_text())
