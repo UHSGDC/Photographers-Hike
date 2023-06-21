@@ -1,0 +1,16 @@
+Planned Features
+
+- Nice animations when accepting text
+	- In:
+		- Fade in
+		- Textbox comes up from offscreen, then text starts showing as normal
+	- Out:
+		- Fade out
+		- Text disappears, then textbox goes downward offscreen
+- Functionality for text that is too long
+
+
+Potential Features
+
+- A question/answer system (ask a question, then options appear and you can click / select an option)
+	- Function returns a value based on what you selected
