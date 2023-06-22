@@ -38,7 +38,7 @@ vframes = 3
 [node name="VisionCone" type="Area2D" parent="."]
 position = Vector2( -8, -6 )
 collision_layer = 0
-collision_mask = 512
+collision_mask = 4
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="VisionCone"]
@@ -52,7 +52,7 @@ polygon = PoolVector2Array( -8, -5, -100, 25, -100, -35 )
 
 [node name="SleepingDetection" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 512
+collision_mask = 4
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SleepingDetection"]

@@ -136,9 +136,11 @@ menu_confirm={
 
 [layer_names]
 
+2d_physics/layer_1="Level"
+2d_physics/layer_3="Player"
 2d_physics/layer_8="Room"
-2d_physics/layer_10="RockClimbing"
-2d_physics/layer_12="Minigame"
+2d_physics/layer_9="WindZoneDetection"
+2d_physics/layer_10="RockClimbingRocks"
 
 [physics]
 

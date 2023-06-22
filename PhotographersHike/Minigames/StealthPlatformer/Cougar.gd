@@ -307,6 +307,7 @@ func _on_VisionCone_body_entered(body: Node) -> void:
 # Wake up player
 func _on_SleepingDetection_body_entered(body: Node) -> void:
 	if body == Global.platforming_player and current_state == STATES.SLEEPING:
+		print_debug("ur waking the cougar up")
 		current_footsteps += 1
 		if current_footsteps >= MAX_FOOTSTEPS:
 			change_state(STATES.PATROLLING)
