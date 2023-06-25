@@ -53,7 +53,7 @@ func _physics_process(delta: float) -> void:
 	input()
 	
 	# Pause player movement between rooms or when playing dialog
-	if !Global.room_pause:
+	if !Global.room_pause and !Global.dialog_box.dialog_playing:
 		if !in_minigame:
 			move(delta)
 

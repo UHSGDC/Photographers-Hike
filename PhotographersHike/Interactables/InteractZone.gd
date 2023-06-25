@@ -11,7 +11,7 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("interact") and player_in_range:
+	if event.is_action_pressed("interact") and player_in_range and !Global.dialog_box.dialog_playing:
 		emit_signal("player_interacted")
 
 

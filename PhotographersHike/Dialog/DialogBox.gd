@@ -9,6 +9,8 @@ const dialog_json_filepath: String = "res://dialog.json"
 
 var dialog_data: Dictionary
 
+var dialog_playing: bool = false
+
 export var speaker_name_dictionary: Dictionary
 export var speaker_sound_dictionary: Dictionary
 
@@ -63,6 +65,7 @@ func play_dialog(speaker: String, level_id: int, dialog_number: int) -> String:
 	
 	
 	show()
+	dialog_playing = true
 	
 	for dialog in dialog_array:
 		if dialog.size() >= 4:
@@ -70,7 +73,7 @@ func play_dialog(speaker: String, level_id: int, dialog_number: int) -> String:
 			continue
 		yield(output_dialog(dialog), "completed")
 	
-	
+	dialog_playing = false
 	hide()
 	return output	
 
