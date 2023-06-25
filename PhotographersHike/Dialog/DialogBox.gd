@@ -63,6 +63,10 @@ func play_dialog(speaker: String, level_id: int, dialog_number: int) -> void:
 	show()
 	
 	for dialog in dialog_array:
+		if dialog.size() >= 4:
+			var a = yield(output_question(dialog), "completed")
+			print(a)
+			continue
 		yield(output_dialog(dialog), "completed")
 	
 	hide()
@@ -72,6 +76,28 @@ func show_speaker_name(name: String) -> void:
 	$SpeakerName.text = name
 	$SpeakerName.show()
 
+
+
+func output_question(dialog: Array) -> String:
+	var text_delay: float
+
+	if dialog[1] != null:
+		text_delay = text_delay_dictionary[int(dialog[1])]
+	else:
+		text_delay = text_delay_dictionary[TextDelay.MEDIUM]
+	
+	
+	yield(output_text_and_sound(dialog[0], text_delay), "completed")
+	
+	
+	var answers: Array
+	
+	for i in range(2, dialog.size()):
+		answers.append(dialog[i])
+	
+	$AnswerContainer.init(answers)
+	return yield($AnswerContainer, "answer_selected")
+	
 
 func output_dialog(dialog: Array) -> void:
 	var text_delay: float
