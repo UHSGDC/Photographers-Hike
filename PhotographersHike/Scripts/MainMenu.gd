@@ -16,7 +16,7 @@ func _ready():
 #	pass
 
 func _on_Play_pressed():
-	get_tree().change_scene("res://Scenes/Testing.tscn")
+	get_tree().change_scene("res://World/World.tscn")
 
 func _on_Menu_pressed():
 	get_tree().change_scene("res://Scenes/SettingsMenu.tscn")

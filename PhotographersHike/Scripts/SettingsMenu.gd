@@ -26,4 +26,4 @@ func _on_VSYNC_Checkbox_pressed():
 
 
 func _on_Back_to_game_pressed():
-	get_tree().change_scene("res://Scenes/Testing.tscn")
+	get_tree().change_scene("res://World/World.tscn")
