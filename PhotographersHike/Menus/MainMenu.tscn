@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=6]
+[ext_resource path="res://Menus/MainMenu.gd" type="Script" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 1 )
@@ -34,7 +34,7 @@ font_data = ExtResource( 1 )
 bg_color = Color( 0, 0, 0, 1 )
 shadow_color = Color( 1, 0, 0, 0 )
 
-[node name="Menu" type="Control"]
+[node name="MainMenu" type="Control"]
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -68,7 +68,7 @@ custom_fonts/font = SubResource( 1 )
 custom_styles/normal = SubResource( 5 )
 text = "PLAY"
 
-[node name="Menu" type="Button" parent="Menu Options"]
+[node name="Settings" type="Button" parent="Menu Options"]
 margin_top = 20.0
 margin_right = 128.0
 margin_bottom = 36.0
@@ -128,6 +128,6 @@ align = 1
 valign = 1
 
 [connection signal="pressed" from="Menu Options/Play" to="." method="_on_Play_pressed"]
-[connection signal="pressed" from="Menu Options/Menu" to="." method="_on_Menu_pressed"]
+[connection signal="pressed" from="Menu Options/Settings" to="." method="_on_Settings_pressed"]
 [connection signal="pressed" from="Menu Options/Info" to="." method="_on_Info_pressed"]
 [connection signal="pressed" from="Menu Options/Quit" to="." method="_on_Quit_pressed"]

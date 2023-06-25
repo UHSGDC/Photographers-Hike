@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Scripts/PauseMenu.gd" type="Script" id=2]
+[ext_resource path="res://Menus/PauseMenu.gd" type="Script" id=2]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -14,7 +14,8 @@ font_data = ExtResource( 1 )
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0, 0, 0, 1 )
 
-[node name="Pause" type="Control"]
+[node name="PauseMenu" type="Control"]
+pause_mode = 2
 margin_right = 480.0
 margin_bottom = 288.0
 script = ExtResource( 2 )

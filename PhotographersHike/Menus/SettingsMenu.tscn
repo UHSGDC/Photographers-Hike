@@ -1,9 +1,9 @@
 [gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Scripts/SettingsMenu.gd" type="Script" id=2]
-[ext_resource path="res://Scripts/Volume_Value.gd" type="Script" id=3]
-[ext_resource path="res://Scenes/remapbinds.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Menus/SettingsMenu.gd" type="Script" id=2]
+[ext_resource path="res://Menus/Volume_Value.gd" type="Script" id=3]
+[ext_resource path="res://Menus/remapbinds.tscn" type="PackedScene" id=4]
 [ext_resource path="res://addons/input_helper/device_tester.gd" type="Script" id=5]
 
 [sub_resource type="DynamicFont" id=1]
@@ -294,15 +294,15 @@ margin_top = 277.0
 margin_right = 474.0
 margin_bottom = 285.0
 
-[node name="Back_to_game" type="Button" parent="Settings_Menu/HBoxContainer"]
-margin_right = 96.0
+[node name="Back" type="Button" parent="Settings_Menu/HBoxContainer"]
+margin_right = 32.0
 margin_bottom = 8.0
 custom_fonts/font = SubResource( 9 )
 custom_styles/normal = SubResource( 10 )
-text = "Back To Game"
+text = "Back"
 
 [connection signal="value_changed" from="Settings_Menu/Volume_Value" to="Settings_Menu/Volume_Value" method="_on_Volume_Value_value_changed"]
 [connection signal="pressed" from="Settings_Menu/Full_Checkbox" to="." method="_on_Full_Checkbox_pressed"]
 [connection signal="pressed" from="Settings_Menu/Border_Checkbox" to="." method="_on_Border_Checkbox_pressed"]
 [connection signal="pressed" from="Settings_Menu/VSYNC_Checkbox" to="." method="_on_VSYNC_Checkbox_pressed"]
-[connection signal="pressed" from="Settings_Menu/HBoxContainer/Back_to_game" to="." method="_on_Back_to_game_pressed"]
+[connection signal="pressed" from="Settings_Menu/HBoxContainer/Back" to="." method="_on_Back_pressed"]

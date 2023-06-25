@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Control",
+"class": "BaseMenu",
+"language": "GDScript",
+"path": "res://Menus/BaseMenu.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Cougar",
 "language": "GDScript",
@@ -24,15 +29,22 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Dialog/JSONOpener.gd"
 }, {
+"base": "CanvasLayer",
+"class": "Menus",
+"language": "GDScript",
+"path": "res://Menus/Menus.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "NPC",
 "language": "GDScript",
 "path": "res://Interactables/NPC.gd"
 } ]
 _global_script_class_icons={
+"BaseMenu": "",
 "Cougar": "",
 "DialogBox": "",
 "JSONOpener": "",
+"Menus": "",
 "NPC": ""
 }
 
