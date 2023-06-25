@@ -46,8 +46,10 @@ func _ready() -> void:
 	$NextIcon.hide()
 
 
-func play_dialog(speaker: String, level_id: int, dialog_number: int) -> void:	
+func play_dialog(speaker: String, level_id: int, dialog_number: int) -> String:	
 	##
+	var output: String = ""
+	
 	var should_display_name: bool = dialog_data[speaker][0]
 	
 	if should_display_name:
@@ -64,18 +66,18 @@ func play_dialog(speaker: String, level_id: int, dialog_number: int) -> void:
 	
 	for dialog in dialog_array:
 		if dialog.size() >= 4:
-			var a = yield(output_question(dialog), "completed")
-			print(a)
+			output = yield(output_question(dialog), "completed")
 			continue
 		yield(output_dialog(dialog), "completed")
 	
+	
 	hide()
+	return output	
 
 
 func show_speaker_name(name: String) -> void:
 	$SpeakerName.text = name
 	$SpeakerName.show()
-
 
 
 func output_question(dialog: Array) -> String:
@@ -92,8 +94,8 @@ func output_question(dialog: Array) -> String:
 	
 	var answers: Array
 	
-	for i in range(2, dialog.size()):
-		answers.append(dialog[i])
+	for answer_index in range(2, dialog.size()):
+		answers.append(dialog[answer_index])
 	
 	$AnswerContainer.init(answers)
 	return yield($AnswerContainer, "answer_selected")

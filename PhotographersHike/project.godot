@@ -23,11 +23,17 @@ _global_script_classes=[ {
 "class": "JSONOpener",
 "language": "GDScript",
 "path": "res://Dialog/JSONOpener.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "NPC",
+"language": "GDScript",
+"path": "res://Interactables/NPC.gd"
 } ]
 _global_script_class_icons={
 "Cougar": "",
 "DialogBox": "",
-"JSONOpener": ""
+"JSONOpener": "",
+"NPC": ""
 }
 
 [application]
