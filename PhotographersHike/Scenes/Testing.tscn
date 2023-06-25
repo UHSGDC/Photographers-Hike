@@ -10,7 +10,7 @@
 [ext_resource path="res://Dialog/DialogBox.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Minigames/Blizzard/WindZone.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Minigames/Yeti/Yeti.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Interactable/InteractZone.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Interactables/InteractZone.tscn" type="PackedScene" id=11]
 
 [sub_resource type="ConvexPolygonShape2D" id=19]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 4, 0, 4 )
