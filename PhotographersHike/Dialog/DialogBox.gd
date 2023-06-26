@@ -48,6 +48,12 @@ func _ready() -> void:
 	$NextIcon.hide()
 
 
+func wait_while_paused() -> void:
+	while get_tree().paused:
+		yield(get_tree().create_timer(0), "timeout")
+	yield(get_tree().create_timer(0), "timeout")
+	
+
 func play_dialog(speaker: String, level_id: int, dialog_number: int) -> String:	
 	##
 	var output: String = ""
@@ -121,6 +127,7 @@ func output_dialog(dialog: Array) -> void:
 	$NextIcon.hide()
 
 
+
 func output_text_and_sound(text: String, delay: float) -> void:
 	if delay <= 0.0:
 		$TextOutput.text = text
@@ -128,6 +135,7 @@ func output_text_and_sound(text: String, delay: float) -> void:
 		$TextOutput.text = ""
 		for character in text:
 			$TextOutput.text += character
+			yield(wait_while_paused(), "completed")
 			yield(get_tree().create_timer(delay), "timeout")
 
 

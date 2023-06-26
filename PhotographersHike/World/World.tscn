@@ -233,7 +233,7 @@ tile_data = PoolIntArray( -393113, 5, 0, -393112, 5, 0, -327584, 6, 0, -327583, 
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 3 )]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="DialogLayer" type="CanvasLayer" parent="."]
 
-[node name="DialogBox" parent="CanvasLayer" instance=ExtResource( 5 )]
+[node name="DialogBox" parent="DialogLayer" instance=ExtResource( 5 )]
 visible = false
