@@ -18,7 +18,6 @@ _bundled = {
 [node name="AnswerContainer" type="VBoxContainer"]
 margin_right = 60.0
 margin_bottom = 20.0
-grow_vertical = 0
 rect_min_size = Vector2( 60, 20 )
 script = ExtResource( 2 )
 answer_button_scene = SubResource( 1 )

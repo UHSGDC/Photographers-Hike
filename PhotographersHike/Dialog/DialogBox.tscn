@@ -15,9 +15,9 @@ font_data = ExtResource( 1 )
 [node name="DialogBox" type="NinePatchRect"]
 show_behind_parent = true
 margin_left = 8.0
-margin_top = 184.0
+margin_top = 8.0
 margin_right = 469.0
-margin_bottom = 287.62
+margin_bottom = 104.0
 texture = ExtResource( 4 )
 script = ExtResource( 6 )
 speaker_name_dictionary = {
@@ -27,9 +27,9 @@ speaker_name_dictionary = {
 
 [node name="SpeakerName" type="Label" parent="."]
 margin_left = 8.0
-margin_top = -22.0
+margin_top = 104.0
 margin_right = 128.0
-margin_bottom = -1.0
+margin_bottom = 125.0
 custom_fonts/font = SubResource( 1 )
 
 [node name="Interior" type="ColorRect" parent="SpeakerName"]
@@ -61,14 +61,14 @@ max_lines_visible = 4
 
 [node name="AnswerContainer" parent="." instance=ExtResource( 2 )]
 margin_left = 384.0
-margin_top = -48.0
+margin_top = 104.0
 margin_right = 444.0
-margin_bottom = -4.0
+margin_bottom = 148.0
 
 [node name="NextIcon" parent="." instance=ExtResource( 7 )]
 margin_left = 432.0
-margin_top = 80.0
+margin_top = 72.0
 margin_right = 448.0
-margin_bottom = 96.0
+margin_bottom = 88.0
 
 [node name="DialogSound" type="AudioStreamPlayer" parent="."]
