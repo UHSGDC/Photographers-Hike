@@ -74,6 +74,7 @@ func play_dialog(speaker: String, level_id: int, dialog_number: int) -> String:
 	dialog_playing = true
 	
 	for dialog in dialog_array:
+		yield(get_tree().create_timer(0.1), "timeout")
 		if dialog.size() >= 4:
 			output = yield(output_question(dialog), "completed")
 			continue
@@ -129,16 +130,17 @@ func output_dialog(dialog: Array) -> void:
 
 
 func output_text_and_sound(text: String, delay: float) -> void:
-	if delay <= 0.0:
-		$TextOutput.text = text
-	else:
-		$TextOutput.text = ""
-		for character in text:
-			$TextOutput.text += character
-			yield(wait_while_paused(), "completed")
-			yield(get_tree().create_timer(delay), "timeout")
+	$TextOutput.text = ""
+	for character in text:
+		$TextOutput.text += character
+		yield(wait_while_paused(), "completed")
+		if Input.is_action_pressed("menu_confirm"):
+			$TextOutput.text = text
+			break
+		yield(get_tree().create_timer(delay), "timeout")
 
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("menu_confirm") or event.is_action_pressed("interact"):
 		emit_signal("next_dialog")
+		
