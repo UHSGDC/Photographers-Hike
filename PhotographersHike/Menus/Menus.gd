@@ -18,7 +18,8 @@ func _ready() -> void:
 	for child in get_children():
 		child.menus = self
 	
-	change_menu(NONE)
+	yield(get_tree().create_timer(0.1), "timeout")
+	change_menu(MAIN)
 
 
 func change_menu(menu: int) -> void:

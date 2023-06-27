@@ -186,7 +186,7 @@ scroll_horizontal_enabled = false
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Settings_Menu/Keybinds Scroller"]
 margin_right = 124.0
-margin_bottom = 194.0
+margin_bottom = 212.0
 
 [node name="Jump" parent="Settings_Menu/Keybinds Scroller/VBoxContainer2" instance=ExtResource( 4 )]
 anchor_right = 0.0
@@ -227,52 +227,60 @@ margin_right = 124.0
 margin_bottom = 86.0
 action_name = "interact"
 
-[node name="MenuUp" parent="Settings_Menu/Keybinds Scroller/VBoxContainer2" instance=ExtResource( 4 )]
+[node name="TakePicture" parent="Settings_Menu/Keybinds Scroller/VBoxContainer2" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 90.0
 margin_right = 124.0
 margin_bottom = 104.0
-action_name = "menu_up"
+action_name = "take_picture"
 
-[node name="MenuDown" parent="Settings_Menu/Keybinds Scroller/VBoxContainer2" instance=ExtResource( 4 )]
+[node name="MenuUp" parent="Settings_Menu/Keybinds Scroller/VBoxContainer2" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 108.0
 margin_right = 124.0
 margin_bottom = 122.0
-action_name = "menu_down"
+action_name = "menu_up"
 
-[node name="MenuLeft" parent="Settings_Menu/Keybinds Scroller/VBoxContainer2" instance=ExtResource( 4 )]
+[node name="MenuDown" parent="Settings_Menu/Keybinds Scroller/VBoxContainer2" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 126.0
 margin_right = 124.0
 margin_bottom = 140.0
-action_name = "menu_left"
+action_name = "menu_down"
 
-[node name="MenuRight" parent="Settings_Menu/Keybinds Scroller/VBoxContainer2" instance=ExtResource( 4 )]
+[node name="MenuLeft" parent="Settings_Menu/Keybinds Scroller/VBoxContainer2" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 144.0
 margin_right = 124.0
 margin_bottom = 158.0
-action_name = "menu_right"
+action_name = "menu_left"
 
-[node name="MenuConfirm" parent="Settings_Menu/Keybinds Scroller/VBoxContainer2" instance=ExtResource( 4 )]
+[node name="MenuRight" parent="Settings_Menu/Keybinds Scroller/VBoxContainer2" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 162.0
 margin_right = 124.0
 margin_bottom = 176.0
-action_name = "menu_confirm"
+action_name = "menu_right"
 
-[node name="MenuCancel" parent="Settings_Menu/Keybinds Scroller/VBoxContainer2" instance=ExtResource( 4 )]
+[node name="MenuConfirm" parent="Settings_Menu/Keybinds Scroller/VBoxContainer2" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 180.0
 margin_right = 124.0
 margin_bottom = 194.0
+action_name = "menu_confirm"
+
+[node name="MenuCancel" parent="Settings_Menu/Keybinds Scroller/VBoxContainer2" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 198.0
+margin_right = 124.0
+margin_bottom = 212.0
 action_name = "menu_cancel"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Settings_Menu"]
