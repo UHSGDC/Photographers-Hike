@@ -43,6 +43,10 @@ enum Touching_Side {
 	NONE
 }
 
+
+var in_cutscene: bool
+
+
 func _ready() -> void:
 	Global.platforming_player = self
 
@@ -53,7 +57,7 @@ func _physics_process(delta: float) -> void:
 	input()
 	
 	# Pause player movement between rooms or when playing dialog
-	if !Global.room_pause and !Global.dialog_box.dialog_playing:
+	if !Global.room_pause and !Global.dialog_box.dialog_playing and !in_cutscene:
 		if !in_minigame:
 			move(delta)
 
