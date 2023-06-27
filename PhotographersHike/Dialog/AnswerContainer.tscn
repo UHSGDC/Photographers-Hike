@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Dialog/AnswerContainer.gd" type="Script" id=2]
+
+[sub_resource type="PackedScene" id=1]
+_bundled = {
+"conn_count": 0,
+"conns": PoolIntArray(  ),
+"editable_instances": [  ],
+"names": PoolStringArray( "AnswerButton", "Button", "margin_right", "margin_bottom", "rect_min_size", "size_flags_horizontal", "size_flags_vertical", "text" ),
+"node_count": 1,
+"node_paths": [  ],
+"nodes": PoolIntArray( -1, -1, 1, 0, -1, 6, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 0 ),
+"variants": [ 60.0, 20.0, Vector2( 60, 20 ), 0, 4, "Text!" ],
+"version": 2
+}
+
+[node name="AnswerContainer" type="VBoxContainer"]
+margin_right = 60.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 60, 20 )
+script = ExtResource( 2 )
+answer_button_scene = SubResource( 1 )

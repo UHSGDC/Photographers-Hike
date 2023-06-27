@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Art/photographer's hike placeholder art.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1.5, 2.5 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 9, 45, 5, 3 )
+
+[node name="Rock" type="Area2D" groups=["rock"]]
+z_index = 1
+collision_layer = 512
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.499998, -0.499999 )
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.286275, 0.501961, 0.541176, 1 )
+position = Vector2( 1, 0 )
+texture = SubResource( 2 )
+region_rect = Rect2( 0, 0, 29, 18 )
+__meta__ = {
+"_editor_description_": "Needs a sprite"
+}

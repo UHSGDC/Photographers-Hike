@@ -1,0 +1,133 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Menus/MainMenu.gd" type="Script" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=9]
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0, 0, 0, 1 )
+shadow_color = Color( 1, 0, 0, 0 )
+
+[node name="MainMenu" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 2.0
+margin_bottom = 2.0
+script = ExtResource( 6 )
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -18.0
+margin_top = -17.0
+margin_right = 9.0
+margin_bottom = 11.0
+rect_pivot_offset = Vector2( 336, 101 )
+color = Color( 0.0862745, 0.662745, 0.529412, 1 )
+
+[node name="Menu Options" type="VBoxContainer" parent="."]
+margin_left = 3.0
+margin_top = 208.0
+margin_right = 131.0
+margin_bottom = 285.0
+
+[node name="Play" type="Button" parent="Menu Options"]
+show_behind_parent = true
+margin_right = 128.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 1 )
+custom_styles/normal = SubResource( 5 )
+text = "PLAY"
+
+[node name="Settings" type="Button" parent="Menu Options"]
+margin_top = 20.0
+margin_right = 128.0
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 6 )
+text = "SETTINGS"
+
+[node name="Info" type="Button" parent="Menu Options"]
+margin_top = 40.0
+margin_right = 128.0
+margin_bottom = 56.0
+custom_fonts/font = SubResource( 3 )
+custom_styles/normal = SubResource( 7 )
+text = "INFO"
+
+[node name="Quit" type="Button" parent="Menu Options"]
+margin_top = 60.0
+margin_right = 128.0
+margin_bottom = 76.0
+custom_fonts/font = SubResource( 9 )
+custom_styles/normal = SubResource( 10 )
+text = "Quit"
+
+[node name="Game Title" type="Label" parent="."]
+margin_left = -12.0
+margin_top = 118.0
+margin_right = 489.0
+margin_bottom = 176.0
+custom_fonts/font = SubResource( 4 )
+custom_styles/normal = SubResource( 8 )
+text = "Photographers Hike "
+align = 1
+valign = 1
+
+[node name="Developer Organization" type="Label" parent="."]
+margin_left = 170.0
+margin_top = 249.0
+margin_right = 474.0
+margin_bottom = 265.0
+size_flags_horizontal = 5
+custom_fonts/font = SubResource( 4 )
+custom_styles/normal = SubResource( 8 )
+text = "Made By: UHS GDC"
+align = 1
+valign = 1
+
+[node name="Year Developed" type="Label" parent="."]
+margin_left = 170.0
+margin_top = 268.0
+margin_right = 474.0
+margin_bottom = 284.0
+size_flags_horizontal = 5
+custom_fonts/font = SubResource( 4 )
+custom_styles/normal = SubResource( 8 )
+text = "2022-2033"
+align = 1
+valign = 1
+
+[connection signal="pressed" from="Menu Options/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="Menu Options/Settings" to="." method="_on_Settings_pressed"]
+[connection signal="pressed" from="Menu Options/Info" to="." method="_on_Info_pressed"]
+[connection signal="pressed" from="Menu Options/Quit" to="." method="_on_Quit_pressed"]

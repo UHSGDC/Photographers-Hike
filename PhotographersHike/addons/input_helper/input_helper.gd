@@ -91,7 +91,8 @@ func is_valid_key(key: String) -> bool:
 			"Slash", "BackSlash", 
 			"Minus", "Equal", 
 			"Semicolon", "Apostrophe",
-			"BracketLeft", "BracketRight"
+			"BracketLeft", "BracketRight",
+			"Alt", "Control", "Shift", "Escape"
 		]: return true
 	return false
 

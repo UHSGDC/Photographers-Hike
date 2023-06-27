@@ -32,6 +32,8 @@ var jump_was_pressed: bool = false
 var remember_jump_length: float = 0.1
 
 
+var in_minigame: bool = false
+
 # Room swapping
 
 enum Touching_Side {
@@ -44,17 +46,18 @@ enum Touching_Side {
 func _ready() -> void:
 	Global.platforming_player = self
 
-
 # Delta is the time since physics_process was last called
 # I multiply things by delta so things move correctly no matter the frame rate
 func _physics_process(delta: float) -> void:
+	
 	input()
 	
-	# Pause player movement between rooms
-	if !Global.room_pause:
-		move(delta)
+	# Pause player movement between rooms or when playing dialog
+	if !Global.room_pause and !Global.dialog_box.dialog_playing:
+		if !in_minigame:
+			move(delta)
 
-	
+
 func move(delta: float) -> void:
 	# Horizontal Movement
 	
@@ -69,7 +72,11 @@ func move(delta: float) -> void:
 			velocity.x -= idle_deacceleration * sign(velocity.x) * delta
 	
 	# Clamps velocity.x to max_move_speed
-	velocity.x = clamp(velocity.x, -max_move_speed, max_move_speed)
+	if velocity.x > max_move_speed:
+		velocity.x = lerp(velocity.x, max_move_speed, 0.4)
+	elif velocity.x < -max_move_speed:
+		velocity.x = lerp(velocity.x, -max_move_speed, 0.4)
+		
 	
 	#Jumping
 	if is_on_floor():
@@ -85,7 +92,8 @@ func move(delta: float) -> void:
 	
 	if !is_on_floor():
 		coyote_time()
-		apply_gravity(delta)
+	
+	apply_gravity(delta)
 	
 	velocity = move_and_slide(velocity, Vector2.UP)
 	
