@@ -5,6 +5,7 @@ extends Node
 var player_camera: Camera2D
 var platforming_player: KinematicBody2D
 var dialog_box: DialogBox
+var camera_item: CameraItem
 
 var room_pause: bool = false
 export var room_pause_time: float = 0.2

@@ -4,7 +4,6 @@
 [ext_resource path="res://Scripts/PlatformingPlayer.gd" type="Script" id=2]
 [ext_resource path="res://Photography/CameraItem.tscn" type="PackedScene" id=3]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 3, 8 )
 
@@ -39,6 +38,7 @@ collision_mask = 128
 shape = SubResource( 2 )
 
 [node name="CameraItem" parent="." instance=ExtResource( 3 )]
+
 [node name="WindDetector" type="Area2D" parent="."]
 collision_layer = 256
 collision_mask = 0

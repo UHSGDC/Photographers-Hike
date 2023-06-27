@@ -1,5 +1,7 @@
 extends Node
 
+class_name CameraItem
+
 signal close_picture
 
 onready var captured_image = $CanvasLayer/CapturedImage
@@ -14,6 +16,7 @@ var Rng: RandomNumberGenerator
 		
 
 func _ready() -> void:
+	Global.camera_item = self
 	center = captured_image.rect_position
 	Rng = RandomNumberGenerator.new()
 	Rng.randomize()
@@ -32,11 +35,14 @@ func take_screenshot() -> void:
 	# Flip it on the y-axis (because it's flipped).
 	image.flip_y()
 
-	# Create a texture for it.
+	display_and_store_image(image)
+	
+
+func display_and_store_image(image: Image) -> void:
+	
+	# Set the texture to the captured image node.
 	var texture = ImageTexture.new()
 	texture.create_from_image(image)
-
-	# Set the texture to the captured image node.
 	captured_image.set_texture(texture)
 	randomize_image_rotation()
 	randomize_image_position()
