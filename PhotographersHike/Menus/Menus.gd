@@ -7,6 +7,7 @@ enum {
 	INFO
 	PAUSE
 	SETTINGS
+	ALBUM
 	NONE
 }
 
@@ -35,6 +36,9 @@ func change_menu(menu: int) -> void:
 			$PauseMenu.show()
 		SETTINGS:
 			$SettingsMain.show()
+		ALBUM:
+			$AlbumMenu.update_album()
+			$AlbumMenu.show()	
 		NONE:
 			pass
 			
@@ -56,7 +60,7 @@ func _input(event):
 		elif current_menu == NONE:
 			change_menu(PAUSE)
 	
-	if current_menu != MAIN and current_menu != PAUSE:
+	if current_menu != MAIN and current_menu != PAUSE and current_menu != NONE:
 		if event.is_action_pressed("menu_cancel"):
 			change_menu(previous_menu)
 			

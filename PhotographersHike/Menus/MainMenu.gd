@@ -15,3 +15,7 @@ func _on_Quit_pressed():
 
 func _on_Settings_pressed() -> void:
 	menus.change_menu(menus.SETTINGS)
+
+
+func _on_Album_pressed() -> void:
+	menus.change_menu(menus.ALBUM)

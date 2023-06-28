@@ -6,7 +6,7 @@ signal close_picture
 
 onready var captured_image = $CanvasLayer/CapturedImage
 
-var screenshot_textures: Array
+var picture_textures: Array setget , get_picture_textures
 
 var can_take_picture: bool = true
 
@@ -47,7 +47,7 @@ func display_and_store_image(image: Image) -> void:
 	randomize_image_rotation()
 	randomize_image_position()
 
-	screenshot_textures.append(texture)
+	picture_textures.append(texture)
 	
 	can_take_picture = false
 	$AnimationPlayer.play("take_picture")
@@ -62,6 +62,9 @@ func randomize_image_rotation() -> void:
 func randomize_image_position() -> void:
 	captured_image.rect_position = center + Vector2(Rng.randf_range(-5, 5), Rng.randf_range(-5, 5))
 	
+	
+func get_picture_textures() -> Array:
+	return picture_textures
 	
 	
 #Add later

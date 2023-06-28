@@ -56,38 +56,46 @@ color = Color( 0.0862745, 0.662745, 0.529412, 1 )
 
 [node name="Menu Options" type="VBoxContainer" parent="."]
 margin_left = 3.0
-margin_top = 208.0
-margin_right = 131.0
-margin_bottom = 285.0
+margin_top = 182.0
+margin_right = 142.0
+margin_bottom = 286.0
 
 [node name="Play" type="Button" parent="Menu Options"]
 show_behind_parent = true
-margin_right = 128.0
+margin_right = 139.0
 margin_bottom = 16.0
 custom_fonts/font = SubResource( 1 )
 custom_styles/normal = SubResource( 5 )
-text = "PLAY"
+text = "Play"
 
 [node name="Settings" type="Button" parent="Menu Options"]
 margin_top = 20.0
-margin_right = 128.0
+margin_right = 139.0
 margin_bottom = 36.0
 custom_fonts/font = SubResource( 2 )
 custom_styles/normal = SubResource( 6 )
-text = "SETTINGS"
+text = "Settings"
+
+[node name="Album" type="Button" parent="Menu Options"]
+margin_top = 40.0
+margin_right = 139.0
+margin_bottom = 56.0
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 6 )
+text = "Album"
 
 [node name="Info" type="Button" parent="Menu Options"]
-margin_top = 40.0
-margin_right = 128.0
-margin_bottom = 56.0
+margin_top = 60.0
+margin_right = 139.0
+margin_bottom = 76.0
 custom_fonts/font = SubResource( 3 )
 custom_styles/normal = SubResource( 7 )
-text = "INFO"
+text = "Info"
 
 [node name="Quit" type="Button" parent="Menu Options"]
-margin_top = 60.0
-margin_right = 128.0
-margin_bottom = 76.0
+margin_top = 80.0
+margin_right = 139.0
+margin_bottom = 96.0
 custom_fonts/font = SubResource( 9 )
 custom_styles/normal = SubResource( 10 )
 text = "Quit"
@@ -129,5 +137,6 @@ valign = 1
 
 [connection signal="pressed" from="Menu Options/Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="Menu Options/Settings" to="." method="_on_Settings_pressed"]
+[connection signal="pressed" from="Menu Options/Album" to="." method="_on_Album_pressed"]
 [connection signal="pressed" from="Menu Options/Info" to="." method="_on_Info_pressed"]
 [connection signal="pressed" from="Menu Options/Quit" to="." method="_on_Quit_pressed"]

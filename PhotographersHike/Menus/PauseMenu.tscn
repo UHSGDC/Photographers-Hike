@@ -58,19 +58,28 @@ custom_fonts/font = SubResource( 2 )
 custom_styles/normal = SubResource( 3 )
 text = "Settings"
 
-[node name="Menu" type="Button" parent="ColorRect/VBoxContainer"]
+[node name="Album" type="Button" parent="ColorRect/VBoxContainer"]
 margin_top = 48.0
 margin_right = 347.0
 margin_bottom = 68.0
 custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 2 )
 custom_styles/normal = SubResource( 3 )
-text = "Main Menu"
+text = "Album"
 
-[node name="Quit" type="Button" parent="ColorRect/VBoxContainer"]
+[node name="Menu" type="Button" parent="ColorRect/VBoxContainer"]
 margin_top = 72.0
 margin_right = 347.0
 margin_bottom = 92.0
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+text = "Main Menu"
+
+[node name="Quit" type="Button" parent="ColorRect/VBoxContainer"]
+margin_top = 96.0
+margin_right = 347.0
+margin_bottom = 116.0
 custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 2 )
 custom_styles/normal = SubResource( 3 )
@@ -78,5 +87,6 @@ text = "Quit"
 
 [connection signal="pressed" from="ColorRect/VBoxContainer/Resume" to="." method="_on_Resume_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Settings" to="." method="_on_Settings_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Album" to="." method="_on_Album_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Menu" to="." method="_on_Menu_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
