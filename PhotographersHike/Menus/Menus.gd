@@ -16,6 +16,8 @@ var previous_menu: int
 
 
 func _ready() -> void:
+	show()
+	
 	for child in get_children():
 		child.menus = self
 	
