@@ -20,9 +20,9 @@ func update_album() -> void:
 		
 		
 	if picture_textures.size() == 1:
-		$PictureCount.text = "1 Picture"
+		$PictureCount.text = "1 Picture "
 	else:
-		$PictureCount.text = str(picture_textures.size()) + " Pictures"
+		$PictureCount.text = str(picture_textures.size()) + " Pictures "
 		
 		
 func create_album_picture(texture: Texture, time: String, level: String) -> void:
