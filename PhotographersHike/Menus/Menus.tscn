@@ -9,7 +9,7 @@
 
 [node name="Menus" type="CanvasLayer"]
 pause_mode = 2
-layer = 2
+layer = 3
 script = ExtResource( 5 )
 
 [node name="MainMenu" parent="." instance=ExtResource( 1 )]
