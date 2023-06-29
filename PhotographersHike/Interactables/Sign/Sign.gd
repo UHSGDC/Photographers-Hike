@@ -81,10 +81,10 @@ func _on_CutsceneActivation_body_entered(body: Node) -> void:
 	
 	
 func create_jump_cast() -> RayCast2D:
-	var jump_cast: RayCast2D = player_jump_cast_scene.instance()
-	player.add_child(jump_cast)
-	jump_cast.global_position = player.global_position
-	return jump_cast
+	var jump_cast_instance: RayCast2D = player_jump_cast_scene.instance()
+	player.add_child(jump_cast_instance)
+	jump_cast_instance.global_position = player.global_position
+	return jump_cast_instance
 
 
 func _on_SignArea_body_entered(body: Node) -> void:

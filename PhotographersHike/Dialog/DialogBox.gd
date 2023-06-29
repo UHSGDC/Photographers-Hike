@@ -102,7 +102,7 @@ func output_question(dialog: Array) -> String:
 	yield(output_text_and_sound(dialog[0], text_delay), "completed")
 	
 	
-	var answers: Array
+	var answers: Array = []
 	
 	for answer_index in range(2, dialog.size()):
 		answers.append(dialog[answer_index])

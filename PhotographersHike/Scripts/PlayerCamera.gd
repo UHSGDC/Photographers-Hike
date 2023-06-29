@@ -26,7 +26,7 @@ func _ready() -> void:
 	smoothing = follow_smoothing
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	# Get view size considering camera zoom
 	zoom_view_size = view_size * zoom
 	

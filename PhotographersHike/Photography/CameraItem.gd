@@ -2,8 +2,6 @@ extends Node
 
 class_name CameraItem
 
-signal close_picture
-
 onready var picture_node = $CanvasLayer/AlbumPicture
 
 var picture_textures: Array setget ,get_picture_textures
@@ -24,7 +22,7 @@ func _ready() -> void:
 	Rng.randomize()
 		
 		
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("take_picture") and can_take_picture:
 		take_screenshot()
 

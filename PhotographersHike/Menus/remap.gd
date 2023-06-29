@@ -22,7 +22,9 @@ func _unhandled_input(event) -> void:
 	
 	if event is InputEventKey and event.is_pressed():
 		accept_event()
-		InputHelper.set_action_key(action_name, event.as_text())
+		var error = InputHelper.set_action_key(action_name, event.as_text())
+		if error:
+			push_error("error trying to remap action keybind")
 		self.is_waiting_for_key = false
 		update_label()
 

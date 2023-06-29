@@ -21,3 +21,5 @@ position = Vector2( 0, 0.010015 )
 shape = SubResource( 1 )
 
 [node name="InteractZone" parent="." instance=ExtResource( 2 )]
+
+[connection signal="player_interacted" from="InteractZone" to="." method="player_interacted"]

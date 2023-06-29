@@ -10,7 +10,9 @@ func init(answer_text_array: PoolStringArray) -> void:
 		var answer_button: Button = answer_button_scene.instance()
 		add_child(answer_button)
 		answer_button.text = text
-		answer_button.connect("pressed", self, "_on_answer_selected", [text])
+		var error = answer_button.connect("pressed", self, "_on_answer_selected", [text])
+		if error:
+			push_error("error connecting answer button signal to answer container")
 
 	
 func _on_answer_selected(text: String) -> void:

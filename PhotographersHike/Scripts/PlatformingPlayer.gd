@@ -193,8 +193,8 @@ func check_room_edge(a_center: Vector2, a_size: Vector2, b_center: Vector2, b_si
 	
 	var total_size: Vector2 = a_size + b_size
 	
-	var horizontal_overlap: int = total_size.x / 2 - abs(relative_center.x)
-	var vertical_overlap: int = total_size.y / 2 - abs(relative_center.y)
+	var horizontal_overlap: int = int(total_size.x / 2 - abs(relative_center.x))
+	var vertical_overlap: int = int(total_size.y / 2 - abs(relative_center.y))
 	
 	var touching: int
 	
