@@ -1,11 +1,18 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Menus/AlbumMenu.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Menus/AlbumPicture.tscn" type="PackedScene" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 2 )
 
 [node name="AlbumMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+album_picture_scene = ExtResource( 3 )
+picture_container_path = NodePath("Album/ScrollContainer/PictureContainer")
 
 [node name="Background" type="ColorRect" parent="."]
 margin_right = 480.0
@@ -27,16 +34,29 @@ margin_right = 216.0
 margin_bottom = 232.0
 scroll_horizontal_enabled = false
 
-[node name="HFlowContainer" type="HFlowContainer" parent="Album/ScrollContainer"]
+[node name="PictureContainer" type="HFlowContainer" parent="Album/ScrollContainer"]
 margin_right = 432.0
 size_flags_horizontal = 3
 
 [node name="AlbumTitle" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -44.0
-margin_right = 44.0
+margin_left = -232.0
+margin_right = -144.0
 margin_bottom = 32.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "Album"
-align = 1
+valign = 1
+
+[node name="PictureCount" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 72.0
+margin_right = 232.0
+margin_bottom = 32.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "0 Picture"
+align = 2
 valign = 1

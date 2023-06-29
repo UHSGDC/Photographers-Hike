@@ -77,6 +77,8 @@ func _on_CutsceneActivation_body_entered(body: Node) -> void:
 	
 	should_stop = false
 	
+	Global.camera_item.can_take_picture = false
+	
 	
 func create_jump_cast() -> RayCast2D:
 	var jump_cast: RayCast2D = player_jump_cast_scene.instance()

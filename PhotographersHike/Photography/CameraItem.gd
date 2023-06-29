@@ -6,7 +6,7 @@ signal close_picture
 
 onready var captured_image = $CanvasLayer/CapturedImage
 
-var picture_textures: Array setget , get_picture_textures
+var picture_textures: Array setget ,get_picture_textures
 
 var can_take_picture: bool = true
 
