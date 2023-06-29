@@ -7,6 +7,8 @@ signal close_picture
 onready var captured_image = $CanvasLayer/CapturedImage
 
 var picture_textures: Array setget ,get_picture_textures
+var picture_times: PoolStringArray setget ,get_picture_times
+var picture_levels: PoolStringArray setget, get_picture_levels
 
 var can_take_picture: bool = true
 
@@ -47,7 +49,22 @@ func display_and_store_image(image: Image) -> void:
 	randomize_image_rotation()
 	randomize_image_position()
 
+
 	picture_textures.append(texture)
+	picture_levels.append("Base")
+	
+	var time_dictionary: Dictionary = Time.get_time_dict_from_system()
+	
+	var minute_string: String
+	if time_dictionary["minute"] < 10:
+		minute_string = "0" + str(time_dictionary["minute"])
+	else:
+		minute_string = str(time_dictionary["minute"])
+	
+	var time_string: String = str(wrapi(time_dictionary["hour"], 1, 13)) + ":" + minute_string
+	
+	picture_times.append(time_string)
+	
 	
 	can_take_picture = false
 	$AnimationPlayer.play("take_picture")
@@ -65,6 +82,14 @@ func randomize_image_position() -> void:
 	
 func get_picture_textures() -> Array:
 	return picture_textures
+	
+	
+func get_picture_levels() -> PoolStringArray:
+	return picture_levels
+	
+
+func get_picture_times() -> PoolStringArray:
+	return picture_times
 	
 	
 #Add later
