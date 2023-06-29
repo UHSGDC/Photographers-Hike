@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "CameraItem",
 "language": "GDScript",
-"path": "res://Photography/CameraItem.gd"
+"path": "res://Player/CameraItem.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Cougar",
@@ -37,7 +37,7 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "LevelRoom",
 "language": "GDScript",
-"path": "res://Scripts/Room.gd"
+"path": "res://World/Room.gd"
 }, {
 "base": "CanvasLayer",
 "class": "Menus",
@@ -52,7 +52,7 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
-"path": "res://Scripts/PlatformingPlayer.gd"
+"path": "res://Player/PlatformingPlayer.gd"
 } ]
 _global_script_class_icons={
 "BaseMenu": "",
@@ -76,7 +76,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Global="*res://Scenes/Global.tscn"
+Global="*res://Global/Global.tscn"
 InputHelper="*res://addons/input_helper/input_helper.gd"
 JsonOpener="*res://Dialog/JSONOpener.gd"
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Scripts/Room.gd" type="Script" id=1]
+[ext_resource path="res://World/Room.gd" type="Script" id=1]
 
 [node name="Room" type="Area2D"]
 position = Vector2( -48, 144 )
