@@ -51,7 +51,7 @@ func display_and_store_image(image: Image) -> void:
 
 
 	picture_textures.append(texture)
-	picture_levels.append("Base")
+	picture_levels.append(Global.current_level)
 	
 	var time_dictionary: Dictionary = Time.get_time_dict_from_system()
 	

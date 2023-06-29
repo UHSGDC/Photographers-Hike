@@ -141,6 +141,7 @@ func input() -> void:
 
 func _on_RoomDetector_area_entered(area: Area2D) -> void:
 	# Gets collision shape and size of room
+	Global.current_room = area
 	var collision_shape: CollisionShape2D = area.get_node("CollisionShape2D")
 	var size: Vector2 = collision_shape.shape.extents * 2
 	
