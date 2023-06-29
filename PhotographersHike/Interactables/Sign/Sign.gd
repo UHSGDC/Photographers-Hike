@@ -100,6 +100,6 @@ func _on_SignArea_body_entered(body: Node) -> void:
 		jump_cast.queue_free()
 		jump_cast = null
 		
-		yield(get_tree().create_timer(0.5), "timeout")
+		yield(get_tree().create_timer(0.7), "timeout")
 		player.in_cutscene = false
 		Global.camera_item.display_and_store_image(picture_texture.get_data())

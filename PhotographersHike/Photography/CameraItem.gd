@@ -4,7 +4,7 @@ class_name CameraItem
 
 signal close_picture
 
-onready var captured_image = $CanvasLayer/CapturedImage
+onready var picture_node = $CanvasLayer/AlbumPicture
 
 var picture_textures: Array setget ,get_picture_textures
 var picture_times: PoolStringArray setget ,get_picture_times
@@ -12,14 +12,14 @@ var picture_levels: PoolStringArray setget, get_picture_levels
 
 var can_take_picture: bool = true
 
-var center: Vector2
+var picture_center: Vector2
 
 var Rng: RandomNumberGenerator
 		
 
 func _ready() -> void:
 	Global.camera_item = self
-	center = captured_image.rect_position
+	picture_center = picture_node.rect_position
 	Rng = RandomNumberGenerator.new()
 	Rng.randomize()
 		
@@ -45,13 +45,10 @@ func display_and_store_image(image: Image) -> void:
 	# Set the texture to the captured image node.
 	var texture = ImageTexture.new()
 	texture.create_from_image(image)
-	captured_image.set_texture(texture)
 	randomize_image_rotation()
 	randomize_image_position()
-
-
-	picture_textures.append(texture)
-	picture_levels.append(Global.current_level)
+	
+	var level = Global.current_level
 	
 	var time_dictionary: Dictionary = Time.get_time_dict_from_system()
 	
@@ -63,7 +60,16 @@ func display_and_store_image(image: Image) -> void:
 	
 	var time_string: String = str(wrapi(time_dictionary["hour"], 1, 13)) + ":" + minute_string
 	
+	picture_node.set_picture_texture(texture)
+	picture_node.set_level_label_text(level)
+	picture_node.set_time_label_text(time_string)
+
+	picture_textures.append(texture)
+	picture_levels.append(level)
 	picture_times.append(time_string)
+	
+	
+	
 	
 	
 	can_take_picture = false
@@ -73,11 +79,11 @@ func display_and_store_image(image: Image) -> void:
 
 	
 func randomize_image_rotation() -> void:
-	captured_image.rect_rotation = Rng.randf_range(-5, 5)
+	picture_node.rect_rotation = Rng.randf_range(-5, 5)
 	
 	
 func randomize_image_position() -> void:
-	captured_image.rect_position = center + Vector2(Rng.randf_range(-5, 5), Rng.randf_range(-5, 5))
+	picture_node.rect_position = picture_center + Vector2(Rng.randf_range(-5, 5), Rng.randf_range(-5, 5))
 	
 	
 func get_picture_textures() -> Array:
