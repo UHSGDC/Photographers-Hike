@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+class_name Player
+
 # Input
 var x_input: int = 0
 var jump_input: int = 0
@@ -32,7 +34,7 @@ var jump_was_pressed: bool = false
 var remember_jump_length: float = 0.1
 
 
-var in_minigame: bool = false
+
 
 # Room swapping
 
@@ -44,7 +46,13 @@ enum Touching_Side {
 }
 
 
+var current_checkpoint: Position2D
+
+
+# Pausing player movement
 var in_cutscene: bool
+var in_minigame: bool = false
+
 
 
 func _ready() -> void:
@@ -141,9 +149,9 @@ func input() -> void:
 
 func _on_RoomDetector_area_entered(area: Area2D) -> void:
 	# Gets collision shape and size of room
-	Global.current_room = area
 	var collision_shape: CollisionShape2D = area.get_node("CollisionShape2D")
 	var size: Vector2 = collision_shape.shape.extents * 2
+	
 	
 	# Gives the player extra upward velocity if it is entering a room above it
 	if Global.player_camera.current_room_size != Vector2.ZERO:
@@ -152,9 +160,30 @@ func _on_RoomDetector_area_entered(area: Area2D) -> void:
 		if side == Global.UP:
 			velocity.y = jump_velocity
 	
-	# Changes camera's current room and size. check PlayerCamera script for more info
-	Global.change_room(collision_shape.global_position, size)
-
+	
+	current_checkpoint = get_checkpoint(area)
+	
+	Global.change_room(area, collision_shape.global_position, size)	
+	
+	
+func get_checkpoint(room: LevelRoom) -> Position2D:
+	
+	var closest_checkpoint: Position2D
+	
+	for checkpoint in room.get_checkpoints():
+		if !closest_checkpoint:
+			closest_checkpoint = checkpoint
+			continue
+		
+		var dist_to_checkpoint = global_position.distance_squared_to(checkpoint.global_position)
+		var dist_to_closest_checkpoint = global_position.distance_squared_to(closest_checkpoint.global_position)
+		
+		if dist_to_checkpoint < dist_to_closest_checkpoint:
+			closest_checkpoint = checkpoint
+		
+	
+	return closest_checkpoint
+	
 
 # Checks which edge of a touching b. If a and b are overlapping or not touching 
 # the function will push_error(). a is the previous room and b is the room being entered
@@ -182,7 +211,7 @@ func check_room_edge(a_center: Vector2, a_size: Vector2, b_center: Vector2, b_si
 		
 	match touching:
 		Touching_Side.BOTH:
-			push_error("rooms overlapping")
+			push_error("rooms overlapping or entering the same room")
 		Touching_Side.NONE:
 			push_error("player crossed two rooms that are not touching")
 		Touching_Side.VERTICAL:

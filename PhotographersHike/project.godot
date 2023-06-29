@@ -34,6 +34,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Dialog/JSONOpener.gd"
 }, {
+"base": "Area2D",
+"class": "LevelRoom",
+"language": "GDScript",
+"path": "res://Scripts/Room.gd"
+}, {
 "base": "CanvasLayer",
 "class": "Menus",
 "language": "GDScript",
@@ -43,6 +48,11 @@ _global_script_classes=[ {
 "class": "NPC",
 "language": "GDScript",
 "path": "res://Interactables/NPC/NPC.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Scripts/PlatformingPlayer.gd"
 } ]
 _global_script_class_icons={
 "BaseMenu": "",
@@ -50,8 +60,10 @@ _global_script_class_icons={
 "Cougar": "",
 "DialogBox": "",
 "JSONOpener": "",
+"LevelRoom": "",
 "Menus": "",
-"NPC": ""
+"NPC": "",
+"Player": ""
 }
 
 [application]
