@@ -50,8 +50,9 @@ var current_checkpoint: Position2D
 
 
 # Pausing player movement
-var in_cutscene: bool
+var in_cutscene: bool = false
 var in_minigame: bool = false
+var death_pause: bool = false
 
 
 
@@ -65,7 +66,7 @@ func _physics_process(delta: float) -> void:
 	input()
 	
 	# Pause player movement between rooms or when playing dialog
-	if !Global.room_pause and !Global.dialog_box.dialog_playing and !in_cutscene:
+	if !Global.room_pause and !Global.dialog_box.dialog_playing and !in_cutscene and !death_pause:
 		if !in_minigame:
 			move(delta)
 
@@ -152,6 +153,9 @@ func _on_RoomDetector_area_entered(area: Area2D) -> void:
 	var collision_shape: CollisionShape2D = area.get_node("CollisionShape2D")
 	var size: Vector2 = collision_shape.shape.extents * 2
 	
+	if Global.current_room == area:
+		return
+	
 	
 	# Gives the player extra upward velocity if it is entering a room above it
 	if Global.player_camera.current_room_size != Vector2.ZERO:
@@ -232,3 +236,15 @@ func check_room_edge(a_center: Vector2, a_size: Vector2, b_center: Vector2, b_si
 	# Fail safe
 	return Global.RIGHT
 	
+
+
+func respawn() -> void:
+	death_pause = true
+	hide()
+	velocity = Vector2.ZERO
+	
+	yield(get_tree().create_timer(0.2), "timeout")
+	global_position = current_checkpoint.global_position
+	
+	show()
+	death_pause = false

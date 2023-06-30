@@ -8,12 +8,12 @@
 radius = 172.026
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 32, 22 )
+extents = Vector2( 32, 25.5 )
 
 [node name="Sign" type="Sprite"]
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 64, 44 )
+region_rect = Rect2( 0, 0, 64, 51 )
 script = ExtResource( 1 )
 player_jump_cast_scene = ExtResource( 3 )
 player_cutscene_max_speed = 10.0
@@ -33,6 +33,7 @@ collision_mask = 4
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SignArea"]
+position = Vector2( 0, -0.5 )
 shape = SubResource( 2 )
 
 [connection signal="body_entered" from="CutsceneActivation" to="." method="_on_CutsceneActivation_body_entered"]
