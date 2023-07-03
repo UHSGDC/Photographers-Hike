@@ -37,7 +37,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 1.8, 2, 3.6, 3.8, 3.9 ),
+"times": PoolRealArray( 0, 0.7, 0.9, 2.3, 2.5, 4, 4.2, 4.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 0, 4 ), Vector2( 1, 4 ), Vector2( 2, 4 ), Vector2( 3, 4 ), Vector2( 4, 4 ), Vector2( 5, 4 ), Vector2( 6, 4 ), Vector2( 7, 4 ) ]
@@ -53,10 +53,24 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ Vector2( 3, 1 ), Vector2( 4, 1 ), Vector2( 5, 1 ) ]
+"values": [ Vector2( 4, 1 ), Vector2( 5, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "print_jump"
+} ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -109,6 +123,7 @@ position = Vector2( 0, -8 )
 texture = ExtResource( 1 )
 hframes = 18
 vframes = 6
+frame = 23
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -1.49499 )

@@ -63,12 +63,32 @@ func _ready() -> void:
 # I multiply things by delta so things move correctly no matter the frame rate
 func _physics_process(delta: float) -> void:
 	
+	
+	
 	input()
 	
 	# Pause player movement between rooms or when playing dialog
 	if !Global.room_pause and !Global.dialog_box.dialog_playing and !in_cutscene and !death_pause:
 		if !in_minigame:
 			move(delta)
+			
+	animate()
+
+func animate() -> void:
+	if velocity.y < 0:
+		$AnimationPlayer.play("Jump")
+	elif !is_on_floor():
+		$AnimationPlayer.play("Fall")
+	elif abs(velocity.x) > 0.1:
+		$AnimationPlayer.play("Run")
+	else:
+		if $AnimationPlayer.current_animation == "Run":
+			$AnimationPlayer.play("Idle")
+		else:
+			$AnimationPlayer.queue("Idle")
+
+func print_jump() -> void:
+	print("jump")
 
 
 func move(delta: float) -> void:
