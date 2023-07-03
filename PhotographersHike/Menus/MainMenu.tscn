@@ -131,7 +131,7 @@ margin_bottom = 284.0
 size_flags_horizontal = 5
 custom_fonts/font = SubResource( 4 )
 custom_styles/normal = SubResource( 8 )
-text = "2022-2033"
+text = "2022-2023"
 align = 1
 valign = 1
 
