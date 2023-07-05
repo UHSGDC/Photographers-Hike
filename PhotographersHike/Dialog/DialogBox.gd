@@ -72,6 +72,7 @@ func play_dialog(speaker: String, level_id: int, dialog_number: int) -> String:
 	
 	show()
 	dialog_playing = true
+	Global.platforming_player.velocity = Vector2.ZERO
 	
 	for dialog in dialog_array:
 		yield(get_tree().create_timer(0.1), "timeout")

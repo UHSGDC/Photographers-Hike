@@ -79,10 +79,10 @@ func _physics_process(delta: float) -> void:
 	input()
 	
 	# Pause player movement between rooms or when playing dialog
-	if !Global.room_pause and !Global.dialog_box.dialog_playing and !in_cutscene and !death_pause:
-		if !in_minigame:
+	if !Global.room_pause and !in_cutscene and !death_pause:
+		if !in_minigame and !Global.dialog_box.dialog_playing:
 			move(delta)
-			state = get_state()
+		state = get_state()
 	
 	look()
 	animate()
