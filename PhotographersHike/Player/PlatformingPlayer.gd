@@ -302,6 +302,11 @@ func respawn() -> void:
 	yield(get_tree().create_timer(0.2), "timeout")
 	global_position = current_checkpoint.global_position
 	
+	if sign(Global.current_room.position.x - global_position.x) > 0:
+		$Sprite.flip_h = false
+	else:
+		$Sprite.flip_h = true
+	
 	show()
 	death_pause = false
 
