@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 class_name Player
 
+signal animation_finished(anim_name)
+
 # Input
 var x_input: int = 0
 var jump_input: int = 0
@@ -33,9 +35,6 @@ var coyote_time_length: float = 0.15
 var jump_was_pressed: bool = false
 var remember_jump_length: float = 0.1
 
-
-
-
 # Room swapping
 
 enum Touching_Side {
@@ -55,6 +54,18 @@ var in_minigame: bool = false
 var death_pause: bool = false
 
 
+# Animation
+enum States {
+	RUN,
+	IDLE,
+	PICTURE,
+	JUMP,
+	FALL
+}
+
+var state: int = States.IDLE
+
+
 
 func _ready() -> void:
 	Global.platforming_player = self
@@ -71,24 +82,42 @@ func _physics_process(delta: float) -> void:
 	if !Global.room_pause and !Global.dialog_box.dialog_playing and !in_cutscene and !death_pause:
 		if !in_minigame:
 			move(delta)
+			state = get_state()
 			
 	animate()
+			
+	
+func get_state() -> int:
+	if velocity.y < 0:
+		return States.JUMP
+	elif !is_on_floor():
+		return States.FALL
+	elif abs(velocity.x) > 0.1:
+		return States.RUN
+	else:
+		return States.IDLE	
+
 
 func animate() -> void:
-	if velocity.y < 0:
-		$AnimationPlayer.play("Jump")
-	elif !is_on_floor():
-		$AnimationPlayer.play("Fall")
-	elif abs(velocity.x) > 0.1:
-		$AnimationPlayer.play("Run")
-	else:
-		if $AnimationPlayer.current_animation == "Run":
-			$AnimationPlayer.play("Idle")
-		else:
-			$AnimationPlayer.queue("Idle")
-
-func print_jump() -> void:
-	print("jump")
+	match state:
+		States.JUMP:
+			$AnimationPlayer.play("Jump")
+		States.FALL:
+			$AnimationPlayer.play("Fall")
+		States.RUN:
+			$AnimationPlayer.play("Run")
+		States.IDLE:
+			if $AnimationPlayer.current_animation == "Run":
+				$AnimationPlayer.play("Idle")
+			else:
+				$AnimationPlayer.queue("Idle")
+		States.PICTURE:
+			if $AnimationPlayer.assigned_animation != "Take Picture":
+				$AnimationPlayer.play("Take Picture")
+			if !$AnimationPlayer.is_playing():
+				$AnimationPlayer.play_backwards("Take Picture")
+				
+				
 
 
 func move(delta: float) -> void:
@@ -268,3 +297,7 @@ func respawn() -> void:
 	
 	show()
 	death_pause = false
+
+
+func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
+	emit_signal("animation_finished", anim_name)

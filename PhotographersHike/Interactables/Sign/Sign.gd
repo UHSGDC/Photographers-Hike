@@ -11,7 +11,7 @@ var jump_cast: RayCast2D
 
 var was_cutscene_played: bool = false
 
-var player: KinematicBody2D
+var player: Player
 
 export var player_cutscene_max_speed: float
 export var player_cutscene_jump_multiplier: float
@@ -24,6 +24,7 @@ func _physics_process(delta: float) -> void:
 		move_player_to_sign(delta)
 		if sign(jump_cast.cast_to.x) != sign(player.velocity.x):
 			jump_cast.cast_to.x = -jump_cast.cast_to.x
+		player.state = player.get_state()
 
 
 func move_player_to_sign(delta: float) -> void:
@@ -94,12 +95,20 @@ func _on_SignArea_body_entered(body: Node) -> void:
 		
 		should_stop = true
 		
+		
+		
 		yield(get_tree().create_timer(0.2), "timeout")
 		was_cutscene_played = true
 		should_move_player_to_sign = false
 		jump_cast.queue_free()
 		jump_cast = null
+		player.state = player.States.PICTURE
 		
-		yield(get_tree().create_timer(0.7), "timeout")
-		player.in_cutscene = false
+		yield(player, "animation_finished") # Player animation done
+		
 		Global.camera_item.display_and_store_image(picture_texture.get_data())
+		
+		yield(player, "animation_finished")
+		
+		player.in_cutscene = false
+		

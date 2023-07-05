@@ -58,20 +58,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [ Vector2( 4, 1 ), Vector2( 5, 1 ) ]
 }
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.2 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "print_jump"
-} ]
-}
 
 [sub_resource type="Animation" id=3]
 resource_name = "Run"
@@ -91,7 +77,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=7]
-resource_name = "TakePicture"
+resource_name = "Take Picture"
 length = 3.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame_coords")
@@ -123,7 +109,6 @@ position = Vector2( 0, -8 )
 texture = ExtResource( 1 )
 hframes = 18
 vframes = 6
-frame = 23
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -1.49499 )
@@ -151,6 +136,7 @@ anims/Fall = SubResource( 4 )
 anims/Idle = SubResource( 5 )
 anims/Jump = SubResource( 6 )
 anims/Run = SubResource( 3 )
-anims/TakePicture = SubResource( 7 )
+"anims/Take Picture" = SubResource( 7 )
 
 [connection signal="area_entered" from="RoomDetector" to="." method="_on_RoomDetector_area_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
