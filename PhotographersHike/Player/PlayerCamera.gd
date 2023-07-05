@@ -10,7 +10,9 @@ var current_room_center: Vector2
 var current_room_size: Vector2
 
 onready var view_size: Vector2 = get_viewport_rect().size
+var zoom_view_size: Vector2
 
+var zoom_to: Vector2 = Vector2.ONE
 
 
 func _ready() -> void:
@@ -25,26 +27,39 @@ func _ready() -> void:
 	smoothing = follow_smoothing
 
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	
+	
+	
+	if zoom_to != zoom:
+		zoom.x = move_toward(zoom.x, zoom_to.x, 0.3 * delta)
+		zoom.y = move_toward(zoom.y, zoom_to.y, 0.3 * delta)
+		
+	zoom_view_size.x = view_size.x * zoom.x
+	zoom_view_size.y = view_size.y * zoom.y
+
 	# Get target position
 	var target_position := calculate_target_position(current_room_center, current_room_size)
 	
+	
 	# Interpolate(lerp) camera position to target position by the smoothing
-	position = lerp(position, target_position, smoothing)
+	if zoom_to != zoom:
+		position = target_position
+	else:
+		position = lerp(position, target_position, smoothing)
 	
 	
 
 func calculate_target_position(room_center: Vector2, room_size: Vector2) -> Vector2:
 	# The distance from the center of the room to the camera boundary on one side.
 	# When the room is the same size as the screen the x and y margin are zero
-	var x_margin: float = (room_size.x - view_size.x) / 2
-	var y_margin: float = (room_size.y - view_size.y) / 2
+	var x_margin: float = (room_size.x - zoom_view_size.x) / 2
+	var y_margin: float = (room_size.y - zoom_view_size.y) / 2
 	
 	
 	var return_position: Vector2 = Vector2.ZERO
 	
-	# if the view_size >= room_size the camera position should just be room center
+	# if the zoom_view_size >= room_size the camera position should just be room center
 	if x_margin <= 0:
 		return_position.x = room_center.x
 	# Clamps the return position to the left and right limits if the x_margin is positive

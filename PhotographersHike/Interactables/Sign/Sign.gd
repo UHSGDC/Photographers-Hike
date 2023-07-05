@@ -104,10 +104,14 @@ func _on_SignArea_body_entered(body: Node) -> void:
 		jump_cast = null
 		player.state = player.States.PICTURE
 		
+		Global.player_camera.zoom_to = Vector2.ONE * 0.5
+		
 		yield(player, "animation_finished") # Player animation done
 		
 		Global.camera_item.display_and_store_image(picture_texture.get_data())
 		
+		yield(get_tree().create_timer(1), "timeout")
+		Global.player_camera.zoom_to = Vector2.ONE
 		yield(player, "animation_finished")
 		
 		player.in_cutscene = false
