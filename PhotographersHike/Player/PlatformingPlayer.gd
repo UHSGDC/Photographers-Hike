@@ -83,9 +83,16 @@ func _physics_process(delta: float) -> void:
 		if !in_minigame:
 			move(delta)
 			state = get_state()
-			
+	
+	look()
 	animate()
-			
+
+func look() -> void:
+	if velocity.x > 0:
+		$Sprite.flip_h = false
+	elif velocity.x < 0:
+		$Sprite.flip_h = true
+
 	
 func get_state() -> int:
 	if velocity.y < 0:
