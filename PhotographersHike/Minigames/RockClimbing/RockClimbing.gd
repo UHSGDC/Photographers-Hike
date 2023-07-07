@@ -61,7 +61,6 @@ func move(delta: float) -> void:
 	if player.is_on_floor() && !player.get_floor_angle():
 		exit_minigame()
 
-	
 	player.velocity = player.move_and_slide(player.velocity, Vector2.UP)
 	
 		
