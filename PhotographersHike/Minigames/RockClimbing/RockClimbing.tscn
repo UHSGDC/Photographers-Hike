@@ -10,10 +10,9 @@ collision_mask = 4
 gravity = 800.0
 script = ExtResource( 4 )
 min_jump_velocity = 150.0
-max_jump_velocity = 350.0
-jump_charge_speed = 200.0
+max_jump_velocity = 400.0
 air_speed = 100.0
-max_attach_speed = 300.0
+max_attach_speed = 2000.0
 rock_detector_scene = ExtResource( 1 )
 jump_arrow_scene = ExtResource( 3 )
 
