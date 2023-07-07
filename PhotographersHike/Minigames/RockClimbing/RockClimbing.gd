@@ -23,16 +23,21 @@ var rock_detector: Node2D
 var jump_arrow: Node2D
 
 
-onready var player: KinematicBody2D = Global.platforming_player
+var player: Player
 
 var can_charge: bool = false
 
 
 func _ready() -> void:
 	current_jump_velocity = min_jump_velocity
+	call_deferred("set_player_reference")
+	
+	
+func set_player_reference() -> void:
+	player = Global.platforming_player
 	
 
-func _physics_process(delta: float) -> void:
+func _physics_process(delta: float) -> void:	
 	if player.in_minigame:
 		move(delta)
 
