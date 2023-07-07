@@ -113,7 +113,7 @@ func _on_Rock_touched(body: Node) -> void:
 			
 		if !player.in_minigame:
 			start_minigame()
-			
+		
 		jump_arrow.show()
 		current_rock = body
 		player.velocity.x = 0
