@@ -93,7 +93,7 @@ func charge_jump(delta: float) -> void:
 	
 	current_jump_velocity += jump_charge_speed * jump_charge_direction * delta
 	
-	jump_arrow.get_children()[0].scale.x = 2 * current_jump_velocity / max_jump_velocity
+	jump_arrow.get_node("Arrow").scale.x = 3 * current_jump_velocity / max_jump_velocity
 
 
 func exit_minigame() -> void:
@@ -125,7 +125,9 @@ func _on_RockClimbing_body_entered(body: Node) -> void:
 		# Add rock detector
 		rock_detector = rock_detector_scene.instance()
 		player.call_deferred("add_child", rock_detector)
-		rock_detector.connect("area_entered", self, "_on_Rock_touched")
+		var error = rock_detector.connect("area_entered", self, "_on_Rock_touched")
+		if error:
+			push_error("error connecting rock detector signal to self")		
 		
 		jump_arrow = jump_arrow_scene.instance()
 		player.add_child(jump_arrow)

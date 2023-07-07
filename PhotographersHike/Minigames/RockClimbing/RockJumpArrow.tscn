@@ -2,7 +2,7 @@
 
 [node name="RockJumpArrow" type="Node2D"]
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
+[node name="Arrow" type="Polygon2D" parent="."]
 position = Vector2( 10, 0 )
 color = Color( 0.25098, 0.831373, 0.168627, 1 )
 polygon = PoolVector2Array( 0, 2, 3, 0, 0, -2 )
