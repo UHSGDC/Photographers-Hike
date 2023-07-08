@@ -108,7 +108,8 @@ func get_state() -> int:
 func animate() -> void:
 	match state:
 		States.JUMP:
-			$AnimationPlayer.play("Jump")
+			if $AnimationPlayer.assigned_animation != "Jump":
+				$AnimationPlayer.play("Jump")
 		States.FALL:
 			$AnimationPlayer.play("Fall")
 		States.RUN:
