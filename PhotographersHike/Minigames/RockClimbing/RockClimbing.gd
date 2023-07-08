@@ -11,7 +11,6 @@ export var jump_charge_speed: float = 300
 var current_jump_velocity: float
 var jump_charge_direction: int = 1
 
-export var air_speed: float
 export var max_attach_speed: float 
 
 var can_jump: bool = true
@@ -74,7 +73,7 @@ func jump() -> void:
 	
 	# Resetting Jump
 	
-	jump_arrow.get_children()[0].scale = 2 * Vector2.ONE * min_jump_velocity / max_jump_velocity
+	jump_arrow.get_node("Arrow").scale.x = 4 * min_jump_velocity / max_jump_velocity
 	jump_arrow.hide()
 	current_rock = null
 	current_jump_velocity = min_jump_velocity
@@ -92,7 +91,7 @@ func charge_jump(delta: float) -> void:
 	
 	current_jump_velocity += jump_charge_speed * jump_charge_direction * delta
 	
-	jump_arrow.get_node("Arrow").scale.x = 3 * current_jump_velocity / max_jump_velocity
+	jump_arrow.get_node("Arrow").scale.x = 4 * current_jump_velocity / max_jump_velocity
 
 
 func exit_minigame() -> void:
