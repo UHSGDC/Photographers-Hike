@@ -184,6 +184,10 @@ take_picture={
 2d_physics/layer_9="WindZoneDetection"
 2d_physics/layer_10="RockClimbingRocks"
 
+[mono]
+
+project/assembly_name="PhotographersHike"
+
 [physics]
 
 common/enable_pause_aware_picking=true

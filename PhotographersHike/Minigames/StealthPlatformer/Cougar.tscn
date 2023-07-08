@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Minigames/StealthPlatformer/Cougar.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Art/Cougar/CougarSpriteSheet.png" type="Texture" id=2]
@@ -24,6 +24,23 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 0, 0 ), Vector2( 1, 0 ), Vector2( 2, 0 ), Vector2( 3, 0 ), Vector2( 4, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Run"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 5 ), Vector2( 1, 5 ), Vector2( 2, 5 ), Vector2( 3, 5 ), Vector2( 4, 5 ), Vector2( 5, 5 ), Vector2( 6, 5 ), Vector2( 7, 5 ), Vector2( 8, 5 ) ]
 }
 
 [node name="Cougar" type="KinematicBody2D"]
@@ -52,7 +69,7 @@ offset = Vector2( 4.5, -10 )
 flip_h = true
 hframes = 13
 vframes = 6
-frame = 3
+frame = 69
 
 [node name="VisionCone" type="Area2D" parent="."]
 position = Vector2( -8, -6 )
@@ -103,6 +120,7 @@ autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Jump = SubResource( 3 )
+anims/Run = SubResource( 4 )
 
 [connection signal="body_entered" from="VisionCone" to="." method="_on_VisionCone_body_entered"]
 [connection signal="body_entered" from="SleepingDetection" to="." method="_on_SleepingDetection_body_entered"]
