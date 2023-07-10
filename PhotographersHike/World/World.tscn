@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://World/DeathZone.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/PlatformingPlayer.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Minigames/RockClimbing/RockClimbing.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Minigames/RockClimbing/Vine.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Minigames/RockClimbing/VineManager.tscn" type="PackedScene" id=13]
+[ext_resource path="res://SpeedRunTimer.tscn" type="PackedScene" id=14]
 
 [sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 240, 144 )
@@ -1193,6 +1194,8 @@ position = Vector2( -496, -712 )
 
 [node name="DialogBox" parent="DialogLayer" instance=ExtResource( 5 )]
 visible = false
+
+[node name="SpeedRunTimer" parent="." instance=ExtResource( 14 )]
 
 [editable path="Base/Room1"]
 [editable path="Base/Room2"]

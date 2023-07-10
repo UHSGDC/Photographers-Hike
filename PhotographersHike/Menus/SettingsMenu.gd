@@ -15,3 +15,7 @@ func _on_VSYNC_Checkbox_pressed():
 
 func _on_Back_pressed() -> void:
 	menus.change_menu(menus.previous_menu)
+
+
+func _on_ShowSpeedrunTimerBox_toggled(button_pressed):
+	Global.speedrun_timer.visible = button_pressed
