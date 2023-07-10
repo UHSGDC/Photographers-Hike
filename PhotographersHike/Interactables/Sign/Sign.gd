@@ -19,6 +19,11 @@ export var player_cutscene_jump_multiplier: float
 
 var should_stop: bool
 
+
+func _ready():
+	$DirectionLabel.modulate = Color.transparent
+
+
 func _physics_process(delta: float) -> void:
 	if should_move_player_to_sign:
 		move_player_to_sign(delta)
@@ -89,7 +94,13 @@ func create_jump_cast() -> RayCast2D:
 
 
 func _on_SignArea_body_entered(body: Node) -> void:
-	if body == player and !was_cutscene_played:
+	if body != player:
+		return
+	
+	if was_cutscene_played:
+		var tween = get_tree().create_tween()
+		tween.tween_property($DirectionLabel, "modulate", Color.white, 0.5)
+	else:
 		
 		yield(get_tree().create_timer(0.2), "timeout")
 		
@@ -115,4 +126,11 @@ func _on_SignArea_body_entered(body: Node) -> void:
 		yield(player, "animation_finished")
 		
 		player.in_cutscene = false
-		
+
+
+func _on_SignArea_body_exited(body):
+	if body != player:
+		return
+	var tween = get_tree().create_tween()
+	tween.tween_property($DirectionLabel, "modulate", Color.transparent, 0.5)
+	
