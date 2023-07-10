@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://World/SpeedRunTimer.gd" type="Script" id=1]
+[ext_resource path="res://Misc/SpeedRunTimer.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/Text Engine.tres" type="DynamicFont" id=2]
 
 [node name="SpeedRunTimer" type="CanvasLayer"]
