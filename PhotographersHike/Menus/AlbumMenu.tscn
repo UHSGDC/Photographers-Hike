@@ -1,10 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Menus/AlbumMenu.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Menus/AlbumPicture.tscn" type="PackedScene" id=3]
 
 [sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 8
 font_data = ExtResource( 2 )
 
 [node name="AlbumMenu" type="Control"]
@@ -23,7 +27,7 @@ color = Color( 0.0862745, 0.662745, 0.529412, 1 )
 margin_left = 24.0
 margin_top = 32.0
 margin_right = 456.0
-margin_bottom = 264.0
+margin_bottom = 256.0
 color = Color( 0.0588235, 0.486275, 0.384314, 1 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Album"]
@@ -32,7 +36,7 @@ anchor_right = 0.5
 margin_left = -208.0
 margin_top = 8.0
 margin_right = 216.0
-margin_bottom = 232.0
+margin_bottom = 224.0
 scroll_horizontal_enabled = false
 
 [node name="PictureContainer" type="HFlowContainer" parent="Album/ScrollContainer"]
@@ -57,3 +61,14 @@ custom_fonts/font = SubResource( 1 )
 text = "0 Pictures "
 align = 2
 valign = 1
+
+[node name="DownloadButton" type="Button" parent="."]
+margin_left = 8.0
+margin_top = 262.0
+margin_right = 84.0
+margin_bottom = 282.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Download"
+
+[connection signal="pressed" from="DownloadButton" to="." method="_on_DownloadButton_pressed"]
