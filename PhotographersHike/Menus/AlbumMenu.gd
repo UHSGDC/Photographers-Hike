@@ -39,6 +39,10 @@ func create_album_picture(texture: Texture, time: String, level: String) -> void
 # Add a file dialog for selecting a folder. the pictures will all be saved in that folder/directory
 
 func _on_DownloadButton_pressed():
+	$FileDialog.popup_centered()
+	var directory_path = yield($FileDialog, "dir_selected")
 	for i in Global.camera_item.picture_textures.size():
 		var image = Global.camera_item.picture_textures[i].get_data()
+		image.save_png(directory_path + "/Picture %s.png" % i)
 		
+

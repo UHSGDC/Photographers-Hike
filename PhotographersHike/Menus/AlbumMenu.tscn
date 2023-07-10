@@ -67,8 +67,26 @@ margin_left = 8.0
 margin_top = 262.0
 margin_right = 84.0
 margin_bottom = 282.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "Download"
+
+[node name="FileDialog" type="FileDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -157.0
+margin_top = -112.0
+margin_right = 158.0
+margin_bottom = 136.0
+window_title = "Choose a Folder"
+resizable = true
+mode = 2
+access = 2
 
 [connection signal="pressed" from="DownloadButton" to="." method="_on_DownloadButton_pressed"]
