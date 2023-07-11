@@ -4,7 +4,7 @@ extends Area2D
 export var direction: int
 export var strength: float
 
-const air_multiplier: float = 2.0
+const air_multiplier: float = 1.5
 
 
 var player = Global.platforming_player
