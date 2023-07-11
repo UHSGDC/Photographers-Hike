@@ -38,7 +38,7 @@ func _on_WindZone_area_entered(area: Area2D) -> void:
 		wind_particles = wind_particles_scene.instance()
 		add_child(wind_particles)
 		wind_particles.global_position = global_position
-		wind_particles.global_position.x += - wind_particles.x_offset * direction
+		wind_particles.global_position.x += - Global.player_camera.current_room_size.x / 2 * direction
 		
 		wind_particles.direction.x = direction
 		
