@@ -26,13 +26,15 @@ var current_state: int = STATES.IDLE
 
 
 func _ready() -> void:
+	$AnimationPlayer.play("Spawn")
+	yield($AnimationPlayer, "animation_finished")
+	
 	active = true
 
 
 func _process(delta: float) -> void:
-	current_state = get_state()
-
 	if active:
+		current_state = get_state()
 		check_distance()
 		if !punches:
 			follow_player()
@@ -54,11 +56,11 @@ func get_state() -> int:
 			
 			
 func follow_player() -> void:
-	position = lerp(position, Global.platforming_player.position, 0.05)
+	global_position = lerp(global_position, Global.platforming_player.global_position, 0.05)
 
 
 func check_distance() -> void:
-	if position.distance_to(Global.platforming_player.position) < fist_distance:
+	if global_position.distance_to(Global.platforming_player.global_position) < fist_distance:
 		is_near_player = true
 	else:
 		is_near_player = false
