@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://World/DeathZone.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/PlatformingPlayer.tscn" type="PackedScene" id=2]
@@ -16,8 +16,8 @@
 [ext_resource path="res://Misc/SpeedRunTimer.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Minigames/Blizzard/WindZone.tscn" type="PackedScene" id=15]
 
-[sub_resource type="RectangleShape2D" id=14]
-extents = Vector2( 360, 144 )
+[sub_resource type="RectangleShape2D" id=44]
+extents = Vector2( 240, 144 )
 
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 368, 144 )
@@ -54,6 +54,9 @@ extents = Vector2( 184, 288 )
 
 [sub_resource type="RectangleShape2D" id=19]
 extents = Vector2( 1056, 892 )
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 360, 144 )
 
 [sub_resource type="RectangleShape2D" id=26]
 extents = Vector2( 240, 144 )
@@ -128,7 +131,7 @@ position = Vector2( -184, 64 )
 position = Vector2( 208, 96 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Base/Room1"]
-shape = SubResource( 14 )
+shape = SubResource( 44 )
 
 [node name="Room2" parent="Base" instance=ExtResource( 7 )]
 position = Vector2( 560, 144 )
@@ -1479,7 +1482,7 @@ position = Vector2( 304, 168 )
 shape = SubResource( 28 )
 
 [node name="PlatformingPlayer" parent="." instance=ExtResource( 2 )]
-position = Vector2( 4320, -2152 )
+position = Vector2( 0, 152 )
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 3 )]
 

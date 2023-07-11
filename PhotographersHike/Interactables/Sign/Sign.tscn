@@ -58,6 +58,7 @@ valign = 2
 
 [node name="ColorRect" type="ColorRect" parent="DirectionLabel"]
 modulate = Color( 1, 1, 1, 0.286275 )
+show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -6.0
