@@ -1,10 +1,19 @@
 extends BaseMenu
 
+signal confirm_pressed(confirmed)
+
+
 export var album_picture_scene: PackedScene
 
 export var picture_container_path: NodePath
 
 onready var picture_container: Control = get_node(picture_container_path)
+
+func _ready():
+	var error = $ConfirmDownloadDialog.get_cancel().connect("pressed", self, "download_cancelled")
+	if error:
+		push_error("Error connecting confirm download dialog cancel signal to album menu node")
+	
 
 func update_album() -> void:
 	var picture_textures = Global.camera_item.picture_textures
@@ -35,14 +44,45 @@ func create_album_picture(texture: Texture, time: String, level: String) -> void
 	picture_container.add_child(album_picture)
 
 
-# TODO
-# Add a file dialog for selecting a folder. the pictures will all be saved in that folder/directory
+func download_cancelled() -> void:
+	emit_signal("confirm_pressed", false)
 
-func _on_DownloadButton_pressed():
+
+func download_confirmed() -> void:
+	emit_signal("confirm_pressed", true)
+
+
+func _on_DownloadButton_pressed() -> void:
 	$FileDialog.popup_centered()
 	var directory_path = yield($FileDialog, "dir_selected")
+	
+	$ConfirmDownloadDialog.dialog_text = "Download %s pictures at \"%s\"?" % [Global.camera_item.picture_textures.size(), directory_path]
+	$ConfirmDownloadDialog.popup_centered()
+	
+	
+	if !yield(self, "confirm_pressed"):
+		return
+
+	var failed: bool = false
+	var picture_count: int = 0
+	
 	for i in Global.camera_item.picture_textures.size():
 		var image = Global.camera_item.picture_textures[i].get_data()
-		image.save_png(directory_path + "/Picture %s.png" % i)
+		var error = image.save_png(directory_path + "/Picture %s.png" % i)
+		if error:
+			failed = true
+		else:
+			picture_count += 1
+	
+	
+	
+	$DownloadDialog.dialog_text = "%s pictures downloaded successfully!" % picture_count
+	
+	if failed:
+		$DownloadDialog.dialog_text = "Picture download failed! Only %s pictures donwloaded." % picture_count
 		
+	$DownloadDialog.popup_centered()
+			
+			
+	
 
