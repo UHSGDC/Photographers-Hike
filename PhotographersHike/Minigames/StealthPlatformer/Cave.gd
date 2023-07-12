@@ -2,5 +2,6 @@ extends Node2D
 
 
 func _ready() -> void:
-	for cougar in $Cougars.get_children():
-		cougar.navigation_node = $Navigation2D
+	for child in get_children():
+		if child.is_in_group("cougar"):
+			child.navigation_node = $Navigation2D

@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://World/DeathZone.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/PlatformingPlayer.tscn" type="PackedScene" id=2]
@@ -16,6 +16,8 @@
 [ext_resource path="res://Misc/SpeedRunTimer.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Minigames/Blizzard/WindZone.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Minigames/Yeti/YetiController.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Minigames/StealthPlatformer/Cougar.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Minigames/StealthPlatformer/Cave.gd" type="Script" id=18]
 
 [sub_resource type="RectangleShape2D" id=44]
 extents = Vector2( 240, 144 )
@@ -58,6 +60,11 @@ extents = Vector2( 1056, 892 )
 
 [sub_resource type="RectangleShape2D" id=59]
 extents = Vector2( 240, 144 )
+
+[sub_resource type="NavigationPolygon" id=60]
+vertices = PoolVector2Array( -264, 8, -56, 8, -56, 56, -264, 40, -264, 56, -264, 152, -264, 88, -232, 88, -232, 104, -248, 152, -200, 104, -200, 120, -232, 168, -136, 120, -136, 104, -88, 104, -8, 168, -88, 88, -56, 88, 8, 152, 56, 8, 56, 152, -328, 152, -328, 56, -312, 56, -312, 40 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 3, 2, 4 ), PoolIntArray( 5, 6, 7, 8, 9 ), PoolIntArray( 9, 8, 10, 11, 12 ), PoolIntArray( 13, 14, 15, 16 ), PoolIntArray( 16, 15, 17, 18, 19 ), PoolIntArray( 2, 1, 20, 21, 19 ), PoolIntArray( 18, 2, 19 ), PoolIntArray( 5, 22, 23, 24, 6 ), PoolIntArray( 24, 25, 3, 4 ), PoolIntArray( 24, 4, 6 ), PoolIntArray( 16, 12, 11, 13 ) ]
+outlines = [ PoolVector2Array( -264, 8, -264, 40, -312, 40, -312, 56, -328, 56, -328, 152, -264, 152, -248, 152, -232, 168, -8, 168, 8, 152, 56, 152, 56, 8, -56, 8, -56, 56, -56, 88, -88, 88, -88, 104, -136, 104, -136, 120, -200, 120, -200, 104, -232, 104, -232, 88, -264, 88, -264, 56, -56, 56, -56, 8 ) ]
 
 [sub_resource type="RectangleShape2D" id=58]
 extents = Vector2( 240, 144 )
@@ -1314,6 +1321,23 @@ position = Vector2( 208, 16 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SparseForest/Room1"]
 shape = SubResource( 59 )
 
+[node name="Cave" type="Node2D" parent="SparseForest"]
+script = ExtResource( 18 )
+
+[node name="Cougar" parent="SparseForest/Cave" instance=ExtResource( 17 )]
+position = Vector2( -136, 152 )
+
+[node name="Position2D" type="Position2D" parent="SparseForest/Cave/Cougar/PatrolPoints" index="0"]
+position = Vector2( 3080, -200 )
+
+[node name="Position2D2" type="Position2D" parent="SparseForest/Cave/Cougar/PatrolPoints" index="1"]
+position = Vector2( 3272, -200 )
+
+[node name="Navigation2D" type="Navigation2D" parent="SparseForest/Cave"]
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="SparseForest/Cave/Navigation2D"]
+navpoly = SubResource( 60 )
+
 [node name="Snowy" type="Node2D" parent="."]
 position = Vector2( 1816, -1248 )
 
@@ -1701,7 +1725,7 @@ modulate = Color( 0.701961, 0.458824, 0.941176, 1 )
 shape = SubResource( 45 )
 
 [node name="PlatformingPlayer" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1472, -1112 )
+position = Vector2( 2928, -208 )
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 3 )]
 
@@ -1728,6 +1752,7 @@ visible = false
 [editable path="DenseForest/Room7"]
 [editable path="DenseForest/RockClimbing"]
 [editable path="SparseForest/Room1"]
+[editable path="SparseForest/Cave/Cougar"]
 [editable path="Snowy/Room1"]
 [editable path="Snowy/Room2"]
 [editable path="Snowy/Room3"]

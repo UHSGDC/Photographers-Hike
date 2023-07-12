@@ -47,21 +47,19 @@ shape = SubResource( 1 )
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
 navpoly = SubResource( 2 )
 
-[node name="Cougars" type="Node" parent="."]
-
-[node name="Cougar" parent="Cougars" instance=ExtResource( 1 )]
-position = Vector2( 312, 64 )
-initial_state = 1
-
-[node name="Position2D" type="Position2D" parent="Cougars/Cougar/PatrolPoints" index="0"]
-position = Vector2( 378, 62 )
-
-[node name="Position2D2" type="Position2D" parent="Cougars/Cougar/PatrolPoints" index="1"]
-position = Vector2( 136, 80 )
-
 [node name="PlatformingPlayer" parent="." instance=ExtResource( 4 )]
 position = Vector2( 56, 72 )
 
 [node name="DialogBox" parent="." instance=ExtResource( 5 )]
 
-[editable path="Cougars/Cougar"]
+[node name="Cougar" parent="." instance=ExtResource( 1 )]
+position = Vector2( 312, 64 )
+initial_state = 1
+
+[node name="Position2D" type="Position2D" parent="Cougar/PatrolPoints" index="0"]
+position = Vector2( 378, 62 )
+
+[node name="Position2D2" type="Position2D" parent="Cougar/PatrolPoints" index="1"]
+position = Vector2( 136, 80 )
+
+[editable path="Cougar"]

@@ -22,7 +22,7 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
+"update": 1,
 "values": [ Vector2( 4, 4 ), Vector2( 3, 4 ), Vector2( 2, 4 ) ]
 }
 
@@ -143,7 +143,7 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 10, 2 )
 
-[node name="Cougar" type="KinematicBody2D"]
+[node name="Cougar" type="KinematicBody2D" groups=["cougar"]]
 collision_layer = 0
 script = ExtResource( 1 )
 max_patrol_speed = 40.0
@@ -157,7 +157,6 @@ jump_height = 40.0
 jump_duration = 0.2
 fall_duration = 0.2
 max_fall_speed = 500.0
-initial_state = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -168,7 +167,6 @@ offset = Vector2( 1.5, -10 )
 flip_h = true
 hframes = 13
 vframes = 6
-frame = 65
 region_rect = Rect2( 114.3, 96.6375, 71.1784, 5.47526 )
 
 [node name="VisionCone" type="Area2D" parent="."]
@@ -216,7 +214,7 @@ enabled = true
 cast_to = Vector2( 0, 8 )
 
 [node name="PathCalculationTimer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.1
 autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

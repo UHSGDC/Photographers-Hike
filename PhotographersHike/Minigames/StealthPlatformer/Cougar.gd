@@ -149,21 +149,20 @@ func run_states(delta: float) -> int:
 
 
 func patrol(delta: float) -> int:
-	
 	if entering_state:
 		entering_state = false	
 		$VisionCone.visible = true
 		if !current_point:
-			current_point = patrol_array[current_point_index].position
+			current_point = patrol_array[current_point_index].global_position
 	
 	follow_along_path()
 	move(delta, patrol_acceleration, max_patrol_speed)
 	
-	if position.distance_to(current_point) < 24 and self.is_on_floor():
+	if global_position.distance_to(current_point) < 24 and self.is_on_floor():
 		current_point_index += 1
 		if current_point_index >= patrol_array.size():
 			current_point_index = 0
-		current_point = patrol_array[current_point_index].position
+		current_point = patrol_array[current_point_index].global_position
 	
 	return STATES.NONE
 
@@ -179,10 +178,14 @@ func chase_player(delta: float) -> int:
 
 
 func sleep(delta: float) -> int:
+	x_input = 0
+	move(delta, 0, 0)
 	return STATES.NONE
 	
 	
 func idle(delta: float) -> int:
+	x_input = 0
+	move(delta, 0, 0)
 	return STATES.NONE
 
 
@@ -195,9 +198,8 @@ func follow_along_path() -> void:
 
 	# Before stopping following path, I make sure the character is not jumping,
 	# otherwise it could stop mid-jump, causing it to fall from a platform
-	if self.position.distance_to(get_current_target_point()) < 24 and self.is_on_floor():
+	if global_position.distance_to(get_current_target_point()) < 24 and self.is_on_floor():
 		current_path = []
-		
 		return
 
 	if should_jump(next_step):
@@ -207,35 +209,34 @@ func follow_along_path() -> void:
 
 	# remove point from path when reached
 	if self.move_to_position(next_step):
-		current_path.remove(0)
+		current_path.remove(0)	
 
 
 func should_jump(next_step) -> bool:
-	var y_distance := abs(self.position.y - next_step.y)
+	var y_distance := abs(global_position.y - next_step.y)
 	return (
 			$Sensors.is_facing_jumpable_blocker() or
-			($Sensors.is_facing_edge() and self.position.y > next_step.y) or
-			(y_distance < self.jump_height and self.position.y - 10 > next_step.y and abs(self.position.x - next_step.x) < 4)
+			($Sensors.is_facing_edge() and global_position.y > next_step.y) or
+			(y_distance < self.jump_height and global_position.y - 10 > next_step.y and abs(global_position.x - next_step.x) < 4)
 			)
 
 func get_current_target_point() -> Vector2:
 	if current_state == STATES.PATROLLING:
 		return current_point
 	elif current_state == STATES.CHASING:
-		return player.position
+		return player.global_position
 	else:
 		return Vector2.ZERO
 
 
-func _on_PathCalculationTimer_timeout():
-	var path = navigation_node.get_simple_path(self.position, get_current_target_point())
+func _on_PathCalculationTimer_timeout() -> void:
+	var path = navigation_node.get_simple_path(global_position, get_current_target_point())
 	# if path has unreachable sections, calculate alternate paths
 	# A section is considered unreachable when the Y distance between two points
 	# is higher than the character's jump can reach.
 	if not _is_path_reachable(path):
 		path = _calculate_alternate_path()
 	current_path = path
-
 	# Removing first point as it will always be the NPC current position.
 	if path.size() > 0:
 		current_path.remove(0)
@@ -243,8 +244,8 @@ func _on_PathCalculationTimer_timeout():
 
 func _calculate_alternate_path():
 	var offset = Vector2(20, 0)
-	var alt_1 = navigation_node.get_simple_path(self.position - offset, get_current_target_point(), true)
-	var alt_2 = navigation_node.get_simple_path(self.position + offset, get_current_target_point(), true)
+	var alt_1 = navigation_node.get_simple_path(global_position - offset, get_current_target_point(), true)
+	var alt_2 = navigation_node.get_simple_path(global_position + offset, get_current_target_point(), true)
 
 	var is_alt_1_reachable = _is_path_reachable(alt_1)
 	var is_alt_2_reachable = _is_path_reachable(alt_2)
@@ -265,7 +266,7 @@ func _calculate_alternate_path():
 
 
 func _is_path_reachable(path):
-	var previous = self.position
+	var previous = global_position
 	for current in path:
 		if previous.y > current.y and abs(previous.y - current.y) > self.jump_height:
 			return false
@@ -273,11 +274,11 @@ func _is_path_reachable(path):
 	return true
 
 
-func move_to_position(target) -> bool:
-	var y_distance := abs(position.y -  target.y)
-	var direction := position.direction_to(target)
+func move_to_position(target: Vector2) -> bool:
+	var y_distance := abs(global_position.y -  target.y)
+	var direction := global_position.direction_to(target)
 	direction.y = 0
-
+	
 	if abs(direction.x) < 0.5 and y_distance < 10:
 		return true
 	else:
@@ -287,7 +288,6 @@ func move_to_position(target) -> bool:
 
 func move(delta: float, acceleration: float, max_speed: float) -> void:
 	# Horizontal Movement
-
 	# Accelerates player in direction of input
 	velocity.x += x_input * acceleration * delta
 
@@ -309,8 +309,7 @@ func move(delta: float, acceleration: float, max_speed: float) -> void:
 		if can_jump:
 			jump()
 
-	if !is_on_floor():
-		apply_gravity(delta)
+	apply_gravity(delta)
 
 
 	velocity = move_and_slide(velocity, Vector2.UP)
