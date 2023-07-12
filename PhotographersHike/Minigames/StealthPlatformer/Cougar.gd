@@ -53,7 +53,7 @@ enum STATES {
 }
 
 export(STATES) var initial_state
-var current_state: int
+var current_state: int = STATES.NONE
 var entering_state: bool = false
 
 # Sleeping
@@ -76,7 +76,8 @@ onready var vision_cone_offset: float = $VisionCone.position.x
 func _ready() -> void:
 	call_deferred("_set_player_reference")
 	change_state(initial_state)
-	
+
+
 func _set_player_reference() -> void:
 	player = Global.platforming_player
 
@@ -84,16 +85,47 @@ func _set_player_reference() -> void:
 func _physics_process(delta: float) -> void:
 	change_state(run_states(delta))
 	look()
+	animate()
+
+
+func animate() -> void:
+	match current_state:
+		STATES.CHASING:
+			if !is_on_floor():
+				if $AnimationPlayer.assigned_animation != "Jump":
+					$AnimationPlayer.play("Jump")
+					return
+					
+			if $AnimationPlayer.assigned_animation != "Run":
+				$AnimationPlayer.play("Run")
+		STATES.IDLE:
+			if $AnimationPlayer.assigned_animation != "Lick":
+				$AnimationPlayer.play("Lick")
+		STATES.SLEEPING:
+			$AnimationPlayer.queue("Sleep")
+		STATES.PATROLLING:
+			if !is_on_floor():
+				if $AnimationPlayer.assigned_animation != "Jump":
+					$AnimationPlayer.play("Jump")
+					return
+				
+			if $AnimationPlayer.assigned_animation == "Sleep":
+				$AnimationPlayer.play("Wake Up")
+			else:
+				$AnimationPlayer.queue("Walk")
+	
 	
 func look() -> void:
 	if sign(velocity.x) > 0:
 		facing_right = true
 		$VisionCone.position.x = -vision_cone_offset
 		$VisionCone.scale.x = -1
+		$Sprite.scale.x = -1
 	else:
 		facing_right = false
 		$VisionCone.position.x = vision_cone_offset
 		$VisionCone.scale.x = 1
+		$Sprite.scale.x = 1
 	
 	
 func change_state(new_state: int) -> void:
@@ -304,12 +336,20 @@ func _on_VisionCone_body_entered(body: Node) -> void:
 		change_state(STATES.CHASING)
 
 
-# Wake up player
+# Wake up cougar
 func _on_SleepingDetection_body_entered(body: Node) -> void:
 	if body == Global.platforming_player and current_state == STATES.SLEEPING:
-		print_debug("ur waking the cougar up")
 		current_footsteps += 1
 		if current_footsteps >= MAX_FOOTSTEPS:
 			change_state(STATES.PATROLLING)
 			current_footsteps == 0
+			return
 			
+		$AnimationPlayer.play("Disturbed")
+		yield($AnimationPlayer, "animation_finished")
+		$AnimationPlayer.play_backwards("Disturbed")
+
+
+func _on_BiteArea_body_entered(body: Node) -> void:
+	if body.is_in_group("player"):
+		body.respawn()
