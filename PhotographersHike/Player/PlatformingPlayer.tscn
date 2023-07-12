@@ -5,7 +5,7 @@
 [ext_resource path="res://Player/CameraItem.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 3, 9.50501 )
+extents = Vector2( 3, 8.7525 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 0, 0 )
@@ -109,9 +109,10 @@ position = Vector2( 0, -6.5 )
 texture = ExtResource( 1 )
 hframes = 18
 vframes = 6
-frame = 23
+frame = 74
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 0.752505 )
 shape = SubResource( 1 )
 
 [node name="RoomDetector" type="Area2D" parent="."]
