@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Minigames/StealthPlatformer/Cougar.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Art/Cougar/CougarSpriteSheet.png" type="Texture" id=2]
+[ext_resource path="res://Minigames/StealthPlatformer/VisionCone.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Minigames/StealthPlatformer/Sensors.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -169,21 +170,8 @@ hframes = 13
 vframes = 6
 region_rect = Rect2( 114.3, 96.6375, 71.1784, 5.47526 )
 
-[node name="VisionCone" type="Area2D" parent="."]
-visible = false
-position = Vector2( -8, -4 )
-collision_layer = 0
-collision_mask = 4
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="VisionCone"]
-position = Vector2( 8, 5.5 )
-polygon = PoolVector2Array( -8, -5, -100, 25, -100, -35 )
-
-[node name="Polygon2D" type="Polygon2D" parent="VisionCone"]
-position = Vector2( 8, 5.5 )
-color = Color( 1, 1, 1, 0.180392 )
-polygon = PoolVector2Array( -8, -5, -100, 25, -100, -35 )
+[node name="VisionCone" parent="." instance=ExtResource( 3 )]
+position = Vector2( -10, -4 )
 
 [node name="SleepingDetection" type="Area2D" parent="."]
 collision_layer = 0

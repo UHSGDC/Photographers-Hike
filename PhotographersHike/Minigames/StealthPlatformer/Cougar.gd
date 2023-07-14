@@ -119,12 +119,12 @@ func look() -> void:
 	if sign(velocity.x) > 0:
 		facing_right = true
 		$VisionCone.position.x = -vision_cone_offset
-		$VisionCone.scale.x = -1
+		$VisionCone.facing_right = true
 		$Sprite.scale.x = -1
 	else:
 		facing_right = false
 		$VisionCone.position.x = vision_cone_offset
-		$VisionCone.scale.x = 1
+		$VisionCone.facing_right = false
 		$Sprite.scale.x = 1
 	
 	
