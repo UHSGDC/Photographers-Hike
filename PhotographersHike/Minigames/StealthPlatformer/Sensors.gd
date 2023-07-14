@@ -10,7 +10,7 @@ onready var _edge_detection_position = $EdgeDetectionRay.position.x
 var _sensors_flipped = false
 
 func _ready():
-	$UpperRay.position.y = -_character.jump_height
+	$UpperRay.position.y = -_character.jump_height + 6
 
 
 func _process(_delta):
@@ -27,13 +27,17 @@ func _process(_delta):
 
 func _turn_right():
 	$LowerRay.cast_to.x = _blocker_detection_direction * -1
+	$LowerRay.position.x = _edge_detection_position * -1
 	$UpperRay.cast_to.x = _blocker_detection_direction * -1
+	$UpperRay.position.x = _edge_detection_position * -1
 	$EdgeDetectionRay.position.x = _edge_detection_position * -1
 
 
 func _turn_left():
 	$LowerRay.cast_to.x = _blocker_detection_direction
+	$LowerRay.position.x = _edge_detection_position
 	$UpperRay.cast_to.x = _blocker_detection_direction
+	$UpperRay.position.x = _edge_detection_position
 	$EdgeDetectionRay.position.x = _edge_detection_position
 
 

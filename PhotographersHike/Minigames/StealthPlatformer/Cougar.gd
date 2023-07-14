@@ -217,7 +217,7 @@ func should_jump(next_step) -> bool:
 	return (
 			$Sensors.is_facing_jumpable_blocker() or
 			($Sensors.is_facing_edge() and global_position.y > next_step.y) or
-			(y_distance < self.jump_height and global_position.y - 10 > next_step.y and abs(global_position.x - next_step.x) < 4)
+			(y_distance < self.jump_height and global_position.y - 10 > next_step.y and abs(global_position.x - next_step.x) < 6)
 			)
 
 func get_current_target_point() -> Vector2:
