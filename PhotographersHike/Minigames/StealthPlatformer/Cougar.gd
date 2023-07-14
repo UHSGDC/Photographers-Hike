@@ -75,7 +75,7 @@ onready var vision_cone_offset: float = $VisionCone.position.x
 
 func _ready() -> void:
 	call_deferred("_set_player_reference")
-	change_state(initial_state)
+	reset_state()
 
 
 func _set_player_reference() -> void:
@@ -126,6 +126,10 @@ func look() -> void:
 		$VisionCone.position.x = vision_cone_offset
 		$VisionCone.facing_right = false
 		$Sprite.scale.x = 1
+	
+	
+func reset_state() -> void:
+	change_state(initial_state)
 	
 	
 func change_state(new_state: int) -> void:

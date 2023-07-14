@@ -171,6 +171,7 @@ vframes = 6
 region_rect = Rect2( 114.3, 96.6375, 71.1784, 5.47526 )
 
 [node name="VisionCone" parent="." instance=ExtResource( 3 )]
+visible = false
 position = Vector2( -10, -4 )
 
 [node name="SleepingDetection" type="Area2D" parent="."]

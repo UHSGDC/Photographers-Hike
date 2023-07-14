@@ -2687,11 +2687,14 @@ position = Vector2( 24, -736 )
 position = Vector2( 0, -320 )
 shape = SubResource( 113 )
 
-[node name="Cave" type="Node2D" parent="SparseForest"]
+[node name="Cave" type="Area2D" parent="SparseForest"]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
 script = ExtResource( 18 )
 
 [node name="Cougar" parent="SparseForest/Cave" instance=ExtResource( 17 )]
-position = Vector2( -168, 40 )
+position = Vector2( -168, 56 )
 
 [node name="Position2D" type="Position2D" parent="SparseForest/Cave/Cougar/PatrolPoints" index="0"]
 position = Vector2( 3048, -304 )
@@ -2700,7 +2703,7 @@ position = Vector2( 3048, -304 )
 position = Vector2( 3224, -304 )
 
 [node name="Cougar2" parent="SparseForest/Cave" instance=ExtResource( 17 )]
-position = Vector2( 496, 64 )
+position = Vector2( 496, 72 )
 
 [node name="Position2D" type="Position2D" parent="SparseForest/Cave/Cougar2/PatrolPoints" index="0"]
 position = Vector2( 3584, -272 )
@@ -2719,7 +2722,7 @@ anims/Walk = SubResource( 68 )
 anims/pounce = SubResource( 69 )
 
 [node name="Cougar3" parent="SparseForest/Cave" instance=ExtResource( 17 )]
-position = Vector2( 416, 240 )
+position = Vector2( 416, 248 )
 
 [node name="Position2D" type="Position2D" parent="SparseForest/Cave/Cougar3/PatrolPoints" index="0"]
 position = Vector2( 3696, -112 )
@@ -2738,7 +2741,7 @@ anims/Walk = SubResource( 76 )
 anims/pounce = SubResource( 77 )
 
 [node name="Cougar4" parent="SparseForest/Cave" instance=ExtResource( 17 )]
-position = Vector2( 640, 240 )
+position = Vector2( 640, 248 )
 
 [node name="Position2D" type="Position2D" parent="SparseForest/Cave/Cougar4/PatrolPoints" index="0"]
 position = Vector2( 3920, -104 )
@@ -2777,7 +2780,7 @@ anims/Walk = SubResource( 93 )
 anims/pounce = SubResource( 94 )
 
 [node name="Cougar6" parent="SparseForest/Cave" instance=ExtResource( 17 )]
-position = Vector2( 1344, -176 )
+position = Vector2( 1344, -168 )
 
 [node name="Position2D" type="Position2D" parent="SparseForest/Cave/Cougar6/PatrolPoints" index="0"]
 position = Vector2( 4536, -480 )
@@ -2796,13 +2799,13 @@ anims/Walk = SubResource( 101 )
 anims/pounce = SubResource( 102 )
 
 [node name="Cougar7" parent="SparseForest/Cave" instance=ExtResource( 17 )]
-position = Vector2( 1704, -96 )
+position = Vector2( 1704, -88 )
 
 [node name="Position2D" type="Position2D" parent="SparseForest/Cave/Cougar7/PatrolPoints" index="0"]
-position = Vector2( 5120, -472 )
+position = Vector2( 5128, -456 )
 
 [node name="Position2D2" type="Position2D" parent="SparseForest/Cave/Cougar7/PatrolPoints" index="1"]
-position = Vector2( 4992, -448 )
+position = Vector2( 4992, -440 )
 
 [node name="AnimationPlayer" parent="SparseForest/Cave/Cougar7" index="7"]
 anims/Disturbed = SubResource( 104 )
@@ -2815,7 +2818,7 @@ anims/Walk = SubResource( 110 )
 anims/pounce = SubResource( 111 )
 
 [node name="Cougar8" parent="SparseForest/Cave" instance=ExtResource( 17 )]
-position = Vector2( 2224, -128 )
+position = Vector2( 2224, -120 )
 initial_state = 1
 
 [node name="Position2D" type="Position2D" parent="SparseForest/Cave/Cougar8/PatrolPoints" index="0"]
@@ -2835,7 +2838,7 @@ anims/Walk = SubResource( 120 )
 anims/pounce = SubResource( 121 )
 
 [node name="Cougar10" parent="SparseForest/Cave" instance=ExtResource( 17 )]
-position = Vector2( 2128, -560 )
+position = Vector2( 2128, -552 )
 initial_state = 1
 
 [node name="Position2D" type="Position2D" parent="SparseForest/Cave/Cougar10/PatrolPoints" index="0"]
@@ -2855,7 +2858,7 @@ anims/Walk = SubResource( 136 )
 anims/pounce = SubResource( 137 )
 
 [node name="Cougar9" parent="SparseForest/Cave" instance=ExtResource( 17 )]
-position = Vector2( 2280, -368 )
+position = Vector2( 2288, -360 )
 
 [node name="Position2D" type="Position2D" parent="SparseForest/Cave/Cougar9/PatrolPoints" index="0"]
 position = Vector2( 5400, -744 )
@@ -2874,7 +2877,7 @@ anims/Walk = SubResource( 128 )
 anims/pounce = SubResource( 129 )
 
 [node name="Cougar11" parent="SparseForest/Cave" instance=ExtResource( 17 )]
-position = Vector2( 2368, -864 )
+position = Vector2( 2368, -856 )
 
 [node name="Position2D" type="Position2D" parent="SparseForest/Cave/Cougar11/PatrolPoints" index="0"]
 position = Vector2( 5560, -1176 )
@@ -2899,6 +2902,10 @@ navpoly = SubResource( 60 )
 
 [node name="NavigationPolygonInstance2" type="NavigationPolygonInstance" parent="SparseForest/Cave/Navigation2D"]
 navpoly = SubResource( 112 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SparseForest/Cave"]
+visible = false
+polygon = PoolVector2Array( -608, 272, 1584, 272, 1568, -32, 2496, -48, 2520, -1016, 1936, -1008, 1952, -344, 952, -368, 968, -136, -640, -104 )
 
 [node name="Snowy" type="Node2D" parent="."]
 position = Vector2( 1816, -1248 )
@@ -3297,6 +3304,9 @@ position = Vector2( 4568, -592 )
 visible = false
 
 [node name="SpeedRunTimer" parent="." instance=ExtResource( 14 )]
+
+[connection signal="body_entered" from="SparseForest/Cave" to="SparseForest/Cave" method="_on_Cave_body_entered"]
+[connection signal="body_exited" from="SparseForest/Cave" to="SparseForest/Cave" method="_on_Cave_body_exited"]
 
 [editable path="Base/Room1"]
 [editable path="Base/Room2"]
