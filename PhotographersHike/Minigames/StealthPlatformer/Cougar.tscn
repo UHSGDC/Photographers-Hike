@@ -202,15 +202,15 @@ script = ExtResource( 4 )
 [node name="LowerRay" type="RayCast2D" parent="Sensors"]
 position = Vector2( -11, -1 )
 enabled = true
-cast_to = Vector2( -15, 0 )
+cast_to = Vector2( -10, 0 )
 
 [node name="UpperRay" type="RayCast2D" parent="Sensors"]
 position = Vector2( -11, 0 )
 enabled = true
-cast_to = Vector2( -15, 0 )
+cast_to = Vector2( -10, 0 )
 
 [node name="EdgeDetectionRay" type="RayCast2D" parent="Sensors"]
-position = Vector2( -11, 0 )
+position = Vector2( -4, 0 )
 enabled = true
 cast_to = Vector2( 0, 8 )
 
