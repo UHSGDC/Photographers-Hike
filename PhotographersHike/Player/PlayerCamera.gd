@@ -14,6 +14,8 @@ var zoom_view_size: Vector2
 
 var zoom_to: Vector2 = Vector2.ONE
 
+var zoom_speed: float = 0.3
+
 
 func _ready() -> void:
 	Global.player_camera = self
@@ -32,8 +34,8 @@ func _physics_process(delta: float) -> void:
 	
 	
 	if zoom_to != zoom:
-		zoom.x = move_toward(zoom.x, zoom_to.x, 0.3 * delta)
-		zoom.y = move_toward(zoom.y, zoom_to.y, 0.3 * delta)
+		zoom.x = move_toward(zoom.x, zoom_to.x, zoom_speed * delta)
+		zoom.y = move_toward(zoom.y, zoom_to.y, zoom_speed * delta)
 		
 	zoom_view_size.x = view_size.x * zoom.x
 	zoom_view_size.y = view_size.y * zoom.y

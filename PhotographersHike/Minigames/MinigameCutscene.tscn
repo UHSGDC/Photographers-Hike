@@ -1,15 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Minigames/MinigameCutscene.gd" type="Script" id=1]
+[ext_resource path="res://Interactables/Sign/PlayerJumpCast.tscn" type="PackedScene" id=2]
 
-[sub_resource type="Curve2D" id=1]
+[sub_resource type="Curve2D" id=5]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 54, 52, -36.48, -17.3982, 36.48, 17.3982, 202, 54, -48.2659, -2.24492, 48.2659, 2.24492, 295, 93, 0, 0, 0, 0, 419, 56 )
+"points": PoolVector2Array(  )
 }
 
 [sub_resource type="Animation" id=2]
 resource_name = "Follow Path"
-length = 2.5
+length = 4.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Path2D/PathFollow2D:unit_offset")
 tracks/0/interp = 2
@@ -17,22 +18,45 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2 ),
+"times": PoolRealArray( 0, 4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 1.0 ]
 }
 
-[node name="MinigameCutscen" type="Area2D"]
+[sub_resource type="Animation" id=3]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Path2D/PathFollow2D:unit_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 30.0167
+
+[node name="MinigameCutscene" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
 script = ExtResource( 1 )
-zoom = Vector2( 3, 3 )
+zoom = Vector2( 2, 2 )
+player_jump_cast_scene = ExtResource( 2 )
+player_cutscene_max_speed = 10.0
+player_cutscene_jump_multiplier = 0.8
 
 [node name="Path2D" type="Path2D" parent="."]
-curve = SubResource( 1 )
+curve = SubResource( 5 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2( 419, 56 )
-offset = 382.115
 rotate = false
 
 [node name="CutsceneCamera" type="Camera2D" parent="Path2D/PathFollow2D"]
@@ -40,3 +64,15 @@ zoom = Vector2( 3, 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 "anims/Follow Path" = SubResource( 2 )
+anims/RESET = SubResource( 3 )
+
+[node name="CutsceneZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CutsceneZone"]
+shape = SubResource( 4 )
+
+[connection signal="body_entered" from="." to="." method="_on_MinigameCutscene_body_entered"]
+[connection signal="body_entered" from="CutsceneZone" to="." method="_on_CutsceneZone_body_entered"]
