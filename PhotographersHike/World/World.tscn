@@ -1,4 +1,4 @@
-[gd_scene load_steps=152 format=2]
+[gd_scene load_steps=153 format=2]
 
 [ext_resource path="res://World/DeathZone.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/PlatformingPlayer.tscn" type="PackedScene" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://Minigames/Yeti/YetiController.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Minigames/StealthPlatformer/Cougar.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Minigames/StealthPlatformer/Cave.gd" type="Script" id=18]
+[ext_resource path="res://Minigames/MinigameCutscene.tscn" type="PackedScene" id=19]
 
 [sub_resource type="RectangleShape2D" id=44]
 extents = Vector2( 240, 144 )
@@ -3294,7 +3295,7 @@ modulate = Color( 0.701961, 0.458824, 0.941176, 1 )
 shape = SubResource( 45 )
 
 [node name="PlatformingPlayer" parent="." instance=ExtResource( 2 )]
-position = Vector2( 4568, -592 )
+position = Vector2( 606, 196 )
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 3 )]
 
@@ -3304,6 +3305,9 @@ position = Vector2( 4568, -592 )
 visible = false
 
 [node name="SpeedRunTimer" parent="." instance=ExtResource( 14 )]
+
+[node name="MinigameCutscen" parent="." instance=ExtResource( 19 )]
+position = Vector2( -59, 219 )
 
 [connection signal="body_entered" from="SparseForest/Cave" to="SparseForest/Cave" method="_on_Cave_body_entered"]
 [connection signal="body_exited" from="SparseForest/Cave" to="SparseForest/Cave" method="_on_Cave_body_exited"]
