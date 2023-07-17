@@ -149,6 +149,8 @@ func _on_MinigameCutscene_body_entered(body: Node) -> void:
 		return
 	if body.is_in_group("player"):
 		player = body
+	else:
+		return
 
 	should_move_player_to_target = true
 	player.in_cutscene = true

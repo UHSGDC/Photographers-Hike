@@ -57,6 +57,7 @@ player_cutscene_jump_multiplier = 0.8
 curve = SubResource( 5 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2( 96, -56 )
 rotate = false
 
 [node name="CutsceneCamera" type="Camera2D" parent="Path2D/PathFollow2D"]
