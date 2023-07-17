@@ -3,6 +3,7 @@ extends KinematicBody2D
 class_name Player
 
 signal animation_finished(anim_name)
+signal respawn
 
 # Input
 var x_input: int = 0
@@ -300,6 +301,7 @@ func respawn() -> void:
 	hide()
 	velocity = Vector2.ZERO
 	
+	
 	yield(get_tree().create_timer(0.2), "timeout")
 	global_position = current_checkpoint.global_position
 	
@@ -309,8 +311,9 @@ func respawn() -> void:
 		$Sprite.flip_h = true
 	
 	show()
+	emit_signal("respawn")
 	death_pause = false
-
+	
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	emit_signal("animation_finished", anim_name)

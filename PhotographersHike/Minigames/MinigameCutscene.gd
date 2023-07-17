@@ -73,6 +73,7 @@ func play_cutscene() -> void:
 	Global.player_camera.current = true
 	$Path2D/PathFollow2D/CutsceneCamera.current = false
 	Global.player_camera.zoom_to = Vector2.ONE
+	yield(self, "finished_zoom")
 
 
 

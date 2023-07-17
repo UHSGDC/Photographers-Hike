@@ -9,6 +9,7 @@ var in_cave: bool = false
 
 func _ready() -> void:
 	Global.connect("room_changed", self, "Global_room_changed")
+	call_deferred("connect_player_respawn")
 	
 	
 	for child in get_children():
@@ -17,6 +18,10 @@ func _ready() -> void:
 			cougar_positions.append(child.global_position)
 			child.navigation_node = $Navigation2D
 
+
+func connect_player_respawn() -> void:
+	Global.platforming_player.connect("respawn", self, "Global_room_changed")
+	
 
 func Global_room_changed() -> void:
 	if !in_cave:
