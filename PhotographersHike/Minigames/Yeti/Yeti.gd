@@ -28,8 +28,6 @@ var current_state: int = STATES.IDLE
 func _ready() -> void:
 	$AnimationPlayer.play("Spawn")
 	yield($AnimationPlayer, "animation_finished")
-	
-	active = true
 
 
 func _process(delta: float) -> void:

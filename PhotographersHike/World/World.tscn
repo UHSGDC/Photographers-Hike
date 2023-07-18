@@ -3363,12 +3363,21 @@ position = Vector2( -88, 88 )
 [node name="CollisionShape2D" parent="Snowy/YetiController/CutsceneZone" index="0"]
 shape = SubResource( 151 )
 
+[node name="CougarFist" parent="Snowy/YetiController" index="4"]
+position = Vector2( 173, 90 )
+
+[node name="YetiFist" parent="Snowy/YetiController/CougarFist" index="0"]
+scale = Vector2( 1e-05, 1e-05 )
+
+[node name="Cougar" parent="Snowy/YetiController/CougarFist" index="1"]
+visible = true
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snowy/YetiController"]
 modulate = Color( 0.701961, 0.458824, 0.941176, 1 )
 shape = SubResource( 45 )
 
 [node name="PlatformingPlayer" parent="." instance=ExtResource( 2 )]
-position = Vector2( 4440, -200 )
+position = Vector2( 6328, -2272 )
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 3 )]
 

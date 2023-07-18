@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Minigames/Yeti/YetiController.gd" type="Script" id=1]
 [ext_resource path="res://Minigames/Yeti/Yeti.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/LevelTileset.tres" type="TileSet" id=3]
 [ext_resource path="res://Interactables/Sign/PlayerJumpCast.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Art/Cougar/CougarSpriteSheet.png" type="Texture" id=5]
+[ext_resource path="res://Art/yeti fist placeholder.png" type="Texture" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Drop Wall"
@@ -19,6 +21,43 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, 112 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Punch Cougar"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CougarFist/Cougar:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CougarFist/YetiFist:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "animation"
+tracks/2/path = NodePath("CougarFist/YetiFist/AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": PoolStringArray( "punch" ),
+"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="Animation" id=2]
@@ -37,9 +76,59 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
+[sub_resource type="Animation" id=6]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CougarFist/YetiFist:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "punch"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("CougarFist/YetiFist:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0.5, 0.5 ), Vector2( 1.2, 1.2 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Sleep"
+length = 2.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("CougarFist/Cougar:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 5, 4 ), Vector2( 6, 4 ), Vector2( 7, 4 ), Vector2( 8, 4 ), Vector2( 9, 4 ), Vector2( 4, 4 ) ]
+}
+
 [node name="YetiController" type="Area2D"]
 collision_layer = 0
 collision_mask = 4
+monitorable = false
 script = ExtResource( 1 )
 yeti_scene = ExtResource( 2 )
 player_jump_cast_scene = ExtResource( 4 )
@@ -50,6 +139,7 @@ player_cutscene_jump_multiplier = 0.8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 "anims/Drop Wall" = SubResource( 1 )
+"anims/Punch Cougar" = SubResource( 4 )
 anims/RESET = SubResource( 2 )
 
 [node name="LevelTilemap" type="TileMap" parent="."]
@@ -63,6 +153,32 @@ collision_mask = 4
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CutsceneZone"]
+
+[node name="CougarFist" type="Node2D" parent="."]
+
+[node name="YetiFist" type="Sprite" parent="CougarFist"]
+visible = false
+scale = Vector2( 1e-05, 1e-05 )
+texture = ExtResource( 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CougarFist/YetiFist"]
+root_node = NodePath("../../..")
+anims/RESET = SubResource( 6 )
+anims/punch = SubResource( 5 )
+
+[node name="Cougar" type="Sprite" parent="CougarFist"]
+visible = false
+texture = ExtResource( 5 )
+offset = Vector2( 1.5, -10 )
+flip_h = true
+hframes = 13
+vframes = 6
+frame = 56
+region_rect = Rect2( 114.3, 96.6375, 71.1784, 5.47526 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CougarFist/Cougar"]
+root_node = NodePath("../../..")
+anims/Sleep = SubResource( 3 )
 
 [connection signal="body_entered" from="." to="." method="_on_YetiController_body_entered"]
 [connection signal="body_entered" from="CutsceneZone" to="." method="_on_CutsceneZone_body_entered"]

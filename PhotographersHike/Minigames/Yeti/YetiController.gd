@@ -19,6 +19,9 @@ export var player_cutscene_jump_multiplier: float
 
 var should_stop: bool
 
+func _ready() -> void:
+	$CougarFist/Cougar/AnimationPlayer.play("Sleep")
+
 
 func _physics_process(delta: float) -> void:
 	if should_move_player_to_target:
@@ -78,7 +81,7 @@ func _on_YetiController_body_entered(body: Node) -> void:
 		player = body
 	else:
 		return
-		
+	
 	should_move_player_to_target = true
 	player.in_cutscene = true
 
@@ -110,7 +113,17 @@ func _on_CutsceneZone_body_entered(body: Node) -> void:
 		
 	# Spawn yeti
 	yeti = yeti_scene.instance()
+	yeti.active = false
 	get_parent().add_child(yeti)
 	yeti.global_position = $SpawnPosition.global_position
 	
+	yield(get_tree().create_timer(0.5), "timeout")
+	
+	$AnimationPlayer.play("Punch Cougar")
+	yield($AnimationPlayer, "animation_finished")
+	
 	player.in_cutscene = false
+	yield(get_tree().create_timer(0.5), "timeout")
+	yeti.active = true
+	
+	
