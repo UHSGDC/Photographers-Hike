@@ -2965,9 +2965,6 @@ polygon = PoolVector2Array( -608, 272, 1584, 272, 1568, -32, 2496, -48, 2520, -1
 [node name="MinigameCutscene" parent="SparseForest" instance=ExtResource( 19 )]
 position = Vector2( -256, 144 )
 
-[node name="PathFollow2D" parent="SparseForest/MinigameCutscene/Path2D" index="0"]
-position = Vector2( 96, -56 )
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SparseForest/MinigameCutscene"]
 position = Vector2( -67, -40 )
 shape = SubResource( 150 )
@@ -3371,7 +3368,7 @@ modulate = Color( 0.701961, 0.458824, 0.941176, 1 )
 shape = SubResource( 45 )
 
 [node name="PlatformingPlayer" parent="." instance=ExtResource( 2 )]
-position = Vector2( 6224, -2272 )
+position = Vector2( 4440, -200 )
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 3 )]
 

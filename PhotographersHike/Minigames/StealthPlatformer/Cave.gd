@@ -29,6 +29,7 @@ func Global_room_changed() -> void:
 	for cougar_id in cougars.size():
 		cougars[cougar_id].global_position = cougar_positions[cougar_id]
 		cougars[cougar_id].reset_state()
+		cougars[cougar_id].current_footsteps = 0
 
 
 func _on_Cave_body_entered(body: Node):

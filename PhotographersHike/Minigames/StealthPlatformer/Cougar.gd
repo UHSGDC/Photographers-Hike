@@ -73,6 +73,7 @@ var navigation_node: Navigation2D
 var facing_right: bool = false
 onready var vision_cone_offset: float = $VisionCone.position.x
 
+
 func _ready() -> void:
 	call_deferred("_set_player_reference")
 	reset_state()
@@ -102,7 +103,8 @@ func animate() -> void:
 			if $AnimationPlayer.assigned_animation != "Lick":
 				$AnimationPlayer.play("Lick")
 		STATES.SLEEPING:
-			$AnimationPlayer.queue("Sleep")
+			if $AnimationPlayer.assigned_animation != "Disturbed":
+				$AnimationPlayer.play("Sleep")
 		STATES.PATROLLING:
 			if !is_on_floor():
 				if $AnimationPlayer.assigned_animation != "Jump":
@@ -126,14 +128,15 @@ func look() -> void:
 		$VisionCone.position.x = vision_cone_offset
 		$VisionCone.facing_right = false
 		$Sprite.scale.x = 1
-	
-	
+
 func reset_state() -> void:
 	change_state(initial_state)
-	
+
 	
 func change_state(new_state: int) -> void:
 	if new_state != STATES.NONE:
+		if new_state != STATES.PATROLLING:
+			$VisionCone.visible = false
 		current_state = new_state
 		entering_state = true
 	
@@ -183,12 +186,14 @@ func chase_player(delta: float) -> int:
 
 func sleep(delta: float) -> int:
 	x_input = 0
+	jump_input = 0
 	move(delta, 0, 0)
 	return STATES.NONE
 	
 	
 func idle(delta: float) -> int:
 	x_input = 0
+	jump_input = 0
 	move(delta, 0, 0)
 	return STATES.NONE
 
@@ -334,8 +339,7 @@ func jump() -> void:
 
 # Chase player if they get in vision cone
 func _on_VisionCone_body_entered(body: Node) -> void:
-	if body == Global.platforming_player and current_state == STATES.PATROLLING:
-		$VisionCone.visible = false
+	if body.is_in_group("player") and current_state == STATES.PATROLLING:
 		change_state(STATES.CHASING)
 
 
@@ -345,7 +349,7 @@ func _on_SleepingDetection_body_entered(body: Node) -> void:
 		current_footsteps += 1
 		if current_footsteps >= MAX_FOOTSTEPS:
 			change_state(STATES.PATROLLING)
-			current_footsteps == 0
+			current_footsteps = 0
 			return
 			
 		$AnimationPlayer.play("Disturbed")
@@ -355,4 +359,5 @@ func _on_SleepingDetection_body_entered(body: Node) -> void:
 
 func _on_BiteArea_body_entered(body: Node) -> void:
 	if body.is_in_group("player"):
+		change_state(STATES.IDLE)
 		body.respawn()
