@@ -9,7 +9,7 @@
 extents = Vector2( 11, 6 )
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 90.05
+radius = 93.0
 
 [sub_resource type="Animation" id=10]
 resource_name = "Disturbed"

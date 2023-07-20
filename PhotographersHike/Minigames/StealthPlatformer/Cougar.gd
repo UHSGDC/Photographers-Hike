@@ -103,7 +103,7 @@ func animate() -> void:
 			if $AnimationPlayer.assigned_animation != "Lick":
 				$AnimationPlayer.play("Lick")
 		STATES.SLEEPING:
-			if $AnimationPlayer.assigned_animation != "Disturbed":
+			if $AnimationPlayer.current_animation != "Disturbed":
 				$AnimationPlayer.play("Sleep")
 		STATES.PATROLLING:
 			if !is_on_floor():
