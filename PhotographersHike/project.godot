@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Minigames/StealthPlatformer/Cougar.gd"
 }, {
+"base": "Area2D",
+"class": "DeathZone",
+"language": "GDScript",
+"path": "res://World/DeathZone.gd"
+}, {
 "base": "NinePatchRect",
 "class": "DialogBox",
 "language": "GDScript",
@@ -53,17 +58,24 @@ _global_script_classes=[ {
 "class": "Player",
 "language": "GDScript",
 "path": "res://Player/PlatformingPlayer.gd"
+}, {
+"base": "DeathZone",
+"class": "Spike",
+"language": "GDScript",
+"path": "res://World/Spike.gd"
 } ]
 _global_script_class_icons={
 "BaseMenu": "",
 "CameraItem": "",
 "Cougar": "",
+"DeathZone": "",
 "DialogBox": "",
 "JSONOpener": "",
 "LevelRoom": "",
 "Menus": "",
 "NPC": "",
-"Player": ""
+"Player": "",
+"Spike": ""
 }
 
 [application]

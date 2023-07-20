@@ -1,6 +1,12 @@
 extends Area2D
 
+class_name DeathZone
+
+func _ready() -> void:
+	var error = connect("body_entered", self, "_on_DeathZone_body_entered")
+	if error:
+		push_error("error connecting deathzone entered signal to self")
 
 func _on_DeathZone_body_entered(body: Node) -> void:
-	if body == Global.platforming_player:
-		Global.platforming_player.respawn()
+	if body.is_in_group("player"):
+		body.respawn()
