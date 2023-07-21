@@ -4,7 +4,7 @@
 [ext_resource path="res://Minigames/Yeti/Yeti.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/LevelTileset.tres" type="TileSet" id=3]
 [ext_resource path="res://Interactables/Sign/PlayerJumpCast.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/Art/Cougar/CougarSpriteSheet.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Art/Minigames/CougarSpriteSheet.png" type="Texture" id=5]
 [ext_resource path="res://Art/yeti fist placeholder.png" type="Texture" id=6]
 
 [sub_resource type="Animation" id=1]
