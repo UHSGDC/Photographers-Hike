@@ -32,7 +32,7 @@ onready var jump_velocity: float = - (2 * jump_height) / jump_duration
 var can_jump: bool = true
 
 # Quality of life jumping behavior
-var coyote_time_length: float = 0.15
+var coyote_time_length: float = 0.1
 var jump_was_pressed: bool = false
 var remember_jump_length: float = 0.1
 
