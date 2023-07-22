@@ -45,6 +45,7 @@ func move(delta: float) -> void:
 	if current_rock:
 		player.position = lerp(player.global_position, current_rock.global_position, 0.2)
 		jump_arrow.look_at(get_global_mouse_position())
+		player.velocity.x = sign(get_global_mouse_position().x - player.global_position.x)
 		
 	
 	if Input.is_action_just_pressed("jump") && current_rock:
@@ -73,7 +74,7 @@ func jump() -> void:
 	
 	# Resetting Jump
 	
-	jump_arrow.get_node("Arrow").scale.x = 4 * min_jump_velocity / max_jump_velocity
+	jump_arrow.reset_arrow_progress()
 	jump_arrow.hide()
 	current_rock = null
 	current_jump_velocity = min_jump_velocity
@@ -91,7 +92,7 @@ func charge_jump(delta: float) -> void:
 	
 	current_jump_velocity += jump_charge_speed * jump_charge_direction * delta
 	
-	jump_arrow.get_node("Arrow").scale.x = 4 * current_jump_velocity / max_jump_velocity
+	jump_arrow.set_arrow_progress(current_jump_velocity / max_jump_velocity)
 
 
 func exit_minigame() -> void:
