@@ -1,0 +1,9 @@
+better tutorial for rock climbing
+cancel jump
+more rocks
+fix text for pictures in different areas
+vines hard to get used to
+make some way to skip between levels and areas. or a retry from last rock for rock climbing
+way to view map
+max power hard to see. Make arrow flash
+recovery rocks need to be more obvious
