@@ -5,6 +5,7 @@
 [ext_resource path="res://Fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="DynamicFont" id=3]
+size = 12
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=4]
@@ -139,7 +140,9 @@ margin_left = -48.0
 margin_top = 52.0
 margin_right = 48.0
 margin_bottom = 96.0
+grow_horizontal = 2
 custom_fonts/font = SubResource( 3 )
+text = "Dense Forest"
 
 [node name="TimeLabel" parent="CanvasLayer/AlbumPicture" index="2"]
 margin_left = -56.0
