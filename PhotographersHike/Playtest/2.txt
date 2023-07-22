@@ -7,3 +7,4 @@ make some way to skip between levels and areas. or a retry from last rock for ro
 way to view map
 max power hard to see. Make arrow flash
 recovery rocks need to be more obvious
+quit button doesnt work
