@@ -4,16 +4,16 @@
 [ext_resource path="res://World/Spike.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8, 2.5 )
+extents = Vector2( 7, 2.5 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 8, 2.5 )
+extents = Vector2( 7, 2.5 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 2.5, 8 )
+extents = Vector2( 2.5, 7 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 2.5, 8 )
+extents = Vector2( 2.5, 7 )
 
 [node name="Spike" type="Area2D"]
 collision_layer = 0
@@ -23,8 +23,7 @@ script = ExtResource( 3 )
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 8, 8 )
 texture = ExtResource( 2 )
-hframes = 3
-vframes = 4
+hframes = 4
 
 [node name="Up" type="CollisionShape2D" parent="."]
 position = Vector2( 8, 13.5 )
