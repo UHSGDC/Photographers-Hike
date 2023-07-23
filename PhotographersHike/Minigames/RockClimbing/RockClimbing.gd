@@ -55,6 +55,9 @@ func move(delta: float) -> void:
 	if Input.is_action_just_released("jump") && current_rock && can_charge:
 		jump()
 	
+	if Input.is_action_just_pressed("interact"):
+		reset_jump()
+	
 	if !current_rock:
 		player.apply_gravity(delta)
 
@@ -77,16 +80,19 @@ func jump() -> void:
 	player.velocity = jump_velocity * jump_direction
 	
 	
-	# Resetting Jump
+	reset_jump()
 	
-	jump_arrow.reset_arrow_progress()
+	
 	jump_arrow.hide()
 	current_rock = null
+	
+
+func reset_jump() -> void:
+	jump_arrow.reset_arrow_progress()	
 	current_jump_velocity = min_jump_velocity
 	jump_charge_direction = 1
 	can_charge = false
 	
-
 		
 func charge_jump(delta: float) -> void:
 	
