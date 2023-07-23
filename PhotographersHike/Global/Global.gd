@@ -8,12 +8,22 @@ var platforming_player: Player
 var dialog_box: DialogBox
 var camera_item: CameraItem
 var speedrun_timer: CanvasLayer
+var debug: CanvasLayer
 
 var current_level: String
 var current_room: Area2D
 
+var level_text_dictionary: Dictionary = {
+	"Base" : "Base Camp",
+	"DenseForest" : "Dense Forest",
+	"SparseForest" : "Sparse Forest",
+	"Snowy" : "Snowy Tundra",
+	"Summit" : "Summit"
+}
+
 var room_pause: bool = false
 export var room_pause_time: float = 0.2
+
 
 enum {
 	UP
@@ -30,7 +40,7 @@ func change_room(room_node: LevelRoom, room_position: Vector2, room_size: Vector
 	
 	current_room = room_node
 	
-	current_level = current_room.get_parent().name
+	current_level = level_text_dictionary[current_room.get_parent().name]
 	
 	room_pause = true
 	yield(get_tree().create_timer(room_pause_time),"timeout")

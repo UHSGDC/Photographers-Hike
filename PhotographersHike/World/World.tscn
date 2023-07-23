@@ -1,4 +1,4 @@
-[gd_scene load_steps=162 format=2]
+[gd_scene load_steps=163 format=2]
 
 [ext_resource path="res://World/DeathZone.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/PlatformingPlayer.tscn" type="PackedScene" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://World/Spike.tscn" type="PackedScene" id=20]
 [ext_resource path="res://World/LevelTilemap.gd" type="Script" id=21]
 [ext_resource path="res://World/Background.tres" type="TileSet" id=22]
+[ext_resource path="res://Misc/Debug.tscn" type="PackedScene" id=23]
 
 [sub_resource type="RectangleShape2D" id=44]
 extents = Vector2( 240, 144 )
@@ -3402,6 +3403,10 @@ position = Vector2( -120, -736 )
 visible = false
 
 [node name="SpeedRunTimer" parent="." instance=ExtResource( 14 )]
+
+[node name="Debug" parent="." instance=ExtResource( 23 )]
+visible = false
+position_path_array = [ NodePath("../Base/Room1/Checkpoints/Position2D"), NodePath("../DenseForest/Room10/Checkpoints/Position2D"), NodePath("../SparseForest/Room6/Checkpoints/Position2D2"), NodePath("../Snowy/Room1/Checkpoints/Position2D") ]
 
 [connection signal="body_entered" from="SparseForest/Cave" to="SparseForest/Cave" method="_on_Cave_body_entered"]
 [connection signal="body_exited" from="SparseForest/Cave" to="SparseForest/Cave" method="_on_Cave_body_exited"]

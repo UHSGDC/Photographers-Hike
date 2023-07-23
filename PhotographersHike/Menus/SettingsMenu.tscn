@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Menus/SettingsMenu.gd" type="Script" id=2]
 [ext_resource path="res://Menus/Volume_Value.gd" type="Script" id=3]
 [ext_resource path="res://Menus/remapbinds.tscn" type="PackedScene" id=4]
-[ext_resource path="res://addons/input_helper/device_tester.gd" type="Script" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
@@ -15,13 +14,6 @@ size = 12
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=11]
-size = 12
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=12]
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=9]
@@ -106,7 +98,7 @@ margin_top = 56.0
 margin_right = 264.0
 margin_bottom = 80.0
 
-[node name="FullScreen" type="Label" parent="Settings_Menu"]
+[node name="ShowDebugText" type="Label" parent="Settings_Menu"]
 modulate = Color( 0, 0, 0, 1 )
 margin_left = 8.0
 margin_top = 79.0
@@ -114,15 +106,15 @@ margin_right = 475.0
 margin_bottom = 91.0
 rect_pivot_offset = Vector2( 123, 6 )
 custom_fonts/font = SubResource( 2 )
-text = "Fullscreen: "
+text = "Show Debug: "
 
-[node name="Full_Checkbox" type="CheckBox" parent="Settings_Menu"]
-margin_left = 133.0
+[node name="ShowDebugBox" type="CheckBox" parent="Settings_Menu"]
+margin_left = 136.0
 margin_top = 72.0
-margin_right = 157.0
+margin_right = 160.0
 margin_bottom = 96.0
 
-[node name="BorderLess" type="Label" parent="Settings_Menu"]
+[node name="FullScreen" type="Label" parent="Settings_Menu"]
 modulate = Color( 0, 0, 0, 1 )
 margin_left = 8.0
 margin_top = 95.0
@@ -130,15 +122,15 @@ margin_right = 475.0
 margin_bottom = 107.0
 rect_pivot_offset = Vector2( 123, 6 )
 custom_fonts/font = SubResource( 2 )
-text = "Borderless:"
+text = "Fullscreen: "
 
-[node name="Border_Checkbox" type="CheckBox" parent="Settings_Menu"]
+[node name="Full_Checkbox" type="CheckBox" parent="Settings_Menu"]
 margin_left = 133.0
 margin_top = 88.0
 margin_right = 157.0
 margin_bottom = 112.0
 
-[node name="VSYNC" type="Label" parent="Settings_Menu"]
+[node name="BorderLess" type="Label" parent="Settings_Menu"]
 modulate = Color( 0, 0, 0, 1 )
 margin_left = 8.0
 margin_top = 111.0
@@ -146,56 +138,45 @@ margin_right = 475.0
 margin_bottom = 123.0
 rect_pivot_offset = Vector2( 123, 6 )
 custom_fonts/font = SubResource( 2 )
+text = "Borderless:"
+
+[node name="Border_Checkbox" type="CheckBox" parent="Settings_Menu"]
+margin_left = 133.0
+margin_top = 104.0
+margin_right = 157.0
+margin_bottom = 128.0
+
+[node name="VSYNC" type="Label" parent="Settings_Menu"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 8.0
+margin_top = 127.0
+margin_right = 475.0
+margin_bottom = 139.0
+rect_pivot_offset = Vector2( 123, 6 )
+custom_fonts/font = SubResource( 2 )
 text = "VSYNC: "
 
 [node name="VSYNC_Checkbox" type="CheckBox" parent="Settings_Menu"]
 margin_left = 73.0
-margin_top = 104.0
+margin_top = 120.0
 margin_right = 97.0
-margin_bottom = 128.0
+margin_bottom = 144.0
 
 [node name="Label" type="Label" parent="Settings_Menu"]
 margin_left = 8.0
-margin_top = 136.0
+margin_top = 152.0
 margin_right = 156.0
-margin_bottom = 152.0
+margin_bottom = 168.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 3 )
 text = "KEYBINDS:"
-
-[node name="Current_Device_Input" type="Control" parent="Settings_Menu"]
-margin_right = 40.0
-margin_bottom = 40.0
-script = ExtResource( 5 )
-
-[node name="Vbox" type="VBoxContainer" parent="Settings_Menu/Current_Device_Input"]
-margin_left = 10.0
-margin_top = 156.0
-margin_right = 178.0
-margin_bottom = 188.0
-
-[node name="Label" type="Label" parent="Settings_Menu/Current_Device_Input/Vbox"]
-margin_right = 168.0
-margin_bottom = 12.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 11 )
-text = "CURRENT DEVICE"
-align = 1
-
-[node name="CurrentDevice" type="Label" parent="Settings_Menu/Current_Device_Input/Vbox"]
-margin_top = 16.0
-margin_right = 168.0
-margin_bottom = 32.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 12 )
-text = "Keyboard"
 
 [node name="Keybinds Scroller" type="ScrollContainer" parent="Settings_Menu"]
 self_modulate = Color( 0, 0, 0, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 6.0
-margin_top = 190.0
+margin_top = 176.0
 margin_right = -13.0
 margin_bottom = -8.0
 scroll_horizontal_enabled = false
@@ -314,6 +295,7 @@ text = "Back"
 
 [connection signal="value_changed" from="Settings_Menu/Volume_Value" to="Settings_Menu/Volume_Value" method="_on_Volume_Value_value_changed"]
 [connection signal="toggled" from="Settings_Menu/ShowSpeedrunTimerBox" to="." method="_on_ShowSpeedrunTimerBox_toggled"]
+[connection signal="toggled" from="Settings_Menu/ShowDebugBox" to="." method="_on_ShowDebugBox_toggled"]
 [connection signal="pressed" from="Settings_Menu/Full_Checkbox" to="." method="_on_Full_Checkbox_pressed"]
 [connection signal="pressed" from="Settings_Menu/Border_Checkbox" to="." method="_on_Border_Checkbox_pressed"]
 [connection signal="pressed" from="Settings_Menu/VSYNC_Checkbox" to="." method="_on_VSYNC_Checkbox_pressed"]

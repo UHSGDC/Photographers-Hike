@@ -19,3 +19,7 @@ func _on_Back_pressed() -> void:
 
 func _on_ShowSpeedrunTimerBox_toggled(button_pressed):
 	Global.speedrun_timer.visible = button_pressed
+
+
+func _on_ShowDebugBox_toggled(button_pressed):
+	Global.debug.visible = button_pressed
