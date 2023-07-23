@@ -109,9 +109,9 @@ custom_fonts/font = SubResource( 2 )
 text = "Show Debug: "
 
 [node name="ShowDebugBox" type="CheckBox" parent="Settings_Menu"]
-margin_left = 136.0
+margin_left = 133.0
 margin_top = 72.0
-margin_right = 160.0
+margin_right = 157.0
 margin_bottom = 96.0
 
 [node name="FullScreen" type="Label" parent="Settings_Menu"]
@@ -146,7 +146,7 @@ margin_top = 104.0
 margin_right = 157.0
 margin_bottom = 128.0
 
-[node name="VSYNC" type="Label" parent="Settings_Menu"]
+[node name="AimWithMouse" type="Label" parent="Settings_Menu"]
 modulate = Color( 0, 0, 0, 1 )
 margin_left = 8.0
 margin_top = 127.0
@@ -154,12 +154,12 @@ margin_right = 475.0
 margin_bottom = 139.0
 rect_pivot_offset = Vector2( 123, 6 )
 custom_fonts/font = SubResource( 2 )
-text = "VSYNC: "
+text = "Aim with Mouse: "
 
-[node name="VSYNC_Checkbox" type="CheckBox" parent="Settings_Menu"]
-margin_left = 73.0
+[node name="AimWithMouseCheckbox" type="CheckBox" parent="Settings_Menu"]
+margin_left = 180.0
 margin_top = 120.0
-margin_right = 97.0
+margin_right = 204.0
 margin_bottom = 144.0
 
 [node name="Label" type="Label" parent="Settings_Menu"]
@@ -298,5 +298,5 @@ text = "Back"
 [connection signal="toggled" from="Settings_Menu/ShowDebugBox" to="." method="_on_ShowDebugBox_toggled"]
 [connection signal="pressed" from="Settings_Menu/Full_Checkbox" to="." method="_on_Full_Checkbox_pressed"]
 [connection signal="pressed" from="Settings_Menu/Border_Checkbox" to="." method="_on_Border_Checkbox_pressed"]
-[connection signal="pressed" from="Settings_Menu/VSYNC_Checkbox" to="." method="_on_VSYNC_Checkbox_pressed"]
+[connection signal="toggled" from="Settings_Menu/AimWithMouseCheckbox" to="." method="_on_AimWithMouseCheckbox_toggled"]
 [connection signal="pressed" from="Settings_Menu/HBoxContainer/Back" to="." method="_on_Back_pressed"]

@@ -13,6 +13,8 @@ var debug: CanvasLayer
 var current_level: String
 var current_room: Area2D
 
+var aim_with_mouse_rock_climbing: bool = false
+
 var level_text_dictionary: Dictionary = {
 	"Base" : "Base Camp",
 	"DenseForest" : "Dense Forest",

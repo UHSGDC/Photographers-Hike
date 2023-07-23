@@ -31,6 +31,8 @@ var track_path: bool = false
 
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
+export var keyboard_aim_speed: float
+
 
 func _ready() -> void:
 	current_jump_velocity = min_jump_velocity
@@ -56,8 +58,8 @@ func _physics_process(delta: float) -> void:
 func move(delta: float) -> void:
 	if current_rock:
 		player.position = lerp(player.global_position, current_rock.global_position, 0.2)
-		jump_arrow.look_at(get_global_mouse_position())
-		player.velocity.x = sign(get_global_mouse_position().x - player.global_position.x)
+		player.velocity.x = sign(Vector2.RIGHT.rotated(jump_arrow.rotation).x)
+		aim_arrow(delta)
 		
 	
 	if Input.is_action_just_pressed("jump") && current_rock:
@@ -80,11 +82,20 @@ func move(delta: float) -> void:
 
 	player.velocity = player.move_and_slide(player.velocity, Vector2.UP)
 	
+	
+func aim_arrow(delta: float) -> void:
+	if Global.aim_with_mouse_rock_climbing:
+		jump_arrow.look_at(get_global_mouse_position())
+	else:
+		var rotation_direction = Input.get_axis("left", "right")
+		jump_arrow.rotate(rotation_direction * keyboard_aim_speed * delta)
+	
+	
 		
 func jump() -> void:
 	# Actual Jump
 	
-	var jump_direction: Vector2 = (get_global_mouse_position() - player.global_position).normalized()
+	var jump_direction: Vector2 = Vector2.RIGHT.rotated(jump_arrow.rotation)
 	
 	var jump_velocity = current_jump_velocity
 	
