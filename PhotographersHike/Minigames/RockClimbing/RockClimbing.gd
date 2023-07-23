@@ -29,10 +29,19 @@ var can_charge: bool = false
 
 var track_path: bool = false
 
+var rng: RandomNumberGenerator = RandomNumberGenerator.new()
+
 
 func _ready() -> void:
 	current_jump_velocity = min_jump_velocity
 	call_deferred("set_player_reference")
+	
+	randomize_rock_textures()
+	
+func randomize_rock_textures() -> void:
+	rng.randomize()
+	for rock in $Rocks.get_children():
+		rock.get_node("Sprite").frame = rng.randi_range(0, 3)
 	
 	
 func set_player_reference() -> void:

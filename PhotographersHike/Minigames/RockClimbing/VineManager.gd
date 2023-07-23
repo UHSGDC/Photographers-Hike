@@ -7,11 +7,18 @@ export var deacceleration: Vector2
 var player: KinematicBody2D
 var vines: int = 0
 
+var rng: RandomNumberGenerator = RandomNumberGenerator.new()
+
 
 func _ready() -> void:
+	rng.randomize()
 	for child in get_children():
 		child.connect("body_entered", self, "_on_Vine_body_entered")
 		child.connect("body_exited", self, "_on_Vine_body_exited")
+		
+		
+
+		child.get_node("Sprite").frame = rng.randi_range(0, 1)
 
 
 func _physics_process(delta):
