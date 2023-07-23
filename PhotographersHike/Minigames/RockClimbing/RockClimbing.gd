@@ -2,6 +2,7 @@ extends Node2D
 
 
 var current_rock: Area2D
+var last_rock: Area2D
 
 var velocity: Vector2 = Vector2.ZERO
 
@@ -25,6 +26,8 @@ var jump_arrow: Node2D
 var player: Player
 
 var can_charge: bool = false
+
+var track_path: bool = false
 
 
 func _ready() -> void:
@@ -60,6 +63,8 @@ func move(delta: float) -> void:
 	
 	if !current_rock:
 		player.apply_gravity(delta)
+		if track_path:
+			last_rock.last_jump_path = add_point_to_rock_path(player.global_position, last_rock.last_jump_path)
 
 	if player.is_on_floor() && !player.get_floor_angle():
 		exit_minigame()
@@ -79,10 +84,13 @@ func jump() -> void:
 	
 	player.velocity = jump_velocity * jump_direction
 	
+	last_rock = current_rock
+	track_path = true
 	
 	reset_jump()
 	
-	
+	current_rock.last_jump_strength = jump_velocity
+	clear_path(current_rock)
 	jump_arrow.hide()
 	current_rock = null
 	
@@ -107,6 +115,7 @@ func charge_jump(delta: float) -> void:
 
 
 func exit_minigame() -> void:
+	track_path = false
 	current_rock = null
 	player.in_minigame = false
 
@@ -116,8 +125,9 @@ func start_minigame() -> void:
 	
 
 func _on_Rock_touched(body: Node) -> void:
-	
 	if body.is_in_group("rock"):
+		track_path = false
+		
 		if player.velocity.length_squared() > pow(max_attach_speed, 2) && player.in_minigame:
 			return
 			
@@ -128,6 +138,21 @@ func _on_Rock_touched(body: Node) -> void:
 		current_rock = body
 		player.velocity.x = 0
 		player.velocity.y = 0
+		
+		if body.last_jump_path.size() > 0:
+			$Line2D.width = current_rock.last_jump_strength / max_jump_velocity * 3
+			display_path(current_rock.last_jump_path)
+
+
+func display_path(path: PoolVector2Array):
+	$Line2D.show()
+	$Line2D.global_position = Vector2.ZERO
+	$Line2D.points = path
+	
+	
+func clear_path(rock: Area2D):
+	rock.last_jump_path = PoolVector2Array()
+	$Line2D.hide()
 
 
 func _on_RockClimbing_body_entered(body: Node) -> void:
@@ -152,3 +177,8 @@ func _on_RockClimbing_body_exited(body: Node) -> void:
 		
 		jump_arrow.queue_free()
 		jump_arrow = null
+		
+		
+func add_point_to_rock_path(point: Vector2, path: PoolVector2Array) -> PoolVector2Array:
+	path.append(point)
+	return path

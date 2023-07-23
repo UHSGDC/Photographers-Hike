@@ -19,9 +19,9 @@ region = Rect2( 1, 14, 15, 7 )
 script = ExtResource( 2 )
 
 [node name="ArrowProgress" type="TextureProgress" parent="."]
-margin_left = 16.0
+margin_left = 10.0
 margin_top = -3.0
-margin_right = 32.0
+margin_right = 26.0
 margin_bottom = 4.0
 value = 100.0
 texture_over = SubResource( 1 )
