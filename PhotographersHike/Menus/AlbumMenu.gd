@@ -60,7 +60,25 @@ func _on_DownloadButton_pressed() -> void:
 	
 
 func _handle_web_download() -> void:			
-	pass
+	$ConfirmDownloadDialog.dialog_text = "Download %s pictures?" % Global.camera_item.picture_textures.size()
+	$ConfirmDownloadDialog.popup_centered()
+	
+	if !yield(self, "confirm_pressed"):
+		return
+
+	var picture_count: int = 0
+	
+	for i in Global.camera_item.picture_textures.size():
+		var image = Global.camera_item.picture_textures[i].get_data()
+		var buf = image.save_png_to_buffer()
+		JavaScript.download_buffer(buf, "Picture %s.png" % (i + 1))
+		picture_count += 1
+	
+	
+	$DownloadDialog.dialog_text = "%s pictures downloaded!" % picture_count
+		
+	$DownloadDialog.popup_centered()
+	
 
 
 func _handle_desktop_download() -> void:
@@ -79,7 +97,7 @@ func _handle_desktop_download() -> void:
 	
 	for i in Global.camera_item.picture_textures.size():
 		var image = Global.camera_item.picture_textures[i].get_data()
-		var error = image.save_png(directory_path + "/Picture %s.png" % i)
+		var error = image.save_png(directory_path + "/Picture %s.png" % (i + 1))
 		if error:
 			failed = true
 		else:
