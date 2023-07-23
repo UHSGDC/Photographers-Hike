@@ -55,8 +55,15 @@ func display_and_store_image(image: Image) -> void:
 		minute_string = "0" + str(time_dictionary["minute"])
 	else:
 		minute_string = str(time_dictionary["minute"])
+		
+	var time_period: String
 	
-	var time_string: String = str(wrapi(time_dictionary["hour"], 1, 13)) + ":" + minute_string
+	if time_dictionary["hour"] < 12 or time_dictionary["hour"] == 24:
+		time_period = "am"
+	else:
+		time_period = "pm"
+	
+	var time_string: String = str(wrapi(time_dictionary["hour"], 1, 13)) + ":" + minute_string + time_period
 	
 	picture_node.set_picture_texture(texture)
 	picture_node.set_level_label_text(level)
