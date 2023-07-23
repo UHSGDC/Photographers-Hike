@@ -3393,7 +3393,7 @@ modulate = Color( 0.701961, 0.458824, 0.941176, 1 )
 shape = SubResource( 45 )
 
 [node name="PlatformingPlayer" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1488, -1096 )
+position = Vector2( -960, -1584 )
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 3 )]
 

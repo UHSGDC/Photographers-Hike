@@ -24,9 +24,11 @@ func _ready() -> void:
 func _physics_process(delta):
 	if vines:
 		if abs(player.velocity.x) > max_vine_speed.x:
-			player.velocity.x = lerp(abs(player.velocity.x), max_vine_speed.x, deacceleration.x * delta) * sign(player.velocity.x)
+			var blend := pow(0.5, deacceleration.x * delta)
+			player.velocity.x = lerp(abs(player.velocity.x), max_vine_speed.x, blend) * sign(player.velocity.x)
 		if abs(player.velocity.y) > max_vine_speed.y:
-			player.velocity.y = lerp(abs(player.velocity.y), max_vine_speed.y, deacceleration.y * delta) * sign(player.velocity.y)
+			var blend := pow(0.5, deacceleration.y * delta)
+			player.velocity.y = lerp(abs(player.velocity.y), max_vine_speed.y, blend) * sign(player.velocity.y)
 			
 
 func _on_Vine_body_entered(body):
