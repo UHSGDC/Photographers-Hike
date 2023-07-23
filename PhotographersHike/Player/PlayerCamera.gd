@@ -78,6 +78,8 @@ func _physics_process(delta: float) -> void:
 func check_for_panning() -> bool:
 	if Input.is_action_just_pressed("interact"):
 		return false
+	if Global.platforming_player.x_input or Global.platforming_player.jump_input:
+		return false
 	if Input.is_action_just_pressed("menu_up") or Input.is_action_just_pressed("menu_down") or Input.is_action_just_pressed("menu_left") or Input.is_action_just_pressed("menu_right"):
 		if !panning:
 			panned_position = Global.platforming_player.global_position

@@ -6,4 +6,4 @@
 current = true
 process_mode = 0
 script = ExtResource( 1 )
-pan_speed = 200.0
+pan_speed = 300.0
