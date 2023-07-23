@@ -306,16 +306,16 @@ func respawn() -> void:
 	$BlackScreen/AnimationPlayer.play("Fade In")
 	yield($BlackScreen/AnimationPlayer, "animation_finished")
 	
-	
+	global_position = current_checkpoint.global_position
 	yield(get_tree().create_timer(0.1), "timeout")
 	if sign(Global.current_room.position.x - global_position.x) > 0:
 		$Sprite.flip_h = true
 	else:
 		$Sprite.flip_h = false
-		
+	
 	show()
 	
-	global_position = current_checkpoint.global_position
+	
 	
 	emit_signal("respawn")
 	can_jump = false
