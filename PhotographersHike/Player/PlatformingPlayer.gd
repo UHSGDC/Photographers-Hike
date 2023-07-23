@@ -300,18 +300,25 @@ func respawn() -> void:
 	death_pause = true
 	hide()
 	velocity = Vector2.ZERO
+	Global.player_camera.screen_shake(0.2)
+	$BlackScreen/AnimationPlayer.play("Fade Out")
+	yield($BlackScreen/AnimationPlayer, "animation_finished")
+	$BlackScreen/AnimationPlayer.play("Fade In")
+	yield($BlackScreen/AnimationPlayer, "animation_finished")
 	
 	
-	yield(get_tree().create_timer(0.2), "timeout")
+	yield(get_tree().create_timer(0.1), "timeout")
+	if sign(Global.current_room.position.x - global_position.x) > 0:
+		$Sprite.flip_h = true
+	else:
+		$Sprite.flip_h = false
+		
+	show()
+	
 	global_position = current_checkpoint.global_position
 	
-	if sign(Global.current_room.position.x - global_position.x) > 0:
-		$Sprite.flip_h = false
-	else:
-		$Sprite.flip_h = true
-	
-	show()
 	emit_signal("respawn")
+	can_jump = false
 	death_pause = false
 	
 

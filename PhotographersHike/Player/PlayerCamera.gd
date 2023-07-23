@@ -20,6 +20,8 @@ export var pan_speed: float
 var panned_position: Vector2
 var panning: bool = false
 
+const SCREEN_SHAKE_UPDATE_TIME: float = 0.05
+
 
 func _ready() -> void:
 	Global.player_camera = self
@@ -32,6 +34,14 @@ func _ready() -> void:
 	yield(get_tree().create_timer(0.1),"timeout")
 	smoothing = follow_smoothing
 
+
+func screen_shake(length: float) -> void:
+	for i in length / SCREEN_SHAKE_UPDATE_TIME:
+		offset = Vector2(randf() * 2, randf() * 2)
+		yield(get_tree().create_timer(SCREEN_SHAKE_UPDATE_TIME), "timeout")
+		
+	offset = Vector2.ZERO
+	
 
 func _physics_process(delta: float) -> void:
 	if zoom_to != zoom:

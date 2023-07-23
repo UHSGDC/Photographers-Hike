@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Assets/Art/Player/PlayerCharacterSpriteSheet.png" type="Texture" id=1]
 [ext_resource path="res://Player/PlatformingPlayer.gd" type="Script" id=2]
@@ -92,6 +92,54 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 1, 0 ), Vector2( 2, 0 ), Vector2( 3, 0 ), Vector2( 4, 0 ), Vector2( 5, 0 ), Vector2( 6, 0 ), Vector2( 7, 0 ), Vector2( 8, 0 ), Vector2( 9, 0 ), Vector2( 10, 0 ), Vector2( 11, 0 ), Vector2( 12, 0 ), Vector2( 13, 0 ), Vector2( 14, 0 ), Vector2( 15, 0 ), Vector2( 16, 0 ), Vector2( 17, 0 ) ]
 }
 
+[sub_resource type="Animation" id=8]
+resource_name = "Fade In"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Fade Out"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
 [node name="PlatformingPlayer" type="KinematicBody2D" groups=["player"]]
 z_index = 2
 collision_layer = 4
@@ -139,6 +187,19 @@ anims/Idle = SubResource( 5 )
 anims/Jump = SubResource( 6 )
 anims/Run = SubResource( 3 )
 "anims/Take Picture" = SubResource( 7 )
+
+[node name="BlackScreen" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="BlackScreen"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BlackScreen"]
+"anims/Fade In" = SubResource( 8 )
+"anims/Fade Out" = SubResource( 9 )
+anims/RESET = SubResource( 10 )
 
 [connection signal="area_entered" from="RoomDetector" to="." method="_on_RoomDetector_area_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
