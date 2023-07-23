@@ -69,7 +69,12 @@ func jump() -> void:
 	
 	var jump_direction: Vector2 = (get_global_mouse_position() - player.global_position).normalized()
 	
-	player.velocity = current_jump_velocity * jump_direction
+	var jump_velocity = current_jump_velocity
+	
+	if current_jump_velocity / max_jump_velocity > 0.95:
+		jump_velocity = max_jump_velocity
+	
+	player.velocity = jump_velocity * jump_direction
 	
 	
 	# Resetting Jump

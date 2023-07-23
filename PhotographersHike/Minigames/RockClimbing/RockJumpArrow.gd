@@ -5,7 +5,9 @@ func _ready() -> void:
 	reset_arrow_progress()
 
 func set_arrow_progress(value: float) -> void:
-	$TextureRect.value = value * 100
+	$ArrowProgress.value = value * 100
+	$ArrowProgress/ArrowFlash.visible = value > 0.95
 	
 func reset_arrow_progress() -> void:
-	$TextureRect.value = 0
+	$ArrowProgress.value = 0
+	$ArrowProgress/ArrowFlash.visible = false
