@@ -101,15 +101,3 @@ func get_picture_levels() -> PoolStringArray:
 
 func get_picture_times() -> PoolStringArray:
 	return picture_times
-	
-	
-#Add later
-
-#func save_photo() -> void:
-#	var dir: Directory = Directory.new()
-#	if dir.open("user://screenshots"):
-#		dir.make_dir("user://screenshots")	
-#
-#	image.save_png("user://screenshots/screenshot.png")
-
-	

@@ -53,6 +53,17 @@ func download_confirmed() -> void:
 
 
 func _on_DownloadButton_pressed() -> void:
+	if OS.has_feature("web"):
+		_handle_web_download()
+		return
+	_handle_desktop_download()
+	
+
+func _handle_web_download() -> void:			
+	pass
+
+
+func _handle_desktop_download() -> void:
 	$FileDialog.popup_centered()
 	var directory_path = yield($FileDialog, "dir_selected")
 	
@@ -82,7 +93,3 @@ func _on_DownloadButton_pressed() -> void:
 		$DownloadDialog.dialog_text = "Picture download failed! Only %s pictures donwloaded." % picture_count
 		
 	$DownloadDialog.popup_centered()
-			
-			
-	
-
