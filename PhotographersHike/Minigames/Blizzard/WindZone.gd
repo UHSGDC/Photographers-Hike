@@ -13,9 +13,15 @@ export var wind_particles_scene: PackedScene
 var wind_particles: CPUParticles2D
 
 var in_wind: bool = false
+var respawn_invincibility: bool = false
+
 
 func _ready() -> void:
 	call_deferred("_set_player_reference")
+	call_deferred("_connect_respawn_signal")
+	
+func _connect_respawn_signal() -> void:
+	Global.platforming_player.connect("respawn", self, "_on_Player_respawn")
 
 
 func _set_player_reference() -> void:
@@ -24,8 +30,9 @@ func _set_player_reference() -> void:
 
 func _physics_process(delta: float) -> void:
 
-	if !in_wind:
+	if !in_wind or Global.room_pause or Global.platforming_player.death_pause or respawn_invincibility:
 		return
+		
 	
 	if player.is_on_floor() && abs(player.velocity.x) >= 10:
 		player.velocity.x += strength * delta * direction
@@ -52,3 +59,9 @@ func _on_WindZone_area_exited(area: Area2D) -> void:
 	in_wind = false
 	yield(get_tree().create_timer(0.1),"timeout")
 	wind_particles.queue_free()
+
+
+func _on_Player_respawn() -> void:
+	respawn_invincibility = true
+	yield(get_tree().create_timer(0.4), "timeout")
+	respawn_invincibility = false
