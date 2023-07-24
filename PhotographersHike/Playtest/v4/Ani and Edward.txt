@@ -1,0 +1,21 @@
+arrow key pan doesnt work when in small room (indicate this somehow!)
+last one room level is little easy
+more slope -> safety
+make arrow face direction of last jump
+
+Ani thinks cougar vision cone is unfair
+
+ani complains about spike hitbox
+ani says it to be more narrow
+
+make cougar vision more obvious
+
+start vision cone before eyes or something
+
+make it more obvious when the vision cone sees the player
+
+yeti spawn kills u
+
+dialog with npc doesnt work
+
+wind and screen switch is weird
