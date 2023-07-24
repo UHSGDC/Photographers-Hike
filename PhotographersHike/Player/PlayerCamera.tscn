@@ -1,9 +1,72 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player/PlayerCamera.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 8
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("PanWarning/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Show Pan Warning"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("PanWarning/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 1.2, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [node name="PlayerCamera" type="Camera2D"]
 current = true
 process_mode = 0
 script = ExtResource( 1 )
 pan_speed = 300.0
+
+[node name="PanWarning" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="PanWarning"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -14.0
+margin_bottom = 14.0
+grow_vertical = 2
+custom_fonts/font = SubResource( 1 )
+align = 1
+valign = 1
+autowrap = true
+
+[node name="ColorRect" type="ColorRect" parent="PanWarning/Label"]
+modulate = Color( 1, 1, 1, 0.45098 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 3 )
+"anims/Show Pan Warning" = SubResource( 2 )

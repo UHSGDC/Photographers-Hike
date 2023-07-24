@@ -26,6 +26,7 @@ const SCREEN_SHAKE_UPDATE_TIME: float = 0.05
 func _ready() -> void:
 	Global.player_camera = self
 	
+	
 	# Sets smoothing to 1 and back to follow_smoothing
 	# I do this so the camera appears as if it starts at the first room not at (0, 0)
 
@@ -63,6 +64,23 @@ func _physics_process(delta: float) -> void:
 		
 		
 		target_position = calculate_target_position(current_room_center, current_room_size, panned_position)
+		
+		if pan_just_pressed():
+			var pan_warning: PoolStringArray
+			if panned_position.x > target_position.x and Input.is_action_just_pressed("menu_right"):
+				pan_warning.append("right")
+			elif panned_position.x < target_position.x and Input.is_action_just_pressed("menu_left"):
+				pan_warning.append("left")
+			
+			if panned_position.y > target_position.y and Input.is_action_just_pressed("menu_down"):
+				pan_warning.append("lower")
+			elif panned_position.y < target_position.y and Input.is_action_just_pressed("menu_up"):
+				pan_warning.append("upper")	
+		
+			if pan_warning.size():
+				display_pan_warning(pan_warning)
+		
+		
 		panned_position = target_position
 	else:
 		target_position = calculate_target_position(current_room_center, current_room_size, Global.platforming_player.global_position)
@@ -75,14 +93,38 @@ func _physics_process(delta: float) -> void:
 		position = lerp(position, target_position, smoothing)
 
 
+func display_pan_warning(pan_warning: PoolStringArray) -> void:
+	var text: String = "Unable to pan! \n Camera reached %s bound of room."
+	
+	var direction_text: String
+	for direction in pan_warning.size():
+		if direction == 0:
+			direction_text = pan_warning[direction]
+		elif direction == 1:
+			direction_text += " and " + pan_warning[direction]
+		else:
+			push_error("error displaying pan warning. more than 2 directions chosen")
+		
+	
+	text = text % direction_text
+	
+	$PanWarning/Label.text = text
+	$AnimationPlayer.stop()
+	$AnimationPlayer.play("Show Pan Warning")
+
+
+func pan_just_pressed() -> bool:
+	return Input.is_action_just_pressed("menu_up") or Input.is_action_just_pressed("menu_down") or Input.is_action_just_pressed("menu_left") or Input.is_action_just_pressed("menu_right")
+
+
 func check_for_panning() -> bool:
 	if Input.is_action_just_pressed("interact"):
 		return false
 	if Global.platforming_player.x_input or Global.platforming_player.jump_input:
 		return false
-	if Input.is_action_just_pressed("menu_up") or Input.is_action_just_pressed("menu_down") or Input.is_action_just_pressed("menu_left") or Input.is_action_just_pressed("menu_right"):
+	if pan_just_pressed():
 		if !panning:
-			panned_position = Global.platforming_player.global_position
+			panned_position = calculate_target_position(current_room_center, current_room_size, Global.platforming_player.global_position)
 			return true
 	
 	return panning
