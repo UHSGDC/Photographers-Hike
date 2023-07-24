@@ -318,8 +318,7 @@ func respawn() -> void:
 	
 	show()
 	
-	
-	
+
 	emit_signal("respawn")
 	can_jump = false
 	death_pause = false

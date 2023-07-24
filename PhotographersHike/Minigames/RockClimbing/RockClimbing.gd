@@ -37,8 +37,12 @@ export var keyboard_aim_speed: float
 func _ready() -> void:
 	current_jump_velocity = min_jump_velocity
 	call_deferred("set_player_reference")
-	
+	Global.platforming_player.connect("respawn", self, "stop_tracking_path")
 	randomize_rock_textures()
+	
+func stop_tracking_path() -> void:
+	track_path = false
+	
 	
 func randomize_rock_textures() -> void:
 	rng.randomize()
