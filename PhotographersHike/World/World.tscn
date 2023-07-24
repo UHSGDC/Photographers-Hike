@@ -60,10 +60,10 @@ extents = Vector2( 240, 144 )
 extents = Vector2( 720, 144 )
 
 [sub_resource type="RectangleShape2D" id=18]
-extents = Vector2( 184, 288 )
+extents = Vector2( 244, 288 )
 
 [sub_resource type="RectangleShape2D" id=19]
-extents = Vector2( 1056, 892 )
+extents = Vector2( 1096, 972 )
 
 [sub_resource type="Curve2D" id=146]
 _data = {
@@ -2181,13 +2181,11 @@ position = Vector2( -56, -560 )
 position = Vector2( -840, -184 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DenseForest/RockClimbing"]
-visible = false
-position = Vector2( -16, 176 )
+position = Vector2( -76, 176 )
 shape = SubResource( 18 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="DenseForest/RockClimbing"]
-visible = false
-position = Vector2( 136, -972 )
+position = Vector2( 96, -940 )
 shape = SubResource( 19 )
 
 [node name="VineManager2" parent="DenseForest" instance=ExtResource( 13 )]
@@ -2924,7 +2922,7 @@ modulate = Color( 0.701961, 0.458824, 0.941176, 1 )
 shape = SubResource( 45 )
 
 [node name="PlatformingPlayer" parent="." instance=ExtResource( 2 )]
-position = Vector2( 136, 216 )
+position = Vector2( -800, -1688 )
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 3 )]
 
