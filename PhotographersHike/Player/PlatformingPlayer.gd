@@ -303,15 +303,18 @@ func respawn() -> void:
 	Global.player_camera.screen_shake(0.2)
 	$BlackScreen/AnimationPlayer.play("Fade Out")
 	yield($BlackScreen/AnimationPlayer, "animation_finished")
+	global_position = current_checkpoint.global_position
+	Global.player_camera.smoothing = 1
 	$BlackScreen/AnimationPlayer.play("Fade In")
 	yield($BlackScreen/AnimationPlayer, "animation_finished")
+	Global.player_camera.smoothing = Global.player_camera.follow_smoothing
 	
-	global_position = current_checkpoint.global_position
+	
 	yield(get_tree().create_timer(0.1), "timeout")
-	if sign(Global.current_room.position.x - global_position.x) > 0:
-		$Sprite.flip_h = true
-	else:
+	if sign(Global.current_room.global_position.x - global_position.x) > 0:
 		$Sprite.flip_h = false
+	else:
+		$Sprite.flip_h = true
 	
 	show()
 	
