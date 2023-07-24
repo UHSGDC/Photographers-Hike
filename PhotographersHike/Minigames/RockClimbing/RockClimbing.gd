@@ -1,4 +1,4 @@
-extends Node2D
+extends Area2D
 
 
 var current_rock: Area2D
@@ -37,8 +37,12 @@ export var keyboard_aim_speed: float
 func _ready() -> void:
 	current_jump_velocity = min_jump_velocity
 	call_deferred("set_player_reference")
-	Global.platforming_player.connect("respawn", self, "stop_tracking_path")
+	call_deferred("connect_respawn_signal")
 	randomize_rock_textures()
+	
+func connect_respawn_signal() -> void:
+	Global.platforming_player.connect("respawn", self, "stop_tracking_path")	
+
 	
 func stop_tracking_path() -> void:
 	track_path = false
@@ -114,6 +118,7 @@ func jump() -> void:
 	reset_jump()
 	
 	current_rock.last_jump_strength = jump_velocity
+	current_rock.last_jump_rotation = jump_arrow.rotation
 	clear_path(current_rock)
 	jump_arrow.hide()
 	current_rock = null
@@ -166,6 +171,7 @@ func _on_Rock_touched(body: Node) -> void:
 		if body.last_jump_path.size() > 0:
 			$Line2D.width = current_rock.last_jump_strength / max_jump_velocity * 3
 			display_path(current_rock.last_jump_path)
+			jump_arrow.rotation = current_rock.last_jump_rotation
 
 
 func display_path(path: PoolVector2Array):
@@ -187,7 +193,6 @@ func _on_RockClimbing_body_entered(body: Node) -> void:
 		var error = rock_detector.connect("area_entered", self, "_on_Rock_touched")
 		if error:
 			push_error("error connecting rock detector signal to self")		
-		
 		jump_arrow = jump_arrow_scene.instance()
 		player.add_child(jump_arrow)
 		jump_arrow.hide()
