@@ -26,6 +26,7 @@ var jump_arrow: Node2D
 var player: Player
 
 var can_charge: bool = false
+var can_keyboard_aim: bool = true
 
 var track_path: bool = false
 
@@ -94,7 +95,7 @@ func move(delta: float) -> void:
 func aim_arrow(delta: float) -> void:
 	if Global.aim_with_mouse_rock_climbing:
 		jump_arrow.look_at(get_global_mouse_position())
-	else:
+	elif can_keyboard_aim:
 		var rotation_direction = Input.get_axis("left", "right")
 		jump_arrow.rotate(rotation_direction * keyboard_aim_speed * delta)
 	
@@ -119,6 +120,7 @@ func jump() -> void:
 	
 	current_rock.last_jump_strength = jump_velocity
 	current_rock.last_jump_rotation = jump_arrow.rotation
+	can_keyboard_aim = false
 	clear_path(current_rock)
 	jump_arrow.hide()
 	current_rock = null
@@ -172,6 +174,8 @@ func _on_Rock_touched(body: Node) -> void:
 			$Line2D.width = current_rock.last_jump_strength / max_jump_velocity * 3
 			display_path(current_rock.last_jump_path)
 			jump_arrow.rotation = current_rock.last_jump_rotation
+			yield(get_tree().create_timer(0.2), "timeout")
+		can_keyboard_aim = true
 
 
 func display_path(path: PoolVector2Array):
