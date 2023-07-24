@@ -168,12 +168,11 @@ offset = Vector2( 1.5, -10 )
 flip_h = true
 hframes = 13
 vframes = 6
-frame = 56
+frame = 42
 region_rect = Rect2( 114.3, 96.6375, 71.1784, 5.47526 )
 
 [node name="VisionCone" parent="." instance=ExtResource( 3 )]
-visible = false
-position = Vector2( -10, -4 )
+position = Vector2( -5, -4 )
 
 [node name="SleepingDetection" type="Area2D" parent="."]
 collision_layer = 0
