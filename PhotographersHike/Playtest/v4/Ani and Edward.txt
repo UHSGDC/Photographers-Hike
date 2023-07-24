@@ -19,3 +19,5 @@ yeti spawn kills u
 dialog with npc doesnt work
 
 wind and screen switch is weird
+
+player moves a little fast
