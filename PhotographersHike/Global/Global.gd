@@ -2,6 +2,7 @@ extends Node
 
 # Singleton which stores references to other Nodes
 signal room_changed
+signal input_changed
 
 var player_camera: Camera2D
 var platforming_player: Player

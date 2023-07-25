@@ -8,6 +8,7 @@ signal player_interacted
 
 func _ready() -> void:
 	$InteractInput.text = InputHelper.get_action_key("interact")
+	Global.connect("input_changed", self, "set_interact_input_label")
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -16,10 +17,10 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func set_interact_input_label() -> void:
-	if InputHelper.device != InputHelper.DEVICE_KEYBOARD:
-		$InteractInput.text = "Button" + str(InputHelper.get_action_button("interact"))
-	else:
+	if InputHelper.device == InputHelper.DEVICE_KEYBOARD:
 		$InteractInput.text = InputHelper.get_action_key("interact")
+	else:
+		$InteractInput.text = "Button" + str(InputHelper.get_action_button("interact"))
 		
 
 func _on_InteractZone_body_entered(body: Node) -> void:

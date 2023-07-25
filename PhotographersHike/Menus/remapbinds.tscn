@@ -3,7 +3,6 @@
 [ext_resource path="res://Fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Menus/remap.gd" type="Script" id=2]
 
-
 [sub_resource type="DynamicFont" id=1]
 size = 8
 outline_color = Color( 0, 0, 0, 1 )
