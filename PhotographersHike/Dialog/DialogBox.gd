@@ -44,7 +44,7 @@ const text_delay_dictionary: Dictionary = {
 
 func _ready() -> void:
 	Global.dialog_box = self
-	dialog_data = JsonOpener.get_data(dialog_json_filepath)
+	dialog_data = JSONOpener.get_data(dialog_json_filepath)
 	$NextIcon.hide()
 
 
