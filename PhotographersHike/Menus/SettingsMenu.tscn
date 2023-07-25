@@ -114,7 +114,7 @@ margin_top = 72.0
 margin_right = 157.0
 margin_bottom = 96.0
 
-[node name="FullScreen" type="Label" parent="Settings_Menu"]
+[node name="Fullscreen" type="Label" parent="Settings_Menu"]
 modulate = Color( 0, 0, 0, 1 )
 margin_left = 8.0
 margin_top = 95.0
@@ -124,13 +124,13 @@ rect_pivot_offset = Vector2( 123, 6 )
 custom_fonts/font = SubResource( 2 )
 text = "Fullscreen: "
 
-[node name="Full_Checkbox" type="CheckBox" parent="Settings_Menu"]
+[node name="FullscreenBox" type="CheckBox" parent="Settings_Menu"]
 margin_left = 133.0
 margin_top = 88.0
 margin_right = 157.0
 margin_bottom = 112.0
 
-[node name="BorderLess" type="Label" parent="Settings_Menu"]
+[node name="Borderless" type="Label" parent="Settings_Menu"]
 modulate = Color( 0, 0, 0, 1 )
 margin_left = 8.0
 margin_top = 111.0
@@ -140,7 +140,7 @@ rect_pivot_offset = Vector2( 123, 6 )
 custom_fonts/font = SubResource( 2 )
 text = "Borderless:"
 
-[node name="Border_Checkbox" type="CheckBox" parent="Settings_Menu"]
+[node name="BorderlessBox" type="CheckBox" parent="Settings_Menu"]
 margin_left = 133.0
 margin_top = 104.0
 margin_right = 157.0
@@ -296,7 +296,7 @@ text = "Back"
 [connection signal="value_changed" from="Settings_Menu/Volume_Value" to="Settings_Menu/Volume_Value" method="_on_Volume_Value_value_changed"]
 [connection signal="toggled" from="Settings_Menu/ShowSpeedrunTimerBox" to="." method="_on_ShowSpeedrunTimerBox_toggled"]
 [connection signal="toggled" from="Settings_Menu/ShowDebugBox" to="." method="_on_ShowDebugBox_toggled"]
-[connection signal="pressed" from="Settings_Menu/Full_Checkbox" to="." method="_on_Full_Checkbox_pressed"]
-[connection signal="pressed" from="Settings_Menu/Border_Checkbox" to="." method="_on_Border_Checkbox_pressed"]
+[connection signal="toggled" from="Settings_Menu/FullscreenBox" to="." method="_on_FullscreenCheckbox_toggled"]
+[connection signal="toggled" from="Settings_Menu/BorderlessBox" to="." method="_on_BorderlessBox_toggled"]
 [connection signal="toggled" from="Settings_Menu/AimWithMouseCheckbox" to="." method="_on_AimWithMouseCheckbox_toggled"]
 [connection signal="pressed" from="Settings_Menu/HBoxContainer/Back" to="." method="_on_Back_pressed"]
