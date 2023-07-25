@@ -16,7 +16,11 @@ export var MAX_BINDS: int
 func _ready() -> void:
 	_set_input_name(input_name)
 	_update_input_events()
+	InputHelper.connect("actions_reset", self, "on_actions_reset")
 
+
+func on_actions_reset() -> void:
+	_update_input_events()
 
 func _set_input_name(text: String) -> void:
 	$InputName.text = text

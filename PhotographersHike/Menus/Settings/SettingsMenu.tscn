@@ -379,6 +379,13 @@ text = "Back"
 [node name="PressKeyPopup" parent="Settings_Menu" instance=ExtResource( 5 )]
 visible = false
 
+[node name="ResetBindsButton" type="Button" parent="Settings_Menu"]
+margin_left = 312.0
+margin_top = 150.0
+margin_right = 427.0
+margin_bottom = 170.0
+text = "Reset to Default"
+
 [connection signal="value_changed" from="Settings_Menu/Volume_Value" to="Settings_Menu/Volume_Value" method="_on_Volume_Value_value_changed"]
 [connection signal="toggled" from="Settings_Menu/ShowSpeedrunTimerBox" to="." method="_on_ShowSpeedrunTimerBox_toggled"]
 [connection signal="toggled" from="Settings_Menu/ShowDebugBox" to="." method="_on_ShowDebugBox_toggled"]
@@ -388,3 +395,4 @@ visible = false
 [connection signal="toggled" from="Settings_Menu/BorderlessBox" to="." method="_on_BorderlessBox_toggled"]
 [connection signal="toggled" from="Settings_Menu/AimWithMouseCheckbox" to="." method="_on_AimWithMouseCheckbox_toggled"]
 [connection signal="pressed" from="Settings_Menu/HBoxContainer/Back" to="." method="_on_Back_pressed"]
+[connection signal="pressed" from="Settings_Menu/ResetBindsButton" to="." method="_on_ResetBindsButton_pressed"]

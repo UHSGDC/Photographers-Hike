@@ -4,6 +4,7 @@ extends Node
 signal device_changed(device, device_index)
 signal action_key_changed(action_name, key)
 signal action_button_changed(action_name, button)
+signal actions_reset
 
 
 const DEVICE_KEYBOARD = "keyboard"
@@ -77,6 +78,7 @@ func guess_device_name() -> String:
 
 func reset_all_actions() -> void:
 	InputMap.load_from_globals()
+	emit_signal("actions_reset")
 	for action in InputMap.get_actions():
 		emit_signal("action_button_changed", action, get_action_button(action))
 		emit_signal("action_key_changed", action, get_action_key(action))
