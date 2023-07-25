@@ -27,3 +27,7 @@ func _on_BorderlessBox_toggled(button_pressed):
 
 func _on_HideJumpArrowBox_toggled(button_pressed):
 	Global.emit_signal("hide_jump_arrow_toggled", button_pressed)
+
+
+func _on_FasterJumpChargingBox_toggled(button_pressed):
+	Global.emit_signal("faster_jump_charging_toggled", button_pressed)

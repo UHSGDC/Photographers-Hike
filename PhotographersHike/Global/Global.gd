@@ -4,6 +4,7 @@ extends Node
 signal room_changed
 signal input_changed
 signal hide_jump_arrow_toggled(value)
+signal faster_jump_charging_toggled(value)
 
 var player_camera: Camera2D
 var platforming_player: Player

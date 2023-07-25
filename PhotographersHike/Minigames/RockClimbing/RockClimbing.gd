@@ -8,7 +8,9 @@ var velocity: Vector2 = Vector2.ZERO
 
 export var min_jump_velocity: float
 export var max_jump_velocity: float
-export var jump_charge_speed: float = 300
+export var normal_charge_speed: float = 300
+export var faster_charge_speed: float
+var current_charge_speed: float
 var current_jump_velocity: float
 var jump_charge_direction: int = 1
 
@@ -36,8 +38,10 @@ export var keyboard_aim_speed: float
 
 
 func _ready() -> void:
+	current_charge_speed = normal_charge_speed
 	current_jump_velocity = min_jump_velocity
 	Global.connect("hide_jump_arrow_toggled", self, "on_hide_jump_arrow_toggled")
+	Global.connect("faster_jump_charging_toggled", self, "on_faster_jump_charging_toggled")
 	call_deferred("set_player_reference")
 	call_deferred("connect_respawn_signal")
 	randomize_rock_textures()
@@ -45,6 +49,13 @@ func _ready() -> void:
 func connect_respawn_signal() -> void:
 	Global.platforming_player.connect("respawn", self, "stop_tracking_path")	
 
+
+func on_faster_jump_charging_toggled(value: bool) -> void:
+	if value:
+		current_charge_speed = faster_charge_speed
+	else:
+		current_charge_speed = normal_charge_speed
+	
 	
 func on_hide_jump_arrow_toggled(value: bool) -> void:
 	$Line2D.modulate.a = int(!value)
@@ -145,7 +156,7 @@ func charge_jump(delta: float) -> void:
 	if current_jump_velocity <= min_jump_velocity:
 		jump_charge_direction = 1
 	
-	current_jump_velocity += jump_charge_speed * jump_charge_direction * delta
+	current_jump_velocity += current_charge_speed * jump_charge_direction * delta
 	
 	jump_arrow.set_arrow_progress(current_jump_velocity / max_jump_velocity)
 

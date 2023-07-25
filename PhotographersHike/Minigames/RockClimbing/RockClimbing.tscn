@@ -11,6 +11,7 @@ gravity = 800.0
 script = ExtResource( 4 )
 min_jump_velocity = 100.0
 max_jump_velocity = 420.0
+faster_charge_speed = 500.0
 max_attach_speed = 2000.0
 rock_detector_scene = ExtResource( 1 )
 jump_arrow_scene = ExtResource( 3 )
