@@ -52,4 +52,7 @@ shape = SubResource( 1 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/punch = SubResource( 2 )
 
+[node name="CanPunchTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="body_entered" from="." to="." method="_on_YetiFist_body_entered"]

@@ -307,6 +307,7 @@ func respawn() -> void:
 	yield($BlackScreen/AnimationPlayer, "animation_finished")
 	global_position = current_checkpoint.global_position
 	Global.player_camera.smoothing = 1
+	emit_signal("respawn")
 	$BlackScreen/AnimationPlayer.play("Fade In")
 	yield($BlackScreen/AnimationPlayer, "animation_finished")
 	Global.player_camera.smoothing = Global.player_camera.follow_smoothing
@@ -321,7 +322,7 @@ func respawn() -> void:
 	show()
 	
 
-	emit_signal("respawn")
+#	emit_signal("respawn done")
 	death_pause = false
 	
 

@@ -7,8 +7,10 @@ func punch(yeti: Sprite) -> void:
 	global_position = Global.platforming_player.global_position
 
 	$AnimationPlayer.play("punch")
-
-	yield(get_tree().create_timer(yeti.punch_cooldown), "timeout")
+	
+	
+	$CanPunchTimer.start(yeti.punch_cooldown)
+	yield($CanPunchTimer, "timeout")
 	yeti.can_punch = true
 	
 	yield($AnimationPlayer, "animation_finished")
