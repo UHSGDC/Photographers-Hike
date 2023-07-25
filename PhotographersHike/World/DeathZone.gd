@@ -8,5 +8,5 @@ func _ready() -> void:
 		push_error("error connecting deathzone entered signal to self")
 
 func _on_DeathZone_body_entered(body: Node) -> void:
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and !body.death_pause:
 		body.respawn()

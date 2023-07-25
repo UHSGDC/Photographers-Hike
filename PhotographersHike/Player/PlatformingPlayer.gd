@@ -299,15 +299,18 @@ func check_room_edge(a_center: Vector2, a_size: Vector2, b_center: Vector2, b_si
 func respawn() -> void:
 	death_pause = true
 	hide()
-	can_jump = false
-	velocity = Vector2.ZERO
-	move_and_slide(velocity)
+
 	Global.player_camera.screen_shake(0.2)
 	$BlackScreen/AnimationPlayer.play("Fade Out")
 	yield($BlackScreen/AnimationPlayer, "animation_finished")
+	
 	global_position = current_checkpoint.global_position
+	velocity = Vector2.ZERO
+	move_and_slide(velocity)
+	can_jump = false
 	Global.player_camera.smoothing = 1
 	emit_signal("respawn")
+	
 	$BlackScreen/AnimationPlayer.play("Fade In")
 	yield($BlackScreen/AnimationPlayer, "animation_finished")
 	Global.player_camera.smoothing = Global.player_camera.follow_smoothing
