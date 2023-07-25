@@ -23,3 +23,7 @@ func _on_FullscreenCheckbox_toggled(button_pressed):
 
 func _on_BorderlessBox_toggled(button_pressed):
 	OS.window_borderless = button_pressed
+
+
+func _on_HideJumpArrowBox_toggled(button_pressed):
+	Global.emit_signal("hide_jump_arrow_toggled", button_pressed)

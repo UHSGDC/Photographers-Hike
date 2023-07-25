@@ -37,6 +37,7 @@ export var keyboard_aim_speed: float
 
 func _ready() -> void:
 	current_jump_velocity = min_jump_velocity
+	Global.connect("hide_jump_arrow_toggled", self, "on_hide_jump_arrow_toggled")
 	call_deferred("set_player_reference")
 	call_deferred("connect_respawn_signal")
 	randomize_rock_textures()
@@ -44,6 +45,10 @@ func _ready() -> void:
 func connect_respawn_signal() -> void:
 	Global.platforming_player.connect("respawn", self, "stop_tracking_path")	
 
+	
+func on_hide_jump_arrow_toggled(value: bool) -> void:
+	$Line2D.modulate.a = int(!value)
+	
 	
 func stop_tracking_path() -> void:
 	track_path = false

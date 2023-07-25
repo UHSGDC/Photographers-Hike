@@ -130,6 +130,22 @@ margin_top = 88.0
 margin_right = 157.0
 margin_bottom = 112.0
 
+[node name="HideJumpArrow" type="Label" parent="Settings_Menu"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 160.0
+margin_top = 79.0
+margin_right = 627.0
+margin_bottom = 91.0
+rect_pivot_offset = Vector2( 123, 6 )
+custom_fonts/font = SubResource( 2 )
+text = "Hide Jump Arrow: "
+
+[node name="HideJumpArrowBox" type="CheckBox" parent="Settings_Menu"]
+margin_left = 344.0
+margin_top = 72.0
+margin_right = 368.0
+margin_bottom = 96.0
+
 [node name="Borderless" type="Label" parent="Settings_Menu"]
 modulate = Color( 0, 0, 0, 1 )
 margin_left = 8.0
@@ -297,6 +313,7 @@ text = "Back"
 [connection signal="toggled" from="Settings_Menu/ShowSpeedrunTimerBox" to="." method="_on_ShowSpeedrunTimerBox_toggled"]
 [connection signal="toggled" from="Settings_Menu/ShowDebugBox" to="." method="_on_ShowDebugBox_toggled"]
 [connection signal="toggled" from="Settings_Menu/FullscreenBox" to="." method="_on_FullscreenCheckbox_toggled"]
+[connection signal="toggled" from="Settings_Menu/HideJumpArrowBox" to="." method="_on_HideJumpArrowBox_toggled"]
 [connection signal="toggled" from="Settings_Menu/BorderlessBox" to="." method="_on_BorderlessBox_toggled"]
 [connection signal="toggled" from="Settings_Menu/AimWithMouseCheckbox" to="." method="_on_AimWithMouseCheckbox_toggled"]
 [connection signal="pressed" from="Settings_Menu/HBoxContainer/Back" to="." method="_on_Back_pressed"]
