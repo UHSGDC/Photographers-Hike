@@ -25,5 +25,6 @@ margin_right = 42.0
 margin_bottom = 7.0
 grow_horizontal = 2
 custom_fonts/font = SubResource( 1 )
-text = "Press a key..."
+text = "Press a key...
+Press - to cancel"
 align = 1
