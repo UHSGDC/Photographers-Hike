@@ -18,6 +18,3 @@ margin_top = 2.0
 margin_right = 98.0
 margin_bottom = 82.0
 mouse_filter = 2
-
-[connection signal="mouse_entered" from="." to="." method="_on_PickableAlbumPicture_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_PickableAlbumPicture_mouse_exited"]

@@ -1,8 +1,5 @@
 extends ColorRect
 
-
-var mouse_inside: bool = false
-
 var selected: bool = false
 
 func _ready() -> void:
@@ -10,20 +7,12 @@ func _ready() -> void:
 	
 
 func _gui_input(event: InputEvent) -> void:
-	if event.is_action_pressed("left_click") and mouse_inside:
+	if event.is_action_pressed("left_click"):
 		selected = !selected
 		if selected:
 			self_modulate.a = 0.25
 		else:
 			self_modulate.a = 0
-
-
-func _on_PickableAlbumPicture_mouse_entered() -> void:
-	mouse_inside = true
-
-
-func _on_PickableAlbumPicture_mouse_exited() -> void:
-	mouse_inside = true
 
 
 func get_picture_texture() -> Texture:
