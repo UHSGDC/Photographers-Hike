@@ -1,5 +1,14 @@
 extends BaseMenu
 
+func show() -> void:
+	.show()
+	$Settings_Menu/FullscreenBox.pressed = OS.window_fullscreen
+	$UpdateSettings.start()
+	
+func hide() -> void:
+	.hide()
+	$UpdateSettings.stop()
+
 
 func _on_Back_pressed() -> void:
 	menus.change_menu(menus.previous_menu)
@@ -35,3 +44,7 @@ func _on_FasterJumpChargingBox_toggled(button_pressed):
 
 func _on_ResetBindsButton_pressed():
 	InputHelper.reset_all_actions()
+
+
+func _on_UpdateSettings_timeout():
+	$Settings_Menu/FullscreenBox.pressed = OS.window_fullscreen
