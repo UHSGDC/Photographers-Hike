@@ -60,7 +60,7 @@ func _on_DownloadButton_pressed() -> void:
 	
 
 func _handle_web_download() -> void:			
-	$ConfirmDownloadDialog.dialog_text = "Download %s pictures?" % Global.camera_item.picture_textures.size()
+	$ConfirmDownloadDialog.dialog_text = "Download %s pictures? Please give permission to download multiple files in your browser or download one" % Global.camera_item.picture_textures.size()
 	$ConfirmDownloadDialog.popup_centered()
 	
 	if !yield(self, "confirm_pressed"):
