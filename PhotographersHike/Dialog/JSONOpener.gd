@@ -4,7 +4,6 @@ class_name JSONOpener
 
 static func get_string(filepath: String) -> String:
 	var file: File = File.new()
-	print(file.open(filepath, File.READ))
 	var content = file.get_as_text()
 	file.close()
 	
