@@ -16,8 +16,9 @@ func _ready() -> void:
 	self.is_waiting_for_key = false
 
 
-func _unhandled_input(event) -> void:
+func _input(event) -> void:
 	if not is_waiting_for_key: return
+	get_tree().set_input_as_handled()
 	
 	
 	if event is InputEventKey and event.is_pressed():
