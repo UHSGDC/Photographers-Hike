@@ -69,7 +69,7 @@ func play_dialog(speaker: String, level_id: int, dialog_number: int) -> String:
 	var level_dialog_array: Array = dialog_data[speaker][1][level_id]
 	var dialog_array: Array = level_dialog_array[dialog_number]
 	
-	
+	$TextOutput.text = ""
 	show()
 	dialog_playing = true
 	Global.platforming_player.velocity = Vector2.ZERO
