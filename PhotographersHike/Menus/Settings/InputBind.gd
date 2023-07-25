@@ -9,6 +9,9 @@ onready var press_key_popup_node: Control = get_node(press_key_popup_node_path)
 export var BIND_DISPLAY_CONTAINER_PATH: NodePath
 onready var bind_display_container_node: Control = get_node(BIND_DISPLAY_CONTAINER_PATH)
 
+export var WARNING_CONTAINER_PATH: NodePath
+onready var warning_container_node: Label = get_node(WARNING_CONTAINER_PATH)
+
 export var BIND_DISPLAY_SCENE: PackedScene
 export var MAX_BINDS: int
 
@@ -47,11 +50,12 @@ func _on_ClearButton_pressed() -> void:
 
 func _on_AddButton_pressed() -> void:
 	if bind_display_container_node.get_child_count() >= MAX_BINDS:
-		push_error("max of 3 binds, why? cuz i said so!")
+		warning_container_node.text = "Max amount of %s binds per action" % MAX_BINDS
+		warning_container_node.display_warning()
 		return
 	
 	var event: InputEvent = yield(press_key_popup_node.popup(), "completed")
-	if event is InputEventKey and event.scancode == KEY_ESCAPE:
+	if event is InputEventKey and event.scancode == KEY_MINUS:
 		return
 		
 	var error = InputHelper.set_action_key(input_action_name, event.as_text(), false)

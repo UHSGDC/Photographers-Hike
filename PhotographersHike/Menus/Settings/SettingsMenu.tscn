@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Menus/Settings/SettingsMenu.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Menus/Settings/InputBind.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Menus/Settings/Volume_Value.gd" type="Script" id=4]
 [ext_resource path="res://Menus/Settings/PressKeyPopup.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Misc/Warning.tscn" type="PackedScene" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
@@ -229,7 +230,8 @@ margin_right = 449.0
 margin_bottom = 28.0
 input_name = "Jump"
 input_action_name = "jump"
-press_key_popup_node_path = NodePath("../../../PressKeyPopup")
+press_key_popup_node_path = NodePath("../../../../PressKeyPopup")
+WARNING_CONTAINER_PATH = NodePath("../../../../BindWarning")
 
 [node name="InputBind2" parent="Settings_Menu/Keybinds Scroller/VBoxContainer2" instance=ExtResource( 3 )]
 anchor_left = 0.0
@@ -241,7 +243,8 @@ margin_right = 449.0
 margin_bottom = 60.0
 input_name = "Left"
 input_action_name = "left"
-press_key_popup_node_path = NodePath("../../../PressKeyPopup")
+press_key_popup_node_path = NodePath("../../../../PressKeyPopup")
+WARNING_CONTAINER_PATH = NodePath("../../../../BindWarning")
 
 [node name="InputBind3" parent="Settings_Menu/Keybinds Scroller/VBoxContainer2" instance=ExtResource( 3 )]
 anchor_left = 0.0
@@ -253,7 +256,8 @@ margin_right = 449.0
 margin_bottom = 92.0
 input_name = "Right"
 input_action_name = "right"
-press_key_popup_node_path = NodePath("../../../PressKeyPopup")
+press_key_popup_node_path = NodePath("../../../../PressKeyPopup")
+WARNING_CONTAINER_PATH = NodePath("../../../../BindWarning")
 
 [node name="InputBind4" parent="Settings_Menu/Keybinds Scroller/VBoxContainer2" instance=ExtResource( 3 )]
 anchor_left = 0.0
@@ -265,7 +269,8 @@ margin_right = 449.0
 margin_bottom = 124.0
 input_name = "Interact"
 input_action_name = "interact"
-press_key_popup_node_path = NodePath("../../../PressKeyPopup")
+press_key_popup_node_path = NodePath("../../../../PressKeyPopup")
+WARNING_CONTAINER_PATH = NodePath("../../../../BindWarning")
 
 [node name="InputBind5" parent="Settings_Menu/Keybinds Scroller/VBoxContainer2" instance=ExtResource( 3 )]
 anchor_left = 0.0
@@ -277,7 +282,8 @@ margin_right = 449.0
 margin_bottom = 156.0
 input_name = "Pause"
 input_action_name = "pause"
-press_key_popup_node_path = NodePath("../../../PressKeyPopup")
+press_key_popup_node_path = NodePath("../../../../PressKeyPopup")
+WARNING_CONTAINER_PATH = NodePath("../../../../BindWarning")
 
 [node name="InputBind6" parent="Settings_Menu/Keybinds Scroller/VBoxContainer2" instance=ExtResource( 3 )]
 anchor_left = 0.0
@@ -289,7 +295,8 @@ margin_right = 449.0
 margin_bottom = 188.0
 input_name = "Take Picture"
 input_action_name = "take_picture"
-press_key_popup_node_path = NodePath("../../../PressKeyPopup")
+press_key_popup_node_path = NodePath("../../../../PressKeyPopup")
+WARNING_CONTAINER_PATH = NodePath("../../../../BindWarning")
 
 [node name="InputBind7" parent="Settings_Menu/Keybinds Scroller/VBoxContainer2" instance=ExtResource( 3 )]
 anchor_left = 0.0
@@ -301,7 +308,8 @@ margin_right = 449.0
 margin_bottom = 220.0
 input_name = "Pan Up"
 input_action_name = "menu_up"
-press_key_popup_node_path = NodePath("../../../PressKeyPopup")
+press_key_popup_node_path = NodePath("../../../../PressKeyPopup")
+WARNING_CONTAINER_PATH = NodePath("../../../../BindWarning")
 
 [node name="InputBind8" parent="Settings_Menu/Keybinds Scroller/VBoxContainer2" instance=ExtResource( 3 )]
 anchor_left = 0.0
@@ -313,7 +321,8 @@ margin_right = 449.0
 margin_bottom = 252.0
 input_name = "Pan Down"
 input_action_name = "menu_down"
-press_key_popup_node_path = NodePath("../../../PressKeyPopup")
+press_key_popup_node_path = NodePath("../../../../PressKeyPopup")
+WARNING_CONTAINER_PATH = NodePath("../../../../BindWarning")
 
 [node name="InputBind9" parent="Settings_Menu/Keybinds Scroller/VBoxContainer2" instance=ExtResource( 3 )]
 anchor_left = 0.0
@@ -325,7 +334,8 @@ margin_right = 449.0
 margin_bottom = 284.0
 input_name = "Pan Left"
 input_action_name = "menu_left"
-press_key_popup_node_path = NodePath("../../../PressKeyPopup")
+press_key_popup_node_path = NodePath("../../../../PressKeyPopup")
+WARNING_CONTAINER_PATH = NodePath("../../../../BindWarning")
 
 [node name="InputBind10" parent="Settings_Menu/Keybinds Scroller/VBoxContainer2" instance=ExtResource( 3 )]
 anchor_left = 0.0
@@ -337,7 +347,8 @@ margin_right = 449.0
 margin_bottom = 316.0
 input_name = "Pan Right"
 input_action_name = "menu_right"
-press_key_popup_node_path = NodePath("../../../PressKeyPopup")
+press_key_popup_node_path = NodePath("../../../../PressKeyPopup")
+WARNING_CONTAINER_PATH = NodePath("../../../../BindWarning")
 
 [node name="InputBind11" parent="Settings_Menu/Keybinds Scroller/VBoxContainer2" instance=ExtResource( 3 )]
 anchor_left = 0.0
@@ -349,7 +360,8 @@ margin_right = 449.0
 margin_bottom = 348.0
 input_name = "Confirm"
 input_action_name = "menu_confirm"
-press_key_popup_node_path = NodePath("../../../PressKeyPopup")
+press_key_popup_node_path = NodePath("../../../../PressKeyPopup")
+WARNING_CONTAINER_PATH = NodePath("../../../../BindWarning")
 
 [node name="InputBind12" parent="Settings_Menu/Keybinds Scroller/VBoxContainer2" instance=ExtResource( 3 )]
 anchor_left = 0.0
@@ -361,7 +373,8 @@ margin_right = 449.0
 margin_bottom = 380.0
 input_name = "Cancel"
 input_action_name = "menu_cancel"
-press_key_popup_node_path = NodePath("../../../PressKeyPopup")
+press_key_popup_node_path = NodePath("../../../../PressKeyPopup")
+WARNING_CONTAINER_PATH = NodePath("../../../../BindWarning")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Settings_Menu"]
 margin_left = 378.0
@@ -376,15 +389,20 @@ custom_fonts/font = SubResource( 9 )
 custom_styles/normal = SubResource( 10 )
 text = "Back"
 
-[node name="PressKeyPopup" parent="Settings_Menu" instance=ExtResource( 5 )]
-visible = false
-
 [node name="ResetBindsButton" type="Button" parent="Settings_Menu"]
 margin_left = 352.0
 margin_top = 144.0
 margin_right = 467.0
 margin_bottom = 164.0
 text = "Reset to Default"
+
+[node name="UpdateSettings" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="PressKeyPopup" parent="." instance=ExtResource( 5 )]
+visible = false
+
+[node name="BindWarning" parent="." instance=ExtResource( 6 )]
 
 [connection signal="value_changed" from="Settings_Menu/Volume_Value" to="Settings_Menu/Volume_Value" method="_on_Volume_Value_value_changed"]
 [connection signal="toggled" from="Settings_Menu/ShowSpeedrunTimerBox" to="." method="_on_ShowSpeedrunTimerBox_toggled"]
@@ -396,3 +414,4 @@ text = "Reset to Default"
 [connection signal="toggled" from="Settings_Menu/AimWithMouseCheckbox" to="." method="_on_AimWithMouseCheckbox_toggled"]
 [connection signal="pressed" from="Settings_Menu/HBoxContainer/Back" to="." method="_on_Back_pressed"]
 [connection signal="pressed" from="Settings_Menu/ResetBindsButton" to="." method="_on_ResetBindsButton_pressed"]
+[connection signal="timeout" from="UpdateSettings" to="." method="_on_UpdateSettings_timeout"]
