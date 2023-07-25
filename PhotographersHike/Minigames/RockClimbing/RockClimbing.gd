@@ -96,6 +96,7 @@ func move(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("interact"):
 		reset_jump()
+		jump_arrow.rotation = current_rock.last_jump_rotation
 	
 	if !current_rock:
 		player.apply_gravity(delta)
