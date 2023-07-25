@@ -1,6 +1,8 @@
 extends Area2D
 
 
+export var jump_path_gradient: Gradient
+
 var current_rock: Area2D
 var last_rock: Area2D
 
@@ -188,7 +190,8 @@ func _on_Rock_touched(body: Node) -> void:
 		player.velocity.y = 0
 		
 		if body.last_jump_path.size() > 0:
-			$Line2D.width = current_rock.last_jump_strength / max_jump_velocity * 3
+			$Line2D.default_color = jump_path_gradient.interpolate(current_rock.last_jump_strength / max_jump_velocity)
+			$Line2D.default_color.a = 150
 			display_path(current_rock.last_jump_path)
 			jump_arrow.rotation = current_rock.last_jump_rotation
 			yield(get_tree().create_timer(0.2), "timeout")

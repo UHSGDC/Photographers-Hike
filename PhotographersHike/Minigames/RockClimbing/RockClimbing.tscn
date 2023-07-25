@@ -1,14 +1,20 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Minigames/RockClimbing/RockDetector.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Minigames/RockClimbing/RockJumpArrow.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Minigames/RockClimbing/RockClimbing.gd" type="Script" id=4]
+
+[sub_resource type="Gradient" id=1]
+interpolation_mode = 1
+offsets = PoolRealArray( 0.22, 0.45, 0.647399, 0.855491 )
+colors = PoolColorArray( 0.50375, 0.65, 0.3575, 1, 0.91, 0.77168, 0.4732, 1, 0.85, 0.5916, 0.3655, 1, 0.81, 0.43956, 0.3564, 1 )
 
 [node name="RockClimbing" type="Area2D"]
 collision_layer = 0
 collision_mask = 4
 gravity = 800.0
 script = ExtResource( 4 )
+jump_path_gradient = SubResource( 1 )
 min_jump_velocity = 100.0
 max_jump_velocity = 420.0
 faster_charge_speed = 500.0
@@ -25,7 +31,7 @@ physics_process_parent = true
 [node name="Rocks" type="Node2D" parent="."]
 
 [node name="Line2D" type="Line2D" parent="."]
-width = 1.0
+width = 2.0
 default_color = Color( 0.4, 0.419608, 0.509804, 0.376471 )
 
 [connection signal="body_entered" from="." to="." method="_on_RockClimbing_body_entered"]
