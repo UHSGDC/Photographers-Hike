@@ -1,22 +1,22 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Menus/remap.gd" type="Script" id=2]
+[ext_resource path="res://Menus/Settings/remap.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="DynamicFont" id=1]
 size = 8
 outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 1 )
+font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 8
-font_data = ExtResource( 1 )
+font_data = ExtResource( 2 )
 
 [node name="Remap" type="CenterContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 4.0
-script = ExtResource( 2 )
+script = ExtResource( 1 )
 
 [node name="PressAKeyLabel" type="Label" parent="."]
 margin_left = 190.0
