@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Menus/AlbumMenu.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Menus/AlbumPicture.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Menus/PickableAlbumPicture.tscn" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 2 )
@@ -15,7 +15,7 @@ font_data = ExtResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
-album_picture_scene = ExtResource( 3 )
+album_picture_scene = ExtResource( 4 )
 picture_container_path = NodePath("Album/ScrollContainer/PictureContainer")
 
 [node name="Background" type="ColorRect" parent="."]
@@ -102,6 +102,7 @@ grow_horizontal = 2
 window_title = "Download Status"
 
 [node name="ConfirmDownloadDialog" type="ConfirmationDialog" parent="."]
+visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5

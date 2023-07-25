@@ -53,14 +53,24 @@ func download_confirmed() -> void:
 
 
 func _on_DownloadButton_pressed() -> void:
-	if OS.has_feature("web"):
-		_handle_web_download()
+	var picture_textures: Array
+	for picture in picture_container.get_children():
+		if picture.selected:
+			picture_textures.append(picture.get_picture_texture())
+		
+	if picture_textures.size() == 0:
+		$ConfirmDownloadDialog.dialog_text = "Please select some photos download."
+		$ConfirmDownloadDialog.popup_centered()
 		return
-	_handle_desktop_download()
+		
+	if OS.has_feature("web"):
+		_handle_web_download(picture_textures)
+		return
+	_handle_desktop_download(picture_textures)
 	
 
-func _handle_web_download() -> void:			
-	$ConfirmDownloadDialog.dialog_text = "Download %s pictures? Please give permission to download multiple files in your browser or download one" % Global.camera_item.picture_textures.size()
+func _handle_web_download(picture_textures: Array) -> void:			
+	$ConfirmDownloadDialog.dialog_text = "Download %s pictures? Please give permission to download multiple files in your browser's settings." % picture_textures.size()
 	$ConfirmDownloadDialog.popup_centered()
 	
 	if !yield(self, "confirm_pressed"):
@@ -68,8 +78,8 @@ func _handle_web_download() -> void:
 
 	var picture_count: int = 0
 	
-	for i in Global.camera_item.picture_textures.size():
-		var image = Global.camera_item.picture_textures[i].get_data()
+	for i in picture_textures.size():
+		var image = picture_textures[i].get_data()
 		var buf = image.save_png_to_buffer()
 		JavaScript.download_buffer(buf, "Picture %s.png" % (i + 1))
 		picture_count += 1
@@ -81,11 +91,11 @@ func _handle_web_download() -> void:
 	
 
 
-func _handle_desktop_download() -> void:
+func _handle_desktop_download(picture_textures: Array) -> void:
 	$FileDialog.popup_centered()
 	var directory_path = yield($FileDialog, "dir_selected")
 	
-	$ConfirmDownloadDialog.dialog_text = "Download %s pictures at \"%s\"?" % [Global.camera_item.picture_textures.size(), directory_path]
+	$ConfirmDownloadDialog.dialog_text = "Download %s pictures at \"%s\"?" % [picture_textures.size(), directory_path]
 	$ConfirmDownloadDialog.popup_centered()
 	
 	
@@ -95,8 +105,8 @@ func _handle_desktop_download() -> void:
 	var failed: bool = false
 	var picture_count: int = 0
 	
-	for i in Global.camera_item.picture_textures.size():
-		var image = Global.camera_item.picture_textures[i].get_data()
+	for i in picture_textures.size():
+		var image = picture_textures[i].get_data()
 		var error = image.save_png(directory_path + "/Picture %s.png" % (i + 1))
 		if error:
 			failed = true
