@@ -82,6 +82,11 @@ func reset_all_actions() -> void:
 		emit_signal("action_key_changed", action, get_action_key(action))
 
 
+func remove_all_events(action: String) -> void:
+	for event in InputMap.get_action_list(action):
+		InputMap.action_erase_event(action, event)
+
+
 func is_valid_key(key: String) -> bool:
 	if key.length() == 1: return true
 	if key in [
@@ -92,7 +97,10 @@ func is_valid_key(key: String) -> bool:
 			"Minus", "Equal", 
 			"Semicolon", "Apostrophe",
 			"BracketLeft", "BracketRight",
-			"Alt", "Control", "Shift", "Escape"
+			"Alt", "Control", 
+			"Shift", "Tab", 
+			"CapsLock", "Escape", 
+			"QuoteLeft", "BackSpace"
 		]: return true
 	return false
 
@@ -106,7 +114,9 @@ func get_action_key(action: String) -> String:
 
 
 func set_action_key(target_action: String, key: String, swap_if_taken: bool = true) -> int:
-	if not is_valid_key(key): return ERR_INVALID_DATA
+	if not is_valid_key(key): 
+		print(key)
+		return ERR_INVALID_DATA
 	
 	# Find any action that is already mapped to this key
 	var clashing_action = ""
@@ -126,9 +136,8 @@ func set_action_key(target_action: String, key: String, swap_if_taken: bool = tr
 				InputMap.action_erase_event(clashing_action, clashing_event)
 				InputMap.action_add_event(clashing_action, event)
 				emit_signal("action_key_changed", clashing_action, event.as_text())
-			# Remove the current mapping
-			InputMap.action_erase_event(target_action, event)
-			
+
+
 	# Add the new event to the target action
 	var next_event = InputEventKey.new()
 	next_event.scancode = OS.find_scancode_from_string(key)

@@ -1,0 +1,84 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Menus/Settings/BindDisplay.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Menus/Settings/InputBind.gd" type="Script" id=3]
+[ext_resource path="res://Fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 12
+font_data = ExtResource( 4 )
+
+[node name="InputBind" type="HSplitContainer"]
+anchor_left = 0.017
+anchor_right = 0.983
+anchor_bottom = 0.097
+margin_left = -0.160001
+margin_right = 0.159973
+margin_bottom = 0.0639992
+rect_min_size = Vector2( 0, 28 )
+split_offset = 192
+dragger_visibility = 2
+script = ExtResource( 3 )
+BIND_DISPLAY_CONTAINER_PATH = NodePath("HSplitContainer/BindContainer")
+BIND_DISPLAY_SCENE = ExtResource( 2 )
+MAX_BINDS = 3
+
+[node name="InputName" type="Label" parent="."]
+margin_top = 8.0
+margin_right = 193.0
+margin_bottom = 20.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Jump"
+valign = 1
+clip_text = true
+
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+margin_left = 193.0
+margin_right = 464.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 0, 16 )
+custom_constants/separation = 0
+split_offset = 160
+dragger_visibility = 2
+
+[node name="BindContainer" type="HBoxContainer" parent="HSplitContainer"]
+margin_right = 234.0
+margin_bottom = 28.0
+grow_horizontal = 0
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="HSplitContainer"]
+margin_left = 234.0
+margin_right = 270.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 36, 0 )
+size_flags_horizontal = 0
+
+[node name="Container" type="HBoxContainer" parent="HSplitContainer/CenterContainer"]
+margin_top = 6.0
+margin_right = 36.0
+margin_bottom = 22.0
+
+[node name="AddButton" type="TextureButton" parent="HSplitContainer/CenterContainer/Container"]
+modulate = Color( 0.490196, 0.972549, 0.309804, 1 )
+margin_right = 16.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+texture_normal = ExtResource( 1 )
+expand = true
+
+[node name="ClearButton" type="TextureButton" parent="HSplitContainer/CenterContainer/Container"]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 20.0
+margin_right = 36.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+hint_tooltip = "Clear all input binds"
+texture_normal = ExtResource( 1 )
+expand = true
+
+[connection signal="pressed" from="HSplitContainer/CenterContainer/Container/AddButton" to="." method="_on_AddButton_pressed"]
+[connection signal="pressed" from="HSplitContainer/CenterContainer/Container/ClearButton" to="." method="_on_ClearButton_pressed"]
