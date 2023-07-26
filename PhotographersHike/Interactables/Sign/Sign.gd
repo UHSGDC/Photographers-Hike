@@ -9,7 +9,7 @@ var should_move_player_to_sign: bool = false
 
 var jump_cast: RayCast2D
 
-var was_cutscene_played: bool = false
+export var should_play_cutscene: bool = false
 
 var player: Player
 
@@ -71,7 +71,7 @@ func get_move_direction() -> float:
 
 
 func _on_CutsceneActivation_body_entered(body: Node) -> void:
-	if was_cutscene_played:
+	if !should_play_cutscene:
 		return
 	if body == Global.platforming_player:
 		player = body
@@ -97,7 +97,7 @@ func _on_SignArea_body_entered(body: Node) -> void:
 	if body != player:
 		return
 	
-	if was_cutscene_played:
+	if !should_play_cutscene:
 		var tween = get_tree().create_tween()
 		tween.tween_property($DirectionLabel, "modulate", Color.white, 0.5)
 	else:
@@ -109,7 +109,7 @@ func _on_SignArea_body_entered(body: Node) -> void:
 		
 		
 		yield(get_tree().create_timer(0.2), "timeout")
-		was_cutscene_played = true
+		should_play_cutscene = false
 		should_move_player_to_sign = false
 		jump_cast.queue_free()
 		jump_cast = null
