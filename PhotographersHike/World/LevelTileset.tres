@@ -2427,13 +2427,13 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
 "autotile_coord": Vector2( 1, 1 ),
-"one_way": false,
+"one_way": true,
 "one_way_margin": 1.0,
 "shape": SubResource( 316 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 }, {
 "autotile_coord": Vector2( 2, 1 ),
-"one_way": false,
+"one_way": true,
 "one_way_margin": 1.0,
 "shape": SubResource( 317 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
