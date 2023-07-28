@@ -299,12 +299,13 @@ func check_room_edge(a_center: Vector2, a_size: Vector2, b_center: Vector2, b_si
 func respawn() -> void:
 	death_pause = true
 	Global.player_camera.screen_shake(0.3)
+	$CPUParticles2D.emitting = true
 	$Sprite/AnimationPlayer.play("Shrink and Flash")
 	yield($Sprite/AnimationPlayer, "animation_finished")
 	
-	
 	$BlackScreen/AnimationPlayer.play("Fade Out")
 	yield($BlackScreen/AnimationPlayer, "animation_finished")
+	
 	
 	global_position = current_checkpoint.global_position
 	velocity = Vector2.ZERO
@@ -323,7 +324,7 @@ func respawn() -> void:
 		$Sprite.flip_h = false
 	else:
 		$Sprite.flip_h = true
-	
+	state = States.IDLE
 	$Sprite/AnimationPlayer.play_backwards("Shrink and Flash")
 	yield($Sprite/AnimationPlayer, "animation_finished")
 	yield(get_tree().create_timer(0.1), "timeout")
