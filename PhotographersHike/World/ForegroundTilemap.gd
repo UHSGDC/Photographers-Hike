@@ -57,7 +57,8 @@ func _place_foreground_tiles() -> void:
 			Level.LEAF:
 				if level_tilemap.get_cell_autotile_coord(tile_pos.x, tile_pos.y).y < 10:
 					_set_tile_above(tile_pos, Foreground.GREEN_PLANT, 0.5)
-					_set_tile_on(tile_pos, Foreground.GREEN_DRIP, 0.5)		
+					_set_tile_on(tile_pos, Foreground.GREEN_DRIP, 0.5)
+					_set_tile_below(tile_pos, Foreground.GREEN_DRIP, 0.1)		
 			
 			
 func _set_tile_above(tile_pos: Vector2, tile_id: int, probability: float) -> void:
