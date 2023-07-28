@@ -301,8 +301,6 @@ func respawn() -> void:
 	Global.player_camera.screen_shake(0.3)
 	$Sprite/AnimationPlayer.play("Shrink and Flash")
 	yield($Sprite/AnimationPlayer, "animation_finished")
-	hide()
-
 	
 	
 	$BlackScreen/AnimationPlayer.play("Fade Out")
@@ -326,7 +324,6 @@ func respawn() -> void:
 	else:
 		$Sprite.flip_h = true
 	
-	show()
 	$Sprite/AnimationPlayer.play_backwards("Shrink and Flash")
 	yield($Sprite/AnimationPlayer, "animation_finished")
 	yield(get_tree().create_timer(0.1), "timeout")

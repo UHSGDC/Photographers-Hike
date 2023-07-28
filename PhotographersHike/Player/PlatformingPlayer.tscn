@@ -10,9 +10,9 @@ code = "shader_type canvas_item;
 uniform vec4 color : hint_color;
 uniform float flashState : hint_range(0.0, 1.0) = 0.5;
 
-
 void fragment() {
     vec4 pixelColor = texture(TEXTURE, UV);
+
 
     COLOR = mix(pixelColor, color, flashState);
 	COLOR.a *= pixelColor.a;
@@ -53,7 +53,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=16]
 resource_name = "Shrink and Flash"
-length = 0.5
+length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
@@ -61,7 +61,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 0, 0 ) ]
@@ -73,7 +73,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2 ),
+"times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 1.0 ]
