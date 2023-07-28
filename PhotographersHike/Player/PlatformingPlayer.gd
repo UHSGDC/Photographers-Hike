@@ -298,9 +298,13 @@ func check_room_edge(a_center: Vector2, a_size: Vector2, b_center: Vector2, b_si
 
 func respawn() -> void:
 	death_pause = true
+	Global.player_camera.screen_shake(0.2)
+	$Sprite/AnimationPlayer.play("Shrink and Flash")
+	yield($Sprite/AnimationPlayer, "animation_finished")
 	hide()
 
-	Global.player_camera.screen_shake(0.2)
+	
+	
 	$BlackScreen/AnimationPlayer.play("Fade Out")
 	yield($BlackScreen/AnimationPlayer, "animation_finished")
 	
@@ -323,6 +327,9 @@ func respawn() -> void:
 		$Sprite.flip_h = true
 	
 	show()
+	$Sprite/AnimationPlayer.play_backwards("Shrink and Flash")
+	yield($Sprite/AnimationPlayer, "animation_finished")
+	yield(get_tree().create_timer(0.1), "timeout")
 	
 
 #	emit_signal("respawn done")
