@@ -134,7 +134,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ Vector2( 0, 2 ) ]
+"values": [ Vector2( 0, -3 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -187,7 +187,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, -6 ) ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -239,7 +239,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 3 ) ]
+"values": [ Vector2( 0, -6 ), Vector2( 0, -3 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -292,7 +292,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, -6 ) ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -344,7 +344,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, -6 ) ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -413,9 +413,10 @@ max_fall_speed = 1000.0
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 13 )
-position = Vector2( 0, -7 )
+position = Vector2( 0, -1 )
 z_index = 1
 texture = ExtResource( 1 )
+offset = Vector2( 0, -6 )
 hframes = 18
 vframes = 6
 frame = 72
