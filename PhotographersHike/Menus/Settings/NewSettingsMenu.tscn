@@ -1,0 +1,67 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Menus/Settings/CheckSetting.tscn" type="PackedScene" id=1]
+
+[node name="SettingsMenu" type="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.435294, 0.431373, 0.439216, 1 )
+
+[node name="Tabs" type="TabContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="General" type="ScrollContainer" parent="Tabs"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Tabs/General"]
+margin_right = 472.0
+margin_bottom = 252.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CheckSetting2" parent="Tabs/General/VBoxContainer" instance=ExtResource( 1 )]
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 0.0
+margin_right = 472.0
+margin_bottom = 32.0
+
+[node name="Keybinds" type="ScrollContainer" parent="Tabs"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 35.0
+margin_top = 105.0
+margin_right = 35.0
+margin_bottom = 81.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Tabs/Keybinds"]
+margin_right = 480.0
+margin_bottom = 264.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Tabs/Keybinds/VBoxContainer"]
+margin_right = 480.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+split_offset = 200
+dragger_visibility = 2
+
+[node name="Label" type="Label" parent="Tabs/Keybinds/VBoxContainer/HSplitContainer"]
+margin_top = 9.0
+margin_right = 338.0
+margin_bottom = 23.0
+text = "Show Speedrun Timer"
+
+[node name="CheckBox" type="CheckBox" parent="Tabs/Keybinds/VBoxContainer/HSplitContainer"]
+margin_left = 338.0
+margin_right = 480.0
+margin_bottom = 32.0
