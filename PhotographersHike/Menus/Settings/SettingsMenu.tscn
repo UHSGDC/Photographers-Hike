@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Menus/Settings/SettingsMenu.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Theme/PressStart2P-Regular.ttf" type="DynamicFontData" id=2]
@@ -6,10 +6,9 @@
 [ext_resource path="res://Menus/Settings/Volume_Value.gd" type="Script" id=4]
 [ext_resource path="res://Menus/Settings/PressKeyPopup.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Misc/Warning.tscn" type="PackedScene" id=6]
-
-[sub_resource type="DynamicFont" id=1]
-size = 24
-font_data = ExtResource( 2 )
+[ext_resource path="res://Assets/Theme/UITheme.tres" type="Theme" id=7]
+[ext_resource path="res://Assets/Theme/DefaultFont12.tres" type="DynamicFont" id=8]
+[ext_resource path="res://Assets/Theme/DefaultFont24.tres" type="DynamicFont" id=9]
 
 [sub_resource type="DynamicFont" id=2]
 size = 12
@@ -29,40 +28,25 @@ bg_color = Color( 0, 0, 0, 1 )
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 7 )
 script = ExtResource( 1 )
 
-[node name="Settings_Menu" type="ColorRect" parent="."]
+[node name="Settings_Menu" type="Panel" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.0862745, 0.662745, 0.529412, 1 )
 
-[node name="Settings Title Window" type="MarginContainer" parent="Settings_Menu"]
-anchor_top = 0.18
-anchor_right = 0.982
-anchor_bottom = 0.975
-margin_top = -52.92
-margin_right = 7.76599
-margin_bottom = -232.65
-
-[node name="Settings Title" type="Label" parent="Settings_Menu/Settings Title Window"]
-modulate = Color( 0, 0, 0, 1 )
-margin_top = 12.0
-margin_right = 479.0
-margin_bottom = 36.0
-custom_fonts/font = SubResource( 1 )
+[node name="Settings Title" type="Label" parent="Settings_Menu"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -239.0
+margin_right = 240.0
+margin_bottom = 33.0
+custom_fonts/font = ExtResource( 9 )
 text = "Settings"
 align = 1
-
-[node name="Settings Window" type="MarginContainer" parent="Settings_Menu"]
-anchor_top = 0.116
-anchor_right = 0.986
-anchor_bottom = 0.976
-margin_top = -0.104
-margin_right = 0.817963
-margin_bottom = 1.05597
+valign = 2
 
 [node name="Volume" type="Label" parent="Settings_Menu"]
-modulate = Color( 0, 0, 0, 1 )
 anchor_top = 0.204
 anchor_right = 0.977
 anchor_bottom = 0.248
@@ -71,7 +55,7 @@ margin_top = -16.976
 margin_right = 14.201
 margin_bottom = -16.912
 rect_pivot_offset = Vector2( 98, 7 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = ExtResource( 8 )
 text = "Volume: "
 
 [node name="Volume_Value" type="HSlider" parent="Settings_Menu"]
@@ -217,7 +201,7 @@ margin_bottom = -8.0
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Settings_Menu/Keybinds Scroller"]
-margin_right = 449.0
+margin_right = 447.0
 margin_bottom = 380.0
 size_flags_horizontal = 3
 
@@ -226,7 +210,7 @@ anchor_left = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 0.0
-margin_right = 449.0
+margin_right = 447.0
 margin_bottom = 28.0
 input_name = "Jump"
 input_action_name = "jump"
@@ -239,7 +223,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 0.0
 margin_top = 32.0
-margin_right = 449.0
+margin_right = 447.0
 margin_bottom = 60.0
 input_name = "Left"
 input_action_name = "left"
@@ -252,7 +236,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 0.0
 margin_top = 64.0
-margin_right = 449.0
+margin_right = 447.0
 margin_bottom = 92.0
 input_name = "Right"
 input_action_name = "right"
@@ -265,7 +249,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 0.0
 margin_top = 96.0
-margin_right = 449.0
+margin_right = 447.0
 margin_bottom = 124.0
 input_name = "Interact"
 input_action_name = "interact"
@@ -278,7 +262,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 0.0
 margin_top = 128.0
-margin_right = 449.0
+margin_right = 447.0
 margin_bottom = 156.0
 input_name = "Pause"
 input_action_name = "pause"
@@ -291,7 +275,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 0.0
 margin_top = 160.0
-margin_right = 449.0
+margin_right = 447.0
 margin_bottom = 188.0
 input_name = "Take Picture"
 input_action_name = "take_picture"
@@ -304,7 +288,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 0.0
 margin_top = 192.0
-margin_right = 449.0
+margin_right = 447.0
 margin_bottom = 220.0
 input_name = "Pan Up"
 input_action_name = "menu_up"
@@ -317,7 +301,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 0.0
 margin_top = 224.0
-margin_right = 449.0
+margin_right = 447.0
 margin_bottom = 252.0
 input_name = "Pan Down"
 input_action_name = "menu_down"
@@ -330,7 +314,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 0.0
 margin_top = 256.0
-margin_right = 449.0
+margin_right = 447.0
 margin_bottom = 284.0
 input_name = "Pan Left"
 input_action_name = "menu_left"
@@ -343,7 +327,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 0.0
 margin_top = 288.0
-margin_right = 449.0
+margin_right = 447.0
 margin_bottom = 316.0
 input_name = "Pan Right"
 input_action_name = "menu_right"
@@ -356,7 +340,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 0.0
 margin_top = 320.0
-margin_right = 449.0
+margin_right = 447.0
 margin_bottom = 348.0
 input_name = "Confirm"
 input_action_name = "menu_confirm"
@@ -369,7 +353,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 0.0
 margin_top = 352.0
-margin_right = 449.0
+margin_right = 447.0
 margin_bottom = 380.0
 input_name = "Cancel"
 input_action_name = "menu_cancel"
@@ -390,9 +374,9 @@ custom_styles/normal = SubResource( 10 )
 text = "Back"
 
 [node name="ResetBindsButton" type="Button" parent="Settings_Menu"]
-margin_left = 352.0
+margin_left = 345.0
 margin_top = 144.0
-margin_right = 467.0
+margin_right = 473.0
 margin_bottom = 164.0
 text = "Reset to Default"
 

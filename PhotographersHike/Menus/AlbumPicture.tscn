@@ -1,22 +1,17 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
-[ext_resource path="res://Assets/Theme/PressStart2P-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/Theme/UITheme.tres" type="Theme" id=2]
 [ext_resource path="res://Menus/AlbumPicture.gd" type="Script" id=3]
-
-[sub_resource type="DynamicFont" id=2]
-size = 7
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=1]
-size = 8
-font_data = ExtResource( 2 )
+[ext_resource path="res://Assets/Theme/DefaultFont6.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Assets/Theme/DefaultFont8.tres" type="DynamicFont" id=5]
 
 [node name="AlbumPicture" type="ColorRect"]
 margin_right = 96.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 96, 80 )
-color = Color( 1, 0.8, 0.619608, 1 )
+theme = ExtResource( 2 )
+color = Color( 0.678431, 0.466667, 0.341176, 1 )
 script = ExtResource( 3 )
 
 [node name="PictureTexture" type="TextureRect" parent="."]
@@ -45,8 +40,7 @@ margin_left = -45.0
 margin_top = -23.0
 margin_right = 46.0
 grow_horizontal = 2
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = ExtResource( 4 )
 text = "Sparse Forest"
 align = 1
 
@@ -58,7 +52,6 @@ anchor_bottom = 1.0
 margin_left = -28.0
 margin_top = -13.0
 margin_right = 28.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 5 )
 text = "10:15pm"
 align = 1
