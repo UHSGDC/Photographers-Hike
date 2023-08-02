@@ -121,3 +121,7 @@ func _handle_desktop_download(picture_textures: Array) -> void:
 		$DownloadDialog.dialog_text = "Picture download failed! Only %s pictures donwloaded." % picture_count
 		
 	$DownloadDialog.popup_centered()
+
+
+func _on_Back_pressed() -> void:
+	menus.change_menu(menus.previous_menu)

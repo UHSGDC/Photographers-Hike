@@ -1,31 +1,32 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Menus/AlbumMenu.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Theme/DefaultFont16.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Assets/Theme/UITheme.tres" type="Theme" id=3]
 [ext_resource path="res://Menus/PickableAlbumPicture.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Theme/DefaultFont12.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Assets/Theme/UITextButton.tres" type="Theme" id=6]
 
-[node name="AlbumMenu" type="Control"]
+[node name="AlbumMenu" type="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 3 )
 script = ExtResource( 1 )
 album_picture_scene = ExtResource( 4 )
-picture_container_path = NodePath("Album/ScrollContainer/PictureContainer")
+picture_container_path = NodePath("AlbumWindow/ScrollContainer/PictureContainer")
 
-[node name="Background" type="ColorRect" parent="."]
-margin_right = 480.0
-margin_bottom = 288.0
-color = Color( 0.301961, 0.168627, 0.196078, 1 )
-
-[node name="Album" type="ColorRect" parent="."]
-margin_left = 24.0
-margin_top = 32.0
-margin_right = 456.0
-margin_bottom = 256.0
+[node name="AlbumWindow" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -216.0
+margin_top = -112.0
+margin_right = 216.0
+margin_bottom = 112.0
 color = Color( 0.478431, 0.282353, 0.254902, 1 )
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Album"]
+[node name="ScrollContainer" type="ScrollContainer" parent="AlbumWindow"]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -208.0
@@ -35,32 +36,38 @@ margin_bottom = 224.0
 theme = ExtResource( 3 )
 scroll_horizontal_enabled = false
 
-[node name="PictureContainer" type="HFlowContainer" parent="Album/ScrollContainer"]
-margin_right = 424.0
+[node name="PictureContainer" type="HFlowContainer" parent="AlbumWindow/ScrollContainer"]
+margin_right = 410.0
 size_flags_horizontal = 3
 
 [node name="AlbumTitle" type="Label" parent="."]
-margin_right = 88.0
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -48.0
+margin_right = 48.0
 margin_bottom = 32.0
 custom_fonts/font = ExtResource( 2 )
-text = " Album"
+text = "Album"
+align = 1
 valign = 1
 
 [node name="PictureCount" type="Label" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -216.0
+margin_left = -224.0
 margin_bottom = 32.0
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 5 )
 text = "0 Pictures "
 align = 2
 valign = 1
 
 [node name="DownloadButton" type="Button" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
 margin_left = 8.0
-margin_top = 262.0
+margin_top = -25.0
 margin_right = 84.0
-margin_bottom = 282.0
+margin_bottom = -5.0
 text = "Download"
 
 [node name="FileDialog" type="FileDialog" parent="."]
@@ -73,7 +80,7 @@ margin_top = -84.0
 margin_right = 172.0
 margin_bottom = 92.0
 theme = ExtResource( 3 )
-window_title = "Choose a Directory"
+window_title = "Open a Directory"
 resizable = true
 mode = 2
 access = 2
@@ -102,5 +109,13 @@ margin_bottom = 35.0
 dialog_text = "Download x Pictures at "
 dialog_autowrap = true
 
+[node name="Back" type="Button" parent="."]
+margin_right = 80.0
+margin_bottom = 32.0
+theme = ExtResource( 6 )
+text = "< Back"
+align = 2
+
 [connection signal="pressed" from="DownloadButton" to="." method="_on_DownloadButton_pressed"]
 [connection signal="confirmed" from="ConfirmDownloadDialog" to="." method="download_confirmed"]
+[connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]
