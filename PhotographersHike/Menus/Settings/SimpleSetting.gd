@@ -8,7 +8,6 @@ enum Setting {
 	PERCENT,
 	STRING,
 	SWITCH,
-	BUTTON
 }
 
 var current_value
@@ -55,9 +54,6 @@ func _connect_button_signals() -> void:
 		Setting.SWITCH:
 			DECREASE_BUTTON.connect("pressed", self, "_on_switch_decreased")
 			INCREASE_BUTTON.connect("pressed", self, "_on_switch_increased")
-				
-		Setting.BUTTON:
-			print("button! nick u gotta code this still")
 
 
 func _ready() -> void:
@@ -128,9 +124,6 @@ func _update_button() -> void:
 			else:
 				_update_label("Off")
 				DECREASE_BUTTON.disabled = true
-				
-		Setting.BUTTON:
-			print("button! nick u gotta code this still")
 
 
 func _update_label(text: String) -> void:
