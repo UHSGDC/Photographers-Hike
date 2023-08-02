@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Theme/UITheme.tres" type="Theme" id=1]
+[ext_resource path="res://Assets/Theme/DefaultFont8.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Assets/Theme/UITextButton.tres" type="Theme" id=3]
+[ext_resource path="res://Menus/Settings/SimpleSetting.gd" type="Script" id=4]
+
+[node name="SimpleSetting" type="HSplitContainer"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -4.0
+margin_bottom = 4.0
+grow_vertical = 2
+rect_min_size = Vector2( 0, 16 )
+theme = ExtResource( 1 )
+split_offset = 200
+dragger_visibility = 2
+script = ExtResource( 4 )
+setting_name = "Simple Setting"
+
+[node name="Label" type="Label" parent="."]
+margin_top = 4.0
+margin_right = 201.0
+margin_bottom = 12.0
+text = "Simple Setting"
+clip_text = true
+
+[node name="Button" type="HBoxContainer" parent="."]
+margin_left = 201.0
+margin_right = 480.0
+margin_bottom = 16.0
+alignment = 2
+
+[node name="Decrease" type="Button" parent="Button"]
+margin_left = 247.0
+margin_right = 255.0
+margin_bottom = 16.0
+theme = ExtResource( 3 )
+custom_fonts/font = ExtResource( 2 )
+disabled = true
+text = "<"
+
+[node name="Value" type="Label" parent="Button"]
+margin_left = 259.0
+margin_top = 4.0
+margin_right = 267.0
+margin_bottom = 12.0
+text = "0"
+
+[node name="Increase" type="Button" parent="Button"]
+margin_left = 271.0
+margin_right = 279.0
+margin_bottom = 16.0
+theme = ExtResource( 3 )
+custom_fonts/font = ExtResource( 2 )
+disabled = true
+text = ">"
+
+[connection signal="tree_entered" from="." to="." method="_on_SimpleSetting_tree_entered"]
