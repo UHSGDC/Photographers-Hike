@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=16 format=2]
+[gd_resource type="Theme" load_steps=22 format=2]
 
 [ext_resource path="res://Assets/Theme/DefaultFont8.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/Theme/DefaultFont16.tres" type="DynamicFont" id=2]
@@ -41,6 +41,18 @@ expand_margin_left = 3.0
 expand_margin_right = 3.0
 expand_margin_top = 2.0
 anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id=28]
+
+[sub_resource type="StyleBoxEmpty" id=29]
+
+[sub_resource type="StyleBoxEmpty" id=30]
+
+[sub_resource type="StyleBoxEmpty" id=31]
+
+[sub_resource type="StyleBoxEmpty" id=32]
+
+[sub_resource type="StyleBoxEmpty" id=33]
 
 [sub_resource type="StyleBoxFlat" id=26]
 bg_color = Color( 0.203922, 0.109804, 0.152941, 1 )
@@ -127,6 +139,12 @@ Button/styles/focus = SubResource( 24 )
 Button/styles/hover = SubResource( 22 )
 Button/styles/normal = SubResource( 20 )
 Button/styles/pressed = SubResource( 25 )
+CheckBox/styles/disabled = SubResource( 28 )
+CheckBox/styles/focus = SubResource( 29 )
+CheckBox/styles/hover = SubResource( 30 )
+CheckBox/styles/hover_pressed = SubResource( 31 )
+CheckBox/styles/normal = SubResource( 32 )
+CheckBox/styles/pressed = SubResource( 33 )
 Fonts/fonts/large = ExtResource( 2 )
 Fonts/fonts/normal = ExtResource( 1 )
 Label/colors/font_color = Color( 0.203922, 0.109804, 0.152941, 1 )
