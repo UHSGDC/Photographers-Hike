@@ -1,0 +1,148 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Menus/Settings/InputSetting.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Theme/DefaultFont6.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Assets/Theme/UITheme.tres" type="Theme" id=3]
+[ext_resource path="res://Assets/Theme/UITextButton.tres" type="Theme" id=4]
+[ext_resource path="res://Assets/Theme/DefaultFont16.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Menus/Settings/KeybindsPopup.gd" type="Script" id=7]
+
+[node name="KeybindsPopup" type="Panel"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -160.0
+margin_top = 40.0
+margin_right = 160.0
+margin_bottom = -24.0
+theme = ExtResource( 3 )
+script = ExtResource( 7 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+show_behind_parent = true
+anchor_left = -0.25
+anchor_top = -0.178571
+anchor_right = 1.25
+anchor_bottom = 1.10714
+margin_bottom = 1.52588e-05
+color = Color( 1, 1, 1, 0 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Title" type="Label" parent="."]
+margin_right = 128.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 6 )
+text = " Keybinds"
+valign = 1
+
+[node name="SettingsWindow" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -144.0
+margin_top = -80.0
+margin_right = 144.0
+margin_bottom = 96.0
+color = Color( 0.478431, 0.282353, 0.254902, 1 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="SettingsWindow"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 288, 176 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+scroll_horizontal_enabled = false
+
+[node name="MarginContainer" type="MarginContainer" parent="SettingsWindow/ScrollContainer"]
+margin_right = 288.0
+margin_bottom = 176.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 16
+custom_constants/margin_top = 4
+custom_constants/margin_left = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsWindow/ScrollContainer/MarginContainer"]
+margin_left = 16.0
+margin_top = 4.0
+margin_right = 272.0
+margin_bottom = 176.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="InputSetting" parent="SettingsWindow/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource( 1 )]
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 0.0
+margin_right = 256.0
+margin_bottom = 20.0
+input_name = "Jump"
+input_action_name = "jump"
+
+[node name="InputSetting2" parent="SettingsWindow/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource( 1 )]
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 24.0
+margin_right = 256.0
+margin_bottom = 44.0
+
+[node name="InputSetting3" parent="SettingsWindow/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource( 1 )]
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 48.0
+margin_right = 256.0
+margin_bottom = 68.0
+
+[node name="InputSetting4" parent="SettingsWindow/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource( 1 )]
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 72.0
+margin_right = 256.0
+margin_bottom = 92.0
+
+[node name="InputSetting5" parent="SettingsWindow/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource( 1 )]
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 96.0
+margin_right = 256.0
+margin_bottom = 116.0
+
+[node name="InputSetting6" parent="SettingsWindow/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource( 1 )]
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 120.0
+margin_right = 256.0
+margin_bottom = 140.0
+
+[node name="Close" type="Button" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -32.0
+margin_bottom = 32.0
+theme = ExtResource( 4 )
+custom_fonts/font = ExtResource( 6 )
+text = "X"
+
+[node name="Reset" type="Button" parent="."]
+anchor_left = 0.55
+anchor_top = 0.0357143
+anchor_right = 0.86875
+anchor_bottom = 0.107143
+theme = ExtResource( 4 )
+custom_fonts/font = ExtResource( 2 )
+text = "Reset to Defaults"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[connection signal="pressed" from="Close" to="." method="_on_Close_pressed"]
+[connection signal="pressed" from="Reset" to="." method="_on_Reset_pressed"]
