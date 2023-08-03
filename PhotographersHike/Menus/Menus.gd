@@ -37,10 +37,10 @@ func change_menu(menu: int) -> void:
 		PAUSE:
 			$PauseMenu.show()
 		SETTINGS:
-			$SettingsMain.show()
+			$SettingsMenu.show()
 		ALBUM:
 			$AlbumMenu.update_album()
-			$AlbumMenu.show()	
+			$AlbumMenu.show()
 		NONE:
 			pass
 			

@@ -20,8 +20,7 @@ visible = false
 [node name="PauseMenu" parent="." instance=ExtResource( 3 )]
 visible = false
 
-[node name="SettingsMain" parent="." instance=ExtResource( 4 )]
-visible = false
-
 [node name="AlbumMenu" parent="." instance=ExtResource( 6 )]
 visible = false
+
+[node name="SettingsMenu" parent="." instance=ExtResource( 4 )]
