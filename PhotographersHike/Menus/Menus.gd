@@ -54,19 +54,9 @@ func change_menu(menu: int) -> void:
 	current_menu = menu
 
 
-
-func _input(event):
+func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
 		if current_menu == PAUSE:
 			change_menu(NONE)
 		elif current_menu == NONE:
 			change_menu(PAUSE)
-	
-	if current_menu != MAIN and current_menu != PAUSE and current_menu != NONE:
-		if event.is_action_pressed("menu_cancel"):
-			change_menu(previous_menu)
-			
-			
-	
-	
-		

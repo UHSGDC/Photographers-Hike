@@ -9,11 +9,25 @@ export var picture_container_path: NodePath
 
 onready var picture_container: Control = get_node(picture_container_path)
 
-func _ready():
+func _ready() -> void:
 	var error = $ConfirmDownloadDialog.get_cancel().connect("pressed", self, "download_cancelled")
 	if error:
 		push_error("Error connecting confirm download dialog cancel signal to album menu node")
-	
+
+
+func _back_input() -> void:
+	if $ConfirmDownloadDialog.visible:
+		$ConfirmDownloadDialog.hide()
+		get_tree().set_input_as_handled()
+		return
+	if $FileDialog.visible:
+		$FileDialog.hide()
+		get_tree().set_input_as_handled()
+		return
+	if $DownloadDialog.visible:
+		$DownloadDialog.hide()
+		get_tree().set_input_as_handled()
+		return
 
 func update_album() -> void:
 	var picture_textures = Global.camera_item.picture_textures
