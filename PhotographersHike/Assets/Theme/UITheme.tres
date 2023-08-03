@@ -1,8 +1,10 @@
-[gd_resource type="Theme" load_steps=22 format=2]
+[gd_resource type="Theme" load_steps=24 format=2]
 
 [ext_resource path="res://Assets/Theme/DefaultFont8.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/Theme/DefaultFont16.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Assets/Theme/DefaultFont6.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Assets/Theme/CloseIconNormal.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Theme/CloseIconHover.png" type="Texture" id=5]
 
 [sub_resource type="StyleBoxEmpty" id=24]
 
@@ -163,4 +165,6 @@ VScrollBar/styles/grabber_pressed = SubResource( 12 )
 VScrollBar/styles/scroll = SubResource( 10 )
 VScrollBar/styles/scroll_focus = SubResource( 10 )
 WindowDialog/colors/title_color = Color( 0.203922, 0.109804, 0.152941, 1 )
+WindowDialog/icons/close = ExtResource( 4 )
+WindowDialog/icons/close_highlight = ExtResource( 5 )
 WindowDialog/styles/panel = SubResource( 15 )
