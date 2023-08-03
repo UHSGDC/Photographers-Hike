@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/Theme/UITheme.tres" type="Theme" id=1]
 [ext_resource path="res://Assets/Theme/DefaultFont16.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Assets/Theme/UITextButton.tres" type="Theme" id=3]
 [ext_resource path="res://Menus/Settings/Category.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Menus/Settings/SimpleSetting.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Menus/Settings/ButtonSetting.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Menus/Settings/InputSetting.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Misc/Warning.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Menus/Settings/PressKeyPopup.tscn" type="PackedScene" id=9]
 
 [node name="SettingsMenu" type="Panel"]
 anchor_right = 1.0
@@ -86,31 +90,177 @@ setting_type = 3
 
 [node name="ControlsCategory" parent="SettingsWindow/ScrollContainer/CategoryContainer" instance=ExtResource( 4 )]
 margin_top = 70.0
-margin_bottom = 100.0
+margin_bottom = 116.0
 
 [node name="CategoryTitle" parent="SettingsWindow/ScrollContainer/CategoryContainer/ControlsCategory" index="0"]
 text = "Controls"
 
+[node name="MarginSettingsContainer" parent="SettingsWindow/ScrollContainer/CategoryContainer/ControlsCategory" index="1"]
+margin_bottom = 46.0
+
+[node name="SettingsContainer" parent="SettingsWindow/ScrollContainer/CategoryContainer/ControlsCategory/MarginSettingsContainer" index="0"]
+margin_bottom = 22.0
+
+[node name="KeybindSetting" parent="SettingsWindow/ScrollContainer/CategoryContainer/ControlsCategory/MarginSettingsContainer/SettingsContainer" index="0" instance=ExtResource( 6 )]
+anchor_top = 0.0
+anchor_bottom = 0.0
+margin_top = 0.0
+margin_right = 352.0
+margin_bottom = 16.0
+
 [node name="MinigamesCategory" parent="SettingsWindow/ScrollContainer/CategoryContainer" instance=ExtResource( 4 )]
-margin_top = 104.0
-margin_bottom = 134.0
+margin_top = 120.0
+margin_bottom = 150.0
 
 [node name="CategoryTitle" parent="SettingsWindow/ScrollContainer/CategoryContainer/MinigamesCategory" index="0"]
 text = "Minigames"
 
 [node name="VideoCategory" parent="SettingsWindow/ScrollContainer/CategoryContainer" instance=ExtResource( 4 )]
-margin_top = 138.0
-margin_bottom = 168.0
+margin_top = 154.0
+margin_bottom = 184.0
 
 [node name="CategoryTitle" parent="SettingsWindow/ScrollContainer/CategoryContainer/VideoCategory" index="0"]
 text = "Video"
 
 [node name="AudioCategory" parent="SettingsWindow/ScrollContainer/CategoryContainer" instance=ExtResource( 4 )]
-margin_top = 172.0
-margin_bottom = 202.0
+margin_top = 188.0
+margin_bottom = 218.0
 
 [node name="CategoryTitle" parent="SettingsWindow/ScrollContainer/CategoryContainer/AudioCategory" index="0"]
 text = "Audio"
+
+[node name="KeybindsPopup" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -160.0
+margin_top = 40.0
+margin_right = 160.0
+margin_bottom = -24.0
+
+[node name="Title" type="Label" parent="KeybindsPopup"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -64.0
+margin_right = 64.0
+margin_bottom = 32.0
+grow_horizontal = 2
+custom_fonts/font = ExtResource( 2 )
+text = "Keybinds"
+align = 1
+valign = 1
+
+[node name="SettingsWindow" type="ColorRect" parent="KeybindsPopup"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -144.0
+margin_top = -80.0
+margin_right = 144.0
+margin_bottom = 96.0
+color = Color( 0.478431, 0.282353, 0.254902, 1 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="KeybindsPopup/SettingsWindow"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="KeybindsPopup/SettingsWindow/ScrollContainer"]
+margin_right = 274.0
+margin_bottom = 188.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 16
+custom_constants/margin_left = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="KeybindsPopup/SettingsWindow/ScrollContainer/MarginContainer"]
+margin_left = 16.0
+margin_right = 258.0
+margin_bottom = 188.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="InputSetting" parent="KeybindsPopup/SettingsWindow/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource( 7 )]
+anchor_left = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_right = 242.0
+margin_bottom = 28.0
+input_name = "Jump"
+input_action_name = "jump"
+press_key_popup_node_path = NodePath("../../../../../../PressKeyPopup")
+WARNING_CONTAINER_PATH = NodePath("../../../../../../BindWarning")
+
+[node name="InputSetting2" parent="KeybindsPopup/SettingsWindow/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource( 7 )]
+anchor_left = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 32.0
+margin_right = 242.0
+margin_bottom = 60.0
+press_key_popup_node_path = NodePath("../../../../../../PressKeyPopup")
+WARNING_CONTAINER_PATH = NodePath("../../../../../../BindWarning")
+
+[node name="InputSetting3" parent="KeybindsPopup/SettingsWindow/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource( 7 )]
+anchor_left = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 64.0
+margin_right = 242.0
+margin_bottom = 92.0
+press_key_popup_node_path = NodePath("../../../../../../PressKeyPopup")
+WARNING_CONTAINER_PATH = NodePath("../../../../../../BindWarning")
+
+[node name="InputSetting4" parent="KeybindsPopup/SettingsWindow/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource( 7 )]
+anchor_left = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 96.0
+margin_right = 242.0
+margin_bottom = 124.0
+press_key_popup_node_path = NodePath("../../../../../../PressKeyPopup")
+WARNING_CONTAINER_PATH = NodePath("../../../../../../BindWarning")
+
+[node name="InputSetting5" parent="KeybindsPopup/SettingsWindow/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource( 7 )]
+anchor_left = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 128.0
+margin_right = 242.0
+margin_bottom = 156.0
+press_key_popup_node_path = NodePath("../../../../../../PressKeyPopup")
+WARNING_CONTAINER_PATH = NodePath("../../../../../../BindWarning")
+
+[node name="InputSetting6" parent="KeybindsPopup/SettingsWindow/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource( 7 )]
+anchor_left = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 160.0
+margin_right = 242.0
+margin_bottom = 188.0
+press_key_popup_node_path = NodePath("../../../../../../PressKeyPopup")
+WARNING_CONTAINER_PATH = NodePath("../../../../../../BindWarning")
+
+[node name="Close" type="Button" parent="KeybindsPopup"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -32.0
+margin_bottom = 32.0
+theme = ExtResource( 3 )
+custom_fonts/font = ExtResource( 2 )
+text = "X"
+
+[node name="PressKeyPopup" parent="." instance=ExtResource( 9 )]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.266667 )
+
+[node name="BindWarning" parent="." instance=ExtResource( 8 )]
 
 [editable path="SettingsWindow/ScrollContainer/CategoryContainer/GameplayCategory"]
 [editable path="SettingsWindow/ScrollContainer/CategoryContainer/ControlsCategory"]
