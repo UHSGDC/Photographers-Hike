@@ -8,40 +8,58 @@
 
 [sub_resource type="StyleBoxEmpty" id=24]
 
-[sub_resource type="StyleBoxFlat" id=22]
+[sub_resource type="StyleBoxFlat" id=28]
+content_margin_left = 8.0
+content_margin_right = 8.0
 bg_color = Color( 0.478431, 0.282353, 0.254902, 1 )
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-corner_detail = 1
+border_width_left = 2
+border_width_right = 2
+border_color = Color( 0, 0, 0, 0 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 2
 expand_margin_left = 3.0
 expand_margin_right = 3.0
 expand_margin_top = 2.0
+expand_margin_bottom = 1.0
 anti_aliasing = false
 
-[sub_resource type="StyleBoxFlat" id=20]
+[sub_resource type="StyleBoxFlat" id=29]
+content_margin_left = 8.0
+content_margin_right = 8.0
 bg_color = Color( 0.678431, 0.466667, 0.341176, 1 )
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-corner_detail = 1
+border_width_left = 2
+border_width_right = 2
+border_color = Color( 0, 0, 0, 0 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 2
 expand_margin_left = 3.0
 expand_margin_right = 3.0
 expand_margin_top = 2.0
+expand_margin_bottom = 1.0
 anti_aliasing = false
 
-[sub_resource type="StyleBoxFlat" id=25]
+[sub_resource type="StyleBoxFlat" id=30]
+content_margin_left = 8.0
+content_margin_right = 8.0
 bg_color = Color( 0.376471, 0.172549, 0.172549, 1 )
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-corner_detail = 1
+border_width_left = 2
+border_width_right = 2
+border_color = Color( 0, 0, 0, 0 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 2
 expand_margin_left = 3.0
 expand_margin_right = 3.0
 expand_margin_top = 2.0
+expand_margin_bottom = 1.0
 anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id=26]
@@ -126,9 +144,9 @@ Button/constants/hseparation = 0
 Button/fonts/font = ExtResource( 1 )
 Button/styles/disabled = null
 Button/styles/focus = SubResource( 24 )
-Button/styles/hover = SubResource( 22 )
-Button/styles/normal = SubResource( 20 )
-Button/styles/pressed = SubResource( 25 )
+Button/styles/hover = SubResource( 28 )
+Button/styles/normal = SubResource( 29 )
+Button/styles/pressed = SubResource( 30 )
 Fonts/fonts/large = ExtResource( 2 )
 Fonts/fonts/normal = ExtResource( 1 )
 Label/colors/font_color = Color( 0.203922, 0.109804, 0.152941, 1 )
