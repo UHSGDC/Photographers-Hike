@@ -1,88 +1,74 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Assets/Theme/PressStart2P-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/Theme/UITheme.tres" type="Theme" id=1]
 [ext_resource path="res://Menus/PauseMenu.gd" type="Script" id=2]
-
-[sub_resource type="DynamicFont" id=1]
-size = 32
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 20
-font_data = ExtResource( 1 )
-
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0, 0, 0, 1 )
+[ext_resource path="res://Assets/Theme/DefaultFont12.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Assets/Theme/DefaultFont24.tres" type="DynamicFont" id=4]
 
 [node name="PauseMenu" type="Control"]
 pause_mode = 2
 margin_right = 480.0
 margin_bottom = 288.0
+theme = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 480.0
 margin_bottom = 288.0
-color = Color( 0.0862745, 0.662745, 0.529412, 0 )
+color = Color( 0, 0, 0, 0.266667 )
 
-[node name="Label" type="Label" parent="ColorRect"]
+[node name="Title" type="Label" parent="ColorRect"]
 margin_top = 59.0
 margin_right = 478.0
 margin_bottom = 104.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 1 )
-text = "GAME PAUSED"
+custom_fonts/font = ExtResource( 4 )
+text = "Game Paused"
 align = 1
 valign = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
-margin_left = 67.0
-margin_top = 100.0
-margin_right = 414.0
-margin_bottom = 192.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -64.0
+margin_top = -40.0
+margin_right = 64.0
+margin_bottom = 52.0
+custom_constants/separation = 8
 
 [node name="Resume" type="Button" parent="ColorRect/VBoxContainer"]
-margin_right = 347.0
-margin_bottom = 20.0
-custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 2 )
-custom_styles/normal = SubResource( 3 )
+margin_right = 128.0
+margin_bottom = 12.0
+custom_fonts/font = ExtResource( 3 )
 text = "Resume"
 
 [node name="Settings" type="Button" parent="ColorRect/VBoxContainer"]
-margin_top = 24.0
-margin_right = 347.0
-margin_bottom = 44.0
-custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 2 )
-custom_styles/normal = SubResource( 3 )
+margin_top = 20.0
+margin_right = 128.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 3 )
 text = "Settings"
 
 [node name="Album" type="Button" parent="ColorRect/VBoxContainer"]
-margin_top = 48.0
-margin_right = 347.0
-margin_bottom = 68.0
-custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 2 )
-custom_styles/normal = SubResource( 3 )
+margin_top = 40.0
+margin_right = 128.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 3 )
 text = "Album"
 
 [node name="Menu" type="Button" parent="ColorRect/VBoxContainer"]
-margin_top = 72.0
-margin_right = 347.0
-margin_bottom = 92.0
-custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 2 )
-custom_styles/normal = SubResource( 3 )
+margin_top = 60.0
+margin_right = 128.0
+margin_bottom = 72.0
+custom_fonts/font = ExtResource( 3 )
 text = "Main Menu"
 
 [node name="Quit" type="Button" parent="ColorRect/VBoxContainer"]
-margin_top = 96.0
-margin_right = 347.0
-margin_bottom = 116.0
-custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 2 )
-custom_styles/normal = SubResource( 3 )
+margin_top = 80.0
+margin_right = 128.0
+margin_bottom = 92.0
+custom_fonts/font = ExtResource( 3 )
 text = "Quit"
 
 [connection signal="pressed" from="ColorRect/VBoxContainer/Resume" to="." method="_on_Resume_pressed"]
