@@ -37,7 +37,7 @@ theme = ExtResource( 3 )
 scroll_horizontal_enabled = false
 
 [node name="PictureContainer" type="HFlowContainer" parent="AlbumWindow/ScrollContainer"]
-margin_right = 410.0
+margin_right = 424.0
 size_flags_horizontal = 3
 
 [node name="AlbumTitle" type="Label" parent="."]
@@ -106,6 +106,7 @@ margin_left = -126.0
 margin_top = -35.0
 margin_right = 126.0
 margin_bottom = 35.0
+window_title = "Warning!"
 dialog_text = "Download x Pictures at "
 dialog_autowrap = true
 
