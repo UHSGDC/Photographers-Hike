@@ -6,62 +6,55 @@
 [ext_resource path="res://Assets/Theme/UITheme.tres" type="Theme" id=5]
 
 [node name="InputSetting" type="HSplitContainer"]
-anchor_left = 0.017
-anchor_right = 0.983
-anchor_bottom = 0.097
-margin_left = -0.160001
-margin_right = 0.159973
-margin_bottom = 0.0639992
-rect_min_size = Vector2( 0, 28 )
+anchor_top = 0.472
+anchor_right = 0.7
+anchor_bottom = 0.542
+margin_top = 0.0639954
+margin_right = -3.05176e-05
+margin_bottom = -0.0960083
+rect_min_size = Vector2( 0, 20 )
 theme = ExtResource( 5 )
 split_offset = 192
 dragger_visibility = 2
 script = ExtResource( 3 )
-BIND_DISPLAY_CONTAINER_PATH = NodePath("HSplitContainer/BindContainerContainer/BindContainer")
+BIND_DISPLAY_CONTAINER_PATH = NodePath("HSplitContainer/BindContainer")
 BIND_DISPLAY_SCENE = ExtResource( 2 )
 MAX_BINDS = 3
 
 [node name="InputName" type="Label" parent="."]
-margin_top = 10.0
-margin_right = 193.0
-margin_bottom = 18.0
+margin_top = 6.0
+margin_right = 300.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
 text = "Jump"
 valign = 1
 clip_text = true
 
 [node name="HSplitContainer" type="HSplitContainer" parent="."]
-margin_left = 193.0
-margin_right = 464.0
-margin_bottom = 28.0
+margin_left = 300.0
+margin_right = 336.0
+margin_bottom = 20.0
 rect_min_size = Vector2( 0, 16 )
 custom_constants/separation = 0
 split_offset = 160
 dragger_visibility = 2
 
-[node name="BindContainerContainer" type="CenterContainer" parent="HSplitContainer"]
-margin_right = 160.0
-margin_bottom = 28.0
-
-[node name="BindContainer" type="HBoxContainer" parent="HSplitContainer/BindContainerContainer"]
-margin_left = 80.0
-margin_top = 14.0
-margin_right = 80.0
-margin_bottom = 14.0
+[node name="BindContainer" type="HBoxContainer" parent="HSplitContainer"]
+margin_bottom = 20.0
 grow_horizontal = 0
 size_flags_horizontal = 3
 alignment = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="HSplitContainer"]
-margin_left = 160.0
-margin_right = 196.0
-margin_bottom = 28.0
+margin_right = 36.0
+margin_bottom = 20.0
 rect_min_size = Vector2( 36, 0 )
 size_flags_horizontal = 0
 
 [node name="Container" type="HBoxContainer" parent="HSplitContainer/CenterContainer"]
-margin_top = 6.0
+margin_top = 2.0
 margin_right = 36.0
-margin_bottom = 22.0
+margin_bottom = 18.0
 
 [node name="AddButton" type="TextureButton" parent="HSplitContainer/CenterContainer/Container"]
 modulate = Color( 0.490196, 0.972549, 0.309804, 1 )

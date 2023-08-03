@@ -3,14 +3,13 @@ extends HSplitContainer
 export var input_name: String
 export var input_action_name: String
 var input_events: String
-export var press_key_popup_node_path: NodePath
-onready var press_key_popup_node: Control = get_node(press_key_popup_node_path)
+
+var press_key_popup_node: Control
+var warning_container_node: Label
+
 
 export var BIND_DISPLAY_CONTAINER_PATH: NodePath
 onready var bind_display_container_node: Control = get_node(BIND_DISPLAY_CONTAINER_PATH)
-
-export var WARNING_CONTAINER_PATH: NodePath
-onready var warning_container_node: Label = get_node(WARNING_CONTAINER_PATH)
 
 export var BIND_DISPLAY_SCENE: PackedScene
 export var MAX_BINDS: int
