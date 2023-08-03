@@ -80,6 +80,7 @@ margin_top = -84.0
 margin_right = 172.0
 margin_bottom = 92.0
 theme = ExtResource( 3 )
+popup_exclusive = true
 window_title = "Open a Directory"
 resizable = true
 mode = 2
@@ -95,6 +96,7 @@ margin_top = -29.0
 margin_right = 114.0
 margin_bottom = 29.0
 grow_horizontal = 2
+popup_exclusive = true
 window_title = "Download Status"
 
 [node name="ConfirmDownloadDialog" type="ConfirmationDialog" parent="."]
@@ -106,6 +108,7 @@ margin_left = -126.0
 margin_top = -35.0
 margin_right = 126.0
 margin_bottom = 35.0
+popup_exclusive = true
 window_title = "Warning!"
 dialog_text = "Download x Pictures at "
 dialog_autowrap = true

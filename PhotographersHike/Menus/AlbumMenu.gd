@@ -15,6 +15,14 @@ func _ready() -> void:
 		push_error("Error connecting confirm download dialog cancel signal to album menu node")
 
 
+func hide() -> void:
+	.hide()
+	$FileDialog.call_deferred("hide")
+	$ConfirmDownloadDialog.call_deferred("hide")
+	$DownloadDialog.call_deferred("hide")
+	
+
+
 func _back_input() -> void:
 	if $ConfirmDownloadDialog.visible:
 		$ConfirmDownloadDialog.hide()
@@ -74,7 +82,7 @@ func _on_DownloadButton_pressed() -> void:
 		
 	if picture_textures.size() == 0:
 		$ConfirmDownloadDialog.dialog_text = "Please select some photos download."
-		$ConfirmDownloadDialog.popup_centered()
+		$ConfirmDownloadDialog.call_deferred("popup_centered")
 		return
 		
 	if OS.has_feature("web"):
@@ -83,7 +91,7 @@ func _on_DownloadButton_pressed() -> void:
 	_handle_desktop_download(picture_textures)
 	
 
-func _handle_web_download(picture_textures: Array) -> void:			
+func _handle_web_download(picture_textures: Array) -> void:		
 	$ConfirmDownloadDialog.dialog_text = "Download %s pictures? Please give permission to download multiple files in your browser's settings." % picture_textures.size()
 	$ConfirmDownloadDialog.popup_centered()
 	
