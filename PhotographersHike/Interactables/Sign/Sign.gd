@@ -71,10 +71,13 @@ func get_move_direction() -> float:
 
 
 func _on_CutsceneActivation_body_entered(body: Node) -> void:
-	if !should_play_cutscene:
+	if player:
 		return
 	if body == Global.platforming_player:
 		player = body
+		
+	if !should_play_cutscene:
+		return
 	
 	should_move_player_to_sign = true
 	player.in_cutscene = true
@@ -108,12 +111,12 @@ func _on_SignArea_body_entered(body: Node) -> void:
 		
 		
 		
-		yield(get_tree().create_timer(0.2), "timeout")
+		yield(get_tree().create_timer(0.05), "timeout")
+		player.state = player.States.PICTURE
 		should_play_cutscene = false
 		should_move_player_to_sign = false
 		jump_cast.queue_free()
 		jump_cast = null
-		player.state = player.States.PICTURE
 		
 		Global.player_camera.zoom_speed = 0.3
 		Global.player_camera.zoom_to = Vector2.ONE * 0.5
@@ -127,9 +130,12 @@ func _on_SignArea_body_entered(body: Node) -> void:
 		yield(player, "animation_finished")
 		
 		player.in_cutscene = false
+		
+		var tween = get_tree().create_tween()
+		tween.tween_property($DirectionLabel, "modulate", Color.white, 0.5)
 
 
-func _on_SignArea_body_exited(body):
+func _on_SignArea_body_exited(body: Node) -> void:
 	if body != player:
 		return
 	var tween = get_tree().create_tween()

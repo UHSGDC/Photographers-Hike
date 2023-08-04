@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Interactables/Sign/Sign.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Art/Interactables/Sign.png" type="Texture" id=2]
 [ext_resource path="res://Interactables/Sign/PlayerJumpCast.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Assets/Theme/PressStart2P-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Assets/Theme/DefaultFont8.tres" type="DynamicFont" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 172.026
@@ -11,9 +11,14 @@ radius = 172.026
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 32, 25.5 )
 
-[sub_resource type="DynamicFont" id=3]
-size = 8
-font_data = ExtResource( 4 )
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 2
+anti_aliasing = false
 
 [node name="Sign" type="Sprite"]
 texture = ExtResource( 2 )
@@ -50,20 +55,21 @@ margin_top = -52.0
 margin_right = -32.0
 margin_bottom = -33.0
 grow_horizontal = 2
-custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.921569, 0.929412, 0.913725, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "<- Base
  Summit -> "
 align = 1
 valign = 2
 
-[node name="ColorRect" type="ColorRect" parent="DirectionLabel"]
-modulate = Color( 1, 1, 1, 0.286275 )
+[node name="ColorRect" type="Panel" parent="DirectionLabel"]
+modulate = Color( 1, 1, 1, 0.266667 )
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -6.0
 margin_bottom = 5.0
-color = Color( 0, 0, 0, 1 )
+custom_styles/panel = SubResource( 3 )
 
 [connection signal="body_entered" from="CutsceneActivation" to="." method="_on_CutsceneActivation_body_entered"]
 [connection signal="body_entered" from="SignArea" to="." method="_on_SignArea_body_entered"]
