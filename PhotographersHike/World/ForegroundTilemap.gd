@@ -1,12 +1,16 @@
 extends TileMap
 
+tool
+
 
 export var level_tilemap_path: NodePath
-onready var level_tilemap: TileMap = get_node(level_tilemap_path)
+var level_tilemap: TileMap
 
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
-export var automatic_placement: bool = true
+export var generate_tilemap: bool setget set_generate_tilemap
+export var clear_tilemap: bool setget set_clear_tilemap
+export var lock_generation: bool
 
 
 enum Foreground {
@@ -22,20 +26,29 @@ enum Foreground {
 enum Level {
 	STONE = 7,
 	DIRT = 8,
-	SNOW = 9,
+	SNOW = 10,
 	LEAF = 11,
 	COBBLESTONE = 12,
 	PLATFORM = 13,
 }
 
+func set_clear_tilemap(new_value: bool) -> void:
+	if lock_generation:
+		return
+	clear_tilemap = false
+	clear()
 
-func _ready() -> void:
-	rng.randomize()
-	_place_foreground_tiles()
+
+func set_generate_tilemap(new_value: bool) -> void:
+	generate_tilemap = false
+	if lock_generation:
+		return
+	level_tilemap = get_node(level_tilemap_path)
+	_generate_foreground_tiles()
 
 
-
-func _place_foreground_tiles() -> void:
+func _generate_foreground_tiles() -> void:
+	clear()
 	for tile_pos in level_tilemap.get_used_cells():
 		var tile_id = level_tilemap.get_cellv(tile_pos)		
 		match tile_id:
