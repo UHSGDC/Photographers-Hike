@@ -82,7 +82,6 @@ margin_bottom = 92.0
 theme = ExtResource( 3 )
 popup_exclusive = true
 window_title = "Open a Directory"
-resizable = true
 mode = 2
 access = 2
 
