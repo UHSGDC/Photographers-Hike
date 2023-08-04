@@ -24,3 +24,4 @@ visible = false
 visible = false
 
 [node name="SettingsMenu" parent="." instance=ExtResource( 4 )]
+visible = false
