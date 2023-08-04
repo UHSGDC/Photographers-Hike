@@ -5,6 +5,7 @@ func hide() -> void:
 	.hide()
 	$KeybindsPopup.call_deferred("hide")
 
+
 func _back_input() -> void:
 	if $KeybindsPopup.visible:
 		$KeybindsPopup.hide()
