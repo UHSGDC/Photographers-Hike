@@ -11,7 +11,7 @@ margin_right = 96.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 96, 80 )
 theme = ExtResource( 2 )
-color = Color( 0.678431, 0.466667, 0.341176, 1 )
+color = Color( 0.843137, 0.709804, 0.580392, 1 )
 script = ExtResource( 3 )
 
 [node name="PictureTexture" type="TextureRect" parent="."]
