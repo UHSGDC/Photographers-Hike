@@ -132,6 +132,7 @@ margin_bottom = 218.0
 text = "Audio"
 
 [node name="KeybindsPopup" parent="." instance=ExtResource( 2 )]
+visible = false
 press_key_popup_path = NodePath("../PressKeyPopup")
 warning_container_path = NodePath("../BindWarning")
 
@@ -139,6 +140,7 @@ warning_container_path = NodePath("../BindWarning")
 visible = false
 
 [node name="BindWarning" parent="." instance=ExtResource( 6 )]
+visible = false
 
 [connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]
 [connection signal="pressed" from="SettingsWindow/ScrollContainer/CategoryContainer/ControlsCategory/MarginSettingsContainer/SettingsContainer/KeybindSetting" to="KeybindsPopup" method="_on_KeybindSetting_pressed"]
