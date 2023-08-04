@@ -128,7 +128,8 @@ func _update_button() -> void:
 
 func _update_label(text: String) -> void:
 	$Button/Value.text = text
-	emit_signal("value_changed", current_value)
+	if !Engine.editor_hint:
+		emit_signal("value_changed", current_value)
 
 
 func _on_number_decreased() -> void:

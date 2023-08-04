@@ -3,7 +3,7 @@ extends Node
 # Singleton which stores references to other Nodes
 signal room_changed
 signal input_changed
-signal hide_jump_arrow_toggled(value)
+signal jump_arrow_toggled(value)
 signal faster_jump_charging_toggled(value)
 
 var player_camera: Camera2D

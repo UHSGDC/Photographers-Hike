@@ -42,7 +42,7 @@ export var keyboard_aim_speed: float
 func _ready() -> void:
 	current_charge_speed = normal_charge_speed
 	current_jump_velocity = min_jump_velocity
-	Global.connect("hide_jump_arrow_toggled", self, "on_hide_jump_arrow_toggled")
+	Global.connect("jump_arrow_toggled", self, "on_jump_arrow_toggled")
 	Global.connect("faster_jump_charging_toggled", self, "on_faster_jump_charging_toggled")
 	call_deferred("set_player_reference")
 	call_deferred("connect_respawn_signal")
@@ -59,8 +59,8 @@ func on_faster_jump_charging_toggled(value: bool) -> void:
 		current_charge_speed = normal_charge_speed
 	
 	
-func on_hide_jump_arrow_toggled(value: bool) -> void:
-	$Line2D.modulate.a = int(!value)
+func on_jump_arrow_toggled(value: bool) -> void:
+	$Line2D.modulate.a = int(value)
 	
 	
 func stop_tracking_path() -> void:
