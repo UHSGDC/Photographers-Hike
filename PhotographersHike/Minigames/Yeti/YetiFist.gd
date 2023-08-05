@@ -21,4 +21,5 @@ func punch(yeti: Sprite) -> void:
 
 
 func _on_YetiFist_body_entered(body: Node) -> void:
-	Global.platforming_player.respawn()
+	if !Global.platforming_player.death_pause:
+		Global.platforming_player.respawn()

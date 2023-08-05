@@ -46,7 +46,7 @@ func _process(delta: float) -> void:
 			punch()
 			
 	if player_invinciblity:
-		if Global.platforming_player.x_input != 0:
+		if Global.platforming_player.x_input != 0 and Global.platforming_player.velocity.x != 0:
 			player_invinciblity = false
 
 			
