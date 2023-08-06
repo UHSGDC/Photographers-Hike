@@ -4,7 +4,7 @@ signal player_in_area
 
 export var yeti_scene: PackedScene
 
-var yeti: Sprite
+var yeti: Area2D
 
 var player: Player
 

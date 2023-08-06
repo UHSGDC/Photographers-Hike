@@ -1,4 +1,4 @@
-extends Sprite
+extends Area2D
 
 
 export var fist_scene: PackedScene
@@ -89,3 +89,4 @@ func _on_Player_respawn() -> void:
 	can_punch = true
 	global_position = Global.current_room.global_position
 	player_invinciblity = true
+

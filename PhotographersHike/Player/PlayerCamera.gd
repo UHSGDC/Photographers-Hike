@@ -22,6 +22,8 @@ var panning: bool = false
 
 const SCREEN_SHAKE_UPDATE_TIME: float = 0.05
 
+var should_screen_shake: bool = false
+
 
 func _ready() -> void:
 	Global.player_camera = self
@@ -37,12 +39,21 @@ func _ready() -> void:
 
 
 func screen_shake(length: float) -> void:
-	for i in length / SCREEN_SHAKE_UPDATE_TIME:
+	start_screen_shake()
+	yield(get_tree().create_timer(length), "timeout")
+	end_screen_shake()
+
+
+func start_screen_shake() -> void:
+	should_screen_shake = true
+	while should_screen_shake:
 		offset = Vector2(randf() * 2, randf() * 2)
 		yield(get_tree().create_timer(SCREEN_SHAKE_UPDATE_TIME), "timeout")
-		
 	offset = Vector2.ZERO
 	
+func end_screen_shake() -> void:
+	should_screen_shake = false
+
 
 func _physics_process(delta: float) -> void:
 	if zoom_to != zoom:

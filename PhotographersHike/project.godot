@@ -193,6 +193,7 @@ left_click={
 2d_physics/layer_8="Room"
 2d_physics/layer_9="WindZoneDetection"
 2d_physics/layer_10="RockClimbingRocks"
+2d_physics/layer_11="Yeti"
 
 [mono]
 

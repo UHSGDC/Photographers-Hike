@@ -1,7 +1,7 @@
 extends Area2D
 
 
-func punch(yeti: Sprite) -> void:
+func punch(yeti: Area2D) -> void:
 	yeti.punches += 1
 	yeti.can_punch = false
 	global_position = Global.platforming_player.global_position

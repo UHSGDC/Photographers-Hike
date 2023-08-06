@@ -1,4 +1,4 @@
-[gd_scene load_steps=193 format=2]
+[gd_scene load_steps=186 format=2]
 
 [ext_resource path="res://World/DeathZone.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/PlatformingPlayer.tscn" type="PackedScene" id=2]
@@ -24,10 +24,7 @@
 [ext_resource path="res://World/Background.tres" type="TileSet" id=22]
 [ext_resource path="res://Misc/Debug.tscn" type="PackedScene" id=23]
 [ext_resource path="res://icon.png" type="Texture" id=24]
-[ext_resource path="res://Minigames/Yeti/BreakablePlatform.tscn" type="PackedScene" id=25]
-[ext_resource path="res://Assets/Art/Yeti/SnowPileReady.png" type="Texture" id=26]
-[ext_resource path="res://Assets/Art/Yeti/SnowPileDropped.png" type="Texture" id=27]
-[ext_resource path="res://World/AnimationPlayer.gd" type="Script" id=28]
+[ext_resource path="res://Minigames/Yeti/YetiDeath.tscn" type="PackedScene" id=25]
 [ext_resource path="res://Minigames/Yeti/Yeti.tscn" type="PackedScene" id=29]
 
 [sub_resource type="RectangleShape2D" id=44]
@@ -1566,141 +1563,6 @@ radius = 32.0
 
 [sub_resource type="RectangleShape2D" id=45]
 extents = Vector2( 240, 144 )
-
-[sub_resource type="Animation" id=177]
-resource_name = "Drop Snow and Flash"
-tracks/0/type = "value"
-tracks/0/path = NodePath("Flash/ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 0.7, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("SnowPileReady:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.3, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("SnowPileDropped:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.4, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("BreakablePlatform:playing")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/4/type = "method"
-tracks/4/path = NodePath("AnimationPlayer")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0.5 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "kill_yeti"
-} ]
-}
-
-[sub_resource type="Animation" id=178]
-resource_name = "RESET"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("Flash/ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("SnowPileDropped:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("SnowPileReady:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("BreakablePlatform:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("BreakablePlatform:playing")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-
-[sub_resource type="RectangleShape2D" id=179]
-extents = Vector2( 8, 0 )
-
-[sub_resource type="RectangleShape2D" id=180]
-extents = Vector2( 4, 72 )
 
 [sub_resource type="StreamTexture" id=173]
 load_path = "res://.import/Sign.png-641f8ed36cbd29df3415fff9e035ebba.stex"
@@ -3554,56 +3416,11 @@ shape = SubResource( 45 )
 [node name="Yeti" parent="Snowy" instance=ExtResource( 29 )]
 active = true
 
-[node name="YetiDeath" type="Node2D" parent="Snowy"]
+[node name="YetiDeath" parent="Snowy" instance=ExtResource( 25 )]
 position = Vector2( 8568, -1664 )
 
-[node name="SnowPileReady" type="Sprite" parent="Snowy/YetiDeath"]
-position = Vector2( -8, -64 )
-z_index = -1
-texture = ExtResource( 26 )
-offset = Vector2( 0, 1 )
-
-[node name="BreakablePlatform" parent="Snowy/YetiDeath" instance=ExtResource( 25 )]
-position = Vector2( 0, 16 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Snowy/YetiDeath"]
-"anims/Drop Snow and Flash" = SubResource( 177 )
-anims/RESET = SubResource( 178 )
-script = ExtResource( 28 )
-
-[node name="SnowPileDropped" type="Sprite" parent="Snowy/YetiDeath"]
-modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 40, 88 )
-z_index = -1
-texture = ExtResource( 27 )
-offset = Vector2( 3, 0 )
-
-[node name="Flash" type="CanvasLayer" parent="Snowy/YetiDeath"]
-layer = 2
-
-[node name="ColorRect" type="ColorRect" parent="Snowy/YetiDeath/Flash"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 1, 1, 1, 0 )
-
-[node name="Activator" type="Area2D" parent="Snowy/YetiDeath"]
-position = Vector2( -48, 32 )
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Snowy/YetiDeath/Activator"]
-shape = SubResource( 179 )
-
-[node name="CompleteZone" type="Area2D" parent="Snowy/YetiDeath"]
-position = Vector2( 88, 56 )
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Snowy/YetiDeath/CompleteZone"]
-shape = SubResource( 180 )
-
 [node name="PlatformingPlayer" parent="." instance=ExtResource( 2 )]
-position = Vector2( 26248, -5208 )
+position = Vector2( 25728, -5008 )
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 3 )]
 
@@ -3646,8 +3463,6 @@ text = "<- Sparse Forest
 
 [connection signal="body_entered" from="SparseForest/Cave" to="SparseForest/Cave" method="_on_Cave_body_entered"]
 [connection signal="body_exited" from="SparseForest/Cave" to="SparseForest/Cave" method="_on_Cave_body_exited"]
-[connection signal="body_entered" from="Snowy/YetiDeath/Activator" to="Snowy/YetiDeath/AnimationPlayer" method="_on_Activator_body_entered"]
-[connection signal="body_entered" from="Snowy/YetiDeath/CompleteZone" to="Snowy/YetiDeath/AnimationPlayer" method="_on_CompleteZone_body_entered"]
 
 [editable path="Base/Room1"]
 [editable path="Base/Room2"]
