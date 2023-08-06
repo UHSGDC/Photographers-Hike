@@ -16,8 +16,8 @@ collision_mask = 0
 script = ExtResource( 2 )
 fist_scene = ExtResource( 3 )
 fist_distance = 40.0
-punch_cooldown = 0.5
-fist_amount = 3
+punch_cooldown = 0.3
+fist_amount = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
