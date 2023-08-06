@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Theme/UITheme.tres" type="Theme" id=1]
 [ext_resource path="res://Assets/Theme/DefaultFont8.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Assets/Theme/UITextButton.tres" type="Theme" id=3]
 [ext_resource path="res://Menus/Settings/SimpleSetting.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Theme/PressStart2P-Regular.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 8
+extra_spacing_bottom = 1
+font_data = ExtResource( 5 )
 
 [node name="SimpleSetting" type="HSplitContainer"]
 anchor_top = 0.5
@@ -43,10 +49,12 @@ text = "<"
 
 [node name="Value" type="Label" parent="Button"]
 margin_left = 259.0
-margin_top = 4.0
+margin_top = 3.0
 margin_right = 267.0
 margin_bottom = 12.0
+custom_fonts/font = SubResource( 1 )
 text = "0"
+valign = 1
 
 [node name="Increase" type="Button" parent="Button"]
 margin_left = 271.0
