@@ -18,7 +18,7 @@ func _on_player_respawn() -> void:
 func _on_YetiActivation_area_entered(area: Area2D) -> void:
 	if Global.player_camera.should_screen_shake:
 		area.active = false
-		yield(get_tree().create_timer(1), "timeout")
+		yield(get_tree().create_timer(0.5), "timeout")
 		$AnimationPlayer.play("Drop Snow and Flash")
 		yield(get_tree().create_timer(0.5), "timeout")
 		Global.player_camera.end_screen_shake()

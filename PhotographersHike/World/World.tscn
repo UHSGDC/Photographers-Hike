@@ -25,7 +25,6 @@
 [ext_resource path="res://Misc/Debug.tscn" type="PackedScene" id=23]
 [ext_resource path="res://icon.png" type="Texture" id=24]
 [ext_resource path="res://Minigames/Yeti/YetiDeath.tscn" type="PackedScene" id=25]
-[ext_resource path="res://Minigames/Yeti/Yeti.tscn" type="PackedScene" id=26]
 
 [sub_resource type="RectangleShape2D" id=44]
 extents = Vector2( 240, 144 )
@@ -3530,10 +3529,6 @@ should_play_cutscene = true
 [node name="DirectionLabel" parent="SummitSign" index="2"]
 text = "The Summit
  You made it! "
-
-[node name="Yeti" parent="." instance=ExtResource( 26 )]
-position = Vector2( 25800, -4936 )
-active = true
 
 [connection signal="body_entered" from="SparseForest/Cave" to="SparseForest/Cave" method="_on_Cave_body_entered"]
 [connection signal="body_exited" from="SparseForest/Cave" to="SparseForest/Cave" method="_on_Cave_body_exited"]

@@ -41,7 +41,7 @@ func _process(delta: float) -> void:
 		current_state = get_state()
 		check_distance()
 		if !punches:
-			follow_player()
+			follow_player(delta)
 		if is_near_player and punches < fist_amount and can_punch:
 			punch()
 			
@@ -63,8 +63,8 @@ func get_state() -> int:
 		return STATES.IDLE
 			
 			
-func follow_player() -> void:
-	global_position = lerp(global_position, Global.platforming_player.global_position, 0.05)
+func follow_player(delta: float) -> void:
+	global_position = lerp(global_position, Global.platforming_player.global_position, 5 * delta)
 
 
 func check_distance() -> void:
