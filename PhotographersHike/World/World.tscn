@@ -1,4 +1,4 @@
-[gd_scene load_steps=186 format=2]
+[gd_scene load_steps=187 format=2]
 
 [ext_resource path="res://World/DeathZone.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/PlatformingPlayer.tscn" type="PackedScene" id=2]
@@ -1531,6 +1531,9 @@ extents = Vector2( 480, 208 )
 [sub_resource type="RectangleShape2D" id=54]
 extents = Vector2( 240, 184 )
 
+[sub_resource type="RectangleShape2D" id=177]
+extents = Vector2( 144, 8 )
+
 [sub_resource type="RectangleShape2D" id=27]
 extents = Vector2( 128, 8 )
 
@@ -1823,19 +1826,19 @@ position = Vector2( 2232, 104 )
 npc_name = "old_man"
 
 [node name="DeathZone" parent="Base" instance=ExtResource( 1 )]
-position = Vector2( 896, 296 )
+position = Vector2( 896, 312 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Base/DeathZone"]
 shape = SubResource( 15 )
 
 [node name="DeathZone2" parent="Base" instance=ExtResource( 1 )]
-position = Vector2( 1400, 264 )
+position = Vector2( 1400, 280 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Base/DeathZone2"]
 shape = SubResource( 15 )
 
 [node name="DeathZone3" parent="Base" instance=ExtResource( 1 )]
-position = Vector2( 2872, 280 )
+position = Vector2( 2872, 296 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Base/DeathZone3"]
 shape = SubResource( 15 )
@@ -2529,25 +2532,25 @@ position = Vector2( -57, -29 )
 shape = SubResource( 147 )
 
 [node name="DeathZone4" parent="DenseForest" instance=ExtResource( 1 )]
-position = Vector2( -3696, 456 )
+position = Vector2( -3696, 472 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DenseForest/DeathZone4"]
 shape = SubResource( 157 )
 
 [node name="DeathZone" parent="DenseForest" instance=ExtResource( 1 )]
-position = Vector2( -3376, 392 )
+position = Vector2( -3376, 408 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DenseForest/DeathZone"]
 shape = SubResource( 15 )
 
 [node name="DeathZone2" parent="DenseForest" instance=ExtResource( 1 )]
-position = Vector2( -2384, 824 )
+position = Vector2( -2384, 840 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DenseForest/DeathZone2"]
 shape = SubResource( 15 )
 
 [node name="DeathZone3" parent="DenseForest" instance=ExtResource( 1 )]
-position = Vector2( -1696, 792 )
+position = Vector2( -1696, 808 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DenseForest/DeathZone3"]
 shape = SubResource( 156 )
@@ -2937,25 +2940,25 @@ position = Vector2( -67, -40 )
 shape = SubResource( 150 )
 
 [node name="DeathZone" parent="SparseForest" instance=ExtResource( 1 )]
-position = Vector2( -2600, 1496 )
+position = Vector2( -2600, 1512 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SparseForest/DeathZone"]
 shape = SubResource( 165 )
 
 [node name="DeathZone2" parent="SparseForest" instance=ExtResource( 1 )]
-position = Vector2( -2128, 1384 )
+position = Vector2( -2128, 1400 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SparseForest/DeathZone2"]
 shape = SubResource( 166 )
 
 [node name="DeathZone3" parent="SparseForest" instance=ExtResource( 1 )]
-position = Vector2( -1648, 1304 )
+position = Vector2( -1648, 1320 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SparseForest/DeathZone3"]
 shape = SubResource( 169 )
 
 [node name="DeathZone4" parent="SparseForest" instance=ExtResource( 1 )]
-position = Vector2( -600, 1128 )
+position = Vector2( -608, 1144 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SparseForest/DeathZone4"]
 shape = SubResource( 172 )
@@ -3323,19 +3326,19 @@ strength = 800.0
 shape = SubResource( 54 )
 
 [node name="DeathZone" parent="Snowy" instance=ExtResource( 1 )]
-position = Vector2( -176, 232 )
+position = Vector2( -192, 248 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snowy/DeathZone"]
-shape = SubResource( 27 )
+shape = SubResource( 177 )
 
 [node name="DeathZone11" parent="Snowy" instance=ExtResource( 1 )]
-position = Vector2( -552, 296 )
+position = Vector2( -552, 312 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snowy/DeathZone11"]
 shape = SubResource( 27 )
 
 [node name="DeathZone3" parent="Snowy" instance=ExtResource( 1 )]
-position = Vector2( 816, 168 )
+position = Vector2( 816, 184 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snowy/DeathZone3"]
 shape = SubResource( 34 )
@@ -3347,43 +3350,43 @@ position = Vector2( 1304, -200 )
 shape = SubResource( 34 )
 
 [node name="DeathZone5" parent="Snowy" instance=ExtResource( 1 )]
-position = Vector2( 2008, -664 )
+position = Vector2( 2008, -648 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snowy/DeathZone5"]
 shape = SubResource( 39 )
 
 [node name="DeathZone2" parent="Snowy" instance=ExtResource( 1 )]
-position = Vector2( 304, 168 )
+position = Vector2( 304, 184 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snowy/DeathZone2"]
 shape = SubResource( 28 )
 
 [node name="DeathZone6" parent="Snowy" instance=ExtResource( 1 )]
-position = Vector2( 5312, -936 )
+position = Vector2( 5312, -920 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snowy/DeathZone6"]
 shape = SubResource( 158 )
 
 [node name="DeathZone7" parent="Snowy" instance=ExtResource( 1 )]
-position = Vector2( 5592, -1032 )
+position = Vector2( 5592, -1016 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snowy/DeathZone7"]
 shape = SubResource( 159 )
 
 [node name="DeathZone8" parent="Snowy" instance=ExtResource( 1 )]
-position = Vector2( 7016, -1032 )
+position = Vector2( 7016, -1016 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snowy/DeathZone8"]
 shape = SubResource( 160 )
 
 [node name="DeathZone9" parent="Snowy" instance=ExtResource( 1 )]
-position = Vector2( 7680, -1080 )
+position = Vector2( 7680, -1064 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snowy/DeathZone9"]
 shape = SubResource( 161 )
 
 [node name="DeathZone10" parent="Snowy" instance=ExtResource( 1 )]
-position = Vector2( 8160, -1256 )
+position = Vector2( 8160, -1240 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snowy/DeathZone10"]
 shape = SubResource( 162 )
