@@ -8,15 +8,15 @@ collision_mask = 4
 monitorable = false
 script = ExtResource( 1 )
 length = 100.0
-collision_length = 95.0
-angle = 60.0
-collision_angle = 55.0
+collision_length = 97.0
+angle = 65.0
+collision_angle = 60.0
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( 0, 0, 1, 0, 1, 1 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-color = Color( 0.670588, 0.670588, 0.670588, 0.137255 )
+color = Color( 0.902344, 0.786026, 0.437073, 0.137255 )
 
 [node name="TileCast" type="RayCast2D" parent="."]
 

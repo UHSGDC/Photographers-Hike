@@ -147,11 +147,11 @@ extents = Vector2( 10, 2 )
 [node name="Cougar" type="KinematicBody2D" groups=["cougar"]]
 collision_layer = 0
 script = ExtResource( 1 )
-max_patrol_speed = 40.0
+max_patrol_speed = 60.0
 patrol_acceleration = 600.0
 patrol_points_path = NodePath("PatrolPoints")
 point_distance_tolerance = 2.0
-max_chase_speed = 200.0
+max_chase_speed = 300.0
 chase_acceleration = 1000.0
 idle_deacceleration = 600.0
 jump_height = 40.0
@@ -204,7 +204,7 @@ enabled = true
 cast_to = Vector2( 0, 8 )
 
 [node name="PathCalculationTimer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.05
 autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
