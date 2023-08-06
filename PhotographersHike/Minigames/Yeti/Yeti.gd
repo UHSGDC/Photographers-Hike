@@ -3,7 +3,7 @@ extends Sprite
 
 export var fist_scene: PackedScene
 
-var active: bool = false
+export var active: bool = false
 
 var is_near_player: bool = false
 var can_punch: bool = true
