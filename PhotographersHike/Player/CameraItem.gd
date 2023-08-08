@@ -2,7 +2,7 @@ extends Node
 
 class_name CameraItem
 
-onready var picture_node = $CanvasLayer/AlbumPicture
+onready var picture_node = $CanvasLayer/Picture
 
 var picture_textures: Array setget ,get_picture_textures
 var picture_times: PoolStringArray setget ,get_picture_times
