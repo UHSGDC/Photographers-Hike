@@ -63,22 +63,14 @@ margin_bottom = 52.0
 custom_fonts/font = ExtResource( 3 )
 text = "Album"
 
-[node name="Menu" type="Button" parent="ColorRect/VBoxContainer"]
+[node name="Main" type="Button" parent="ColorRect/VBoxContainer"]
 margin_top = 60.0
 margin_right = 128.0
 margin_bottom = 72.0
 custom_fonts/font = ExtResource( 3 )
 text = "Main Menu"
 
-[node name="Quit" type="Button" parent="ColorRect/VBoxContainer"]
-margin_top = 80.0
-margin_right = 128.0
-margin_bottom = 92.0
-custom_fonts/font = ExtResource( 3 )
-text = "Quit"
-
 [connection signal="pressed" from="ColorRect/VBoxContainer/Resume" to="." method="_on_Resume_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Settings" to="." method="_on_Settings_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Album" to="." method="_on_Album_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/Menu" to="." method="_on_Menu_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Main" to="." method="_on_Main_pressed"]

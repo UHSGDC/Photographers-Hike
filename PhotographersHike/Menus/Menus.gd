@@ -4,7 +4,7 @@ class_name Menus
 
 enum {
 	MAIN
-	INFO
+	CREDITS
 	PAUSE
 	SETTINGS
 	ALBUM
@@ -32,8 +32,8 @@ func change_menu(menu: int) -> void:
 	match menu:
 		MAIN:
 			$MainMenu.show()
-		INFO:
-			$InfoMenu.show()
+		CREDITS:
+			$CreditsMenu.show()
 		PAUSE:
 			$PauseMenu.show()
 		SETTINGS:
