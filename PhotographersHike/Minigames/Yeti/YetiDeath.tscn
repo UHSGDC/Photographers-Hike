@@ -205,7 +205,7 @@ collision_mask = 1024
 shape = SubResource( 179 )
 
 [node name="ScreenShakeZone" type="Area2D" parent="."]
-position = Vector2( -48, 32 )
+position = Vector2( -48, 40 )
 collision_layer = 0
 collision_mask = 4
 
