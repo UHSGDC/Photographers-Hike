@@ -29,8 +29,13 @@ func _set_player_reference() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if respawn_invincibility:
+		if player.x_input and player.velocity.x != 0:
+			respawn_invincibility = false
+		return
 
-	if !in_wind or Global.room_pause or Global.platforming_player.death_pause or respawn_invincibility:
+
+	if !in_wind or Global.room_pause or Global.platforming_player.death_pause:
 		return
 		
 	
@@ -63,5 +68,3 @@ func _on_WindZone_area_exited(area: Area2D) -> void:
 
 func _on_Player_respawn() -> void:
 	respawn_invincibility = true
-	yield(get_tree().create_timer(0.4), "timeout")
-	respawn_invincibility = false
