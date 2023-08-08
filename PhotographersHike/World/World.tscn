@@ -1,4 +1,4 @@
-[gd_scene load_steps=188 format=2]
+[gd_scene load_steps=189 format=2]
 
 [ext_resource path="res://World/DeathZone.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/PlatformingPlayer.tscn" type="PackedScene" id=2]
@@ -25,6 +25,7 @@
 [ext_resource path="res://Misc/Debug.tscn" type="PackedScene" id=23]
 [ext_resource path="res://icon.png" type="Texture" id=24]
 [ext_resource path="res://Minigames/Yeti/YetiDeath.tscn" type="PackedScene" id=25]
+[ext_resource path="res://VisionCircle.tscn" type="PackedScene" id=26]
 
 [sub_resource type="RectangleShape2D" id=44]
 extents = Vector2( 240, 144 )
@@ -2934,7 +2935,7 @@ navpoly = SubResource( 60 )
 navpoly = SubResource( 112 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SparseForest/Cave"]
-polygon = PoolVector2Array( -192, 256, 1584, 272, 1568, -32, 2496, -48, 2512, -960, 1936, -968, 1952, -344, 952, -368, 968, -136, -240, -40 )
+polygon = PoolVector2Array( -472, 232, 1584, 272, 1568, -32, 2496, -48, 2512, -960, 1936, -968, 1952, -344, 952, -368, 968, -136, -464, -32 )
 
 [node name="MinigameCutscene" parent="SparseForest" instance=ExtResource( 19 )]
 position = Vector2( 464, 1008 )
@@ -3461,7 +3462,7 @@ shape = SubResource( 45 )
 position = Vector2( 8888, -1664 )
 
 [node name="PlatformingPlayer" parent="." instance=ExtResource( 2 )]
-position = Vector2( 26224, -5240 )
+position = Vector2( 12680, -2400 )
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 3 )]
 
@@ -3475,6 +3476,8 @@ visible = false
 [node name="Debug" parent="." instance=ExtResource( 23 )]
 visible = false
 position_path_array = [ NodePath("../Base/Room1/Checkpoints/Position2D"), NodePath("../DenseForest/Room11/Checkpoints/Position2D"), NodePath("../SparseForest/Room6/Checkpoints/Position2D2"), NodePath("../Snowy/Room1/Checkpoints/Position2D") ]
+
+[node name="VisionCircle" parent="." instance=ExtResource( 26 )]
 
 [node name="DenseForestSign" parent="." instance=ExtResource( 8 )]
 position = Vector2( 9288, -1928 )

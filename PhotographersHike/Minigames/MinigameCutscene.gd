@@ -22,8 +22,6 @@ export var player_cutscene_jump_multiplier: float
 var should_stop: bool
 
 
-
-
 func _process(delta: float) -> void:
 	if Global.player_camera.zoom_to == Global.player_camera.zoom:
 		if !zoom_signal_emitted:
@@ -74,6 +72,9 @@ func play_cutscene() -> void:
 	$Path2D/PathFollow2D/CutsceneCamera.current = false
 	Global.player_camera.zoom_to = Vector2.ONE
 	yield(self, "finished_zoom")
+	
+	Global.vision_circle.fade_in()
+	Global.cave_cutscene_played = true
 
 
 

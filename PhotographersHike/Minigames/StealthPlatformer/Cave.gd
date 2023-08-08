@@ -34,9 +34,12 @@ func Global_room_changed() -> void:
 
 func _on_Cave_body_entered(body: Node):
 	if body.is_in_group("player"):
+		if Global.cave_cutscene_played:
+			Global.vision_circle.fade_in()
 		in_cave = true
 
 
 func _on_Cave_body_exited(body: Node):
 	if body.is_in_group("player"):
+		Global.vision_circle.fade_out()
 		in_cave = false

@@ -12,6 +12,8 @@ var dialog_box: DialogBox
 var camera_item: CameraItem
 var speedrun_timer: CanvasLayer
 var debug: CanvasLayer
+var vision_circle: CanvasLayer
+var cave_cutscene_played: bool = false
 
 var current_level: String
 var current_room: Area2D
