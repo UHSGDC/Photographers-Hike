@@ -73,7 +73,8 @@ func play_cutscene() -> void:
 	Global.player_camera.zoom_to = Vector2.ONE
 	yield(self, "finished_zoom")
 	
-	Global.vision_circle.fade_in()
+	if get_parent().name == "SparseForest":
+		Global.vision_circle.fade_in()
 	Global.cave_cutscene_played = true
 
 
