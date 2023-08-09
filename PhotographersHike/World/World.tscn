@@ -1,4 +1,4 @@
-[gd_scene load_steps=189 format=2]
+[gd_scene load_steps=190 format=2]
 
 [ext_resource path="res://World/DeathZone.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/PlatformingPlayer.tscn" type="PackedScene" id=2]
@@ -26,6 +26,7 @@
 [ext_resource path="res://icon.png" type="Texture" id=24]
 [ext_resource path="res://Minigames/Yeti/YetiDeath.tscn" type="PackedScene" id=25]
 [ext_resource path="res://VisionCircle.tscn" type="PackedScene" id=26]
+[ext_resource path="res://Assets/Art/Base/House.png" type="Texture" id=27]
 
 [sub_resource type="RectangleShape2D" id=44]
 extents = Vector2( 240, 144 )
@@ -1742,7 +1743,6 @@ z_index = -1
 tile_set = ExtResource( 22 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( -130935, 0, 262146, -65400, 0, 196611, -65399, 0, 262145, -65398, 0, 196613, 135, 0, 196611, 136, 0, 131077, 137, 0, 262148, 138, 0, 131075, 139, 0, 196613, 65670, 0, 196611, 65671, 0, 131077, 65672, 0, 262148, 65673, 0, 262148, 65674, 0, 262148, 65675, 0, 131075, 65676, 0, 196613, 131206, 0, 65541, 131207, 0, 262148, 131208, 0, 262148, 131209, 0, 262148, 131210, 0, 262148, 131211, 0, 262148, 131212, 0, 65539, 196742, 0, 65541, 196743, 0, 262148, 196744, 0, 262148, 196745, 0, 262148, 196746, 0, 262148, 196747, 0, 262148, 196748, 0, 65539, 262278, 0, 65541, 262279, 0, 262148, 262280, 0, 262148, 262281, 0, 262148, 262282, 0, 262148, 262283, 0, 262148, 262284, 0, 262149, 327814, 0, 262147, 327815, 0, 262148, 327816, 0, 262148, 327817, 0, 262148, 327818, 0, 262148, 327819, 0, 262148, 327820, 0, 262149, 393350, 0, 327683, 393351, 0, 327684, 393352, 0, 327684, 393353, 0, 327684, 393354, 0, 327684, 393355, 0, 4, 393356, 0, 327685 )
 
 [node name="Room1" parent="Base" instance=ExtResource( 7 )]
 
@@ -1828,7 +1828,7 @@ position = Vector2( 224, 48 )
 shape = SubResource( 153 )
 
 [node name="OldMan" parent="Base" instance=ExtResource( 4 )]
-position = Vector2( 2232, 104 )
+position = Vector2( 2278, 104 )
 npc_name = "old_man"
 
 [node name="DeathZone" parent="Base" instance=ExtResource( 1 )]
@@ -3462,7 +3462,7 @@ shape = SubResource( 45 )
 position = Vector2( 8888, -1664 )
 
 [node name="PlatformingPlayer" parent="." instance=ExtResource( 2 )]
-position = Vector2( -232, 192 )
+position = Vector2( 1587, 57 )
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 3 )]
 
@@ -3532,6 +3532,13 @@ should_play_cutscene = true
 [node name="DirectionLabel" parent="SummitSign" index="2"]
 text = "The Summit
  You made it! "
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 2200, 59 )
+z_index = -1
+texture = ExtResource( 27 )
+region_enabled = true
+region_rect = Rect2( 187, 53, 185, 107 )
 
 [connection signal="body_entered" from="SparseForest/Cave" to="SparseForest/Cave" method="_on_Cave_body_entered"]
 [connection signal="body_exited" from="SparseForest/Cave" to="SparseForest/Cave" method="_on_Cave_body_exited"]
