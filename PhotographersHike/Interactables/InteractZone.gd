@@ -7,6 +7,7 @@ signal player_interacted
 
 
 func _ready() -> void:
+	$InteractInput.hide()
 	$InteractInput.text = InputHelper.get_action_key("interact")
 	Global.connect("input_changed", self, "set_interact_input_label")
 

@@ -29,7 +29,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://World/DeathZone.gd"
 }, {
-"base": "NinePatchRect",
+"base": "Panel",
 "class": "DialogBox",
 "language": "GDScript",
 "path": "res://Dialog/DialogBox.gd"
@@ -210,5 +210,5 @@ quality/driver/driver_name="GLES2"
 2d/snapping/use_gpu_pixel_snap=true
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
-environment/default_clear_color=Color( 0.392157, 0.533333, 0.423529, 1 )
+environment/default_clear_color=Color( 0.2, 0.176471, 0.380392, 1 )
 environment/default_environment="res://default_env.tres"

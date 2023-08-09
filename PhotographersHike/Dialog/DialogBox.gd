@@ -1,4 +1,4 @@
-extends NinePatchRect
+extends Panel
 
 class_name DialogBox
 
