@@ -3462,7 +3462,7 @@ shape = SubResource( 45 )
 position = Vector2( 8888, -1664 )
 
 [node name="PlatformingPlayer" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1587, 57 )
+position = Vector2( 2224, 96 )
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 3 )]
 
@@ -3533,12 +3533,13 @@ should_play_cutscene = true
 text = "The Summit
  You made it! "
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 2200, 59 )
+[node name="House" type="Sprite" parent="."]
+position = Vector2( 2200, 72 )
 z_index = -1
 texture = ExtResource( 27 )
+offset = Vector2( 0, 3 )
 region_enabled = true
-region_rect = Rect2( 187, 53, 185, 107 )
+region_rect = Rect2( 9, 7, 179, 77 )
 
 [connection signal="body_entered" from="SparseForest/Cave" to="SparseForest/Cave" method="_on_Cave_body_entered"]
 [connection signal="body_exited" from="SparseForest/Cave" to="SparseForest/Cave" method="_on_Cave_body_exited"]
