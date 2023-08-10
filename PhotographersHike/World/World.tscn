@@ -25,7 +25,7 @@
 [ext_resource path="res://Misc/Debug.tscn" type="PackedScene" id=23]
 [ext_resource path="res://icon.png" type="Texture" id=24]
 [ext_resource path="res://Minigames/Yeti/YetiDeath.tscn" type="PackedScene" id=25]
-[ext_resource path="res://VisionCircle.tscn" type="PackedScene" id=26]
+[ext_resource path="res://Minigames/StealthPlatformer/VisionCircle.tscn" type="PackedScene" id=26]
 [ext_resource path="res://Assets/Art/Base/House.png" type="Texture" id=27]
 
 [sub_resource type="RectangleShape2D" id=44]
@@ -3462,7 +3462,7 @@ shape = SubResource( 45 )
 position = Vector2( 8888, -1664 )
 
 [node name="PlatformingPlayer" parent="." instance=ExtResource( 2 )]
-position = Vector2( 2224, 96 )
+position = Vector2( 12592, -2432 )
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 3 )]
 
