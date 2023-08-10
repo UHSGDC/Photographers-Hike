@@ -1,5 +1,12 @@
 extends BaseMenu
 
+export var desktop_only_settings: Array 
+
+func _ready() -> void:
+	if !OS.has_feature("pc"):
+		for setting in desktop_only_settings:
+			get_node(setting).queue_free()
+
 
 func hide() -> void:
 	.hide()
