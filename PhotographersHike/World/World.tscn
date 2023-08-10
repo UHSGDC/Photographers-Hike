@@ -1,4 +1,4 @@
-[gd_scene load_steps=190 format=2]
+[gd_scene load_steps=191 format=2]
 
 [ext_resource path="res://World/DeathZone.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/PlatformingPlayer.tscn" type="PackedScene" id=2]
@@ -27,6 +27,7 @@
 [ext_resource path="res://Minigames/Yeti/YetiDeath.tscn" type="PackedScene" id=25]
 [ext_resource path="res://Minigames/StealthPlatformer/VisionCircle.tscn" type="PackedScene" id=26]
 [ext_resource path="res://Assets/Art/Base/House.png" type="Texture" id=27]
+[ext_resource path="res://Interactables/Sign/SmallSign.tscn" type="PackedScene" id=28]
 
 [sub_resource type="RectangleShape2D" id=44]
 extents = Vector2( 240, 144 )
@@ -1827,10 +1828,6 @@ position = Vector2( 224, 48 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Base/Room7"]
 shape = SubResource( 153 )
 
-[node name="OldMan" parent="Base" instance=ExtResource( 4 )]
-position = Vector2( 2278, 104 )
-npc_name = "old_man"
-
 [node name="DeathZone" parent="Base" instance=ExtResource( 1 )]
 position = Vector2( 896, 312 )
 
@@ -1848,6 +1845,18 @@ position = Vector2( 2872, 296 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Base/DeathZone3"]
 shape = SubResource( 15 )
+
+[node name="OldMan" parent="Base" instance=ExtResource( 4 )]
+position = Vector2( 2278, 104 )
+npc_name = "old_man"
+
+[node name="House" type="Sprite" parent="Base"]
+position = Vector2( 2200, 72 )
+z_index = -1
+texture = ExtResource( 27 )
+offset = Vector2( 0, 3 )
+region_enabled = true
+region_rect = Rect2( 9, 7, 179, 77 )
 
 [node name="DenseForest" type="Node2D" parent="."]
 position = Vector2( 7648, -272 )
@@ -2560,6 +2569,20 @@ position = Vector2( -1696, 808 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DenseForest/DeathZone3"]
 shape = SubResource( 156 )
+
+[node name="JumpLineSign" parent="DenseForest" instance=ExtResource( 28 )]
+position = Vector2( 225, 407 )
+dialog_id = 1
+level = 1
+
+[node name="SettingsTipSign" parent="DenseForest" instance=ExtResource( 28 )]
+position = Vector2( 223, -153 )
+dialog_id = 2
+level = 1
+
+[node name="PanSign" parent="DenseForest" instance=ExtResource( 28 )]
+position = Vector2( -3515, 470 )
+level = 1
 
 [node name="SparseForest" type="Node2D" parent="."]
 position = Vector2( 12528, -3344 )
@@ -3462,7 +3485,7 @@ shape = SubResource( 45 )
 position = Vector2( 8888, -1664 )
 
 [node name="PlatformingPlayer" parent="." instance=ExtResource( 2 )]
-position = Vector2( 11592, -2400 )
+position = Vector2( 7871, -469 )
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 3 )]
 
@@ -3532,14 +3555,6 @@ should_play_cutscene = true
 [node name="DirectionLabel" parent="SummitSign" index="2"]
 text = "The Summit
  You made it! "
-
-[node name="House" type="Sprite" parent="."]
-position = Vector2( 2200, 72 )
-z_index = -1
-texture = ExtResource( 27 )
-offset = Vector2( 0, 3 )
-region_enabled = true
-region_rect = Rect2( 9, 7, 179, 77 )
 
 [connection signal="body_entered" from="SparseForest/Cave" to="SparseForest/Cave" method="_on_Cave_body_entered"]
 [connection signal="body_exited" from="SparseForest/Cave" to="SparseForest/Cave" method="_on_Cave_body_exited"]
