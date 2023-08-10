@@ -10,7 +10,7 @@ script = ExtResource( 1 )
 length = 100.0
 collision_length = 97.0
 angle = 65.0
-collision_angle = 60.0
+collision_angle = 65.0
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( 0, 0, 1, 0, 1, 1 )
