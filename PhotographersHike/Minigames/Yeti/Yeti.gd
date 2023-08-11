@@ -87,6 +87,6 @@ func _on_Player_respawn() -> void:
 			child.queue_free()
 	punches = 0
 	can_punch = true
-	global_position = Global.current_room.global_position
+	global_position = Global.current_room.get_node("YetiSpawn").global_position
 	player_invinciblity = true
 
