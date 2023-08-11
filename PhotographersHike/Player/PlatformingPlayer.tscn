@@ -421,10 +421,10 @@ material = SubResource( 13 )
 position = Vector2( 0, -1 )
 z_index = 1
 texture = ExtResource( 1 )
-offset = Vector2( 0, -6 )
+offset = Vector2( 0, -3 )
 hframes = 18
 vframes = 6
-frame = 21
+frame = 23
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 anims/RESET = SubResource( 15 )

@@ -83,22 +83,27 @@ func _physics_process(delta: float) -> void:
 	
 	
 	input()
-	
+	particles()
 	# Pause player movement between rooms or when playing dialog
 	if !Global.room_pause and !in_cutscene and !death_pause:
+		state = get_state()
 		if !in_minigame and !Global.dialog_box.dialog_playing:
 			move(delta)
-		particles()
-		state = get_state()
 	
 	look()
 	animate()
 
-func particles() -> void:	
+func particles() -> void:
+	
+	if death_pause:
+		return
 	if state == States.FALL and is_on_floor():
+		
 		dust_particles()
+		return
 	if state == States.RUN:
 		if $RunParticleTimer.is_stopped():
+			dust_particles()
 			$RunParticleTimer.start()
 	elif !$RunParticleTimer.is_stopped():
 		$RunParticleTimer.stop()
