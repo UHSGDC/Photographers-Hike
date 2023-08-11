@@ -31,3 +31,7 @@ func _on_ScreenShakeZone_body_entered(body: Node) -> void:
 		return
 		
 	Global.player_camera.start_screen_shake()
+
+
+func play_snow_particles() -> void:
+	$SnowParticles.restart()

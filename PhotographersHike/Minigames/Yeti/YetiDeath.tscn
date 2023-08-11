@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Minigames/Yeti/BreakablePlatform.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Art/Yeti/SnowPileDropped.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Art/Interactables/BreakablePlatform.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Art/Yeti/SnowPileReady.png" type="Texture" id=4]
 [ext_resource path="res://Minigames/Yeti/YetiDeath.gd" type="Script" id=5]
+[ext_resource path="res://Minigames/Yeti/SnowParticles.gd" type="Script" id=6]
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 3 )
@@ -92,6 +93,20 @@ tracks/3/keys = {
 "update": 1,
 "values": [ false, true ]
 }
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_snow_particles"
+} ]
+}
 
 [sub_resource type="Animation" id=178]
 resource_name = "RESET"
@@ -163,6 +178,16 @@ extents = Vector2( 8, 72 )
 [sub_resource type="RectangleShape2D" id=180]
 extents = Vector2( 8, 4 )
 
+[sub_resource type="Curve" id=181]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.0318182 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=182]
+offsets = PoolRealArray( 0.3125, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="Gradient" id=183]
+colors = PoolColorArray( 0.643137, 0.866667, 0.858824, 1, 0.45098, 0.745098, 0.827451, 1 )
+
 [node name="YetiDeath" type="Node2D"]
 script = ExtResource( 5 )
 
@@ -211,6 +236,175 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ScreenShakeZone"]
 shape = SubResource( 180 )
+
+[node name="SnowParticles" type="CPUParticles2D" parent="."]
+position = Vector2( -24, 64 )
+emitting = false
+amount = 64
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.81
+emission_shape = 3
+emission_points = PoolVector2Array( 0, 0, 10, -10, -10, 10 )
+emission_colors = PoolColorArray(  )
+direction = Vector2( -1, -1.5 )
+spread = 70.0
+gravity = Vector2( 0, 20 )
+initial_velocity = 50.0
+initial_velocity_random = 0.33
+scale_amount = 1.5
+scale_amount_random = 0.4
+scale_amount_curve = SubResource( 181 )
+color_ramp = SubResource( 182 )
+color_initial_ramp = SubResource( 183 )
+script = ExtResource( 6 )
+
+[node name="SnowParticles2" type="CPUParticles2D" parent="SnowParticles"]
+position = Vector2( 40, 0 )
+emitting = false
+amount = 64
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.81
+emission_shape = 3
+emission_points = PoolVector2Array( 0, 0, -10, -10, 10, 10 )
+emission_colors = PoolColorArray(  )
+direction = Vector2( 1, -1.5 )
+spread = 70.0
+gravity = Vector2( 0, 20 )
+initial_velocity = 50.0
+initial_velocity_random = 0.33
+scale_amount = 1.5
+scale_amount_random = 0.4
+scale_amount_curve = SubResource( 181 )
+color_ramp = SubResource( 182 )
+color_initial_ramp = SubResource( 183 )
+
+[node name="SnowParticles3" type="CPUParticles2D" parent="SnowParticles"]
+position = Vector2( 80, 32 )
+emitting = false
+amount = 64
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.81
+emission_shape = 3
+emission_points = PoolVector2Array( 0, 0, -10, -10, 10, 10 )
+emission_colors = PoolColorArray(  )
+direction = Vector2( 1, -1.5 )
+spread = 70.0
+gravity = Vector2( 0, 20 )
+initial_velocity = 50.0
+initial_velocity_random = 0.33
+scale_amount = 1.5
+scale_amount_random = 0.4
+scale_amount_curve = SubResource( 181 )
+color_ramp = SubResource( 182 )
+color_initial_ramp = SubResource( 183 )
+
+[node name="SnowParticles4" type="CPUParticles2D" parent="SnowParticles"]
+position = Vector2( 113, 52 )
+emitting = false
+amount = 64
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.81
+emission_shape = 3
+emission_points = PoolVector2Array( 0, 0, -10, -10, 10, 10 )
+emission_colors = PoolColorArray(  )
+direction = Vector2( 1, -1.5 )
+spread = 70.0
+gravity = Vector2( 0, 20 )
+initial_velocity = 50.0
+initial_velocity_random = 0.33
+scale_amount = 1.5
+scale_amount_random = 0.4
+scale_amount_curve = SubResource( 181 )
+color_ramp = SubResource( 182 )
+color_initial_ramp = SubResource( 183 )
+
+[node name="SnowParticles5" type="CPUParticles2D" parent="SnowParticles"]
+position = Vector2( 29, 25 )
+emitting = false
+amount = 64
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.81
+emission_shape = 3
+emission_points = PoolVector2Array( 0, 0, -10, -10, 10, 10 )
+emission_colors = PoolColorArray(  )
+direction = Vector2( 1, -1.5 )
+spread = 120.0
+gravity = Vector2( 0, 20 )
+initial_velocity = 50.0
+initial_velocity_random = 0.33
+scale_amount = 1.5
+scale_amount_random = 0.4
+scale_amount_curve = SubResource( 181 )
+color_ramp = SubResource( 182 )
+color_initial_ramp = SubResource( 183 )
+
+[node name="SnowParticles6" type="CPUParticles2D" parent="SnowParticles"]
+position = Vector2( 51, 39 )
+emitting = false
+amount = 64
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.81
+emission_shape = 3
+emission_points = PoolVector2Array( 0, 0, -10, -10, 10, 10 )
+emission_colors = PoolColorArray(  )
+direction = Vector2( 1, -1.5 )
+spread = 120.0
+gravity = Vector2( 0, 20 )
+initial_velocity = 50.0
+initial_velocity_random = 0.33
+scale_amount = 1.5
+scale_amount_random = 0.4
+scale_amount_curve = SubResource( 181 )
+color_ramp = SubResource( 182 )
+color_initial_ramp = SubResource( 183 )
+
+[node name="SnowParticles7" type="CPUParticles2D" parent="SnowParticles"]
+position = Vector2( 88, 59 )
+emitting = false
+amount = 64
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.81
+emission_shape = 3
+emission_points = PoolVector2Array( 0, 0, -10, -10, 10, 10 )
+emission_colors = PoolColorArray(  )
+direction = Vector2( 1, -1.5 )
+spread = 120.0
+gravity = Vector2( 0, 20 )
+initial_velocity = 50.0
+initial_velocity_random = 0.33
+scale_amount = 1.5
+scale_amount_random = 0.4
+scale_amount_curve = SubResource( 181 )
+color_ramp = SubResource( 182 )
+color_initial_ramp = SubResource( 183 )
+
+[node name="SnowParticles" type="CPUParticles2D" parent="SnowParticles"]
+position = Vector2( 16, 36 )
+emitting = false
+amount = 64
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.81
+emission_shape = 3
+emission_points = PoolVector2Array( 0, 0, 10, -10, -10, 10 )
+emission_colors = PoolColorArray(  )
+direction = Vector2( -1, -1.5 )
+spread = 120.0
+gravity = Vector2( 0, 20 )
+initial_velocity = 50.0
+initial_velocity_random = 0.33
+scale_amount = 1.5
+scale_amount_random = 0.4
+scale_amount_curve = SubResource( 181 )
+color_ramp = SubResource( 182 )
+color_initial_ramp = SubResource( 183 )
 
 [connection signal="area_entered" from="YetiActivation" to="." method="_on_YetiActivation_area_entered"]
 [connection signal="body_entered" from="ScreenShakeZone" to="." method="_on_ScreenShakeZone_body_entered"]
