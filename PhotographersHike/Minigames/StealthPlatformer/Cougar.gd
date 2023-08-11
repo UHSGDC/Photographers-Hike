@@ -73,6 +73,9 @@ var navigation_node: Navigation2D
 var facing_right: bool = false
 onready var vision_cone_offset: float = $VisionCone.position.x
 
+# Particles
+export var dust_particle_scene: PackedScene
+
 
 func _ready() -> void:
 	call_deferred("_set_player_reference")
@@ -89,6 +92,13 @@ func _physics_process(delta: float) -> void:
 	animate()
 
 
+func dust_particles() -> void:
+	var dust_particle = dust_particle_scene.instance()
+	get_parent().add_child(dust_particle)
+	dust_particle.global_position = global_position + Vector2.DOWN * 4
+	dust_particle.restart()
+	
+
 func animate() -> void:
 	match current_state:
 		STATES.CHASING:
@@ -99,6 +109,10 @@ func animate() -> void:
 					
 			if $AnimationPlayer.assigned_animation != "Run":
 				$AnimationPlayer.play("Run")
+				
+				
+			if randf() > 0.9 and $AnimationPlayer.assigned_animation == "Run":
+				dust_particles()
 		STATES.IDLE:
 			if $AnimationPlayer.assigned_animation != "Lick":
 				$AnimationPlayer.play("Lick")
@@ -115,6 +129,8 @@ func animate() -> void:
 				$AnimationPlayer.play("Wake Up")
 			else:
 				$AnimationPlayer.queue("Walk")
+				if randf() > 0.95 and is_on_floor():
+					dust_particles()
 	
 	
 func look() -> void:

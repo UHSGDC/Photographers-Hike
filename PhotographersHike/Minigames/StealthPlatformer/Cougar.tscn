@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Minigames/StealthPlatformer/Cougar.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Art/Minigames/CougarSpriteSheet.png" type="Texture" id=2]
 [ext_resource path="res://Minigames/StealthPlatformer/VisionCone.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Minigames/StealthPlatformer/Sensors.gd" type="Script" id=4]
+[ext_resource path="res://Player/DustParticles.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 11, 6 )
@@ -158,6 +159,7 @@ jump_height = 40.0
 jump_duration = 0.2
 fall_duration = 0.2
 max_fall_speed = 500.0
+dust_particle_scene = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -168,7 +170,7 @@ offset = Vector2( 1.5, -10 )
 flip_h = true
 hframes = 13
 vframes = 6
-frame = 42
+frame = 39
 region_rect = Rect2( 114.3, 96.6375, 71.1784, 5.47526 )
 
 [node name="VisionCone" parent="." instance=ExtResource( 3 )]
