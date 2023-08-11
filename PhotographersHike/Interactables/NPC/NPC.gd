@@ -9,4 +9,6 @@ var current_dialog: int = 0
 
 	
 func player_interacted() -> void:
-	Global.dialog_box.play_dialog(npc_name, level, current_dialog)
+	$InteractZone.hide()
+	yield(Global.dialog_box.play_dialog(npc_name, level, current_dialog), "completed")
+	$InteractZone.show()
