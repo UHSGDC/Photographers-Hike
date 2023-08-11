@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Minigames/Yeti/YetiController.gd" type="Script" id=1]
 [ext_resource path="res://Minigames/Yeti/Yeti.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Interactables/Sign/PlayerJumpCast.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Art/Minigames/CougarSpriteSheet.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Art/Yeti/YetFist.png" type="Texture" id=6]
+[ext_resource path="res://Minigames/Yeti/PunchParticles.gd" type="Script" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Drop Wall"
@@ -150,6 +151,31 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 0.0, 1.0, 0.0 ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath("CougarFist/YetiFist/PunchParticles")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "restart"
+} ]
+}
+
+[sub_resource type="Curve" id=19]
+min_value = -200.0
+max_value = 200.0
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.323194, -200 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Curve" id=20]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.60076, 0.0113636 ), 0.0483598, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=21]
+colors = PoolColorArray( 0.643137, 0.866667, 0.858824, 1, 0.309804, 0.560784, 0.729412, 1 )
 
 [sub_resource type="Animation" id=3]
 resource_name = "Sleep"
@@ -208,6 +234,86 @@ texture = ExtResource( 6 )
 root_node = NodePath("../../..")
 anims/RESET = SubResource( 6 )
 anims/punch = SubResource( 5 )
+
+[node name="PunchParticles" type="CPUParticles2D" parent="CougarFist/YetiFist"]
+position = Vector2( 17, 0 )
+emitting = false
+amount = 16
+one_shot = true
+explosiveness = 1.0
+emission_shape = 2
+emission_rect_extents = Vector2( 5, 22 )
+spread = 60.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 100.0
+initial_velocity_random = 0.21
+linear_accel_curve = SubResource( 19 )
+scale_amount = 3.0
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 20 )
+color = Color( 0.643137, 0.866667, 0.858824, 1 )
+color_initial_ramp = SubResource( 21 )
+script = ExtResource( 7 )
+
+[node name="PunchParticles4" type="CPUParticles2D" parent="CougarFist/YetiFist/PunchParticles"]
+position = Vector2( -34, 0 )
+rotation = 3.14159
+emitting = false
+amount = 16
+one_shot = true
+explosiveness = 1.0
+emission_shape = 2
+emission_rect_extents = Vector2( 5, 22 )
+spread = 60.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 100.0
+initial_velocity_random = 0.21
+linear_accel_curve = SubResource( 19 )
+scale_amount = 3.0
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 20 )
+color = Color( 0.643137, 0.866667, 0.858824, 1 )
+color_initial_ramp = SubResource( 21 )
+
+[node name="PunchParticles5" type="CPUParticles2D" parent="CougarFist/YetiFist/PunchParticles"]
+position = Vector2( -17, -13 )
+rotation = -1.5708
+emitting = false
+amount = 16
+one_shot = true
+explosiveness = 1.0
+emission_shape = 2
+emission_rect_extents = Vector2( 5, 22 )
+spread = 60.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 100.0
+initial_velocity_random = 0.21
+linear_accel_curve = SubResource( 19 )
+scale_amount = 3.0
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 20 )
+color = Color( 0.643137, 0.866667, 0.858824, 1 )
+color_initial_ramp = SubResource( 21 )
+
+[node name="PunchParticles6" type="CPUParticles2D" parent="CougarFist/YetiFist/PunchParticles"]
+position = Vector2( -17, 10 )
+rotation = 1.5708
+emitting = false
+amount = 16
+one_shot = true
+explosiveness = 1.0
+emission_shape = 2
+emission_rect_extents = Vector2( 5, 22 )
+spread = 60.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 100.0
+initial_velocity_random = 0.21
+linear_accel_curve = SubResource( 19 )
+scale_amount = 3.0
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 20 )
+color = Color( 0.643137, 0.866667, 0.858824, 1 )
+color_initial_ramp = SubResource( 21 )
 
 [node name="Cougar" type="Sprite" parent="CougarFist"]
 visible = false
