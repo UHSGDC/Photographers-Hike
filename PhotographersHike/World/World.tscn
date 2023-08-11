@@ -28,6 +28,7 @@
 [ext_resource path="res://Minigames/StealthPlatformer/VisionCircle.tscn" type="PackedScene" id=26]
 [ext_resource path="res://Assets/Art/Base/House.png" type="Texture" id=27]
 [ext_resource path="res://Interactables/Sign/SmallSign.tscn" type="PackedScene" id=28]
+[ext_resource path="res://Interactables/Sign/Sign.gd" type="Script" id=29]
 
 [sub_resource type="RectangleShape2D" id=44]
 extents = Vector2( 240, 144 )
@@ -1587,152 +1588,6 @@ extents = Vector2( 240, 144 )
 
 [sub_resource type="StreamTexture" id=173]
 load_path = "res://.import/Sign.png-641f8ed36cbd29df3415fff9e035ebba.stex"
-
-[sub_resource type="GDScript" id=174]
-script/source = "extends Sprite
-
-
-export var picture_texture: Texture
-
-export var player_jump_cast_scene: PackedScene
-
-var should_move_player_to_sign: bool = false
-
-var jump_cast: RayCast2D
-
-export var should_play_cutscene: bool = false
-
-var player: Player
-
-export var player_cutscene_max_speed: float
-export var player_cutscene_jump_multiplier: float
-
-
-var should_stop: bool
-
-
-func _ready():
-	$DirectionLabel.modulate = Color.transparent
-
-
-func _physics_process(delta: float) -> void:
-	if should_move_player_to_sign:
-		move_player_to_sign(delta)
-		if sign(jump_cast.cast_to.x) != sign(player.velocity.x):
-			jump_cast.cast_to.x = -jump_cast.cast_to.x
-		player.state = player.get_state()
-
-
-func move_player_to_sign(delta: float) -> void:
-	
-	var direction: float
-	
-	if !should_stop:
-		direction = get_move_direction()
-	else:
-		direction = 0
-	
-	
-	player.velocity.x += direction * player.move_acceleration * delta
-	
-	# Deaccelerates player velocity.x to 0 if player isn't inputting a direction
-	if !direction:
-		if abs(player.velocity.x) < player.idle_deacceleration * delta:
-			player.velocity.x = 0
-		else:
-			player.velocity.x -= player.idle_deacceleration * sign(player.velocity.x) * delta
-	
-	# Clamps velocity.x to max_move_speed
-	if player.velocity.x > player_cutscene_max_speed:
-		player.velocity.x = lerp(player.velocity.x, player_cutscene_max_speed, 0.4)
-	elif player.velocity.x < -player_cutscene_max_speed:
-		player.velocity.x = lerp(player.velocity.x, -player_cutscene_max_speed, 0.4)
-	
-	if player.is_on_floor() and jump_cast.is_colliding():
-		player.velocity.y = player.jump_velocity * player_cutscene_jump_multiplier
-		
-		
-	player.apply_gravity(delta)
-	
-	player.velocity = player.move_and_slide(player.velocity, Vector2.UP)
-
-
-func get_move_direction() -> float:
-	return sign(position.x - player.position.x)
-
-
-func _on_CutsceneActivation_body_entered(body: Node) -> void:
-	if player:
-		return
-	if body == Global.platforming_player:
-		player = body
-		
-	if !should_play_cutscene:
-		return
-	
-	should_move_player_to_sign = true
-	player.in_cutscene = true
-	
-	jump_cast = create_jump_cast()
-	
-	should_stop = false
-	
-	Global.camera_item.can_take_picture = false
-	
-	
-func create_jump_cast() -> RayCast2D:
-	var jump_cast_instance: RayCast2D = player_jump_cast_scene.instance()
-	player.add_child(jump_cast_instance)
-	jump_cast_instance.global_position = player.global_position
-	return jump_cast_instance
-
-
-func _on_SignArea_body_entered(body: Node) -> void:
-	if body != player:
-		return
-	
-	if !should_play_cutscene:
-		var tween = get_tree().create_tween()
-		tween.tween_property($DirectionLabel, \"modulate\", Color.white, 0.5)
-	else:
-		
-		yield(get_tree().create_timer(0.2), \"timeout\")
-		
-		should_stop = true
-		
-		
-		
-		yield(get_tree().create_timer(0.05), \"timeout\")
-		player.state = player.States.PICTURE
-		should_play_cutscene = false
-		should_move_player_to_sign = false
-		jump_cast.queue_free()
-		jump_cast = null
-		
-		Global.player_camera.zoom_speed = 0.3
-		Global.player_camera.zoom_to = Vector2.ONE * 0.5
-		
-		yield(player, \"animation_finished\") # Player animation done
-		
-		Global.camera_item.display_and_store_image(picture_texture.get_data())
-		
-		yield(get_tree().create_timer(1), \"timeout\")
-		Global.player_camera.zoom_to = Vector2.ONE
-		yield(player, \"animation_finished\")
-		
-		player.in_cutscene = false
-		
-		var tween = get_tree().create_tween()
-		tween.tween_property($DirectionLabel, \"modulate\", Color.white, 0.5)
-
-
-func _on_SignArea_body_exited(body: Node) -> void:
-	if body != player:
-		return
-	var tween = get_tree().create_tween()
-	tween.tween_property($DirectionLabel, \"modulate\", Color.transparent, 0.5)
-	
-"
 
 [node name="World" type="Node2D"]
 
@@ -3535,7 +3390,7 @@ shape = SubResource( 45 )
 position = Vector2( 8888, -1664 )
 
 [node name="PlatformingPlayer" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1796, 64 )
+position = Vector2( 7305, 101 )
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 3 )]
 
@@ -3567,7 +3422,7 @@ text = "<- Dense Forest
 [node name="SparseForestSign" parent="." instance=ExtResource( 8 )]
 position = Vector2( 15888, -3512 )
 texture = SubResource( 173 )
-script = SubResource( 174 )
+script = ExtResource( 29 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -3581,7 +3436,7 @@ text = "<- Sparse Forest
 [node name="SnowyTundraSign" parent="." instance=ExtResource( 8 )]
 position = Vector2( 27224, -5192 )
 texture = SubResource( 173 )
-script = SubResource( 174 )
+script = ExtResource( 29 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -3595,7 +3450,7 @@ text = " <- Snowy Tundra
 [node name="SummitSign" parent="." instance=ExtResource( 8 )]
 position = Vector2( 28088, -5416 )
 texture = SubResource( 173 )
-script = SubResource( 174 )
+script = ExtResource( 29 )
 __meta__ = {
 "_edit_group_": true
 }
