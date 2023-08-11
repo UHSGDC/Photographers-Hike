@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Minigames/Yeti/YetiController.gd" type="Script" id=1]
 [ext_resource path="res://Minigames/Yeti/Yeti.tscn" type="PackedScene" id=2]
@@ -22,6 +22,22 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, 112 ) ]
+}
+
+[sub_resource type="Animation" id=22]
+resource_name = "Move Yeti"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("Path2D/PathFollow2D:unit_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -75,6 +91,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Path2D/PathFollow2D:unit_offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
 }
 
 [sub_resource type="Shader" id=17]
@@ -194,6 +222,11 @@ tracks/0/keys = {
 "values": [ Vector2( 5, 4 ), Vector2( 6, 4 ), Vector2( 7, 4 ), Vector2( 8, 4 ), Vector2( 9, 4 ), Vector2( 4, 4 ) ]
 }
 
+[sub_resource type="Curve2D" id=23]
+_data = {
+"points": PoolVector2Array( -29.1955, 32.0616, 29.1955, -32.0616, -40, 256, 10.5174, 43.9477, -10.5174, -43.9477, 0, 56 )
+}
+
 [node name="YetiController" type="Area2D"]
 collision_layer = 0
 collision_mask = 4
@@ -208,6 +241,7 @@ player_cutscene_jump_multiplier = 0.8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 "anims/Drop Wall" = SubResource( 1 )
+"anims/Move Yeti" = SubResource( 22 )
 "anims/Punch Cougar" = SubResource( 4 )
 anims/RESET = SubResource( 2 )
 
@@ -322,12 +356,20 @@ offset = Vector2( 1.5, -10 )
 flip_h = true
 hframes = 13
 vframes = 6
-frame = 56
+frame = 57
 region_rect = Rect2( 114.3, 96.6375, 71.1784, 5.47526 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CougarFist/Cougar"]
 root_node = NodePath("../../..")
 anims/Sleep = SubResource( 3 )
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource( 23 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2( 0, 56 )
+offset = 207.794
+rotate = false
 
 [connection signal="body_entered" from="." to="." method="_on_YetiController_body_entered"]
 [connection signal="body_entered" from="CutsceneZone" to="." method="_on_CutsceneZone_body_entered"]

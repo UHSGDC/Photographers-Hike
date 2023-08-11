@@ -115,8 +115,15 @@ func _on_CutsceneZone_body_entered(body: Node) -> void:
 	# Spawn yeti
 	yeti = yeti_scene.instance()
 	yeti.active = false
+	
+	$Path2D/PathFollow2D.add_child(yeti)
+	$AnimationPlayer.play("Move Yeti")
+	yield($AnimationPlayer, "animation_finished")
+	$Path2D/PathFollow2D.remove_child(yeti)
+	
+	
 	get_parent().add_child(yeti)
-	yeti.global_position = $SpawnPosition.global_position
+	yeti.global_position = $Path2D/PathFollow2D.global_position
 	
 	yield(get_tree().create_timer(0.5), "timeout")
 	
