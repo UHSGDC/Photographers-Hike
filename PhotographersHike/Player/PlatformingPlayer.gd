@@ -326,6 +326,8 @@ func check_room_edge(a_center: Vector2, a_size: Vector2, b_center: Vector2, b_si
 
 
 func respawn() -> void:
+	if death_pause:
+		return
 	death_pause = true
 	Global.player_camera.screen_shake(0.3)
 	$RunParticleTimer.stop()
