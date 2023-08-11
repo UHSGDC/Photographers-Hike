@@ -38,6 +38,7 @@ var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 export var keyboard_aim_speed: float
 
+export var dust_particle_scene: PackedScene
 
 func _ready() -> void:
 	current_charge_speed = normal_charge_speed
@@ -118,11 +119,16 @@ func aim_arrow(delta: float) -> void:
 		var rotation_direction = Input.get_axis("left", "right")
 		jump_arrow.rotate(rotation_direction * keyboard_aim_speed * delta)
 	
-	
+func dust_particles() -> void:
+	var dust_particle = dust_particle_scene.instance()
+	get_parent().add_child(dust_particle)
+	dust_particle.global_position = current_rock.global_position
+	dust_particle.restart()
+
 		
 func jump() -> void:
 	# Actual Jump
-	
+	dust_particles()
 	var jump_direction: Vector2 = Vector2.RIGHT.rotated(jump_arrow.rotation)
 	
 	var jump_velocity = current_jump_velocity

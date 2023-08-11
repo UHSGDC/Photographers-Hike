@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Minigames/RockClimbing/RockDetector.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player/DustParticles.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Minigames/RockClimbing/RockJumpArrow.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Minigames/RockClimbing/RockClimbing.gd" type="Script" id=4]
 
@@ -22,6 +23,7 @@ max_attach_speed = 2000.0
 rock_detector_scene = ExtResource( 1 )
 jump_arrow_scene = ExtResource( 3 )
 keyboard_aim_speed = 1.5
+dust_particle_scene = ExtResource( 2 )
 
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
 rect = Rect2( -200, -500, 400, 1000 )
