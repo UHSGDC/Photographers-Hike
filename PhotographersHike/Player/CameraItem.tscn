@@ -1,7 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player/CameraItem.gd" type="Script" id=1]
 [ext_resource path="res://Menus/AlbumPicture.tscn" type="PackedScene" id=2]
+
+[sub_resource type="Curve" id=3]
+max_value = 1.5
+_data = [ Vector2( 0, 1.5 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="Animation" id=2]
 resource_name = "RESET"
@@ -131,6 +135,21 @@ modulate = Color( 1, 1, 1, 0 )
 margin_right = 480.0
 margin_bottom = 288.0
 mouse_filter = 2
+
+[node name="FlashParticles" type="CPUParticles2D" parent="CanvasLayer"]
+position = Vector2( 240, 144 )
+emitting = false
+amount = 64
+one_shot = true
+explosiveness = 1.0
+emission_shape = 2
+emission_rect_extents = Vector2( 300, 200 )
+spread = 180.0
+gravity = Vector2( 0, 10 )
+initial_velocity = 39.46
+scale_amount = 1.5
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 2 )

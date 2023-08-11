@@ -79,9 +79,9 @@ func display_and_store_image(image: Image) -> void:
 	
 	can_take_picture = false
 	$AnimationPlayer.play("take_picture")
+	$CanvasLayer/FlashParticles.restart()
 	yield($AnimationPlayer, "animation_finished")
 	can_take_picture = true
-
 	
 func randomize_image_rotation() -> void:
 	picture_node.rect_rotation = Rng.randf_range(-5, 5)
