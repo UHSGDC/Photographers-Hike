@@ -59,6 +59,7 @@ func move_player_to_sign(delta: float) -> void:
 	
 	if player.is_on_floor() and jump_cast.is_colliding():
 		player.velocity.y = player.jump_velocity * player_cutscene_jump_multiplier
+		player.dust_particles()
 		
 		
 	player.apply_gravity(delta)
@@ -85,8 +86,6 @@ func _on_CutsceneActivation_body_entered(body: Node) -> void:
 	jump_cast = create_jump_cast()
 	
 	should_stop = false
-	
-#	Global.camera_item.can_take_picture = false
 	
 	
 func create_jump_cast() -> RayCast2D:
