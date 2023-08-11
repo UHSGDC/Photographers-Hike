@@ -61,16 +61,21 @@ enum States {
 	IDLE,
 	PICTURE,
 	JUMP,
-	FALL
+	FALL,
+	LAND
 }
 
 var state: int = States.IDLE
+var previous_state: int
 
+# Particles
+export var dust_particle_scene: PackedScene
 
 
 func _ready() -> void:
 	Global.platforming_player = self
-
+	
+	
 # Delta is the time since physics_process was last called
 # I multiply things by delta so things move correctly no matter the frame rate
 func _physics_process(delta: float) -> void:
@@ -83,10 +88,21 @@ func _physics_process(delta: float) -> void:
 	if !Global.room_pause and !in_cutscene and !death_pause:
 		if !in_minigame and !Global.dialog_box.dialog_playing:
 			move(delta)
+		particles()
 		state = get_state()
 	
 	look()
 	animate()
+
+func particles() -> void:	
+	if state == States.FALL and is_on_floor():
+		dust_particles()
+	if state == States.RUN:
+		if $RunParticleTimer.is_stopped():
+			$RunParticleTimer.start()
+	elif !$RunParticleTimer.is_stopped():
+		$RunParticleTimer.stop()
+		
 
 func look() -> void:
 	if velocity.x > 0:
@@ -103,7 +119,7 @@ func get_state() -> int:
 	elif abs(velocity.x) > 0.1:
 		return States.RUN
 	else:
-		return States.IDLE	
+		return States.IDLE
 
 
 func animate() -> void:
@@ -115,7 +131,7 @@ func animate() -> void:
 			$AnimationPlayer.play("Fall")
 		States.RUN:
 			$AnimationPlayer.play("Run")
-		States.IDLE:
+		States.IDLE, States.LAND:
 			if $AnimationPlayer.current_animation == "Run":
 				$AnimationPlayer.play("Idle")
 			else:
@@ -178,7 +194,15 @@ func apply_gravity(delta: float) -> void:
 	
 
 func jump() -> void:
+	dust_particles()
 	velocity.y = jump_velocity
+
+
+func dust_particles() -> void:
+	var dust_particle = dust_particle_scene.instance()
+	get_parent().add_child(dust_particle)
+	dust_particle.global_position = global_position + Vector2.DOWN * 7
+	dust_particle.restart()
 
 
 func coyote_time():
@@ -299,7 +323,8 @@ func check_room_edge(a_center: Vector2, a_size: Vector2, b_center: Vector2, b_si
 func respawn() -> void:
 	death_pause = true
 	Global.player_camera.screen_shake(0.3)
-	$CPUParticles2D.emitting = true
+	$RunParticleTimer.stop()
+	$DeathParticles.emitting = true
 	$Sprite/AnimationPlayer.play("Shrink and Flash")
 	yield($Sprite/AnimationPlayer, "animation_finished")
 	
@@ -336,3 +361,7 @@ func respawn() -> void:
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	emit_signal("animation_finished", anim_name)
+
+
+func _on_RunParticleTimer_timeout() -> void:
+	dust_particles()
