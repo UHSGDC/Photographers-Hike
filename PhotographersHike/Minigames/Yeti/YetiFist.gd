@@ -28,3 +28,11 @@ func punch(yeti: Area2D) -> void:
 func _on_YetiFist_body_entered(body: Node) -> void:
 	if !Global.platforming_player.death_pause:
 		Global.platforming_player.respawn()
+
+
+func play_punch_particles() -> void:
+	var punch_particles = $PunchParticles
+	remove_child(punch_particles)
+	get_parent().get_parent().add_child(punch_particles)
+	punch_particles.global_position = global_position + Vector2.RIGHT * 17
+	punch_particles.restart()
