@@ -324,7 +324,7 @@ func respawn() -> void:
 	death_pause = true
 	Global.player_camera.screen_shake(0.3)
 	$RunParticleTimer.stop()
-	$DeathParticles.emitting = true
+	$DeathParticles.restart()
 	$Sprite/AnimationPlayer.play("Shrink and Flash")
 	yield($Sprite/AnimationPlayer, "animation_finished")
 	
