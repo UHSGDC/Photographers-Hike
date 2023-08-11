@@ -2592,7 +2592,7 @@ dialog_id = 2
 level = 1
 
 [node name="PanSign" parent="DenseForest" instance=ExtResource( 28 )]
-position = Vector2( -3515, 470 )
+position = Vector2( -3016, 343 )
 level = 1
 
 [node name="SparseForest" type="Node2D" parent="."]
