@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Minigames/Yeti/YetiController.gd" type="Script" id=1]
 [ext_resource path="res://Minigames/Yeti/Yeti.tscn" type="PackedScene" id=2]
@@ -76,6 +76,25 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
+[sub_resource type="Shader" id=17]
+code = "shader_type canvas_item;
+
+uniform vec4 color : hint_color;
+uniform float flashState : hint_range(0.0, 1.0) = 0.5;
+
+void fragment() {
+    vec4 pixelColor = texture(TEXTURE, UV);
+
+
+    COLOR = mix(pixelColor, color, flashState);
+	COLOR.a *= pixelColor.a;
+}"
+
+[sub_resource type="ShaderMaterial" id=18]
+shader = SubResource( 17 )
+shader_param/color = Color( 1, 1, 1, 1 )
+shader_param/flashState = 0.0
+
 [sub_resource type="Animation" id=6]
 resource_name = "RESET"
 length = 0.001
@@ -90,6 +109,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CougarFist/YetiFist:material:shader_param/flashState")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -106,6 +137,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0.5, 0.5 ), Vector2( 1.2, 1.2 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CougarFist/YetiFist:material:shader_param/flashState")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.4, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 0.0 ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -157,6 +200,7 @@ monitorable = false
 [node name="CougarFist" type="Node2D" parent="."]
 
 [node name="YetiFist" type="Sprite" parent="CougarFist"]
+material = SubResource( 18 )
 scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 6 )
 
