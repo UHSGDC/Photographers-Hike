@@ -1,6 +1,11 @@
 extends Area2D
 
 
+func _ready() -> void:
+	randomize()
+	$Sprite.flip_h = randf() > 0.5
+
+
 func punch(yeti: Area2D) -> void:
 	yeti.punches += 1
 	yeti.can_punch = false
