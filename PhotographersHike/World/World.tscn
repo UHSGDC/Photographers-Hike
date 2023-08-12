@@ -1,4 +1,4 @@
-[gd_scene load_steps=194 format=2]
+[gd_scene load_steps=193 format=2]
 
 [ext_resource path="res://World/DeathZone.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/PlatformingPlayer.tscn" type="PackedScene" id=2]
@@ -28,7 +28,6 @@
 [ext_resource path="res://Minigames/StealthPlatformer/VisionCircle.tscn" type="PackedScene" id=26]
 [ext_resource path="res://Assets/Art/Base/House.png" type="Texture" id=27]
 [ext_resource path="res://Interactables/Sign/SmallSign.tscn" type="PackedScene" id=28]
-[ext_resource path="res://Interactables/Sign/Sign.gd" type="Script" id=29]
 
 [sub_resource type="RectangleShape2D" id=44]
 extents = Vector2( 240, 144 )
@@ -3390,7 +3389,7 @@ shape = SubResource( 45 )
 position = Vector2( 8888, -1664 )
 
 [node name="PlatformingPlayer" parent="." instance=ExtResource( 2 )]
-position = Vector2( 7305, 101 )
+position = Vector2( -178, 195 )
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 3 )]
 
@@ -3422,7 +3421,6 @@ text = "<- Dense Forest
 [node name="SparseForestSign" parent="." instance=ExtResource( 8 )]
 position = Vector2( 15888, -3512 )
 texture = SubResource( 173 )
-script = ExtResource( 29 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -3436,7 +3434,6 @@ text = "<- Sparse Forest
 [node name="SnowyTundraSign" parent="." instance=ExtResource( 8 )]
 position = Vector2( 27224, -5192 )
 texture = SubResource( 173 )
-script = ExtResource( 29 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -3450,7 +3447,6 @@ text = " <- Snowy Tundra
 [node name="SummitSign" parent="." instance=ExtResource( 8 )]
 position = Vector2( 28088, -5416 )
 texture = SubResource( 173 )
-script = ExtResource( 29 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -3458,8 +3454,12 @@ picture_texture = ExtResource( 24 )
 should_play_cutscene = true
 
 [node name="DirectionLabel" parent="SummitSign" index="2"]
-text = "The Summit
- You made it! "
+text = " The Summit "
+valign = 1
+
+[node name="ColorRect" parent="SummitSign/DirectionLabel" index="0"]
+margin_top = 0.0
+margin_bottom = 0.0
 
 [connection signal="body_entered" from="SparseForest/Cave" to="SparseForest/Cave" method="_on_Cave_body_entered"]
 [connection signal="body_exited" from="SparseForest/Cave" to="SparseForest/Cave" method="_on_Cave_body_exited"]
