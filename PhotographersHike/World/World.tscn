@@ -3381,6 +3381,9 @@ position = Vector2( 173, 90 )
 [node name="Cougar" parent="Snowy/YetiController/CougarFist" index="1"]
 visible = true
 
+[node name="PathFollow2D" parent="Snowy/YetiController/Path2D" index="0"]
+position = Vector2( 1.77622e-05, 56.0001 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snowy/YetiController"]
 modulate = Color( 0.701961, 0.458824, 0.941176, 1 )
 shape = SubResource( 45 )
