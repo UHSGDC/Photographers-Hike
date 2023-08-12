@@ -142,6 +142,10 @@ func output_text_and_sound(text: String, delay: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
+	if !$NextIcon.visible:
+		return
+	
 	if event.is_action_pressed("menu_confirm") or event.is_action_pressed("interact"):
 		emit_signal("next_dialog")
+		get_tree().set_input_as_handled()
 		
