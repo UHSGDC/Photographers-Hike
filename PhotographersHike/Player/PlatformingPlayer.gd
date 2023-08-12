@@ -359,6 +359,7 @@ func respawn() -> void:
 	state = States.IDLE
 	$Sprite/AnimationPlayer.play_backwards("Shrink and Flash")
 	yield($Sprite/AnimationPlayer, "animation_finished")
+	$Sprite/AnimationPlayer.play("RESET")
 	yield(get_tree().create_timer(0.1), "timeout")
 	
 
