@@ -3382,7 +3382,8 @@ position = Vector2( 173, 90 )
 visible = true
 
 [node name="PathFollow2D" parent="Snowy/YetiController/Path2D" index="0"]
-position = Vector2( 1.77622e-05, 56.0001 )
+position = Vector2( 0, 56 )
+offset = 207.794
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snowy/YetiController"]
 modulate = Color( 0.701961, 0.458824, 0.941176, 1 )
