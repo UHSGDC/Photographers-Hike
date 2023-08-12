@@ -421,10 +421,10 @@ material = SubResource( 13 )
 position = Vector2( 0, -1 )
 z_index = 1
 texture = ExtResource( 1 )
-offset = Vector2( 0, -3 )
+offset = Vector2( 0, -6 )
 hframes = 18
 vframes = 6
-frame = 23
+frame = 72
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 anims/RESET = SubResource( 15 )
@@ -433,7 +433,6 @@ anims/RESET = SubResource( 15 )
 [node name="NormalHitbox" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -0.5 )
 shape = SubResource( 1 )
-disabled = true
 
 [node name="RoomDetector" type="Area2D" parent="."]
 collision_layer = 0
@@ -475,6 +474,7 @@ anims/RESET = SubResource( 10 )
 [node name="JumpHitbox" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 1.5 )
 shape = SubResource( 11 )
+disabled = true
 
 [node name="DeathParticles" type="CPUParticles2D" parent="."]
 modulate = Color( 0.74902, 0.286275, 0.286275, 1 )
