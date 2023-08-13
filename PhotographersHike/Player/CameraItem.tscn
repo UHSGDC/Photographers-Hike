@@ -139,7 +139,7 @@ mouse_filter = 2
 [node name="FlashParticles" type="CPUParticles2D" parent="CanvasLayer"]
 position = Vector2( 240, 144 )
 emitting = false
-amount = 64
+amount = 256
 one_shot = true
 explosiveness = 1.0
 emission_shape = 2
@@ -147,7 +147,10 @@ emission_rect_extents = Vector2( 300, 200 )
 spread = 180.0
 gravity = Vector2( 0, 10 )
 initial_velocity = 39.46
-scale_amount = 1.5
+initial_velocity_random = 1.0
+tangential_accel = -4.0
+tangential_accel_random = 1.0
+scale_amount = 2.0
 scale_amount_random = 1.0
 scale_amount_curve = SubResource( 3 )
 
