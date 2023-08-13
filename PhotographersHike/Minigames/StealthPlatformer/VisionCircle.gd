@@ -8,7 +8,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if showing:
-		$TextureRect.rect_position = Global.platforming_player.global_position - Global.player_camera.global_position + Vector2(-240, -336)
+		$TextureRect.rect_position = Global.platforming_player.global_position - Global.player_camera.global_position + Vector2(-760, -856)
 
 
 func fade_in() -> void:

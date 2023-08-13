@@ -14,3 +14,7 @@ vision circle appears before stealth platformer cutscene
 instant stop by holding other direction
 
 yeti particles a little distracting
+
+font needs to be more readable
+
+last jump on rock climbing collision
