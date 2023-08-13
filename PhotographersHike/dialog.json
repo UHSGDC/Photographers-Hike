@@ -28,10 +28,12 @@
 			[
 				[
 					["Ah, a fellow hiker.", 2],
-					["You want advice? I am well past my years of hiking, but I can give you this.", 2],
+					["You want advice?", 2],
+					["I am well past my years of hiking, but I can give you this.", 2],
+					["You can take pictures with that camera of yours. Press C to take one.", 2],
 					["The mountain holds beauties beyond your wildest imagination.", 2],
-					["Each step you take reveals one more facet of the wonderous tapestry that is your journey. And with your pictures you can make each step forever immortalized.", 1],
-					["Good luck young hiker...", 1]
+					["Each step you take reveals one more facet of the wonderous tapestry that is your journey. And with your pictures you can forever immortalize each step.", 2],
+					["Good luck young hiker...", 2]
 				],
 				[
 					["Yo lady, afhnuBAZEijasbn afnujiasb afbas jkfbash asbdjkasbfkasf sfbjkasb", 1],
