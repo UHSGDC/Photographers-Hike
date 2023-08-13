@@ -18,3 +18,5 @@ yeti particles a little distracting
 font needs to be more readable
 
 last jump on rock climbing collision
+
+make directional signs to direct player after blizzard and rock climbing
