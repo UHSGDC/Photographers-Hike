@@ -85,7 +85,9 @@ func _update_button() -> void:
 			if current_value <= min_value:
 				DECREASE_BUTTON.disabled = true
 				current_value = min_value
-				
+			
+			$Button/Value.rect_min_size.x = len(str(max_value)) * 8
+			
 			_update_label(str(current_value))
 			
 		Setting.PERCENT:
@@ -97,7 +99,9 @@ func _update_button() -> void:
 			elif current_value <= 0:
 				DECREASE_BUTTON.disabled = true
 				current_value = 0
-				
+			
+			$Button/Value.rect_min_size.x = 32
+			
 			_update_label(str(current_value) + "%")
 			
 		Setting.STRING:
@@ -111,8 +115,12 @@ func _update_button() -> void:
 			if current_value_index <= 0:
 				DECREASE_BUTTON.disabled = true
 				current_value_index = 0
-			
+				
 			current_value = str(value_string_array[current_value_index])
+			
+			for value in value_string_array:
+				$Button/Value.rect_min_size.x = max($Button/Value.rect_min_size.x, value.length() * 8)
+				
 			_update_label(current_value)
 			
 		Setting.SWITCH:
@@ -124,7 +132,9 @@ func _update_button() -> void:
 			else:
 				_update_label("Off")
 				DECREASE_BUTTON.disabled = true
-
+			
+			$Button/Value.rect_min_size.x = 24
+			
 
 func _update_label(text: String) -> void:
 	$Button/Value.text = text
