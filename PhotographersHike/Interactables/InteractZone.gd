@@ -18,9 +18,9 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func set_interact_input_label() -> void:
 	if InputHelper.device == InputHelper.DEVICE_KEYBOARD or InputHelper.device == InputHelper.DEVICE_GENERIC:
-		$InteractInput.text = InputHelper.get_action_key("interact")
+		$InteractInput.text = "Press " + InputHelper.get_action_key("interact")
 	else:
-		$InteractInput.text = "Button" + str(InputHelper.get_action_button("interact"))
+		$InteractInput.text = "Press Button" + str(InputHelper.get_action_button("interact"))
 		
 
 func _on_InteractZone_body_entered(body: Node) -> void:
