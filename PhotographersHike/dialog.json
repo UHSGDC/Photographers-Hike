@@ -55,15 +55,17 @@
 			[],
 			[
 				[
-					["Use arrow keys to pan the camera! \nNote: You can only pan the camera within the extents of the room you are currently inside.", 2],
+					["Use arrow keys to pan the camera. Moving or pressing Control will cancel panning.", 3],
+					["Note: You can only pan the camera within the extents of the room you are currently inside.", 3]
 				],
 				[
-					["When jumping on a rock you have already jumped from, a colored line will appear showing the trajectory of your last jump.", 2],
-					["The color also indicates the strength of your last jump.", 2]
+					["When jumping on a rock you have already jumped from, a colored line will appear showing the trajectory of your last jump.", 3],
+					["The color also indicates the strength of your last jump. White is max charge.", 3],
+					["Tip: You can stop charging by pressing Control", 3]
 				],
 				[
-					["Pro Tip: Check the rock climbing category inside the settings menu for some handy settings.", 2],
-					["You can aim with mouse, turn off the last jump line, or increase the charging speed of your jump.", 2]
+					["Pro Tip: Check the rock climbing category inside the settings menu for some handy settings.", 3],
+					["You can aim with mouse, turn off the last jump line, or increase the charging speed of your jump.", 3]
 				]
 			],
 			[
