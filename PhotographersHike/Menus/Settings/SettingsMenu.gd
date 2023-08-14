@@ -18,6 +18,8 @@ func _back_input() -> void:
 		$KeybindsPopup.hide()
 		get_tree().set_input_as_handled()
 		return
+		
+	._back_input()
 
 
 func _on_Back_pressed():

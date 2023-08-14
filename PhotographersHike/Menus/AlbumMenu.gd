@@ -36,6 +36,8 @@ func _back_input() -> void:
 		$DownloadDialog.hide()
 		get_tree().set_input_as_handled()
 		return
+		
+	._back_input()
 
 func update_album() -> void:
 	var picture_textures = Global.camera_item.picture_textures

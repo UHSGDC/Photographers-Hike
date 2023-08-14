@@ -1,8 +1,8 @@
 extends BaseMenu
 
-func _on_Quit_pressed():
-	get_tree().quit()
-
+func _back_input() -> void:
+	menus.change_menu(menus.NONE)
+	get_tree().set_input_as_handled()
 
 func _on_Settings_pressed():
 	menus.change_menu(menus.SETTINGS)
