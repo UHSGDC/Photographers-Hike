@@ -56,8 +56,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="CreditsWindow/ScrollContainer/CenterContainer"]
-margin_left = 68.0
-margin_right = 348.0
+margin_left = 67.0
+margin_right = 347.0
 margin_bottom = 799.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -165,6 +165,7 @@ anchor_right = 0.5
 margin_left = -56.0
 margin_right = 56.0
 margin_bottom = 32.0
+custom_colors/font_color = Color( 0.478431, 0.282353, 0.254902, 1 )
 custom_fonts/font = ExtResource( 4 )
 text = "Credits"
 align = 1
