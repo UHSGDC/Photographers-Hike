@@ -20,3 +20,20 @@ font needs to be more readable
 last jump on rock climbing collision
 
 make directional signs to direct player after blizzard and rock climbing
+
+Tell the player to use enter or space for dialog
+make respawns smoother (let player be able to hold forward and have some more time to jump)
+
+yeti sprite doesnt read as being a yeti
+
+white line for max charge jump
+
+make jump hitbox bigger at feet maybe, because it looks player is falling through platform
+
+vision circle starts before cutscene for some reason, maybe its a web only thing
+
+stealth platformer light went out after dying
+
+first snowy level looks like it might go up
+
+ani complained about yeti fist being too fast
