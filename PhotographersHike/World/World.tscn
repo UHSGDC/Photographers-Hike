@@ -2838,7 +2838,7 @@ navpoly = SubResource( 60 )
 navpoly = SubResource( 112 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SparseForest/Cave"]
-polygon = PoolVector2Array( -472, 232, 1584, 272, 1568, -32, 2496, -48, 2512, -960, 1936, -968, 1952, -344, 952, -368, 968, -136, -464, -32 )
+polygon = PoolVector2Array( -400, 224, 1584, 272, 2152, 264, 2784, -664, 2512, -960, 1936, -960, 1472, -680, 952, -368, 40, -272, -400, -32 )
 
 [node name="MinigameCutscene" parent="SparseForest" instance=ExtResource( 19 )]
 position = Vector2( 464, 1008 )
