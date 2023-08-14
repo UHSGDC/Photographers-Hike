@@ -2145,13 +2145,13 @@ position = Vector2( 440, -520 )
 position = Vector2( 520, -552 )
 
 [node name="Rock56" parent="DenseForest/RockClimbing/Rocks" index="60" instance=ExtResource( 10 )]
-position = Vector2( 472, -720 )
+position = Vector2( 472, -728 )
 
 [node name="Rock57" parent="DenseForest/RockClimbing/Rocks" index="61" instance=ExtResource( 10 )]
 position = Vector2( 504, -800 )
 
 [node name="Rock58" parent="DenseForest/RockClimbing/Rocks" index="62" instance=ExtResource( 10 )]
-position = Vector2( 440, -808 )
+position = Vector2( 440, -800 )
 
 [node name="Rock59" parent="DenseForest/RockClimbing/Rocks" index="63" instance=ExtResource( 10 )]
 position = Vector2( 552, -736 )
