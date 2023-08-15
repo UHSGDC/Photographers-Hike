@@ -1,4 +1,4 @@
-[gd_scene load_steps=194 format=2]
+[gd_scene load_steps=200 format=2]
 
 [ext_resource path="res://World/DeathZone.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/PlatformingPlayer.tscn" type="PackedScene" id=2]
@@ -28,6 +28,7 @@
 [ext_resource path="res://Minigames/StealthPlatformer/VisionCircle.tscn" type="PackedScene" id=26]
 [ext_resource path="res://Assets/Art/Base/House.png" type="Texture" id=27]
 [ext_resource path="res://Interactables/Sign/SmallSign.tscn" type="PackedScene" id=28]
+[ext_resource path="res://World/LevelPopup.tscn" type="PackedScene" id=29]
 
 [sub_resource type="RectangleShape2D" id=44]
 extents = Vector2( 240, 144 )
@@ -1592,6 +1593,21 @@ extents = Vector2( 240, 144 )
 
 [sub_resource type="StreamTexture" id=173]
 load_path = "res://.import/Sign.png-641f8ed36cbd29df3415fff9e035ebba.stex"
+
+[sub_resource type="RectangleShape2D" id=184]
+extents = Vector2( 1920, 380 )
+
+[sub_resource type="RectangleShape2D" id=185]
+extents = Vector2( 3056, 1536 )
+
+[sub_resource type="RectangleShape2D" id=186]
+extents = Vector2( 3200, 1024 )
+
+[sub_resource type="RectangleShape2D" id=187]
+extents = Vector2( 5904, 1392 )
+
+[sub_resource type="RectangleShape2D" id=188]
+extents = Vector2( 240, 144 )
 
 [node name="World" type="Node2D"]
 
@@ -3403,7 +3419,7 @@ shape = SubResource( 45 )
 position = Vector2( 8888, -1664 )
 
 [node name="PlatformingPlayer" parent="." instance=ExtResource( 2 )]
-position = Vector2( 7264, 136 )
+position = Vector2( 26752, -5224 )
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 3 )]
 
@@ -3474,6 +3490,46 @@ valign = 1
 [node name="ColorRect" parent="SummitSign/DirectionLabel" index="0"]
 margin_top = 0.0
 margin_bottom = 0.0
+
+[node name="BasePopup" parent="." instance=ExtResource( 29 )]
+position = Vector2( 1632, 4 )
+level = "Base Camp"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BasePopup"]
+visible = false
+shape = SubResource( 184 )
+
+[node name="DensePopup" parent="." instance=ExtResource( 29 )]
+position = Vector2( 6608, -910 )
+level = "Dense Forest"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DensePopup"]
+visible = false
+shape = SubResource( 185 )
+
+[node name="SparsePopup" parent="." instance=ExtResource( 29 )]
+position = Vector2( 12864, -2776 )
+level = "Sparse Forest"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SparsePopup"]
+visible = false
+shape = SubResource( 186 )
+
+[node name="SnowyPopup" parent="." instance=ExtResource( 29 )]
+position = Vector2( 21968, -4328 )
+level = "Snowy Tundra"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SnowyPopup"]
+visible = false
+shape = SubResource( 187 )
+
+[node name="SummitPopup" parent="." instance=ExtResource( 29 )]
+position = Vector2( 28112, -5472 )
+level = "Summit"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SummitPopup"]
+visible = false
+shape = SubResource( 188 )
 
 [connection signal="body_entered" from="SparseForest/Cave" to="SparseForest/Cave" method="_on_Cave_body_entered"]
 [connection signal="body_exited" from="SparseForest/Cave" to="SparseForest/Cave" method="_on_Cave_body_exited"]

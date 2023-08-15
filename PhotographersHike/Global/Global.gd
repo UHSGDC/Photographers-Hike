@@ -20,14 +20,6 @@ var current_room: Area2D
 
 var aim_with_mouse_rock_climbing: bool = false
 
-var level_text_dictionary: Dictionary = {
-	"Base" : "Base Camp",
-	"DenseForest" : "Dense Forest",
-	"SparseForest" : "Sparse Forest",
-	"Snowy" : "Snowy Tundra",
-	"Summit" : "Summit"
-}
-
 var room_pause: bool = false
 export var room_pause_time: float = 0.2
 
@@ -46,8 +38,6 @@ func change_room(room_node: LevelRoom, room_position: Vector2, room_size: Vector
 	player_camera.current_room_size = room_size
 	
 	current_room = room_node
-	
-	current_level = level_text_dictionary[current_room.get_parent().name]
 	
 	room_pause = true
 	yield(get_tree().create_timer(room_pause_time),"timeout")
