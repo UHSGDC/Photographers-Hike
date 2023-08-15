@@ -110,14 +110,21 @@ func particles() -> void:
 		
 
 func look() -> void:
-	if x_input > 0:
-		$Sprite.flip_h = false
-	elif x_input < 0:
-		$Sprite.flip_h = true
-	elif velocity.x > 0:
-		$Sprite.flip_h = false
-	elif velocity.x < 0:
-		$Sprite.flip_h = true
+	
+	if !Global.room_pause and !in_cutscene and !death_pause and !in_minigame and !Global.dialog_box.dialog_playing:
+		if x_input > 0:
+			$Sprite.flip_h = false
+		elif x_input < 0:
+			$Sprite.flip_h = true
+		elif velocity.x > 0:
+			$Sprite.flip_h = false
+		elif velocity.x < 0:
+			$Sprite.flip_h = true
+	else:	
+		if velocity.x > 0:
+			$Sprite.flip_h = false
+		elif velocity.x < 0:
+			$Sprite.flip_h = true
 
 	
 func get_state() -> int:
