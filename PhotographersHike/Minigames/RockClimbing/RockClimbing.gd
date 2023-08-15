@@ -11,7 +11,7 @@ var velocity: Vector2 = Vector2.ZERO
 export var min_jump_velocity: float
 export var max_jump_velocity: float
 export var normal_charge_speed: float = 300
-export var faster_charge_speed: float
+export var faster_charge_speed: float = 500
 var current_charge_speed: float
 var current_jump_velocity: float
 var jump_charge_direction: int = 1

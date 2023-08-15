@@ -38,13 +38,13 @@ func _on_AimWMouse_value_changed(value: bool) -> void:
 	Global.aim_with_mouse_rock_climbing = value
 
 
-func _on_FasterCharging_value_changed(value: bool) -> void:
-	Global.emit_signal("faster_jump_charging_toggled", value)
-
-
 func _on_PreviousJumpArrow_value_changed(value: bool) -> void:
 	Global.emit_signal("jump_arrow_toggled", value)
 
 
 func _on_Fullscreen_value_changed(value: bool) -> void:
 	OS.window_fullscreen = value
+
+
+func _on_SlowerCharging_value_changed(value: bool) -> void:
+	Global.emit_signal("faster_jump_charging_toggled", !value)
