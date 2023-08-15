@@ -5,12 +5,12 @@
 
 [sub_resource type="Curve2D" id=5]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 96, -56, -36, 23, 36, -23, 1568, -24, -37, 29, 37, -29, 1584, -312, -75, 51, 75, -51, 2504, -360, 0, 0, 0, 0, 2520, -1016 )
+"points": PoolVector2Array( 0, 0, 0, 0, 96, -56, -120.949, 85.2957, 120.949, -85.2957, 1568, -24, -104.015, 96.0151, 104.015, -96.0151, 1528, -368, -144.593, 132.94, 144.593, -132.94, 2520, -344, 0, 0, 0, 0, 2520, -1016 )
 }
 
 [sub_resource type="Animation" id=2]
 resource_name = "Follow Path"
-length = 4.5
+length = 8.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Path2D/PathFollow2D:unit_offset")
 tracks/0/interp = 2
@@ -18,7 +18,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 4 ),
+"times": PoolRealArray( 0, 7.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 1.0 ]
