@@ -3,7 +3,7 @@
 [ext_resource path="res://Minigames/Blizzard/WindParticles.gd" type="Script" id=1]
 
 [node name="WindParticles" type="CPUParticles2D"]
-amount = 300
+amount = 500
 lifetime = 4.0
 emission_shape = 2
 emission_rect_extents = Vector2( 0, 400 )

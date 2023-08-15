@@ -2460,6 +2460,11 @@ position = Vector2( 225, 407 )
 dialog_id = 1
 level = 1
 
+[node name="RockTutorialSign" parent="DenseForest" instance=ExtResource( 28 )]
+position = Vector2( 64, 424 )
+dialog_id = 3
+level = 1
+
 [node name="SettingsTipSign" parent="DenseForest" instance=ExtResource( 28 )]
 position = Vector2( 223, -153 )
 dialog_id = 2
@@ -3398,7 +3403,7 @@ shape = SubResource( 45 )
 position = Vector2( 8888, -1664 )
 
 [node name="PlatformingPlayer" parent="." instance=ExtResource( 2 )]
-position = Vector2( 12880, -2368 )
+position = Vector2( 7264, 136 )
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 3 )]
 

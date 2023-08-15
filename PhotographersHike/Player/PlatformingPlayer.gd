@@ -110,7 +110,11 @@ func particles() -> void:
 		
 
 func look() -> void:
-	if velocity.x > 0:
+	if x_input > 0:
+		$Sprite.flip_h = false
+	elif x_input < 0:
+		$Sprite.flip_h = true
+	elif velocity.x > 0:
 		$Sprite.flip_h = false
 	elif velocity.x < 0:
 		$Sprite.flip_h = true

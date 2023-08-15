@@ -30,7 +30,7 @@
 					["Ah, a fellow hiker.", 2],
 					["You want advice?", 2],
 					["I am well past my years of hiking, but I can give you this.", 2],
-					["You can take pictures with that camera of yours. Press C to take one.", 2],
+					["You can take pictures with that camera of yours. Press C to take one. View and download them in the Album menu.", 2],
 					["The mountain holds beauties beyond your wildest imagination.", 2],
 					["Each step you take reveals one more facet of the wonderous tapestry that is your journey. And with your pictures you can forever immortalize each step.", 2],
 					["Good luck young hiker...", 2]
@@ -65,7 +65,13 @@
 				],
 				[
 					["Pro Tip: Check the rock climbing category inside the settings menu for some handy settings.", 3],
-					["You can aim with mouse, turn off the last jump line, or slow down the charging speed of your jump.", 3]
+					["You can aim with keyboard, turn off the last jump line, or slow down the charging speed of your jump.", 3]
+				],
+				[
+					["When you touch one of these rocks you will attach to it.", 3],
+					["Once attached a gray arrow will appear. You can aim this arrow with your mouse.", 3],
+					["Holding space will charge your jump and on release you will jump in the direction of the arrow.", 3],
+					["Note: When you jump off a rock you cannot control your movement in the air.", 3]
 				]
 			],
 			[
