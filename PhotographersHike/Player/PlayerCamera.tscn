@@ -46,6 +46,7 @@ script = ExtResource( 1 )
 pan_speed = 300.0
 
 [node name="PanWarning" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Label" type="Label" parent="PanWarning"]
 modulate = Color( 1, 1, 1, 0 )
