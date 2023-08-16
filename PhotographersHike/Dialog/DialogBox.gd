@@ -41,6 +41,8 @@ const text_delay_dictionary: Dictionary = {
 	TextDelay.INSTANT: 0
 }
 
+var skip_input: bool = false
+var waiting_for_next: bool = false
 
 func _ready() -> void:
 	Global.dialog_box = self
@@ -75,7 +77,6 @@ func play_dialog(speaker: String, level_id: int, dialog_number: int) -> String:
 	Global.platforming_player.velocity = Vector2.ZERO
 	
 	for dialog in dialog_array:
-		yield(get_tree().create_timer(0.1), "timeout")
 		if dialog.size() >= 4:
 			output = yield(output_question(dialog), "completed")
 			continue
@@ -125,6 +126,7 @@ func output_dialog(dialog: Array) -> void:
 	
 	
 	$NextIcon.show()
+	waiting_for_next = true
 	yield(self, "next_dialog")
 	$NextIcon.hide()
 
@@ -135,17 +137,21 @@ func output_text_and_sound(text: String, delay: float) -> void:
 	for character in text:
 		$TextOutput.text += character
 		yield(wait_while_paused(), "completed")
-		if Input.is_action_pressed("menu_confirm"):
+		if skip_input:
 			$TextOutput.text = text
+			skip_input = false
 			break
 		yield(get_tree().create_timer(delay), "timeout")
 
 
 func _input(event: InputEvent) -> void:
-	if !$NextIcon.visible:
+	if !dialog_playing:
 		return
 	
-	if event.is_action_pressed("menu_confirm") or event.is_action_pressed("interact"):
+	if Input.is_action_just_pressed("menu_confirm") and !waiting_for_next:
+		skip_input = true
+	
+	if waiting_for_next and (event.is_action_pressed("menu_confirm") or event.is_action_pressed("interact")):
+		waiting_for_next = false
 		emit_signal("next_dialog")
 		get_tree().set_input_as_handled()
-		
