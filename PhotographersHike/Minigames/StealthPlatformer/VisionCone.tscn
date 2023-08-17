@@ -7,9 +7,9 @@ collision_layer = 0
 collision_mask = 4
 monitorable = false
 script = ExtResource( 1 )
-length = 100.0
+length = 102.0
 collision_length = 97.0
-angle = 65.0
+angle = 68.0
 collision_angle = 65.0
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
