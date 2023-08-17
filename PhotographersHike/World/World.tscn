@@ -1471,8 +1471,8 @@ extents = Vector2( 192, 8 )
 [sub_resource type="RectangleShape2D" id=169]
 extents = Vector2( 224, 8 )
 
-[sub_resource type="RectangleShape2D" id=172]
-extents = Vector2( 312, 8 )
+[sub_resource type="RectangleShape2D" id=189]
+extents = Vector2( 320, 8 )
 
 [sub_resource type="RectangleShape2D" id=58]
 extents = Vector2( 240, 144 )
@@ -2896,10 +2896,10 @@ position = Vector2( -1648, 1320 )
 shape = SubResource( 169 )
 
 [node name="DeathZone4" parent="SparseForest" instance=ExtResource( 1 )]
-position = Vector2( -608, 1144 )
+position = Vector2( -600, 1144 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SparseForest/DeathZone4"]
-shape = SubResource( 172 )
+shape = SubResource( 189 )
 
 [node name="Snowy" type="Node2D" parent="."]
 position = Vector2( 17776, -3616 )
@@ -3419,7 +3419,7 @@ shape = SubResource( 45 )
 position = Vector2( 8888, -1664 )
 
 [node name="PlatformingPlayer" parent="." instance=ExtResource( 2 )]
-position = Vector2( 26752, -5224 )
+position = Vector2( 2096, 48 )
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 3 )]
 
