@@ -111,7 +111,7 @@ func _on_CutsceneZone_body_entered(body: Node) -> void:
 	# Drop wall
 	$AnimationPlayer.play("Drop Wall")
 	yield($AnimationPlayer, "animation_finished")
-		
+	MusicPlayer.play_song("Boss", false)
 	# Spawn yeti
 	yeti = yeti_scene.instance()
 	yeti.active = false
