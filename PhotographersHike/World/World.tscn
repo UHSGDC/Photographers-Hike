@@ -11,7 +11,7 @@
 [ext_resource path="res://World/LevelTileset.tres" type="TileSet" id=9]
 [ext_resource path="res://Minigames/RockClimbing/Rock.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Minigames/RockClimbing/RockClimbing.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Pictures/test_photo.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Art/Pictures/DenseForest.png" type="Texture" id=12]
 [ext_resource path="res://Minigames/RockClimbing/VineManager.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Misc/SpeedRunTimer.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Minigames/Blizzard/WindZone.tscn" type="PackedScene" id=15]
@@ -3419,7 +3419,7 @@ shape = SubResource( 45 )
 position = Vector2( 8888, -1664 )
 
 [node name="PlatformingPlayer" parent="." instance=ExtResource( 2 )]
-position = Vector2( 2096, 48 )
+position = Vector2( 15656, -3504 )
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 3 )]
 
