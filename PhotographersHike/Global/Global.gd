@@ -5,6 +5,7 @@ signal room_changed
 signal input_changed
 signal jump_arrow_toggled(value)
 signal faster_jump_charging_toggled(value)
+signal level_changed(current_level)
 
 var player_camera: Camera2D
 var platforming_player: Player
@@ -15,7 +16,7 @@ var debug: CanvasLayer
 var vision_circle: CanvasLayer
 var cave_cutscene_played: bool = false
 
-var current_level: String
+var current_level: String setget set_current_level
 var current_room: Area2D
 
 var aim_with_mouse_rock_climbing: bool = false
@@ -30,6 +31,12 @@ enum {
 	DOWN
 	LEFT
 }
+
+
+func set_current_level(new_value: String) -> void:
+	current_level = new_value
+	MusicPlayer.play_song(new_value)
+	emit_signal("level_changed", new_value)	
 
 
 func change_room(room_node: LevelRoom, room_position: Vector2, room_size: Vector2) -> void:

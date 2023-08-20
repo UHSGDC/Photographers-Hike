@@ -93,6 +93,7 @@ config/windows_native_icon="res://Assets/Art/Logo.ico"
 
 Global="*res://Global/Global.tscn"
 InputHelper="*res://addons/input_helper/input_helper.gd"
+MusicPlayer="*res://Audio/MusicPlayer.tscn"
 
 [display]
 

@@ -4,7 +4,3 @@
 
 [node name="Global" type="Node"]
 script = ExtResource( 3 )
-
-[node name="Master" type="AudioStreamPlayer" parent="."]
-volume_db = 1.0
-autoplay = true
