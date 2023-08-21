@@ -37,40 +37,48 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -64.0
-margin_top = -40.0
-margin_right = 64.0
-margin_bottom = 52.0
+margin_left = -86.0
+margin_top = -46.0
+margin_right = 86.0
+margin_bottom = 46.0
 custom_constants/separation = 8
 
 [node name="Resume" type="Button" parent="ColorRect/VBoxContainer"]
-margin_right = 128.0
+margin_right = 172.0
 margin_bottom = 12.0
 custom_fonts/font = ExtResource( 3 )
 text = "Resume"
 
-[node name="Settings" type="Button" parent="ColorRect/VBoxContainer"]
+[node name="Skip" type="Button" parent="ColorRect/VBoxContainer"]
 margin_top = 20.0
-margin_right = 128.0
+margin_right = 172.0
 margin_bottom = 32.0
+custom_fonts/font = ExtResource( 3 )
+text = "Skip Cutscene"
+
+[node name="Settings" type="Button" parent="ColorRect/VBoxContainer"]
+margin_top = 40.0
+margin_right = 172.0
+margin_bottom = 52.0
 custom_fonts/font = ExtResource( 3 )
 text = "Settings"
 
 [node name="Album" type="Button" parent="ColorRect/VBoxContainer"]
-margin_top = 40.0
-margin_right = 128.0
-margin_bottom = 52.0
+margin_top = 60.0
+margin_right = 172.0
+margin_bottom = 72.0
 custom_fonts/font = ExtResource( 3 )
 text = "Album"
 
 [node name="Main" type="Button" parent="ColorRect/VBoxContainer"]
-margin_top = 60.0
-margin_right = 128.0
-margin_bottom = 72.0
+margin_top = 80.0
+margin_right = 172.0
+margin_bottom = 92.0
 custom_fonts/font = ExtResource( 3 )
 text = "Main Menu"
 
 [connection signal="pressed" from="ColorRect/VBoxContainer/Resume" to="." method="_on_Resume_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Skip" to="." method="_on_Skip_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Settings" to="." method="_on_Settings_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Album" to="." method="_on_Album_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Main" to="." method="_on_Main_pressed"]

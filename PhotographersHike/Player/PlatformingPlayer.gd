@@ -54,6 +54,8 @@ var in_cutscene: bool = false
 var in_minigame: bool = false
 var death_pause: bool = false
 
+var current_cutscene: Node2D = null
+
 
 # Animation
 enum States {

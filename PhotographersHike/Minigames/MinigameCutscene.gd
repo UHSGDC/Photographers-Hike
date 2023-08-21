@@ -21,6 +21,9 @@ export var player_cutscene_jump_multiplier: float
 
 var should_stop: bool
 
+var should_skip: bool = false
+var can_skip: bool = false
+
 
 func _process(delta: float) -> void:
 	if Global.player_camera.zoom_to == Global.player_camera.zoom:
@@ -73,11 +76,6 @@ func play_cutscene() -> void:
 	Global.player_camera.zoom_to = Vector2.ONE
 	yield(self, "finished_zoom")
 	
-	if get_parent().name == "SparseForest":
-		Global.vision_circle.fade_in()
-	Global.cave_cutscene_played = true
-
-
 
 func move_player_to_target(delta: float) -> void:
 
@@ -143,8 +141,14 @@ func _on_CutsceneZone_body_entered(body: Node) -> void:
 	jump_cast.queue_free()
 	jump_cast = null
 
-	yield(play_cutscene(), "completed")
+	if !should_skip:
+		can_skip = false
+		yield(play_cutscene(), "completed")
+	if get_parent().name == "SparseForest":
+		Global.vision_circle.fade_in()
+		Global.cave_cutscene_played = true
 	player.in_cutscene = false
+	player.current_cutscene = null
 
 
 func _on_MinigameCutscene_body_entered(body: Node) -> void:
@@ -154,10 +158,16 @@ func _on_MinigameCutscene_body_entered(body: Node) -> void:
 		player = body
 	else:
 		return
-
+	can_skip = true
 	should_move_player_to_target = true
 	player.in_cutscene = true
+	player.current_cutscene = self
 
 	jump_cast = create_jump_cast()
 
 	should_stop = false
+
+
+func skip() -> void:
+	Global.platforming_player.global_position = $CutsceneZone.global_position
+	should_skip = true

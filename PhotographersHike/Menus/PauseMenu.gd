@@ -1,5 +1,12 @@
 extends BaseMenu
 
+func show() -> void:
+	.show()
+	if Global.platforming_player.in_cutscene and Global.platforming_player.current_cutscene.can_skip:
+		$ColorRect/VBoxContainer/Skip.show()
+	else:
+		$ColorRect/VBoxContainer/Skip.hide()
+
 func _back_input() -> void:
 	menus.change_menu(menus.NONE)
 	get_tree().set_input_as_handled()
@@ -18,3 +25,8 @@ func _on_Album_pressed() -> void:
 
 func _on_Main_pressed() -> void:
 	menus.change_menu(menus.MAIN)
+
+
+func _on_Skip_pressed() -> void:
+	menus.change_menu(menus.NONE)
+	Global.platforming_player.current_cutscene.skip()
