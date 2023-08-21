@@ -3419,7 +3419,7 @@ shape = SubResource( 45 )
 position = Vector2( 8888, -1664 )
 
 [node name="PlatformingPlayer" parent="." instance=ExtResource( 2 )]
-position = Vector2( 15656, -3504 )
+position = Vector2( 7307, 123 )
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 3 )]
 
@@ -3530,6 +3530,9 @@ level = "Summit"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SummitPopup"]
 visible = false
 shape = SubResource( 188 )
+
+[node name="SmallSign" parent="." instance=ExtResource( 28 )]
+position = Vector2( 3192, 103 )
 
 [connection signal="body_entered" from="SparseForest/Cave" to="SparseForest/Cave" method="_on_Cave_body_entered"]
 [connection signal="body_exited" from="SparseForest/Cave" to="SparseForest/Cave" method="_on_Cave_body_exited"]
