@@ -19,6 +19,10 @@ export var player_cutscene_jump_multiplier: float
 
 var should_stop: bool
 
+var can_skip: bool = true
+
+var should_skip: bool = false
+
 
 func _ready():
 	$DirectionLabel.modulate = Color.transparent
@@ -82,6 +86,7 @@ func _on_CutsceneActivation_body_entered(body: Node) -> void:
 	
 	should_move_player_to_sign = true
 	player.in_cutscene = true
+	player.current_cutscene = self
 	
 	jump_cast = create_jump_cast()
 	
@@ -111,6 +116,10 @@ func _on_SignArea_body_entered(body: Node) -> void:
 		
 		
 		yield(get_tree().create_timer(0.05), "timeout")
+		if should_skip:
+			return
+		
+		can_skip = false
 		player.state = player.States.PICTURE
 		should_play_cutscene = false
 		should_move_player_to_sign = false
@@ -129,6 +138,7 @@ func _on_SignArea_body_entered(body: Node) -> void:
 		yield(player, "animation_finished")
 		
 		player.in_cutscene = false
+		player.current_cutscene = null
 		
 		var tween = get_tree().create_tween()
 		tween.tween_property($DirectionLabel, "modulate", Color.white, 0.5)
@@ -139,4 +149,20 @@ func _on_SignArea_body_exited(body: Node) -> void:
 		return
 	var tween = get_tree().create_tween()
 	tween.tween_property($DirectionLabel, "modulate", Color.transparent, 0.5)
+	
+
+func skip() -> void:
+	should_skip = true
+	Global.platforming_player.global_position = $SkipPosition.global_position
+	yield(get_tree().create_timer(0.1), "timeout")
+	should_stop = true
+	Global.camera_item.display_and_store_image(picture_texture.get_data())
+	should_play_cutscene = false
+	should_move_player_to_sign = false
+	jump_cast.queue_free()
+	jump_cast = null
+	player.in_cutscene = false
+	player.current_cutscene = null
+	var tween = get_tree().create_tween()
+	tween.tween_property($DirectionLabel, "modulate", Color.white, 0.5)
 	

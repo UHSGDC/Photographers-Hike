@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 signal player_in_area
 
@@ -18,6 +18,8 @@ export var player_cutscene_max_speed: float
 export var player_cutscene_jump_multiplier: float
 
 var should_stop: bool
+
+var can_skip: bool = true
 
 func _ready() -> void:
 	$CougarFist/Cougar/AnimationPlayer.play("Sleep")
@@ -82,9 +84,10 @@ func _on_YetiController_body_entered(body: Node) -> void:
 		player = body
 	else:
 		return
-	
+
 	should_move_player_to_target = true
 	player.in_cutscene = true
+	player.current_cutscene = self
 
 	jump_cast = create_jump_cast()
 
@@ -131,7 +134,11 @@ func _on_CutsceneZone_body_entered(body: Node) -> void:
 	yield($AnimationPlayer, "animation_finished")
 	
 	player.in_cutscene = false
+	player.current_cutscene = null
 	yield(get_tree().create_timer(0.5), "timeout")
 	yeti.active = true
 	
 	
+func skip() -> void:
+	Global.platforming_player.global_position = $CutsceneZone.global_position
+	$AnimationPlayer.playback_speed = 100
