@@ -48,3 +48,19 @@ func _on_SlowerCharging_value_changed(value: bool) -> void:
 
 func _on_AimWKeyboard_value_changed(value: bool) -> void:
 	Global.aim_with_mouse_rock_climbing = !value
+
+
+func _on_Music_value_changed(value: int) -> void:
+	if !value:
+		AudioServer.set_bus_volume_db(1, -80)
+		return
+		
+	AudioServer.set_bus_volume_db(1, -30 + value * 3)
+
+
+func _on_SoundEffects_value_changed(value: int) -> void:
+	if !value:
+		AudioServer.set_bus_volume_db(2, -80)
+		return
+		
+	AudioServer.set_bus_volume_db(2, -30 + value * 3)

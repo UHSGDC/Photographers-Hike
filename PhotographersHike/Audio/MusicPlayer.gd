@@ -5,6 +5,8 @@ onready var transition_player: AudioStreamPlayer = $TransitionPlayer
 
 var transitioning: bool = false
 
+var audio_bus: AudioBusLayout = preload("res://default_bus_layout.tres")
+
 
 func _process(delta: float) -> void:
 	if transitioning:
