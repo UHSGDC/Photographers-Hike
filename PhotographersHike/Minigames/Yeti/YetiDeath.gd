@@ -24,10 +24,11 @@ func _on_YetiActivation_area_entered(area: Area2D) -> void:
 		Global.player_camera.end_screen_shake()
 		completed = true
 		area.queue_free()
+		Global.yeti = null
 
 
 func _on_ScreenShakeZone_body_entered(body: Node) -> void:
-	if completed:
+	if completed or !Global.yeti:
 		return
 		
 	Global.player_camera.start_screen_shake()

@@ -28,6 +28,7 @@ var player_invinciblity: bool = false
 
 
 func _ready() -> void:
+	Global.yeti = self
 	$AnimationPlayer.play("Spawn")
 	yield($AnimationPlayer, "animation_finished")
 	call_deferred("_connect_respawn_signal")

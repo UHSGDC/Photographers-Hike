@@ -15,6 +15,7 @@ var speedrun_timer: CanvasLayer
 var debug: CanvasLayer
 var vision_circle: CanvasLayer
 var cave_cutscene_played: bool = false
+var yeti: Area2D
 
 var current_level: String setget set_current_level
 var current_room: Area2D
