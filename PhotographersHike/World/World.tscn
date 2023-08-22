@@ -1,4 +1,4 @@
-[gd_scene load_steps=200 format=2]
+[gd_scene load_steps=201 format=2]
 
 [ext_resource path="res://World/DeathZone.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/PlatformingPlayer.tscn" type="PackedScene" id=2]
@@ -29,6 +29,7 @@
 [ext_resource path="res://Assets/Art/Base/House.png" type="Texture" id=27]
 [ext_resource path="res://Interactables/Sign/SmallSign.tscn" type="PackedScene" id=28]
 [ext_resource path="res://World/LevelPopup.tscn" type="PackedScene" id=29]
+[ext_resource path="res://EndCredits.tscn" type="PackedScene" id=30]
 
 [sub_resource type="RectangleShape2D" id=44]
 extents = Vector2( 240, 144 )
@@ -3419,7 +3420,7 @@ shape = SubResource( 45 )
 position = Vector2( 8888, -1664 )
 
 [node name="PlatformingPlayer" parent="." instance=ExtResource( 2 )]
-position = Vector2( 7307, 123 )
+position = Vector2( 27883, -5408 )
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 3 )]
 
@@ -3482,6 +3483,7 @@ __meta__ = {
 }
 picture_texture = ExtResource( 24 )
 should_play_cutscene = true
+can_skip = false
 
 [node name="DirectionLabel" parent="SummitSign" index="2"]
 text = " The Summit "
@@ -3534,8 +3536,11 @@ shape = SubResource( 188 )
 [node name="SmallSign" parent="." instance=ExtResource( 28 )]
 position = Vector2( 3192, 103 )
 
+[node name="EndCredits" parent="." instance=ExtResource( 30 )]
+
 [connection signal="body_entered" from="SparseForest/Cave" to="SparseForest/Cave" method="_on_Cave_body_entered"]
 [connection signal="body_exited" from="SparseForest/Cave" to="SparseForest/Cave" method="_on_Cave_body_exited"]
+[connection signal="cutscene_finished" from="SummitSign" to="EndCredits" method="_on_SummitSign_cutscene_finished"]
 
 [editable path="Base/Room1"]
 [editable path="Base/Room2"]

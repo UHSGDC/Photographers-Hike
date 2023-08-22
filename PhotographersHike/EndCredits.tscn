@@ -1,0 +1,223 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Assets/Theme/DefaultFont16.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/Theme/DefaultFont6.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Assets/Theme/UITheme.tres" type="Theme" id=4]
+[ext_resource path="res://EndCredits.gd" type="Script" id=6]
+
+[sub_resource type="GDScript" id=9]
+script/source = "extends Panel
+
+export var SCROLL_SPEED: float
+
+var playing: bool = false
+
+var starting: bool = true
+
+
+func _ready() -> void:
+	playing = false
+	$CreditsWindow/ScrollContainer.scroll_vertical = 0
+
+
+func play() -> void:
+	playing = false
+	$CreditsWindow/ScrollContainer.scroll_vertical = 0
+	yield(get_tree().create_timer(0.5),\"timeout\")
+	playing = true
+	
+	yield(get_tree().create_timer(0.5), \"timeout\")
+	starting = false
+	
+	
+func _input(event: InputEvent) -> void:
+	if Input.is_mouse_button_pressed(BUTTON_WHEEL_UP) or Input.is_mouse_button_pressed(BUTTON_WHEEL_DOWN):
+		playing = false
+		yield(get_tree().create_timer(0.5),\"timeout\")
+		playing = true
+	
+	
+func _physics_process(delta: float) -> void:
+	if playing:
+		var multiplier: float = 1
+		
+		if !starting and (Input.is_action_pressed(\"menu_confirm\") or Input.is_action_pressed(\"left_click\")):
+			multiplier = 4
+		
+		var current_scroll = $CreditsWindow/ScrollContainer.scroll_vertical
+		$CreditsWindow/ScrollContainer.scroll_vertical += delta * SCROLL_SPEED * multiplier
+		if current_scroll == $CreditsWindow/ScrollContainer.scroll_vertical:
+			playing = false
+			var tween = create_tween()
+			tween.tween_property(self, \"modulate\", Color.transparent, 3)
+			yield(tween, \"finished\")
+			hide()
+			
+"
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="Theme" id=8]
+VScrollBar/styles/scroll = SubResource( 6 )
+VScrollBar/styles/scroll_focus = SubResource( 7 )
+
+[node name="EndCredits" type="CanvasLayer"]
+layer = 3
+script = ExtResource( 6 )
+
+[node name="CreditsMenu" type="Panel" parent="."]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 4 )
+script = SubResource( 9 )
+SCROLL_SPEED = 60.0
+
+[node name="CreditsWindow" type="ColorRect" parent="CreditsMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -216.0
+margin_top = -112.0
+margin_right = 216.0
+margin_bottom = 112.0
+color = Color( 0.478431, 0.282353, 0.254902, 1 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CreditsMenu/CreditsWindow"]
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.0185185
+anchor_top = 0.0357143
+anchor_right = 0.981481
+anchor_bottom = 0.964286
+theme = SubResource( 8 )
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="CreditsMenu/CreditsWindow/ScrollContainer"]
+margin_right = 416.0
+margin_bottom = 871.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CreditsMenu/CreditsWindow/ScrollContainer/CenterContainer"]
+margin_left = 102.0
+margin_right = 312.0
+margin_bottom = 871.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_top = 216
+custom_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsMenu/CreditsWindow/ScrollContainer/CenterContainer/MarginContainer"]
+margin_top = 216.0
+margin_right = 210.0
+margin_bottom = 863.0
+
+[node name="Credits Text" type="Label" parent="CreditsMenu/CreditsWindow/ScrollContainer/CenterContainer/MarginContainer/VBoxContainer"]
+modulate = Color( 0, 0, 0, 1 )
+margin_right = 210.0
+margin_bottom = 213.0
+custom_fonts/font = ExtResource( 2 )
+text = "Co President: Nick Vatanshenas
+Co President: Jun Choi
+Vice President: Maryam
+Secretary Cody: Cascalla
+Treasurer: Neeraj B
+Publicist: Minerva You
+
+
+
+
+
+
+
+
+
+
+
+Game Design Head: TBD
+Programming Head: Nick Vatanshenas
+Art Head Arman: Akharti
+Sound Head: Maryam
+Original Game Idea by Arman Akharti
+UHS GDC Discord Team
+Credits by Ajay Sathish Preetha"
+
+[node name="Credits Text2" type="Label" parent="CreditsMenu/CreditsWindow/ScrollContainer/CenterContainer/MarginContainer/VBoxContainer"]
+modulate = Color( 0, 0, 0, 1 )
+margin_top = 217.0
+margin_right = 210.0
+margin_bottom = 430.0
+custom_fonts/font = ExtResource( 2 )
+text = "Co President: Nick Vatanshenas
+Co President: Jun Choi
+Vice President: Maryam
+Secretary Cody: Cascalla
+Treasurer: Neeraj B
+Publicist: Minerva You
+
+
+
+
+
+
+
+
+
+
+
+Game Design Head: TBD
+Programming Head: Nick Vatanshenas
+Art Head Arman: Akharti
+Sound Head: Maryam
+Original Game Idea by Arman Akharti
+UHS GDC Discord Team
+Credits by Ajay Sathish Preetha"
+
+[node name="Credits Text3" type="Label" parent="CreditsMenu/CreditsWindow/ScrollContainer/CenterContainer/MarginContainer/VBoxContainer"]
+modulate = Color( 0, 0, 0, 1 )
+margin_top = 434.0
+margin_right = 210.0
+margin_bottom = 647.0
+custom_fonts/font = ExtResource( 2 )
+text = "Co President: Nick Vatanshenas
+Co President: Jun Choi
+Vice President: Maryam
+Secretary Cody: Cascalla
+Treasurer: Neeraj B
+Publicist: Minerva You
+
+
+
+
+
+
+
+
+
+
+
+Game Design Head: TBD
+Programming Head: Nick Vatanshenas
+Art Head Arman: Akharti
+Sound Head: Maryam
+Original Game Idea by Arman Akharti
+UHS GDC Discord Team
+Credits by Ajay Sathish Preetha"
+
+[node name="CreditsTitle" type="Label" parent="CreditsMenu"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -56.0
+margin_right = 56.0
+margin_bottom = 32.0
+custom_colors/font_color = Color( 0.478431, 0.282353, 0.254902, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "Credits"
+align = 1
+valign = 1

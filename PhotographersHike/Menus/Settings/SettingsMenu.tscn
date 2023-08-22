@@ -245,7 +245,7 @@ margin_top = 0.0
 margin_right = 338.0
 margin_bottom = 16.0
 setting_name = "Music"
-initial_value = 7
+initial_value = 5
 max_value = 10
 
 [node name="SoundEffects" parent="SettingsWindow/ScrollContainer/CategoryContainer/AudioCategory/MarginSettingsContainer/SettingsContainer" index="1" instance=ExtResource( 3 )]
@@ -256,9 +256,8 @@ margin_top = 20.0
 margin_right = 338.0
 margin_bottom = 36.0
 setting_name = "Sound Effects"
-initial_value = 10
+initial_value = 5
 max_value = 10
-min_value = 1
 
 [node name="KeybindsPopup" parent="." instance=ExtResource( 2 )]
 visible = false

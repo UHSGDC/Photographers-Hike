@@ -1,5 +1,7 @@
 extends Sprite
 
+signal cutscene_finished
+
 
 export var picture_texture: Texture
 
@@ -19,7 +21,7 @@ export var player_cutscene_jump_multiplier: float
 
 var should_stop: bool
 
-var can_skip: bool = true
+export var can_skip: bool = true
 
 var should_skip: bool = false
 
@@ -139,6 +141,7 @@ func _on_SignArea_body_entered(body: Node) -> void:
 		
 		player.in_cutscene = false
 		player.current_cutscene = null
+		emit_signal("cutscene_finished")
 		
 		var tween = get_tree().create_tween()
 		tween.tween_property($DirectionLabel, "modulate", Color.white, 0.5)
