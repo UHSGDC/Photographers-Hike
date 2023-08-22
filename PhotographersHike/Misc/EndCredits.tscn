@@ -2,8 +2,8 @@
 
 [ext_resource path="res://Assets/Theme/DefaultFont16.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/Theme/DefaultFont6.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Misc/EndCredits.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Theme/UITheme.tres" type="Theme" id=4]
-[ext_resource path="res://EndCredits.gd" type="Script" id=6]
 
 [sub_resource type="GDScript" id=9]
 script/source = "extends Panel
@@ -66,7 +66,7 @@ VScrollBar/styles/scroll_focus = SubResource( 7 )
 
 [node name="EndCredits" type="CanvasLayer"]
 layer = 3
-script = ExtResource( 6 )
+script = ExtResource( 3 )
 
 [node name="CreditsMenu" type="Panel" parent="."]
 pause_mode = 2

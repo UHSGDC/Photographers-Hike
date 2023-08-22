@@ -1,4 +1,4 @@
-[gd_scene load_steps=201 format=2]
+[gd_scene load_steps=202 format=2]
 
 [ext_resource path="res://World/DeathZone.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/PlatformingPlayer.tscn" type="PackedScene" id=2]
@@ -29,7 +29,7 @@
 [ext_resource path="res://Assets/Art/Base/House.png" type="Texture" id=27]
 [ext_resource path="res://Interactables/Sign/SmallSign.tscn" type="PackedScene" id=28]
 [ext_resource path="res://World/LevelPopup.tscn" type="PackedScene" id=29]
-[ext_resource path="res://EndCredits.tscn" type="PackedScene" id=30]
+[ext_resource path="res://Misc/EndCredits.tscn" type="PackedScene" id=30]
 
 [sub_resource type="RectangleShape2D" id=44]
 extents = Vector2( 240, 144 )
@@ -1610,6 +1610,21 @@ extents = Vector2( 5904, 1392 )
 [sub_resource type="RectangleShape2D" id=188]
 extents = Vector2( 240, 144 )
 
+[sub_resource type="GDScript" id=190]
+script/source = "extends Sprite
+
+export var dialog_id: int
+
+export(DialogBox.Levels) var level
+
+func _on_InteractZone_player_interacted() -> void:
+	$InteractZone.hide()
+	var result = yield(Global.dialog_box.play_dialog(\"sign\", level, dialog_id), \"completed\")
+	if result == \"Go Back\":
+		print(\"i wanna go back to the good ol days\")
+	$InteractZone.show()
+"
+
 [node name="World" type="Node2D"]
 
 [node name="Base" type="Node2D" parent="."]
@@ -1759,6 +1774,9 @@ scale_amount_random = 1.0
 scale_amount_curve = SubResource( 180 )
 color_ramp = SubResource( 182 )
 color_initial_ramp = SubResource( 181 )
+
+[node name="SmallSign" parent="Base" instance=ExtResource( 28 )]
+position = Vector2( 3192, 103 )
 
 [node name="DenseForest" type="Node2D" parent="."]
 position = Vector2( 7648, -272 )
@@ -3420,7 +3438,7 @@ shape = SubResource( 45 )
 position = Vector2( 8888, -1664 )
 
 [node name="PlatformingPlayer" parent="." instance=ExtResource( 2 )]
-position = Vector2( 27883, -5408 )
+position = Vector2( 28281, -5377 )
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 3 )]
 
@@ -3533,10 +3551,12 @@ level = "Summit"
 visible = false
 shape = SubResource( 188 )
 
-[node name="SmallSign" parent="." instance=ExtResource( 28 )]
-position = Vector2( 3192, 103 )
-
 [node name="EndCredits" parent="." instance=ExtResource( 30 )]
+
+[node name="ResetSign" parent="." instance=ExtResource( 28 )]
+position = Vector2( 28278, -5369 )
+script = SubResource( 190 )
+level = 4
 
 [connection signal="body_entered" from="SparseForest/Cave" to="SparseForest/Cave" method="_on_Cave_body_entered"]
 [connection signal="body_exited" from="SparseForest/Cave" to="SparseForest/Cave" method="_on_Cave_body_exited"]

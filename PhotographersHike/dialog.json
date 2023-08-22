@@ -78,12 +78,15 @@
 					["Note: When you jump off a rock you cannot control your movement in the air.", 3]
 				]
 			],
+			[],
+			[],
 			[
 				[
-					["Yo this is level 1 DENSE, afhnuijasbn afnujiasb afbas jkfbash asbdjkasbfkasf sfbjkasb", 3],
-					["nu huh", 1]
-				],							
-			],
+					["Congratulations!", 2],
+					["You found 0/200 secrets. You can now go back to the beginning of the game to find the rest of the secrets.", 3],
+					["Would you like to go back to the start?", 3, "Go Back", "Stay"],
+				],		
+			]
 		]
 	]
 	
