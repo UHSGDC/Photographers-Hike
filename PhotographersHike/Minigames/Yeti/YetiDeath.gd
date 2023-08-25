@@ -25,6 +25,9 @@ func _on_YetiActivation_area_entered(area: Area2D) -> void:
 		completed = true
 		area.queue_free()
 		Global.yeti = null
+		
+		yield(get_tree().create_timer(1), "timeout")
+		MusicPlayer.play_song("Summit")
 
 
 func _on_ScreenShakeZone_body_entered(body: Node) -> void:

@@ -25,6 +25,9 @@ func _process(delta: float) -> void:
 
 
 func play_song(song_name: String, transition: bool = true) -> void:
+	if load("res://Assets/Music/" + song_name + ".wav") == stream:
+		return
+	
 	if transition:
 		transitioning = true
 		transition_player.stream = load("res://Assets/Music/" + song_name + ".wav")
