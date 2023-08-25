@@ -162,7 +162,8 @@ func skip() -> void:
 	Global.camera_item.display_and_store_image(picture_texture.get_data())
 	should_play_cutscene = false
 	should_move_player_to_sign = false
-	jump_cast.queue_free()
+	if jump_cast:
+		jump_cast.queue_free()
 	jump_cast = null
 	player.in_cutscene = false
 	player.current_cutscene = null
