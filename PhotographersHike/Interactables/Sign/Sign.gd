@@ -134,7 +134,7 @@ func _on_SignArea_body_entered(body: Node) -> void:
 		yield(player, "animation_finished") # Player animation done
 		
 		Global.camera_item.display_and_store_image(picture_texture.get_data())
-		
+		$VictorySound.play()
 		yield(get_tree().create_timer(1), "timeout")
 		Global.player_camera.zoom_to = Vector2.ONE
 		yield(player, "animation_finished")
@@ -160,6 +160,7 @@ func skip() -> void:
 	yield(get_tree().create_timer(0.1), "timeout")
 	should_stop = true
 	Global.camera_item.display_and_store_image(picture_texture.get_data())
+	$VictorySound.play()
 	should_play_cutscene = false
 	should_move_player_to_sign = false
 	if jump_cast:
