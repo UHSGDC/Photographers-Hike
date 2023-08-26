@@ -1,4 +1,4 @@
-[gd_scene load_steps=204 format=2]
+[gd_scene load_steps=205 format=2]
 
 [ext_resource path="res://World/DeathZone.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/PlatformingPlayer.tscn" type="PackedScene" id=2]
@@ -32,6 +32,7 @@
 [ext_resource path="res://Misc/EndCredits.tscn" type="PackedScene" id=30]
 [ext_resource path="res://Assets/Art/Pictures/SparseForest.png" type="Texture" id=31]
 [ext_resource path="res://Assets/Art/Pictures/SnowyTundra.png" type="Texture" id=32]
+[ext_resource path="res://Assets/Art/Pictures/Summit.png" type="Texture" id=33]
 
 [sub_resource type="RectangleShape2D" id=44]
 extents = Vector2( 240, 144 )
@@ -3440,7 +3441,7 @@ shape = SubResource( 45 )
 position = Vector2( 8888, -1664 )
 
 [node name="PlatformingPlayer" parent="." instance=ExtResource( 2 )]
-position = Vector2( 26918, -5246 )
+position = Vector2( 27904, -5400 )
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 3 )]
 
@@ -3513,7 +3514,7 @@ texture = SubResource( 173 )
 __meta__ = {
 "_edit_group_": true
 }
-picture_texture = ExtResource( 24 )
+picture_texture = ExtResource( 33 )
 should_play_cutscene = true
 can_skip = false
 
