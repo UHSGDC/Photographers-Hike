@@ -2,7 +2,7 @@ extends BaseMenu
 
 func show() -> void:
 	.show()
-	if Global.platforming_player.in_cutscene and Global.platforming_player.current_cutscene.can_skip:
+	if Global.platforming_player.current_cutscene and Global.platforming_player.current_cutscene.can_skip:
 		$ColorRect/VBoxContainer/Skip.show()
 	else:
 		$ColorRect/VBoxContainer/Skip.hide()
