@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player/CameraItem.gd" type="Script" id=1]
 [ext_resource path="res://Menus/AlbumPicture.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Sound/picture.wav" type="AudioStream" id=3]
 
 [sub_resource type="Curve" id=3]
 max_value = 1.5
@@ -159,3 +160,6 @@ anims/RESET = SubResource( 2 )
 anims/take_picture = SubResource( 1 )
 
 [node name="CameraSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = 10.0
+bus = "Sound"

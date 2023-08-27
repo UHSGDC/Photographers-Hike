@@ -77,6 +77,7 @@ position = Vector2( -23, 15 )
 
 [node name="VictorySound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+volume_db = 5.0
 bus = "Sound"
 
 [connection signal="body_entered" from="CutsceneActivation" to="." method="_on_CutsceneActivation_body_entered"]
