@@ -23,7 +23,7 @@
 [ext_resource path="res://World/LevelTilemap.gd" type="Script" id=21]
 [ext_resource path="res://World/Background.tres" type="TileSet" id=22]
 [ext_resource path="res://Misc/Debug.tscn" type="PackedScene" id=23]
-[ext_resource path="res://icon.png" type="Texture" id=24]
+[ext_resource path="res://Assets/Art/Pictures/BaseCamp.png" type="Texture" id=24]
 [ext_resource path="res://Minigames/Yeti/YetiDeath.tscn" type="PackedScene" id=25]
 [ext_resource path="res://Minigames/StealthPlatformer/VisionCircle.tscn" type="PackedScene" id=26]
 [ext_resource path="res://Assets/Art/Base/House.png" type="Texture" id=27]
@@ -3441,7 +3441,7 @@ shape = SubResource( 45 )
 position = Vector2( 8888, -1664 )
 
 [node name="PlatformingPlayer" parent="." instance=ExtResource( 2 )]
-position = Vector2( 27904, -5400 )
+position = Vector2( 2662, 98 )
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 3 )]
 
