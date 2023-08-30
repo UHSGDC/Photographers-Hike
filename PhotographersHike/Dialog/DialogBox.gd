@@ -12,7 +12,8 @@ var dialog_data: Dictionary
 var dialog_playing: bool = false
 
 export var speaker_name_dictionary: Dictionary
-export var speaker_sound_dictionary: Dictionary
+
+export var dialog_sounds: Array
 
 enum Levels {
 	BASE,
@@ -77,6 +78,8 @@ func play_dialog(speaker: String, level_id: int, dialog_number: int) -> String:
 	Global.platforming_player.velocity = Vector2.ZERO
 	
 	for dialog in dialog_array:
+		if speaker == "old_man":
+			play_sound()
 		if dialog.size() >= 4:
 			output = yield(output_question(dialog), "completed")
 			continue
@@ -86,6 +89,11 @@ func play_dialog(speaker: String, level_id: int, dialog_number: int) -> String:
 	hide()
 	return output	
 
+
+func play_sound() -> void:
+	$DialogSound.stream = dialog_sounds[int(rand_range(0, dialog_sounds.size() - 1))]
+	$DialogSound.play()
+	
 
 func show_speaker_name(name: String) -> void:
 	$SpeakerName.text = name
