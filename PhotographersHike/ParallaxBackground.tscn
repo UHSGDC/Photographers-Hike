@@ -8,7 +8,7 @@ scroll_base_scale = Vector2( 1, 0 )
 
 [node name="ParallaxLayer0" type="ParallaxLayer" parent="."]
 motion_scale = Vector2( 0, 0 )
-motion_mirroring = Vector2( 480, 0 )
+motion_mirroring = Vector2( 960, 0 )
 script = ExtResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxLayer0"]
@@ -18,8 +18,9 @@ modulate = Color( 1, 1, 1, 0 )
 
 [node name="ParallaxLayer1" type="ParallaxLayer" parent="."]
 motion_scale = Vector2( 0.1, 0 )
-motion_mirroring = Vector2( 480, 0 )
+motion_mirroring = Vector2( 960, 0 )
 script = ExtResource( 5 )
+CLOUD_SPEED = 6.0
 
 [node name="Sprite" type="Sprite" parent="ParallaxLayer1"]
 
@@ -27,8 +28,9 @@ script = ExtResource( 5 )
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
 motion_scale = Vector2( 0.2, 0 )
-motion_mirroring = Vector2( 480, 0 )
+motion_mirroring = Vector2( 960, 0 )
 script = ExtResource( 5 )
+CLOUD_SPEED = 4.0
 
 [node name="Sprite" type="Sprite" parent="ParallaxLayer2"]
 
@@ -37,8 +39,9 @@ modulate = Color( 1, 1, 1, 0 )
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
 motion_scale = Vector2( 0.3, 0 )
-motion_mirroring = Vector2( 480, 0 )
+motion_mirroring = Vector2( 960, 0 )
 script = ExtResource( 5 )
+CLOUD_SPEED = 2.0
 
 [node name="Sprite" type="Sprite" parent="ParallaxLayer3"]
 
