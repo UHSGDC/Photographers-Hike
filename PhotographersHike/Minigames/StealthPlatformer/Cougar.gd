@@ -192,6 +192,7 @@ func patrol(delta: float) -> int:
 
 func chase_player(delta: float) -> int:
 	if entering_state:
+		$CaughtSound.play()
 		entering_state = false
 	
 	follow_along_path()
@@ -356,7 +357,6 @@ func jump() -> void:
 # Chase player if they get in vision cone
 func _on_VisionCone_body_entered(body: Node) -> void:
 	if body.is_in_group("player") and current_state == STATES.PATROLLING:
-		yield(get_tree().create_timer(0.03), "timeout")
 		if !$VisionCone.overlaps_body(body):
 			return
 			
