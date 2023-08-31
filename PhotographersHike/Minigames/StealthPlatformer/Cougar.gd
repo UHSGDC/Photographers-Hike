@@ -133,7 +133,7 @@ func animate() -> void:
 				if randf() > 0.95 and is_on_floor():
 					dust_particles()
 					
-				if randf() > 0.999 and get_parent().in_cave:
+				if randf() > 0.997 and get_parent().in_cave:
 					play_snarl()
 	
 	
