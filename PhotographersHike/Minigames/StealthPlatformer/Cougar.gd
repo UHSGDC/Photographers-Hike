@@ -76,6 +76,7 @@ onready var vision_cone_offset: float = $VisionCone.position.x
 # Particles
 export var dust_particle_scene: PackedScene
 
+export var snarl_sounds: Array
 
 func _ready() -> void:
 	call_deferred("_set_player_reference")
@@ -131,6 +132,9 @@ func animate() -> void:
 				$AnimationPlayer.queue("Walk")
 				if randf() > 0.95 and is_on_floor():
 					dust_particles()
+					
+				if randf() > 0.999 and get_parent().in_cave:
+					play_snarl()
 	
 	
 func look() -> void:
@@ -177,7 +181,7 @@ func patrol(delta: float) -> int:
 		$VisionCone.visible = true
 		if !current_point:
 			current_point = patrol_array[current_point_index].global_position
-	
+			
 	follow_along_path()
 	move(delta, patrol_acceleration, max_patrol_speed)
 	
@@ -381,3 +385,8 @@ func _on_BiteArea_body_entered(body: Node) -> void:
 	if body.is_in_group("player"):
 		change_state(STATES.IDLE)
 		body.respawn()
+
+
+func play_snarl() -> void:
+	$SnarlSound.stream = snarl_sounds[int(rand_range(0, snarl_sounds.size() - 1))]
+	$SnarlSound.play()
