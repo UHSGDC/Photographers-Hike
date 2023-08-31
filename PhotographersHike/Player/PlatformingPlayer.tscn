@@ -498,7 +498,7 @@ wait_time = 0.2
 
 [node name="RespawnSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
-volume_db = 8.376
+volume_db = 6.98
 bus = "Sound"
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
