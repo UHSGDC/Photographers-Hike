@@ -342,6 +342,7 @@ func respawn() -> void:
 	if death_pause:
 		return
 	death_pause = true
+	$DeathSound.play()
 	Global.player_camera.screen_shake(0.3)
 	$RunParticleTimer.stop()
 	$DeathParticles.restart()
@@ -370,13 +371,13 @@ func respawn() -> void:
 	else:
 		$Sprite.flip_h = true
 	state = States.IDLE
+	$RespawnSound.play()
 	$Sprite/AnimationPlayer.play_backwards("Shrink and Flash")
 	yield($Sprite/AnimationPlayer, "animation_finished")
 	$Sprite/AnimationPlayer.play("RESET")
 	yield(get_tree().create_timer(0.1), "timeout")
 	
 
-#	emit_signal("respawn done")
 	death_pause = false
 	
 
