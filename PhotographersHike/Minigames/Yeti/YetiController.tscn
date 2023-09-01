@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Minigames/Yeti/YetiController.gd" type="Script" id=1]
 [ext_resource path="res://Minigames/Yeti/Yeti.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Assets/Art/Minigames/CougarSpriteSheet.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Art/Yeti/YetFist.png" type="Texture" id=6]
 [ext_resource path="res://Minigames/Yeti/PunchParticles.gd" type="Script" id=7]
+[ext_resource path="res://Assets/Sound/Yeti/Punch Hit.wav" type="AudioStream" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Drop Wall"
@@ -193,6 +194,20 @@ tracks/2/keys = {
 "method": "restart"
 } ]
 }
+tracks/3/type = "method"
+tracks/3/path = NodePath("CougarFist/YetiFist/PunchSound")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
 
 [sub_resource type="Curve" id=19]
 min_value = -200.0
@@ -348,6 +363,11 @@ scale_amount_random = 1.0
 scale_amount_curve = SubResource( 20 )
 color = Color( 0.643137, 0.866667, 0.858824, 1 )
 color_initial_ramp = SubResource( 21 )
+
+[node name="PunchSound" type="AudioStreamPlayer2D" parent="CougarFist/YetiFist"]
+stream = ExtResource( 8 )
+volume_db = 3.296
+bus = "Sound"
 
 [node name="Cougar" type="Sprite" parent="CougarFist"]
 visible = false

@@ -36,3 +36,7 @@ func play_punch_particles() -> void:
 	get_parent().get_parent().add_child(punch_particles)
 	punch_particles.global_position = global_position + Vector2.RIGHT * 17
 	punch_particles.restart()
+
+
+func play_punch_sound() -> void:
+	$PunchSound.play()
