@@ -100,7 +100,8 @@ func particles() -> void:
 	if death_pause:
 		return
 	if state == States.FALL and is_on_floor():
-		
+		if abs(velocity.x) < 16:
+			$LandSound.play()
 		dust_particles()
 		return
 	if state == States.RUN:
