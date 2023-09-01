@@ -9,6 +9,8 @@ var first: bool = true
 onready var sprite = $Sprite
 onready var transition_sprite = $TransitionSprite
 
+var current_background: String
+
 
 func _ready() -> void:
 	Global.connect("level_changed", self, "_on_level_changed")
@@ -30,6 +32,15 @@ func _process(delta: float) -> void:
 	
 	
 func _on_level_changed(level: String) -> void:
+	if level == "Summit":
+		level = "Snowy Tundra"
+	
+	
+	if level == current_background:
+		return
+	current_background = level
+	
+	
 	if first:
 		sprite.texture = load("res://Assets/Art/Backgrounds/%sBackground%s.png" % [level, name[13]])
 		transition_sprite.modulate.a = 0

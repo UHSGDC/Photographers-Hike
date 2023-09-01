@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://ParallaxLayer.gd" type="Script" id=5]
+[ext_resource path="res://World/ParallaxLayer.gd" type="Script" id=5]
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
 scroll_base_offset = Vector2( 0, 72 )
