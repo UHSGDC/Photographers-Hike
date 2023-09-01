@@ -62,6 +62,7 @@ func move_player_to_sign(delta: float) -> void:
 	if player.is_on_floor() and jump_cast.is_colliding():
 		player.velocity.y = player.jump_velocity * player_cutscene_jump_multiplier
 		player.dust_particles()
+		$JumpSound.play()
 		
 		
 	player.apply_gravity(delta)

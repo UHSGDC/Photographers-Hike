@@ -149,6 +149,7 @@ func jump() -> void:
 	clear_path(current_rock)
 	jump_arrow.hide()
 	current_rock = null
+	$JumpSound.play()
 	
 
 func reset_jump() -> void:
