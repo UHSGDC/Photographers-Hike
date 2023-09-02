@@ -56,7 +56,7 @@ margin_left = 8.0
 
 [node name="CategoryContainer" type="VBoxContainer" parent="SettingsWindow/ScrollContainer"]
 margin_right = 394.0
-margin_bottom = 342.0
+margin_bottom = 362.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -223,7 +223,7 @@ setting_type = 3
 [node name="AudioCategory" parent="SettingsWindow/ScrollContainer/CategoryContainer" instance=ExtResource( 4 )]
 margin_top = 276.0
 margin_right = 394.0
-margin_bottom = 342.0
+margin_bottom = 362.0
 
 [node name="CategoryTitle" parent="SettingsWindow/ScrollContainer/CategoryContainer/AudioCategory" index="0"]
 margin_right = 394.0
@@ -231,30 +231,41 @@ text = "Audio"
 
 [node name="MarginSettingsContainer" parent="SettingsWindow/ScrollContainer/CategoryContainer/AudioCategory" index="1"]
 margin_right = 394.0
-margin_bottom = 66.0
+margin_bottom = 86.0
 
 [node name="SettingsContainer" parent="SettingsWindow/ScrollContainer/CategoryContainer/AudioCategory/MarginSettingsContainer" index="0"]
 margin_right = 354.0
-margin_bottom = 42.0
+margin_bottom = 62.0
 
-[node name="Music" parent="SettingsWindow/ScrollContainer/CategoryContainer/AudioCategory/MarginSettingsContainer/SettingsContainer" index="0" instance=ExtResource( 3 )]
+[node name="Master" parent="SettingsWindow/ScrollContainer/CategoryContainer/AudioCategory/MarginSettingsContainer/SettingsContainer" index="0" instance=ExtResource( 3 )]
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 0.0
 margin_right = 338.0
 margin_bottom = 16.0
-setting_name = "Music"
-initial_value = 5
+setting_name = "Master"
+initial_value = 10
 max_value = 10
 
-[node name="SoundEffects" parent="SettingsWindow/ScrollContainer/CategoryContainer/AudioCategory/MarginSettingsContainer/SettingsContainer" index="1" instance=ExtResource( 3 )]
+[node name="Music" parent="SettingsWindow/ScrollContainer/CategoryContainer/AudioCategory/MarginSettingsContainer/SettingsContainer" index="1" instance=ExtResource( 3 )]
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 20.0
 margin_right = 338.0
 margin_bottom = 36.0
+setting_name = "Music"
+initial_value = 5
+max_value = 10
+
+[node name="SoundEffects" parent="SettingsWindow/ScrollContainer/CategoryContainer/AudioCategory/MarginSettingsContainer/SettingsContainer" index="2" instance=ExtResource( 3 )]
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 40.0
+margin_right = 338.0
+margin_bottom = 56.0
 setting_name = "Sound Effects"
 initial_value = 5
 max_value = 10
@@ -278,6 +289,7 @@ visible = false
 [connection signal="value_changed" from="SettingsWindow/ScrollContainer/CategoryContainer/MinigamesCategory/MarginSettingsContainer/SettingsContainer/RockClimbingSettings/VBoxContainer/SlowerCharging" to="." method="_on_SlowerCharging_value_changed"]
 [connection signal="value_changed" from="SettingsWindow/ScrollContainer/CategoryContainer/MinigamesCategory/MarginSettingsContainer/SettingsContainer/RockClimbingSettings/VBoxContainer/PreviousJumpArrow" to="." method="_on_PreviousJumpArrow_value_changed"]
 [connection signal="value_changed" from="SettingsWindow/ScrollContainer/CategoryContainer/VideoCategory/MarginSettingsContainer/SettingsContainer/Fullscreen" to="." method="_on_Fullscreen_value_changed"]
+[connection signal="value_changed" from="SettingsWindow/ScrollContainer/CategoryContainer/AudioCategory/MarginSettingsContainer/SettingsContainer/Master" to="." method="_on_Master_value_changed"]
 [connection signal="value_changed" from="SettingsWindow/ScrollContainer/CategoryContainer/AudioCategory/MarginSettingsContainer/SettingsContainer/Music" to="." method="_on_Music_value_changed"]
 [connection signal="value_changed" from="SettingsWindow/ScrollContainer/CategoryContainer/AudioCategory/MarginSettingsContainer/SettingsContainer/SoundEffects" to="." method="_on_SoundEffects_value_changed"]
 

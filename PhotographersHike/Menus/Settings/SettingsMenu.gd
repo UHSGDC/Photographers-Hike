@@ -64,3 +64,11 @@ func _on_SoundEffects_value_changed(value: int) -> void:
 		return
 		
 	AudioServer.set_bus_volume_db(2, -30 + value * 3)
+
+
+func _on_Master_value_changed(value: int) -> void:
+	if !value:
+		AudioServer.set_bus_volume_db(0, -80)
+		return
+		
+	AudioServer.set_bus_volume_db(0, -30 + value * 3)
