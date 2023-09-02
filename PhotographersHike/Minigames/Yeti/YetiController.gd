@@ -149,3 +149,4 @@ func _on_CutsceneZone_body_entered(body: Node) -> void:
 func skip() -> void:
 	Global.platforming_player.global_position = $CutsceneZone.global_position
 	$AnimationPlayer.playback_speed = 100
+	$CougarFist/YetiFist/AnimationPlayer.playback_speed = 100

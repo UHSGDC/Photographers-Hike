@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Minigames/Yeti/YetiController.gd" type="Script" id=1]
 [ext_resource path="res://Minigames/Yeti/Yeti.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Minigames/Yeti/PunchParticles.gd" type="Script" id=7]
 [ext_resource path="res://Assets/Sound/Yeti/Punch Hit.wav" type="AudioStream" id=8]
 [ext_resource path="res://Assets/Sound/Player/land.wav" type="AudioStream" id=9]
+[ext_resource path="res://Assets/Sound/Yeti/Charge1.wav" type="AudioStream" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Drop Wall"
@@ -209,6 +210,20 @@ tracks/3/keys = {
 "method": "play"
 } ]
 }
+tracks/4/type = "method"
+tracks/4/path = NodePath("CougarFist/YetiFist/ChargingSound")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
 
 [sub_resource type="Curve" id=19]
 min_value = -200.0
@@ -367,11 +382,14 @@ color_initial_ramp = SubResource( 21 )
 
 [node name="PunchSound" type="AudioStreamPlayer2D" parent="CougarFist/YetiFist"]
 stream = ExtResource( 8 )
-volume_db = 3.296
+bus = "Sound"
+
+[node name="ChargingSound" type="AudioStreamPlayer2D" parent="CougarFist/YetiFist"]
+stream = ExtResource( 10 )
+volume_db = 17.02
 bus = "Sound"
 
 [node name="Cougar" type="Sprite" parent="CougarFist"]
-visible = false
 texture = ExtResource( 5 )
 offset = Vector2( 1.5, -10 )
 flip_h = true

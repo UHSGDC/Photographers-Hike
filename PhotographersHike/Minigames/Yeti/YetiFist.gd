@@ -7,6 +7,7 @@ func _ready() -> void:
 
 
 func punch(yeti: Area2D) -> void:
+	play_charging_sound()
 	yeti.punches += 1
 	yeti.can_punch = false
 	global_position = Global.platforming_player.global_position
@@ -23,6 +24,10 @@ func punch(yeti: Area2D) -> void:
 	yeti.punches -= 1
 	
 	queue_free()
+
+func play_charging_sound() -> void:
+	$ChargingSound.stream = load("res://Assets/Sound/Yeti/Charge" + str(int(rand_range(1,2))) + ".wav")
+	$ChargingSound.play()
 
 
 func _on_YetiFist_body_entered(body: Node) -> void:
