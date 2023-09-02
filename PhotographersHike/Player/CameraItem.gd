@@ -78,6 +78,7 @@ func display_and_store_image(image: Image) -> void:
 	
 	$CameraSound.play()
 	can_take_picture = false
+	$AnimationPlayer.stop()
 	$AnimationPlayer.play("take_picture")
 	$CanvasLayer/FlashParticles.restart()
 	yield($AnimationPlayer, "animation_finished")
