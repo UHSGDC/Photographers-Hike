@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/Art/Interactables/OldMan.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Sound/Player/jump.wav" type="AudioStream" id=2]
 [ext_resource path="res://Interactables/NPC/NPC.gd" type="Script" id=3]
 [ext_resource path="res://Interactables/Sign/PlayerJumpCast.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Sound/Player/land.wav" type="AudioStream" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2.5, 9.50501 )
@@ -50,7 +51,12 @@ position = Vector2( -15, -1 )
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
-volume_db = -8.376
+bus = "Sound"
+
+[node name="LandSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = 6.216
+bus = "Sound"
 
 [connection signal="body_entered" from="CutsceneActivation" to="." method="_on_CutsceneActivation_body_entered"]
 [connection signal="body_entered" from="DialogActivation" to="." method="_on_DialogActivation_body_entered"]

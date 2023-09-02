@@ -25,6 +25,8 @@ export var can_skip: bool = true
 
 var should_skip: bool = false
 
+var falling: bool = false
+
 
 func _ready():
 	$DirectionLabel.modulate = Color.transparent
@@ -71,7 +73,12 @@ func move_player_to_sign(delta: float) -> void:
 		
 	player.apply_gravity(delta)
 	
+	falling = !player.is_on_floor()
+	
 	player.velocity = player.move_and_slide(player.velocity, Vector2.UP)
+
+	if falling and player.is_on_floor():
+		$LandSound.play()
 
 
 func get_move_direction() -> float:

@@ -28,3 +28,13 @@ script = ExtResource( 1 )
 max_vine_speed = Vector2( 50, 80 )
 deacceleration = Vector2( 5, 5 )
 VINE_SCENE = ExtResource( 3 )
+
+[node name="VineSound" type="AudioStreamPlayer" parent="."]
+volume_db = 9.772
+pitch_scale = 0.71
+bus = "Sound"
+
+[node name="SoundTimer" type="Timer" parent="."]
+wait_time = 0.25
+
+[connection signal="timeout" from="SoundTimer" to="." method="_on_Timer_timeout"]

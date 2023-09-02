@@ -10,6 +10,8 @@ var vines: int = 0
 
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
+var vine_sound_timer: float = 2.0
+
 
 func _ready() -> void:
 	rng.randomize()
@@ -44,12 +46,22 @@ func _physics_process(delta):
 		if abs(player.velocity.y) > max_vine_speed.y:
 			var blend := pow(0.5, deacceleration.y * delta)
 			player.velocity.y = lerp(abs(player.velocity.y), max_vine_speed.y, blend) * sign(player.velocity.y)
-			
+	else:
+		$SoundTimer.stop()
+		
+		
+func play_vine_sound() -> void:
+	$VineSound.stream = load("res://Assets/Sound/Player/Run/Leaf" + str(int(rand_range(1, 5))) + ".wav")
+	$VineSound.play()
+
 
 func _on_Vine_body_entered(body):
 	if body.is_in_group("player"):
 		vines += 1
 		player = body
+		if vines == 1:
+			play_vine_sound()
+			$SoundTimer.start()
 
 
 func _on_Vine_body_exited(body):
@@ -57,3 +69,7 @@ func _on_Vine_body_exited(body):
 		vines -= 1
 		if !vines:
 			player = null
+
+
+func _on_Timer_timeout() -> void:
+	play_vine_sound()

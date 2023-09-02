@@ -38,7 +38,7 @@ default_color = Color( 0.4, 0.419608, 0.509804, 0.376471 )
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
-volume_db = -8.376
+bus = "Sound"
 
 [connection signal="body_entered" from="." to="." method="_on_RockClimbing_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_RockClimbing_body_exited"]

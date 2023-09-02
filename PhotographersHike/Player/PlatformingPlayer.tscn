@@ -510,11 +510,19 @@ bus = "Sound"
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
-volume_db = -8.376
+bus = "Sound"
 
 [node name="LandSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
-volume_db = -2.094
+volume_db = 6.216
+bus = "Sound"
+
+[node name="RunSound" type="AudioStreamPlayer" parent="."]
+volume_db = 4.188
+bus = "Sound"
+
+[node name="GroundPosition" type="Position2D" parent="."]
+position = Vector2( 0, 13 )
 
 [connection signal="area_entered" from="RoomDetector" to="." method="_on_RoomDetector_area_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

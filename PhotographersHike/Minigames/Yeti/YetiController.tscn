@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Minigames/Yeti/YetiController.gd" type="Script" id=1]
 [ext_resource path="res://Minigames/Yeti/Yeti.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Assets/Art/Yeti/YetFist.png" type="Texture" id=6]
 [ext_resource path="res://Minigames/Yeti/PunchParticles.gd" type="Script" id=7]
 [ext_resource path="res://Assets/Sound/Yeti/Punch Hit.wav" type="AudioStream" id=8]
+[ext_resource path="res://Assets/Sound/Player/land.wav" type="AudioStream" id=9]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Drop Wall"
@@ -389,6 +390,11 @@ curve = SubResource( 23 )
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 position = Vector2( -40, 256 )
 rotate = false
+
+[node name="LandSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = 6.216
+bus = "Sound"
 
 [connection signal="body_entered" from="." to="." method="_on_YetiController_body_entered"]
 [connection signal="body_entered" from="CutsceneZone" to="." method="_on_CutsceneZone_body_entered"]

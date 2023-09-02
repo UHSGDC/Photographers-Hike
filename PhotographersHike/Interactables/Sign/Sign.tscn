@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Interactables/Sign/Sign.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Art/Interactables/Sign.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Assets/Theme/DefaultFont8.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Assets/Music/Victory.wav" type="AudioStream" id=5]
 [ext_resource path="res://Assets/Sound/Player/jump.wav" type="AudioStream" id=6]
+[ext_resource path="res://Assets/Sound/Player/land.wav" type="AudioStream" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 172.026
@@ -83,7 +84,12 @@ bus = "Sound"
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
-volume_db = -8.376
+bus = "Sound"
+
+[node name="LandSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = 6.216
+bus = "Sound"
 
 [connection signal="body_entered" from="CutsceneActivation" to="." method="_on_CutsceneActivation_body_entered"]
 [connection signal="body_entered" from="SignArea" to="." method="_on_SignArea_body_entered"]

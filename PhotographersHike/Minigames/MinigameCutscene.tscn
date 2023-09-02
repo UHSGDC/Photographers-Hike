@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Minigames/MinigameCutscene.gd" type="Script" id=1]
 [ext_resource path="res://Interactables/Sign/PlayerJumpCast.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Sound/Player/jump.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Sound/Player/land.wav" type="AudioStream" id=4]
 
 [sub_resource type="Curve2D" id=5]
 _data = {
@@ -78,7 +79,11 @@ shape = SubResource( 4 )
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
-volume_db = -8.376
+
+[node name="LandSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = 6.216
+bus = "Sound"
 
 [connection signal="body_entered" from="." to="." method="_on_MinigameCutscene_body_entered"]
 [connection signal="body_entered" from="CutsceneZone" to="." method="_on_CutsceneZone_body_entered"]

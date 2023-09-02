@@ -73,6 +73,8 @@ var previous_state: int
 # Particles
 export var dust_particle_scene: PackedScene
 
+export var run_sounds: Array
+
 
 func _ready() -> void:
 	Global.platforming_player = self
@@ -100,13 +102,13 @@ func particles() -> void:
 	if death_pause:
 		return
 	if state == States.FALL and is_on_floor():
-		if abs(velocity.x) < 16:
-			$LandSound.play()
+		$LandSound.play()
 		dust_particles()
 		return
 	if state == States.RUN:
 		if $RunParticleTimer.is_stopped():
 			dust_particles()
+			play_run_sound()
 			$RunParticleTimer.start()
 	elif !$RunParticleTimer.is_stopped():
 		$RunParticleTimer.stop()
@@ -223,7 +225,39 @@ func dust_particles() -> void:
 	get_parent().add_child(dust_particle)
 	dust_particle.global_position = global_position + Vector2.DOWN * 7
 	dust_particle.restart()
+	
+	
+func play_run_sound() -> void:
+	var current_tile := get_current_tile()
+	if current_tile == "":
+		return
+	$RunSound.stream = load("res://Assets/Sound/Player/Run/" + current_tile + str(int(rand_range(1, 5))) + ".wav")
+	$RunSound
+	$RunSound.play(0)
 
+
+func get_current_tile() -> String:
+	var level_tilemap: TileMap = Global.current_room.get_parent().get_node("LevelTilemap")
+	var local_position := level_tilemap.to_local($GroundPosition.global_position)
+	var tile_location := level_tilemap.world_to_map(local_position)
+	var tile_id = level_tilemap.get_cellv(tile_location)
+	
+	match tile_id:
+		7:
+			return "Stone"
+		8:
+			return "Dirt"
+		10:
+			return "Snow"
+		11:
+			return "Leaf"
+		12:
+			return "Cobblestone"
+		13:
+			return "Platform"
+		_:
+			return ""
+	
 
 func coyote_time():
 	yield(get_tree().create_timer(coyote_time_length), "timeout")
@@ -389,3 +423,4 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 
 func _on_RunParticleTimer_timeout() -> void:
 	dust_particles()
+	play_run_sound()
