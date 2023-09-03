@@ -8,6 +8,7 @@ enum {
 	PAUSE
 	SETTINGS
 	ALBUM
+	SECRETS
 	NONE
 }
 
@@ -41,6 +42,8 @@ func change_menu(menu: int) -> void:
 		ALBUM:
 			$AlbumMenu.update_album()
 			$AlbumMenu.show()
+		SECRETS:
+			$SecretsMenu.show()
 		NONE:
 			pass
 			

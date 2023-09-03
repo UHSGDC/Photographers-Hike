@@ -27,10 +27,9 @@ var aim_with_mouse_rock_climbing: bool = false
 var room_pause: bool = false
 export var room_pause_time: float = 0.2
 
-var secrets_found: int = 0
-	
-var total_secrets: int = 0
+var secrets: Array = []
 
+var summit: bool = false
 
 enum {
 	UP

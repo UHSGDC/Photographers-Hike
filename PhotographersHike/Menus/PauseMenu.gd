@@ -2,6 +2,7 @@ extends BaseMenu
 
 func show() -> void:
 	.show()
+	$ColorRect/VBoxContainer/Secrets.visible = Global.summit
 	if Global.platforming_player.current_cutscene and Global.platforming_player.current_cutscene.can_skip:
 		$ColorRect/VBoxContainer/Skip.show()
 	else:
@@ -30,3 +31,7 @@ func _on_Main_pressed() -> void:
 func _on_Skip_pressed() -> void:
 	menus.change_menu(menus.NONE)
 	Global.platforming_player.current_cutscene.skip()
+
+
+func _on_Secrets_pressed() -> void:
+	menus.change_menu(menus.SECRETS)

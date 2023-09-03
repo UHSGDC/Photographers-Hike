@@ -50,9 +50,10 @@
 			[],
 			[
 				[
-					["Congratulations!", 2],
-					["You found 0/200 secrets. You can now go back to the beginning of the game to find the rest of the secrets.", 3],
-					["Would you like to go back to the start?", 3, "Go Back", "Stay"],
+					["Congratulations! You finished the game!", 2],
+					["A new menu is now available. In the Pause and Main menu you will find the \"Secrets\" menu, where you can view all the secrets you found.", 3],
+					["You can replay the game to find any secrets you didn't find.\nSecrets will appear with color once you have found them.", 3],
+					["Would you like to replay the game?\n\nWarning this will delete all your data except your settings!", 3, "Replay", "Stay"],
 				],		
 			]
 		]

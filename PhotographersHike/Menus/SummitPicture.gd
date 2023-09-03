@@ -23,3 +23,11 @@ func set_time_label_text(text: String) -> void:
 	
 func set_level_label_text(text: String) -> void:
 	$LevelLabel.text = text
+
+
+func set_secrets_bar() -> void:
+	for child in $SecretsBar.get_children():
+		child.modulate = Color.black
+		for secret in Global.secrets:
+			if secret == child.name:
+				child.modulate = Color.white

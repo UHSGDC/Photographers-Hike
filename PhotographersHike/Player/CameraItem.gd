@@ -5,8 +5,8 @@ class_name CameraItem
 onready var picture_node = $CanvasLayer/Picture
 
 var picture_textures: Array setget ,get_picture_textures
-var picture_times: PoolStringArray setget ,get_picture_times
-var picture_levels: PoolStringArray setget, get_picture_levels
+var picture_times: Array setget ,get_picture_times
+var picture_levels: Array setget, get_picture_levels
 
 var can_take_picture: bool = true
 
@@ -96,9 +96,9 @@ func get_picture_textures() -> Array:
 	return picture_textures
 	
 	
-func get_picture_levels() -> PoolStringArray:
+func get_picture_levels() -> Array:
 	return picture_levels
 	
 
-func get_picture_times() -> PoolStringArray:
+func get_picture_times() -> Array:
 	return picture_times

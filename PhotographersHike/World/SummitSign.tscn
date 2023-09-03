@@ -1,0 +1,515 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Interactables/Sign/PlayerJumpCast.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Theme/DefaultFont8.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Assets/Sound/Player/jump.wav" type="AudioStream" id=4]
+[ext_resource path="res://Assets/Sound/Player/land.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Music/Victory.wav" type="AudioStream" id=6]
+[ext_resource path="res://Assets/Art/Pictures/Summit.png" type="Texture" id=7]
+[ext_resource path="res://Menus/SummitPicture.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/Sound/picture.wav" type="AudioStream" id=10]
+
+[sub_resource type="StreamTexture" id=173]
+load_path = "res://.import/Sign.png-641f8ed36cbd29df3415fff9e035ebba.stex"
+
+[sub_resource type="GDScript" id=178]
+script/source = "extends Sprite
+
+signal cutscene_finished
+
+
+export var picture_texture: Texture
+
+export var player_jump_cast_scene: PackedScene
+
+var should_move_player_to_sign: bool = false
+
+var jump_cast: RayCast2D
+
+export var should_play_cutscene: bool = false
+
+var player: Player
+
+export var player_cutscene_max_speed: float
+export var player_cutscene_jump_multiplier: float
+
+
+var should_stop: bool
+
+export var can_skip: bool = true
+
+var should_skip: bool = false
+
+var falling: bool = false
+
+
+func _ready():
+	$DirectionLabel.modulate = Color.transparent
+
+
+func _physics_process(delta: float) -> void:
+	if should_move_player_to_sign:
+		move_player_to_sign(delta)
+		if sign(jump_cast.cast_to.x) != sign(player.velocity.x):
+			jump_cast.cast_to.x = -jump_cast.cast_to.x
+		player.state = player.get_state()
+
+
+func move_player_to_sign(delta: float) -> void:
+	
+	var direction: float
+	
+	if !should_stop:
+		direction = get_move_direction()
+	else:
+		direction = 0
+	
+	
+	player.velocity.x += direction * player.move_acceleration * delta
+	
+	# Deaccelerates player velocity.x to 0 if player isn't inputting a direction
+	if !direction:
+		if abs(player.velocity.x) < player.idle_deacceleration * delta:
+			player.velocity.x = 0
+		else:
+			player.velocity.x -= player.idle_deacceleration * sign(player.velocity.x) * delta
+	
+	# Clamps velocity.x to max_move_speed
+	if player.velocity.x > player_cutscene_max_speed:
+		player.velocity.x = lerp(player.velocity.x, player_cutscene_max_speed, 0.4)
+	elif player.velocity.x < -player_cutscene_max_speed:
+		player.velocity.x = lerp(player.velocity.x, -player_cutscene_max_speed, 0.4)
+	
+	if player.is_on_floor() and jump_cast.is_colliding():
+		player.velocity.y = player.jump_velocity * player_cutscene_jump_multiplier
+		$JumpSound.play()
+		player.dust_particles()
+		
+		
+	player.apply_gravity(delta)
+	
+	falling = !player.is_on_floor()
+	
+	player.velocity = player.move_and_slide(player.velocity, Vector2.UP)
+
+	if falling and player.is_on_floor():
+		$LandSound.play()
+
+
+func get_move_direction() -> float:
+	return sign(position.x - player.position.x)
+
+
+func _on_CutsceneActivation_body_entered(body: Node) -> void:
+	if player:
+		return
+	if body == Global.platforming_player:
+		player = body
+		
+	if !should_play_cutscene:
+		return
+	
+	should_move_player_to_sign = true
+	player.in_cutscene = true
+	player.current_cutscene = self
+	
+	jump_cast = create_jump_cast()
+	
+	should_stop = false
+	
+	
+func create_jump_cast() -> RayCast2D:
+	var jump_cast_instance: RayCast2D = player_jump_cast_scene.instance()
+	player.add_child(jump_cast_instance)
+	jump_cast_instance.global_position = player.global_position
+	return jump_cast_instance
+
+
+func _on_SignArea_body_entered(body: Node) -> void:
+	if body != player:
+		return
+	
+	if !should_play_cutscene:
+		var tween = get_tree().create_tween()
+		tween.tween_property($DirectionLabel, \"modulate\", Color.white, 0.5)
+	else:
+		
+		yield(get_tree().create_timer(0.2), \"timeout\")
+		
+		should_stop = true
+		
+		
+		
+		yield(get_tree().create_timer(0.05), \"timeout\")
+		if should_skip:
+			return
+		
+		can_skip = false
+		player.state = player.States.PICTURE
+		should_play_cutscene = false
+		should_move_player_to_sign = false
+		jump_cast.queue_free()
+		jump_cast = null
+		
+		Global.player_camera.zoom_speed = 0.3
+		Global.player_camera.zoom_to = Vector2.ONE * 0.5
+		
+		yield(player, \"animation_finished\") # Player animation done
+		
+		$CameraItem.display_and_store_image(picture_texture.get_data())
+		$VictorySound.play()
+		yield(get_tree().create_timer(1), \"timeout\")
+		Global.player_camera.zoom_to = Vector2.ONE
+		yield(player, \"animation_finished\")
+		
+		yield(get_tree().create_timer(3), \"timeout\")
+		Global.summit = true
+		player.in_cutscene = false
+		player.current_cutscene = null
+		emit_signal(\"cutscene_finished\")
+		
+		var tween = get_tree().create_tween()
+		tween.tween_property($DirectionLabel, \"modulate\", Color.white, 0.5)
+
+
+func _on_SignArea_body_exited(body: Node) -> void:
+	if body != player:
+		return
+	var tween = get_tree().create_tween()
+	tween.tween_property($DirectionLabel, \"modulate\", Color.transparent, 0.5)
+	
+
+func skip() -> void:
+	should_skip = true
+	Global.platforming_player.global_position = $SkipPosition.global_position
+	yield(get_tree().create_timer(0.1), \"timeout\")
+	should_stop = true
+	$CameraItem.display_and_store_image(picture_texture.get_data())
+	$VictorySound.play()
+	should_play_cutscene = false
+	should_move_player_to_sign = false
+	if jump_cast:
+		jump_cast.queue_free()
+	jump_cast = null
+	player.in_cutscene = false
+	player.current_cutscene = null
+	var tween = get_tree().create_tween()
+	tween.tween_property($DirectionLabel, \"modulate\", Color.white, 0.5)
+	
+"
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 172.026
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 32, 25.5 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 2
+anti_aliasing = false
+
+[sub_resource type="GDScript" id=177]
+script/source = "extends Node
+
+onready var picture_node = $CanvasLayer/Picture
+
+var picture_textures: Array setget ,get_picture_textures
+var picture_times: PoolStringArray setget ,get_picture_times
+var picture_levels: PoolStringArray setget, get_picture_levels
+
+
+var Rng: RandomNumberGenerator
+		
+
+func _ready() -> void:
+	Rng = RandomNumberGenerator.new()
+	Rng.randomize()
+	
+
+func display_and_store_image(image: Image) -> void:
+	
+	# Set the texture to the captured image node.
+	var texture = ImageTexture.new()
+	texture.create_from_image(image)
+	
+	var level = Global.current_level
+	
+	var time_dictionary: Dictionary = Time.get_time_dict_from_system()
+	
+	var minute_string: String
+	if time_dictionary[\"minute\"] < 10:
+		minute_string = \"0\" + str(time_dictionary[\"minute\"])
+	else:
+		minute_string = str(time_dictionary[\"minute\"])
+		
+	var time_period: String
+	
+	if time_dictionary[\"hour\"] < 12 or time_dictionary[\"hour\"] == 24:
+		time_period = \"am\"
+	else:
+		time_period = \"pm\"
+	
+	var time_string: String = str(wrapi(time_dictionary[\"hour\"], 1, 13)) + \":\" + minute_string + time_period
+	
+	picture_node.set_time_label_text(time_string)
+	picture_node.set_death_label_text(str(Global.deaths))
+	picture_node.set_speedrun_label_text(Global.speedrun_timer.get_node(\"Time\").text)
+	picture_node.set_secrets_bar()
+
+	Global.camera_item.picture_textures.append(texture)
+	Global.camera_item.picture_levels.append(level)
+	Global.camera_item.picture_times.append(time_string)
+	
+	
+	$CameraSound.play()
+	Global.camera_item.can_take_picture = false
+	$AnimationPlayer.stop()
+	$AnimationPlayer.play(\"take_picture\")
+	$CanvasLayer/FlashParticles.restart()
+	yield($AnimationPlayer, \"animation_finished\")
+	Global.camera_item.can_take_picture = true
+	
+	
+func get_picture_textures() -> Array:
+	return picture_textures
+	
+	
+func get_picture_levels() -> PoolStringArray:
+	return picture_levels
+	
+
+func get_picture_times() -> PoolStringArray:
+	return picture_times
+"
+
+[sub_resource type="Curve" id=174]
+max_value = 1.5
+_data = [ Vector2( 0, 1.5 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Animation" id=175]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Flash:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/Picture:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=176]
+resource_name = "take_picture"
+length = 5.0
+tracks/0/type = "audio"
+tracks/0/path = NodePath("CameraSound")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": null
+} ],
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/Flash:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CanvasLayer:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CanvasLayer/Picture:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.2, 0.3, 4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="SummitSign" type="Sprite"]
+texture = SubResource( 173 )
+offset = Vector2( 0, -1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 51 )
+script = SubResource( 178 )
+__meta__ = {
+"_edit_group_": true
+}
+picture_texture = ExtResource( 7 )
+player_jump_cast_scene = ExtResource( 1 )
+should_play_cutscene = true
+player_cutscene_max_speed = 10.0
+player_cutscene_jump_multiplier = 0.8
+can_skip = false
+
+[node name="CutsceneActivation" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CutsceneActivation"]
+shape = SubResource( 1 )
+
+[node name="SignArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SignArea"]
+position = Vector2( 0, -1.5 )
+shape = SubResource( 2 )
+
+[node name="DirectionLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -32.0
+margin_top = -52.0
+margin_right = -32.0
+margin_bottom = -33.0
+grow_horizontal = 2
+custom_colors/font_color = Color( 0.921569, 0.929412, 0.913725, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = " The Summit "
+align = 1
+valign = 1
+
+[node name="ColorRect" type="Panel" parent="DirectionLabel"]
+modulate = Color( 1, 1, 1, 0.266667 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 3 )
+
+[node name="SkipPosition" type="Position2D" parent="."]
+position = Vector2( -23, 15 )
+
+[node name="VictorySound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = 6.0
+bus = "Sound"
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+bus = "Sound"
+
+[node name="LandSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = 6.216
+bus = "Sound"
+
+[node name="CameraItem" type="Node" parent="."]
+script = SubResource( 177 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="CameraItem"]
+layer = 2
+visible = false
+
+[node name="Picture" parent="CameraItem/CanvasLayer" instance=ExtResource( 9 )]
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="Flash" type="ColorRect" parent="CameraItem/CanvasLayer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 480.0
+margin_bottom = 288.0
+mouse_filter = 2
+
+[node name="FlashParticles" type="CPUParticles2D" parent="CameraItem/CanvasLayer"]
+position = Vector2( 240, 144 )
+emitting = false
+amount = 256
+one_shot = true
+explosiveness = 1.0
+emission_shape = 2
+emission_rect_extents = Vector2( 300, 200 )
+spread = 180.0
+gravity = Vector2( 0, 10 )
+initial_velocity = 39.46
+initial_velocity_random = 1.0
+tangential_accel = -4.0
+tangential_accel_random = 1.0
+scale_amount = 2.0
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 174 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CameraItem"]
+anims/RESET = SubResource( 175 )
+anims/take_picture = SubResource( 176 )
+
+[node name="CameraSound" type="AudioStreamPlayer" parent="CameraItem"]
+stream = ExtResource( 10 )
+volume_db = 10.0
+bus = "Sound"
+
+[connection signal="body_entered" from="CutsceneActivation" to="." method="_on_CutsceneActivation_body_entered"]
+[connection signal="body_entered" from="SignArea" to="." method="_on_SignArea_body_entered"]
+[connection signal="body_exited" from="SignArea" to="." method="_on_SignArea_body_exited"]

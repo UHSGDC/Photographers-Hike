@@ -32,7 +32,7 @@
 [ext_resource path="res://Misc/EndCredits.tscn" type="PackedScene" id=30]
 [ext_resource path="res://Assets/Art/Pictures/SparseForest.png" type="Texture" id=31]
 [ext_resource path="res://Assets/Art/Pictures/SnowyTundra.png" type="Texture" id=32]
-[ext_resource path="res://Assets/Art/Pictures/Summit.png" type="Texture" id=33]
+[ext_resource path="res://World/SummitSign.tscn" type="PackedScene" id=33]
 [ext_resource path="res://World/Secret.tscn" type="PackedScene" id=34]
 [ext_resource path="res://Assets/Art/Secrets/Gray.png" type="Texture" id=35]
 [ext_resource path="res://Assets/Art/Secrets/Pink.png" type="Texture" id=36]
@@ -4001,7 +4001,7 @@ shape = SubResource( 178 )
 position = Vector2( 10336, -1856 )
 
 [node name="Position2D" type="Position2D" parent="Snowy/Room23/Checkpoints" index="0"]
-position = Vector2( -48, 40 )
+position = Vector2( -214, 78 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snowy/Room23"]
 shape = SubResource( 178 )
@@ -4193,7 +4193,7 @@ shape = SubResource( 45 )
 position = Vector2( 8888, -1664 )
 
 [node name="PlatformingPlayer" parent="." instance=ExtResource( 2 )]
-position = Vector2( 27435, -5234 )
+position = Vector2( 27893, -5396 )
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 3 )]
 
@@ -4260,23 +4260,8 @@ should_play_cutscene = true
 text = " <- Snowy Tundra 
  Summit -> "
 
-[node name="SummitSign" parent="." instance=ExtResource( 8 )]
+[node name="SummitSign" parent="." instance=ExtResource( 33 )]
 position = Vector2( 28088, -5416 )
-texture = SubResource( 173 )
-__meta__ = {
-"_edit_group_": true
-}
-picture_texture = ExtResource( 33 )
-should_play_cutscene = true
-can_skip = false
-
-[node name="DirectionLabel" parent="SummitSign" index="2"]
-text = " The Summit "
-valign = 1
-
-[node name="ColorRect" parent="SummitSign/DirectionLabel" index="0"]
-margin_top = 0.0
-margin_bottom = 0.0
 
 [node name="BasePopup" parent="." instance=ExtResource( 29 )]
 position = Vector2( 1632, 4 )
@@ -4336,183 +4321,185 @@ position = Vector2( 28278, -5369 )
 script = SubResource( 190 )
 level = 4
 
-[node name="RedSecret" parent="." instance=ExtResource( 34 )]
+[node name="Secrets" type="Node" parent="."]
+
+[node name="RedFilm" parent="Secrets" instance=ExtResource( 34 )]
 position = Vector2( 1371, 195 )
 
-[node name="LevelTilemap" parent="RedSecret" index="2"]
+[node name="LevelTilemap" parent="Secrets/RedFilm" index="2"]
 position = Vector2( 21, 13 )
 tile_data = PoolIntArray( -196610, 8, 262148, -196609, 8, 65539, -131075, 8, 65541, -131074, 8, 262148, -131073, 8, 65539, -65539, 8, 131077, -65538, 8, 262148, -65537, 8, 65539, -3, 8, 262148, -2, 8, 262148, -1, 8, 65539, 65533, 8, 262148, 65534, 8, 262148, 65535, 8, 65539 )
 
-[node name="ActivationArea" parent="RedSecret" index="3"]
+[node name="ActivationArea" parent="Secrets/RedFilm" index="3"]
 position = Vector2( 5, -3 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RedSecret/ActivationArea" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Secrets/RedFilm/ActivationArea" index="0"]
 position = Vector2( 0, -8 )
 shape = SubResource( 191 )
 
-[node name="GraySecret" parent="." instance=ExtResource( 34 )]
+[node name="GrayFilm" parent="Secrets" instance=ExtResource( 34 )]
 position = Vector2( 4155, 67 )
 
-[node name="Sprite" parent="GraySecret" index="0"]
+[node name="Sprite" parent="Secrets/GrayFilm" index="0"]
 texture = ExtResource( 35 )
 
-[node name="LevelTilemap" parent="GraySecret" index="2"]
+[node name="LevelTilemap" parent="Secrets/GrayFilm" index="2"]
 position = Vector2( 21, 13 )
 tile_data = PoolIntArray( -131075, 11, 196611, -131074, 11, 131077, -131073, 11, 65539, -65539, 11, 65541, -65538, 11, 262148, -65537, 8, 65539, -3, 11, 65541, -2, 11, 262148, -1, 8, 65539, 65533, 11, 65541, 65534, 11, 262148, 65535, 11, 65539 )
 
-[node name="ActivationArea" parent="GraySecret" index="3"]
+[node name="ActivationArea" parent="Secrets/GrayFilm" index="3"]
 position = Vector2( 5, -3 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GraySecret/ActivationArea" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Secrets/GrayFilm/ActivationArea" index="0"]
 shape = SubResource( 192 )
 
-[node name="AnimationPlayer" parent="GraySecret" index="5"]
+[node name="AnimationPlayer" parent="Secrets/GrayFilm" index="5"]
 anims/Found = SubResource( 193 )
 anims/RESET = SubResource( 194 )
 
-[node name="PinkSecret" parent="." instance=ExtResource( 34 )]
+[node name="PinkFilm" parent="Secrets" instance=ExtResource( 34 )]
 position = Vector2( 5387, 307 )
 
-[node name="Sprite" parent="PinkSecret" index="0"]
+[node name="Sprite" parent="Secrets/PinkFilm" index="0"]
 texture = ExtResource( 36 )
 
-[node name="LevelTilemap" parent="PinkSecret" index="2"]
+[node name="LevelTilemap" parent="Secrets/PinkFilm" index="2"]
 position = Vector2( 21, 13 )
 tile_data = PoolIntArray( -196610, 11, 262148, -196609, 11, 262148, -262144, 11, 262148, -262143, 11, 262148, -131075, 11, 262148, -131074, 11, 262148, -131073, 11, 262148, -196608, 11, 262148, -196607, 11, 262148, -196606, 11, 262148, -65539, 11, 262148, -65538, 11, 262148, -65537, 11, 262148, -131072, 11, 262148, -131071, 11, 262148, -131070, 11, 262148, -3, 11, 262148, -2, 11, 262148, -1, 11, 262148, -65536, 11, 262148, -65535, 11, 262148, -65534, 11, 262148, 65533, 11, 4, 65534, 11, 4, 65535, 8, 4, 0, 8, 4, 1, 11, 5, 2, 11, 262148, 65537, 11, 327683, 65538, 11, 5 )
 
-[node name="ActivationArea" parent="PinkSecret" index="3"]
+[node name="ActivationArea" parent="Secrets/PinkFilm" index="3"]
 position = Vector2( 5, -3 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PinkSecret/ActivationArea" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Secrets/PinkFilm/ActivationArea" index="0"]
 position = Vector2( 16, 0 )
 shape = SubResource( 197 )
 
-[node name="AnimationPlayer" parent="PinkSecret" index="5"]
+[node name="AnimationPlayer" parent="Secrets/PinkFilm" index="5"]
 anims/Found = SubResource( 195 )
 anims/RESET = SubResource( 196 )
 
-[node name="OrangeSecret" parent="." instance=ExtResource( 34 )]
+[node name="OrangeFilm" parent="Secrets" instance=ExtResource( 34 )]
 position = Vector2( 6763, 115 )
 
-[node name="Sprite" parent="OrangeSecret" index="0"]
+[node name="Sprite" parent="Secrets/OrangeFilm" index="0"]
 texture = ExtResource( 37 )
 
-[node name="LevelTilemap" parent="OrangeSecret" index="2"]
+[node name="LevelTilemap" parent="Secrets/OrangeFilm" index="2"]
 position = Vector2( 21, 13 )
 tile_data = PoolIntArray( -131075, 11, 262148, -131074, 11, 262148, -131073, 11, 262148, -196608, 11, 3, -65539, 11, 262148, -65538, 11, 262148, -65537, 11, 262148, -131072, 8, 65539, -3, 11, 262148, -2, 11, 262148, -1, 11, 262148, -65536, 8, 65539, 65533, 11, 5, 65534, 11, 262148, 65535, 11, 262148, 0, 11, 131075 )
 
-[node name="ActivationArea" parent="OrangeSecret" index="3"]
+[node name="ActivationArea" parent="Secrets/OrangeFilm" index="3"]
 position = Vector2( 5, -3 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OrangeSecret/ActivationArea" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Secrets/OrangeFilm/ActivationArea" index="0"]
 position = Vector2( 8, 0 )
 shape = SubResource( 200 )
 
-[node name="AnimationPlayer" parent="OrangeSecret" index="5"]
+[node name="AnimationPlayer" parent="Secrets/OrangeFilm" index="5"]
 anims/Found = SubResource( 198 )
 anims/RESET = SubResource( 199 )
 
-[node name="BlueSecret" parent="." instance=ExtResource( 34 )]
+[node name="BlueFilm" parent="Secrets" instance=ExtResource( 34 )]
 position = Vector2( 9894, -1885 )
 
-[node name="Sprite" parent="BlueSecret" index="0"]
+[node name="Sprite" parent="Secrets/BlueFilm" index="0"]
 texture = ExtResource( 39 )
 
-[node name="LevelTilemap" parent="BlueSecret" index="2"]
+[node name="LevelTilemap" parent="Secrets/BlueFilm" index="2"]
 position = Vector2( 10, 13 )
 tile_data = PoolIntArray( -131074, 7, 196611, -131073, 7, 131077, -196608, 7, 262148, -65538, 7, 65541, -65537, 7, 262148, -131072, 7, 262148, -2, 7, 65541, -1, 7, 262148, -65536, 7, 262148, 65534, 7, 65541, 65535, 7, 262148, 0, 7, 262148 )
 
-[node name="ActivationArea" parent="BlueSecret" index="3"]
+[node name="ActivationArea" parent="Secrets/BlueFilm" index="3"]
 position = Vector2( -6, -3 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BlueSecret/ActivationArea" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Secrets/BlueFilm/ActivationArea" index="0"]
 shape = SubResource( 201 )
 
-[node name="AnimationPlayer" parent="BlueSecret" index="5"]
+[node name="AnimationPlayer" parent="Secrets/BlueFilm" index="5"]
 anims/Found = SubResource( 202 )
 anims/RESET = SubResource( 203 )
 
-[node name="GlobeSecret" parent="." instance=ExtResource( 34 )]
+[node name="GlobeFilm" parent="Secrets" instance=ExtResource( 34 )]
 position = Vector2( 11131, -2333 )
 
-[node name="Sprite" parent="GlobeSecret" index="0"]
+[node name="Sprite" parent="Secrets/GlobeFilm" index="0"]
 texture = ExtResource( 40 )
 
-[node name="LevelTilemap" parent="GlobeSecret" index="2"]
+[node name="LevelTilemap" parent="Secrets/GlobeFilm" index="2"]
 position = Vector2( 21, 13 )
 tile_data = PoolIntArray( -131075, 7, 262148, -131074, 7, 262148, -131073, 7, 262149, -65539, 7, 262148, -65538, 7, 262148, -65537, 7, 262149, -3, 7, 262148, -2, 7, 262148, -1, 7, 262149, 65533, 7, 262148, 65534, 7, 262148, 65535, 7, 262149 )
 
-[node name="ActivationArea" parent="GlobeSecret" index="3"]
+[node name="ActivationArea" parent="Secrets/GlobeFilm" index="3"]
 position = Vector2( 5, -3 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GlobeSecret/ActivationArea" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Secrets/GlobeFilm/ActivationArea" index="0"]
 shape = SubResource( 205 )
 
-[node name="AnimationPlayer" parent="GlobeSecret" index="5"]
+[node name="AnimationPlayer" parent="Secrets/GlobeFilm" index="5"]
 anims/Found = SubResource( 206 )
 anims/RESET = SubResource( 207 )
 
-[node name="GoldSecret" parent="." instance=ExtResource( 34 )]
+[node name="GoldFilm" parent="Secrets" instance=ExtResource( 34 )]
 position = Vector2( 16027, -3197 )
 
-[node name="Sprite" parent="GoldSecret" index="0"]
+[node name="Sprite" parent="Secrets/GoldFilm" index="0"]
 texture = ExtResource( 38 )
 
-[node name="LevelTilemap" parent="GoldSecret" index="2"]
+[node name="LevelTilemap" parent="Secrets/GoldFilm" index="2"]
 position = Vector2( 21, 13 )
 tile_data = PoolIntArray( -131075, 10, 262148, -131074, 10, 262148, -131073, 10, 262148, -196608, 10, 262148, -196607, 10, 65539, -65539, 10, 262148, -65538, 10, 262148, -65537, 10, 262148, -131072, 10, 262148, -131071, 10, 65539, -3, 10, 262148, -2, 10, 262148, -1, 10, 262148, -65536, 10, 262148, -65535, 10, 65539, 65533, 10, 262148, 65534, 10, 262148, 65535, 10, 262148, 0, 10, 262148, 1, 10, 65539 )
 
-[node name="ActivationArea" parent="GoldSecret" index="3"]
+[node name="ActivationArea" parent="Secrets/GoldFilm" index="3"]
 position = Vector2( 21, -3 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GoldSecret/ActivationArea" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Secrets/GoldFilm/ActivationArea" index="0"]
 shape = SubResource( 205 )
 
-[node name="AnimationPlayer" parent="GoldSecret" index="5"]
+[node name="AnimationPlayer" parent="Secrets/GoldFilm" index="5"]
 anims/Found = SubResource( 208 )
 anims/RESET = SubResource( 209 )
 
-[node name="GreenSecret" parent="." instance=ExtResource( 34 )]
+[node name="GreenFilm" parent="Secrets" instance=ExtResource( 34 )]
 position = Vector2( 17110, -3389 )
 
-[node name="Sprite" parent="GreenSecret" index="0"]
+[node name="Sprite" parent="Secrets/GreenFilm" index="0"]
 texture = ExtResource( 41 )
 
-[node name="LevelTilemap" parent="GreenSecret" index="2"]
+[node name="LevelTilemap" parent="Secrets/GreenFilm" index="2"]
 position = Vector2( 26, 13 )
 tile_data = PoolIntArray( -131075, 10, 393221, -131074, 10, 131076, -131073, 10, 131077, -65539, 10, 65541, -65538, 10, 262148, -65537, 10, 262148, -3, 10, 65541, -2, 10, 262148, -1, 10, 262148, 65533, 10, 65541, 65534, 10, 262148, 65535, 10, 262148 )
 
-[node name="ActivationArea" parent="GreenSecret" index="3"]
+[node name="ActivationArea" parent="Secrets/GreenFilm" index="3"]
 position = Vector2( -6, -3 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GreenSecret/ActivationArea" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Secrets/GreenFilm/ActivationArea" index="0"]
 shape = SubResource( 213 )
 
-[node name="AnimationPlayer" parent="GreenSecret" index="5"]
+[node name="AnimationPlayer" parent="Secrets/GreenFilm" index="5"]
 anims/Found = SubResource( 214 )
 anims/RESET = SubResource( 215 )
 
-[node name="CameraSecret" parent="." instance=ExtResource( 34 )]
+[node name="FilmCamera" parent="Secrets" instance=ExtResource( 34 )]
 position = Vector2( 27798, -5229 )
 
-[node name="Sprite" parent="CameraSecret" index="0"]
+[node name="Sprite" parent="Secrets/FilmCamera" index="0"]
 texture = ExtResource( 42 )
 
-[node name="CollisionShape2D" parent="CameraSecret" index="1"]
+[node name="CollisionShape2D" parent="Secrets/FilmCamera" index="1"]
 position = Vector2( 0, -0.5 )
 shape = SubResource( 216 )
 
-[node name="LevelTilemap" parent="CameraSecret" index="2"]
+[node name="LevelTilemap" parent="Secrets/FilmCamera" index="2"]
 position = Vector2( 26, 13 )
 tile_data = PoolIntArray( -131075, 10, 5, -131074, 10, 262148, -131073, 10, 262148, -65539, 10, 262147, -65538, 10, 262148, -65537, 10, 262148, -3, 10, 262147, -2, 10, 262148, -1, 10, 262148, 65533, 10, 262147, 65534, 10, 262148, 65535, 10, 262148 )
 
-[node name="ActivationArea" parent="CameraSecret" index="3"]
+[node name="ActivationArea" parent="Secrets/FilmCamera" index="3"]
 position = Vector2( -6, -3 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraSecret/ActivationArea" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Secrets/FilmCamera/ActivationArea" index="0"]
 shape = SubResource( 213 )
 
-[node name="AnimationPlayer" parent="CameraSecret" index="5"]
+[node name="AnimationPlayer" parent="Secrets/FilmCamera" index="5"]
 anims/Found = SubResource( 217 )
 anims/RESET = SubResource( 218 )
 
@@ -4612,13 +4599,12 @@ anims/RESET = SubResource( 218 )
 [editable path="DenseForestSign"]
 [editable path="SparseForestSign"]
 [editable path="SnowyTundraSign"]
-[editable path="SummitSign"]
-[editable path="RedSecret"]
-[editable path="GraySecret"]
-[editable path="PinkSecret"]
-[editable path="OrangeSecret"]
-[editable path="BlueSecret"]
-[editable path="GlobeSecret"]
-[editable path="GoldSecret"]
-[editable path="GreenSecret"]
-[editable path="CameraSecret"]
+[editable path="Secrets/RedFilm"]
+[editable path="Secrets/GrayFilm"]
+[editable path="Secrets/PinkFilm"]
+[editable path="Secrets/OrangeFilm"]
+[editable path="Secrets/BlueFilm"]
+[editable path="Secrets/GlobeFilm"]
+[editable path="Secrets/GoldFilm"]
+[editable path="Secrets/GreenFilm"]
+[editable path="Secrets/FilmCamera"]

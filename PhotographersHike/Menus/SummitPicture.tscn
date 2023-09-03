@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Assets/Theme/DefaultFont16.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/Theme/UITheme.tres" type="Theme" id=2]
@@ -6,6 +6,15 @@
 [ext_resource path="res://Assets/Theme/DefaultFont12.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Assets/Art/Pictures/Summit.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Art/UI/Skull.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Art/Secrets/Pink.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Art/Secrets/Green.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Art/Secrets/Gray.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Art/Secrets/Gold.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Art/Secrets/Blue.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Art/Secrets/FilmCamera.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Art/Secrets/Globe.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Art/Secrets/Orange.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Art/Secrets/Red.png" type="Texture" id=15]
 
 [node name="SummitPicture" type="ColorRect"]
 anchor_left = 0.5
@@ -100,3 +109,119 @@ margin_right = 70.5
 margin_bottom = 9.0
 custom_fonts/font = ExtResource( 4 )
 text = "x100"
+
+[node name="SecretsBar" type="HBoxContainer" parent="."]
+anchor_top = 0.778455
+anchor_right = 1.0
+anchor_bottom = 0.778455
+margin_top = -6.5
+margin_bottom = 6.5
+custom_constants/separation = 12
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="RedFilm" type="TextureRect" parent="SecretsBar"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 20.0
+margin_right = 35.0
+margin_bottom = 13.0
+texture = ExtResource( 15 )
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="GrayFilm" type="TextureRect" parent="SecretsBar"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 47.0
+margin_right = 62.0
+margin_bottom = 13.0
+texture = ExtResource( 9 )
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="PinkFilm" type="TextureRect" parent="SecretsBar"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 74.0
+margin_right = 89.0
+margin_bottom = 13.0
+texture = ExtResource( 7 )
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="OrangeFilm" type="TextureRect" parent="SecretsBar"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 101.0
+margin_right = 116.0
+margin_bottom = 13.0
+texture = ExtResource( 14 )
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="FilmCamera" type="CenterContainer" parent="SecretsBar"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 128.0
+margin_right = 142.0
+margin_bottom = 13.0
+
+[node name="FilmCamera" type="TextureRect" parent="SecretsBar/FilmCamera"]
+margin_top = 1.0
+margin_right = 14.0
+margin_bottom = 12.0
+texture = ExtResource( 12 )
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="BlueFilm" type="TextureRect" parent="SecretsBar"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 154.0
+margin_right = 169.0
+margin_bottom = 13.0
+texture = ExtResource( 11 )
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="GlobeFilm" type="TextureRect" parent="SecretsBar"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 181.0
+margin_right = 196.0
+margin_bottom = 13.0
+texture = ExtResource( 13 )
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="GoldFilm" type="TextureRect" parent="SecretsBar"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 208.0
+margin_right = 223.0
+margin_bottom = 13.0
+texture = ExtResource( 10 )
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="GreenFilm" type="TextureRect" parent="SecretsBar"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 235.0
+margin_right = 250.0
+margin_bottom = 13.0
+texture = ExtResource( 8 )
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": true
+}

@@ -73,8 +73,6 @@ var previous_state: int
 # Particles
 export var dust_particle_scene: PackedScene
 
-export var run_sounds: Array
-
 
 func _ready() -> void:
 	Global.platforming_player = self

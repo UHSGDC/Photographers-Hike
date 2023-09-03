@@ -2,7 +2,6 @@ extends Area2D
 
 func _ready() -> void:
 	$LevelTilemap.show()
-	Global.total_secrets += 1
 
 
 func _on_ActivationArea_body_entered(body: Node) -> void:
@@ -18,7 +17,9 @@ func _on_ActivationArea_body_exited(body: Node) -> void:
 func _on_Secret_body_entered(body: Node) -> void:
 	if !body.is_in_group("player"):
 		return
-	Global.secrets_found += 1
+	
+	Global.secrets.append(name)
+	
 	set_deferred("monitoring", false)
 	$AnimationPlayer.play("Found")
 	
