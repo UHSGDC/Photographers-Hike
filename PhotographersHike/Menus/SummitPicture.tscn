@@ -1,0 +1,102 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/Theme/DefaultFont16.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/Theme/UITheme.tres" type="Theme" id=2]
+[ext_resource path="res://Menus/SummitPicture.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Theme/DefaultFont12.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Assets/Art/Pictures/Summit.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Art/UI/Skull.png" type="Texture" id=6]
+
+[node name="SummitPicture" type="ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -135.0
+margin_top = -123.0
+margin_right = 135.0
+margin_bottom = 123.0
+rect_min_size = Vector2( 96, 80 )
+theme = ExtResource( 2 )
+color = Color( 0.843137, 0.709804, 0.580392, 1 )
+script = ExtResource( 3 )
+
+[node name="PictureTexture" type="TextureRect" parent="."]
+anchor_left = 0.0555556
+anchor_top = 0.0555556
+anchor_right = 0.889223
+anchor_bottom = 0.555222
+margin_right = 14.9099
+margin_bottom = 31.5751
+rect_min_size = Vector2( 240, 144 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="LevelLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -78.0
+margin_top = -42.0
+margin_right = 78.0
+margin_bottom = 1.0
+grow_horizontal = 2
+custom_fonts/font = ExtResource( 4 )
+text = "Summit"
+align = 1
+
+[node name="TimeLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -65.0
+margin_top = -23.0
+margin_right = 66.0
+grow_horizontal = 2
+custom_fonts/font = ExtResource( 1 )
+text = "10:15pm"
+align = 1
+
+[node name="SpeedrunLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -117.5
+margin_top = -78.5
+margin_right = 14.5
+margin_bottom = -57.5
+grow_horizontal = 2
+custom_fonts/font = ExtResource( 4 )
+text = "00:00:00:00"
+
+[node name="Death" type="TextureRect" parent="."]
+anchor_left = 0.677778
+anchor_top = 0.673442
+anchor_right = 0.677778
+anchor_bottom = 0.673442
+margin_left = 3.05176e-05
+margin_top = -0.166656
+margin_right = 15.0
+margin_bottom = 13.8333
+rect_min_size = Vector2( 15, 14 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="DeathLabel" type="Label" parent="Death"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 10.5
+margin_top = -12.0
+margin_right = 70.5
+margin_bottom = 9.0
+custom_fonts/font = ExtResource( 4 )
+text = "x100"
