@@ -379,6 +379,7 @@ func respawn() -> void:
 		return
 	death_pause = true
 	$DeathSound.play()
+	Global.deaths += 1
 	Global.player_camera.screen_shake(0.3)
 	$RunParticleTimer.stop()
 	$DeathParticles.restart()
