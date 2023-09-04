@@ -57,21 +57,83 @@ func _connect_button_signals() -> void:
 
 
 func _ready() -> void:
-	_update()
+	update()
 
 
 func update_export_settings(new_value) -> void:
 	update_settings = false
-	_update()
+	update()
 				
 	
-func _update() -> void:
+func update() -> void:
 	DECREASE_BUTTON = $Button/Decrease
 	INCREASE_BUTTON = $Button/Increase
 	INCREASE_BUTTON.disabled = false
 	DECREASE_BUTTON.disabled = false
 	$Label.text = setting_name
 	_update_button()
+
+
+func reset_button() -> void:
+	match setting_type:
+		Setting.NUMBER:
+			current_value = int(clamp(current_value, min_value, max_value))
+			
+			if current_value >= max_value:
+				INCREASE_BUTTON.disabled = true
+				current_value = max_value
+			if current_value <= min_value:
+				DECREASE_BUTTON.disabled = true
+				current_value = min_value
+			
+			$Button/Value.rect_min_size.x = len(str(max_value)) * 8
+			
+			_update_label(str(current_value))
+			
+		Setting.PERCENT:
+			current_value = int(clamp(current_value, 0, 100))
+			
+			if current_value >= 100:
+				INCREASE_BUTTON.disabled = true
+				current_value = 100
+			elif current_value <= 0:
+				DECREASE_BUTTON.disabled = true
+				current_value = 0
+			
+			$Button/Value.rect_min_size.x = 32
+			
+			_update_label(str(current_value) + "%")
+			
+		Setting.STRING:
+			
+			current_value_index = current_value
+			
+			if current_value_index >= value_string_array.size() - 1:
+				INCREASE_BUTTON.disabled = true
+				current_value_index = value_string_array.size() - 1
+				
+			if current_value_index <= 0:
+				DECREASE_BUTTON.disabled = true
+				current_value_index = 0
+				
+			current_value = str(value_string_array[current_value_index])
+			
+			for value in value_string_array:
+				$Button/Value.rect_min_size.x = max($Button/Value.rect_min_size.x, value.length() * 8)
+				
+			_update_label(current_value)
+			
+		Setting.SWITCH:
+			current_value = bool(current_value)
+			
+			if current_value:
+				_update_label("On")
+				INCREASE_BUTTON.disabled = true
+			else:
+				_update_label("Off")
+				DECREASE_BUTTON.disabled = true
+			
+			$Button/Value.rect_min_size.x = 24
 
 
 func _update_button() -> void:
@@ -135,6 +197,7 @@ func _update_button() -> void:
 			
 			$Button/Value.rect_min_size.x = 24
 			
+
 
 func _update_label(text: String) -> void:
 	$Button/Value.text = text

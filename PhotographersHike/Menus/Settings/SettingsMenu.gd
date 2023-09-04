@@ -2,7 +2,11 @@ extends BaseMenu
 
 export var desktop_only_settings: Array 
 
+export var all_settings: Array
+
 func _ready() -> void:
+	Global.settings_menu = self
+	
 	if !OS.has_feature("pc"):
 		for setting in desktop_only_settings:
 			get_node(setting).queue_free()
@@ -20,6 +24,11 @@ func _back_input() -> void:
 		return
 		
 	._back_input()
+
+
+func update_settings() -> void:
+	for setting in all_settings:
+		get_node(setting).reset_button()
 
 
 func _on_Back_pressed():

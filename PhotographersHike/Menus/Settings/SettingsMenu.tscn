@@ -17,6 +17,7 @@ anchor_bottom = 1.0
 theme = ExtResource( 7 )
 script = ExtResource( 1 )
 desktop_only_settings = [ NodePath("SettingsWindow/ScrollContainer/CategoryContainer/VideoCategory/MarginSettingsContainer/SettingsContainer/Fullscreen") ]
+all_settings = [ NodePath("SettingsWindow/ScrollContainer/CategoryContainer/GameplayCategory/MarginSettingsContainer/SettingsContainer/SpeedrunTimer"), NodePath("SettingsWindow/ScrollContainer/CategoryContainer/GameplayCategory/MarginSettingsContainer/SettingsContainer/DebugMenu"), NodePath("SettingsWindow/ScrollContainer/CategoryContainer/MinigamesCategory/MarginSettingsContainer/SettingsContainer/RockClimbingSettings/VBoxContainer/AimWKeyboard"), NodePath("SettingsWindow/ScrollContainer/CategoryContainer/MinigamesCategory/MarginSettingsContainer/SettingsContainer/RockClimbingSettings/VBoxContainer/SlowerCharging"), NodePath("SettingsWindow/ScrollContainer/CategoryContainer/MinigamesCategory/MarginSettingsContainer/SettingsContainer/RockClimbingSettings/VBoxContainer/PreviousJumpArrow"), NodePath("SettingsWindow/ScrollContainer/CategoryContainer/VideoCategory/MarginSettingsContainer/SettingsContainer/Fullscreen"), NodePath("SettingsWindow/ScrollContainer/CategoryContainer/AudioCategory/MarginSettingsContainer/SettingsContainer/Master"), NodePath("SettingsWindow/ScrollContainer/CategoryContainer/AudioCategory/MarginSettingsContainer/SettingsContainer/Music"), NodePath("SettingsWindow/ScrollContainer/CategoryContainer/AudioCategory/MarginSettingsContainer/SettingsContainer/SoundEffects") ]
 
 [node name="Title" type="Label" parent="."]
 anchor_left = 0.5
@@ -56,13 +57,13 @@ margin_left = 8.0
 
 [node name="CategoryContainer" type="VBoxContainer" parent="SettingsWindow/ScrollContainer"]
 margin_right = 394.0
-margin_bottom = 362.0
+margin_bottom = 342.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="GameplayCategory" parent="SettingsWindow/ScrollContainer/CategoryContainer" instance=ExtResource( 4 )]
 margin_right = 394.0
-margin_bottom = 66.0
+margin_bottom = 46.0
 
 [node name="CategoryTitle" parent="SettingsWindow/ScrollContainer/CategoryContainer/GameplayCategory" index="0"]
 margin_right = 394.0
@@ -70,11 +71,11 @@ text = "Gameplay"
 
 [node name="MarginSettingsContainer" parent="SettingsWindow/ScrollContainer/CategoryContainer/GameplayCategory" index="1"]
 margin_right = 394.0
-margin_bottom = 66.0
+margin_bottom = 46.0
 
 [node name="SettingsContainer" parent="SettingsWindow/ScrollContainer/CategoryContainer/GameplayCategory/MarginSettingsContainer" index="0"]
 margin_right = 354.0
-margin_bottom = 42.0
+margin_bottom = 22.0
 
 [node name="SpeedrunTimer" parent="SettingsWindow/ScrollContainer/CategoryContainer/GameplayCategory/MarginSettingsContainer/SettingsContainer" index="0" instance=ExtResource( 3 )]
 anchor_top = 0.0
@@ -87,6 +88,7 @@ setting_name = "Speedrun Timer"
 setting_type = 3
 
 [node name="DebugMenu" parent="SettingsWindow/ScrollContainer/CategoryContainer/GameplayCategory/MarginSettingsContainer/SettingsContainer" index="1" instance=ExtResource( 3 )]
+visible = false
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -97,9 +99,9 @@ setting_name = "Debug Menu"
 setting_type = 3
 
 [node name="ControlsCategory" parent="SettingsWindow/ScrollContainer/CategoryContainer" instance=ExtResource( 4 )]
-margin_top = 70.0
+margin_top = 50.0
 margin_right = 394.0
-margin_bottom = 116.0
+margin_bottom = 96.0
 
 [node name="CategoryTitle" parent="SettingsWindow/ScrollContainer/CategoryContainer/ControlsCategory" index="0"]
 margin_right = 394.0
@@ -120,9 +122,9 @@ margin_top = 0.0
 margin_bottom = 16.0
 
 [node name="MinigamesCategory" parent="SettingsWindow/ScrollContainer/CategoryContainer" instance=ExtResource( 4 )]
-margin_top = 120.0
+margin_top = 100.0
 margin_right = 394.0
-margin_bottom = 222.0
+margin_bottom = 202.0
 
 [node name="CategoryTitle" parent="SettingsWindow/ScrollContainer/CategoryContainer/MinigamesCategory" index="0"]
 margin_right = 394.0
@@ -194,9 +196,9 @@ setting_type = 3
 initial_value = 1
 
 [node name="VideoCategory" parent="SettingsWindow/ScrollContainer/CategoryContainer" instance=ExtResource( 4 )]
-margin_top = 226.0
+margin_top = 206.0
 margin_right = 394.0
-margin_bottom = 272.0
+margin_bottom = 252.0
 
 [node name="CategoryTitle" parent="SettingsWindow/ScrollContainer/CategoryContainer/VideoCategory" index="0"]
 margin_right = 394.0
@@ -221,9 +223,9 @@ setting_name = "Fullscreen"
 setting_type = 3
 
 [node name="AudioCategory" parent="SettingsWindow/ScrollContainer/CategoryContainer" instance=ExtResource( 4 )]
-margin_top = 276.0
+margin_top = 256.0
 margin_right = 394.0
-margin_bottom = 362.0
+margin_bottom = 342.0
 
 [node name="CategoryTitle" parent="SettingsWindow/ScrollContainer/CategoryContainer/AudioCategory" index="0"]
 margin_right = 394.0

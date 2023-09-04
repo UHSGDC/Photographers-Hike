@@ -31,6 +31,8 @@ var secrets: Array = []
 
 var summit: bool = false
 
+var settings_menu: BaseMenu
+
 enum {
 	UP
 	RIGHT
