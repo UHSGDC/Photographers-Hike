@@ -120,72 +120,10 @@ margin_top = 216.0
 margin_right = 210.0
 margin_bottom = 863.0
 
-[node name="Credits Text" type="Label" parent="CreditsMenu/CreditsWindow/ScrollContainer/CenterContainer/MarginContainer/VBoxContainer"]
+[node name="CreditsText" type="Label" parent="CreditsMenu/CreditsWindow/ScrollContainer/CenterContainer/MarginContainer/VBoxContainer"]
 modulate = Color( 0, 0, 0, 1 )
 margin_right = 210.0
 margin_bottom = 213.0
-custom_fonts/font = ExtResource( 2 )
-text = "Co President: Nick Vatanshenas
-Co President: Jun Choi
-Vice President: Maryam
-Secretary Cody: Cascalla
-Treasurer: Neeraj B
-Publicist: Minerva You
-
-
-
-
-
-
-
-
-
-
-
-Game Design Head: TBD
-Programming Head: Nick Vatanshenas
-Art Head Arman: Akharti
-Sound Head: Maryam
-Original Game Idea by Arman Akharti
-UHS GDC Discord Team
-Credits by Ajay Sathish Preetha"
-
-[node name="Credits Text2" type="Label" parent="CreditsMenu/CreditsWindow/ScrollContainer/CenterContainer/MarginContainer/VBoxContainer"]
-modulate = Color( 0, 0, 0, 1 )
-margin_top = 217.0
-margin_right = 210.0
-margin_bottom = 430.0
-custom_fonts/font = ExtResource( 2 )
-text = "Co President: Nick Vatanshenas
-Co President: Jun Choi
-Vice President: Maryam
-Secretary Cody: Cascalla
-Treasurer: Neeraj B
-Publicist: Minerva You
-
-
-
-
-
-
-
-
-
-
-
-Game Design Head: TBD
-Programming Head: Nick Vatanshenas
-Art Head Arman: Akharti
-Sound Head: Maryam
-Original Game Idea by Arman Akharti
-UHS GDC Discord Team
-Credits by Ajay Sathish Preetha"
-
-[node name="Credits Text3" type="Label" parent="CreditsMenu/CreditsWindow/ScrollContainer/CenterContainer/MarginContainer/VBoxContainer"]
-modulate = Color( 0, 0, 0, 1 )
-margin_top = 434.0
-margin_right = 210.0
-margin_bottom = 647.0
 custom_fonts/font = ExtResource( 2 )
 text = "Co President: Nick Vatanshenas
 Co President: Jun Choi

@@ -47,14 +47,14 @@ __meta__ = {
 
 [node name="CenterContainer" type="CenterContainer" parent="CreditsWindow/ScrollContainer"]
 margin_right = 416.0
-margin_bottom = 871.0
+margin_bottom = 437.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="CreditsWindow/ScrollContainer/CenterContainer"]
 margin_left = 102.0
 margin_right = 312.0
-margin_bottom = 871.0
+margin_bottom = 437.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/margin_top = 216
@@ -63,74 +63,12 @@ custom_constants/margin_bottom = 8
 [node name="VBoxContainer" type="VBoxContainer" parent="CreditsWindow/ScrollContainer/CenterContainer/MarginContainer"]
 margin_top = 216.0
 margin_right = 210.0
-margin_bottom = 863.0
+margin_bottom = 429.0
 
-[node name="Credits Text" type="Label" parent="CreditsWindow/ScrollContainer/CenterContainer/MarginContainer/VBoxContainer"]
+[node name="CreditsText" type="Label" parent="CreditsWindow/ScrollContainer/CenterContainer/MarginContainer/VBoxContainer"]
 modulate = Color( 0, 0, 0, 1 )
 margin_right = 210.0
 margin_bottom = 213.0
-custom_fonts/font = ExtResource( 1 )
-text = "Co President: Nick Vatanshenas
-Co President: Jun Choi
-Vice President: Maryam
-Secretary Cody: Cascalla
-Treasurer: Neeraj B
-Publicist: Minerva You
-
-
-
-
-
-
-
-
-
-
-
-Game Design Head: TBD
-Programming Head: Nick Vatanshenas
-Art Head Arman: Akharti
-Sound Head: Maryam
-Original Game Idea by Arman Akharti
-UHS GDC Discord Team
-Credits by Ajay Sathish Preetha"
-
-[node name="Credits Text2" type="Label" parent="CreditsWindow/ScrollContainer/CenterContainer/MarginContainer/VBoxContainer"]
-modulate = Color( 0, 0, 0, 1 )
-margin_top = 217.0
-margin_right = 210.0
-margin_bottom = 430.0
-custom_fonts/font = ExtResource( 1 )
-text = "Co President: Nick Vatanshenas
-Co President: Jun Choi
-Vice President: Maryam
-Secretary Cody: Cascalla
-Treasurer: Neeraj B
-Publicist: Minerva You
-
-
-
-
-
-
-
-
-
-
-
-Game Design Head: TBD
-Programming Head: Nick Vatanshenas
-Art Head Arman: Akharti
-Sound Head: Maryam
-Original Game Idea by Arman Akharti
-UHS GDC Discord Team
-Credits by Ajay Sathish Preetha"
-
-[node name="Credits Text3" type="Label" parent="CreditsWindow/ScrollContainer/CenterContainer/MarginContainer/VBoxContainer"]
-modulate = Color( 0, 0, 0, 1 )
-margin_top = 434.0
-margin_right = 210.0
-margin_bottom = 647.0
 custom_fonts/font = ExtResource( 1 )
 text = "Co President: Nick Vatanshenas
 Co President: Jun Choi
