@@ -2940,7 +2940,7 @@ position = Vector2( 472, -728 )
 position = Vector2( 504, -800 )
 
 [node name="Rock58" parent="DenseForest/RockClimbing/Rocks" index="62" instance=ExtResource( 10 )]
-position = Vector2( 440, -800 )
+position = Vector2( 437, -795 )
 
 [node name="Rock59" parent="DenseForest/RockClimbing/Rocks" index="63" instance=ExtResource( 10 )]
 position = Vector2( 552, -736 )
@@ -4193,7 +4193,7 @@ shape = SubResource( 45 )
 position = Vector2( 8888, -1664 )
 
 [node name="PlatformingPlayer" parent="." instance=ExtResource( 2 )]
-position = Vector2( 27893, -5396 )
+position = Vector2( 1307, 91 )
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 3 )]
 
