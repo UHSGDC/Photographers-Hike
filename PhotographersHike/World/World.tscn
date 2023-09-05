@@ -1641,8 +1641,8 @@ export(DialogBox.Levels) var level
 func _on_InteractZone_player_interacted() -> void:
 	$InteractZone.hide()
 	var result = yield(Global.dialog_box.play_dialog(\"sign\", level, dialog_id), \"completed\")
-	if result == \"Go Back\":
-		print(\"i wanna go back to the good ol days\")
+	if result == \"Restart\":
+		Global.game.restart_game()
 	$InteractZone.show()
 "
 
@@ -4193,7 +4193,7 @@ shape = SubResource( 45 )
 position = Vector2( 8888, -1664 )
 
 [node name="PlatformingPlayer" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1307, 91 )
+position = Vector2( -232, 208 )
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 3 )]
 

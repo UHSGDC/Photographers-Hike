@@ -4,6 +4,8 @@ export var desktop_only_settings: Array
 
 export var all_settings: Array
 
+
+
 func _ready() -> void:
 	Global.settings_menu = self
 	
@@ -29,6 +31,10 @@ func _back_input() -> void:
 func update_settings() -> void:
 	for setting in all_settings:
 		get_node(setting).reset_button()
+
+
+func show_secrets_settings() -> void:
+	$SettingsWindow/ScrollContainer/CategoryContainer/GameplayCategory/MarginSettingsContainer/SettingsContainer/SecretsMenu._on_switch_increased()
 
 
 func _on_Back_pressed():
@@ -81,3 +87,11 @@ func _on_Master_value_changed(value: int) -> void:
 		return
 		
 	AudioServer.set_bus_volume_db(0, -30 + value * 3)
+
+
+func _on_SecretsMenu_value_changed(value: bool) -> void:
+	Global.summit = value
+
+
+func _on_RestartMenu_value_changed(value: bool) -> void:
+	Global.show_restart = value

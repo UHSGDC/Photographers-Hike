@@ -5,9 +5,8 @@ export var world_scene: PackedScene
 onready var world: Node2D = $World
 
 
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("restart"):
-		restart_game()
+func _ready() -> void:
+	Global.game = self
 
 
 func restart_game() -> void:

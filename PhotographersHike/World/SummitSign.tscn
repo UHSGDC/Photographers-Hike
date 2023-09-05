@@ -163,7 +163,7 @@ func _on_SignArea_body_entered(body: Node) -> void:
 		yield(player, \"animation_finished\")
 		
 		yield(get_tree().create_timer(3), \"timeout\")
-		Global.summit = true
+		Global.settings_menu.show_secrets_settings()
 		player.in_cutscene = false
 		player.current_cutscene = null
 		emit_signal(\"cutscene_finished\")

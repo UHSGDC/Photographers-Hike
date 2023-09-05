@@ -57,13 +57,13 @@ margin_left = 8.0
 
 [node name="CategoryContainer" type="VBoxContainer" parent="SettingsWindow/ScrollContainer"]
 margin_right = 394.0
-margin_bottom = 342.0
+margin_bottom = 382.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="GameplayCategory" parent="SettingsWindow/ScrollContainer/CategoryContainer" instance=ExtResource( 4 )]
 margin_right = 394.0
-margin_bottom = 46.0
+margin_bottom = 86.0
 
 [node name="CategoryTitle" parent="SettingsWindow/ScrollContainer/CategoryContainer/GameplayCategory" index="0"]
 margin_right = 394.0
@@ -71,11 +71,11 @@ text = "Gameplay"
 
 [node name="MarginSettingsContainer" parent="SettingsWindow/ScrollContainer/CategoryContainer/GameplayCategory" index="1"]
 margin_right = 394.0
-margin_bottom = 46.0
+margin_bottom = 86.0
 
 [node name="SettingsContainer" parent="SettingsWindow/ScrollContainer/CategoryContainer/GameplayCategory/MarginSettingsContainer" index="0"]
 margin_right = 354.0
-margin_bottom = 22.0
+margin_bottom = 62.0
 
 [node name="SpeedrunTimer" parent="SettingsWindow/ScrollContainer/CategoryContainer/GameplayCategory/MarginSettingsContainer/SettingsContainer" index="0" instance=ExtResource( 3 )]
 anchor_top = 0.0
@@ -87,7 +87,27 @@ margin_bottom = 16.0
 setting_name = "Speedrun Timer"
 setting_type = 3
 
-[node name="DebugMenu" parent="SettingsWindow/ScrollContainer/CategoryContainer/GameplayCategory/MarginSettingsContainer/SettingsContainer" index="1" instance=ExtResource( 3 )]
+[node name="SecretsMenu" parent="SettingsWindow/ScrollContainer/CategoryContainer/GameplayCategory/MarginSettingsContainer/SettingsContainer" index="1" instance=ExtResource( 3 )]
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 20.0
+margin_right = 338.0
+margin_bottom = 36.0
+setting_name = "Secrets Menu"
+setting_type = 3
+
+[node name="RestartMenu" parent="SettingsWindow/ScrollContainer/CategoryContainer/GameplayCategory/MarginSettingsContainer/SettingsContainer" index="2" instance=ExtResource( 3 )]
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 40.0
+margin_right = 338.0
+margin_bottom = 56.0
+setting_name = "Restart Menu"
+setting_type = 3
+
+[node name="DebugMenu" parent="SettingsWindow/ScrollContainer/CategoryContainer/GameplayCategory/MarginSettingsContainer/SettingsContainer" index="3" instance=ExtResource( 3 )]
 visible = false
 anchor_top = 0.0
 anchor_right = 0.0
@@ -99,9 +119,9 @@ setting_name = "Debug Menu"
 setting_type = 3
 
 [node name="ControlsCategory" parent="SettingsWindow/ScrollContainer/CategoryContainer" instance=ExtResource( 4 )]
-margin_top = 50.0
+margin_top = 90.0
 margin_right = 394.0
-margin_bottom = 96.0
+margin_bottom = 136.0
 
 [node name="CategoryTitle" parent="SettingsWindow/ScrollContainer/CategoryContainer/ControlsCategory" index="0"]
 margin_right = 394.0
@@ -122,9 +142,9 @@ margin_top = 0.0
 margin_bottom = 16.0
 
 [node name="MinigamesCategory" parent="SettingsWindow/ScrollContainer/CategoryContainer" instance=ExtResource( 4 )]
-margin_top = 100.0
+margin_top = 140.0
 margin_right = 394.0
-margin_bottom = 202.0
+margin_bottom = 242.0
 
 [node name="CategoryTitle" parent="SettingsWindow/ScrollContainer/CategoryContainer/MinigamesCategory" index="0"]
 margin_right = 394.0
@@ -196,9 +216,9 @@ setting_type = 3
 initial_value = 1
 
 [node name="VideoCategory" parent="SettingsWindow/ScrollContainer/CategoryContainer" instance=ExtResource( 4 )]
-margin_top = 206.0
+margin_top = 246.0
 margin_right = 394.0
-margin_bottom = 252.0
+margin_bottom = 292.0
 
 [node name="CategoryTitle" parent="SettingsWindow/ScrollContainer/CategoryContainer/VideoCategory" index="0"]
 margin_right = 394.0
@@ -223,9 +243,9 @@ setting_name = "Fullscreen"
 setting_type = 3
 
 [node name="AudioCategory" parent="SettingsWindow/ScrollContainer/CategoryContainer" instance=ExtResource( 4 )]
-margin_top = 256.0
+margin_top = 296.0
 margin_right = 394.0
-margin_bottom = 342.0
+margin_bottom = 382.0
 
 [node name="CategoryTitle" parent="SettingsWindow/ScrollContainer/CategoryContainer/AudioCategory" index="0"]
 margin_right = 394.0
@@ -285,6 +305,8 @@ visible = false
 
 [connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]
 [connection signal="value_changed" from="SettingsWindow/ScrollContainer/CategoryContainer/GameplayCategory/MarginSettingsContainer/SettingsContainer/SpeedrunTimer" to="." method="_on_SpeedrunTimer_value_changed"]
+[connection signal="value_changed" from="SettingsWindow/ScrollContainer/CategoryContainer/GameplayCategory/MarginSettingsContainer/SettingsContainer/SecretsMenu" to="." method="_on_SecretsMenu_value_changed"]
+[connection signal="value_changed" from="SettingsWindow/ScrollContainer/CategoryContainer/GameplayCategory/MarginSettingsContainer/SettingsContainer/RestartMenu" to="." method="_on_RestartMenu_value_changed"]
 [connection signal="value_changed" from="SettingsWindow/ScrollContainer/CategoryContainer/GameplayCategory/MarginSettingsContainer/SettingsContainer/DebugMenu" to="." method="_on_DebugMenu_value_changed"]
 [connection signal="pressed" from="SettingsWindow/ScrollContainer/CategoryContainer/ControlsCategory/MarginSettingsContainer/SettingsContainer/KeybindSetting" to="KeybindsPopup" method="_on_KeybindSetting_pressed"]
 [connection signal="value_changed" from="SettingsWindow/ScrollContainer/CategoryContainer/MinigamesCategory/MarginSettingsContainer/SettingsContainer/RockClimbingSettings/VBoxContainer/AimWKeyboard" to="." method="_on_AimWKeyboard_value_changed"]

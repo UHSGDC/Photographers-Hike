@@ -33,6 +33,10 @@ var summit: bool = false
 
 var settings_menu: BaseMenu
 
+var show_restart: bool = false
+
+var game: Node
+
 enum {
 	UP
 	RIGHT
