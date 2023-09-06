@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Assets/Theme/DefaultFont6.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/Theme/PressStart2P-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Assets/Theme/UITheme.tres" type="Theme" id=2]
 [ext_resource path="res://Menus/CreditsMenu.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Theme/DefaultFont16.tres" type="DynamicFont" id=4]
@@ -13,6 +13,11 @@
 [sub_resource type="Theme" id=8]
 VScrollBar/styles/scroll = SubResource( 6 )
 VScrollBar/styles/scroll_focus = SubResource( 7 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 6
+extra_spacing_bottom = 16
+font_data = ExtResource( 1 )
 
 [node name="CreditsMenu" type="Panel"]
 pause_mode = 2
@@ -47,14 +52,13 @@ __meta__ = {
 
 [node name="CenterContainer" type="CenterContainer" parent="CreditsWindow/ScrollContainer"]
 margin_right = 416.0
-margin_bottom = 437.0
+margin_bottom = 3646.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="CreditsWindow/ScrollContainer/CenterContainer"]
-margin_left = 102.0
-margin_right = 312.0
-margin_bottom = 437.0
+margin_right = 416.0
+margin_bottom = 3646.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/margin_top = 216
@@ -62,38 +66,152 @@ custom_constants/margin_bottom = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CreditsWindow/ScrollContainer/CenterContainer/MarginContainer"]
 margin_top = 216.0
-margin_right = 210.0
-margin_bottom = 429.0
+margin_right = 416.0
+margin_bottom = 3638.0
 
 [node name="CreditsText" type="Label" parent="CreditsWindow/ScrollContainer/CenterContainer/MarginContainer/VBoxContainer"]
 modulate = Color( 0, 0, 0, 1 )
-margin_right = 210.0
-margin_bottom = 213.0
-custom_fonts/font = ExtResource( 1 )
-text = "Co President: Nick Vatanshenas
-Co President: Jun Choi
-Vice President: Maryam
-Secretary Cody: Cascalla
-Treasurer: Neeraj B
-Publicist: Minerva You
+margin_right = 416.0
+margin_bottom = 3422.0
+rect_min_size = Vector2( 416, 0 )
+custom_fonts/font = SubResource( 10 )
+text = "Photographer's Hike
 
 
 
+A game created by University High School Game Development Club
+
+Developed in 2023
 
 
 
+Nick Vatanshenas
+- Club President
+- Programming Head
+- Lead Developer
+- Level, Mechanic, and World Design
+- Tile Art
+- Yeti Art
+- Pictures and Title Screen Art
+- Base Camp and Snowy Tundra Background Art
+- UI Art
+- Cougar, Yeti, and Old Man Sounds
+- Music
 
 
+Arman Akhtari
+- Art Head
+- Initial Game Vision
+- Player Animations and Art
+- Cougar Animations and Art
+- Dense and Sparse Forest Background Art
 
 
+Miryam Greenstein
+- Club Vice President
+- Sound Head
+- Educating the team on Sound Design and Creation
 
-Game Design Head: TBD
-Programming Head: Nick Vatanshenas
-Art Head Arman: Akharti
-Sound Head: Maryam
-Original Game Idea by Arman Akharti
-UHS GDC Discord Team
-Credits by Ajay Sathish Preetha"
+
+Nguyen Do
+- Game Design Head
+- Educating the team on Game Design
+
+William Jenkins
+- Trees in the Dense and Sparse Forest Background Art
+
+
+Andrew Fu
+- Implementing Cougar Animations
+- Finding and editing stock sounds from pixabay.com
+
+
+Juliet Kozlov
+- Wind Sound
+- Great Communicator
+- Picture Sound
+
+
+Dylan Mac
+- Dialog System Groundwork
+
+
+Ajay Sathish Preetha
+- Menu System Groundwork
+- Settings Menu Groundwork
+- Pause Menu Groundwork
+- Keybinding Groundwork
+
+
+Jun Choi
+- Former Club President
+- Former Game Design Head
+
+
+Playtesting
+
+Note: Playtesters provided feedback and ideas many of which are now a part of the game
+
+1st Round of Playtesters
+- Anirudh Sunkad
+- Linda Khalfa
+- Chase Morse
+
+2nd Round of Playtesters
+- Anirudh Sunkad
+- Linda Khalfa
+- Chase Morse
+- Cody Cascalla
+- Connor Mursalo
+- Edward Li
+- Caden Lee (Speedrun Timer)
+
+3rd Round of Playtesters
+- Anirudh Sunkad
+- Linda Khalfa
+- Chase Morse
+- Cody Cascalla
+- Connor Mursalo
+- Edward Li
+- Caden Lee
+- Nguyen Do
+- Iris Dou
+- Winston Zhou
+- Eric Li
+- Juliet Kozlov
+- Alec Apelian (Camera Film Roll Secrets)
+- Alexis Joystick
+- George Matta
+- Arman Akhtari
+- Miryam Greenstein
+
+
+Current Board Members
+- President and Programming Head: Nick Vatanshenas
+- Vice President and Sound Head: Miryam Greenstein
+- Art Head: Arman Akhtari
+- Game Design Head: Nguyen Do
+- Secretary: Cody Cascalla
+- Publicist: Minerva You
+- Treasuer: Neeraj Bhuvaneshwaran
+
+Special thanks to Mr. Frat our club advisor, who provided us a space to meet during the development of the game.
+
+
+Sounds generated from sfxr.me
+- Player jump, respawn, and death sounds
+- Yeti punch sound
+
+
+Stock sounds from pixabay.com
+- Player run sounds
+- Player land sound
+- Picture taking sound
+
+
+Game inspired by Celeste, A Short Hike, and Pokemon Snap"
+align = 1
+autowrap = true
 
 [node name="CreditsTitle" type="Label" parent="."]
 anchor_left = 0.5

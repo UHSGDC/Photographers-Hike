@@ -1,15 +1,25 @@
+Photographer's Hike
+
+
+
+A game created by University High School Game Development Club
+
+Developed in 2023
+
+
+
 Nick Vatanshenas
 - Club President
 - Programming Head
 - Lead Developer
-- Level, Feature, and World Design
+- Level, Mechanic, and World Design
 - Tile Art
 - Yeti Art
 - Pictures and Title Screen Art
 - Base Camp and Snowy Tundra Background Art
 - UI Art
 - Cougar, Yeti, and Old Man Sounds
-- All Music
+- Music
 
 
 Arman Akhtari
@@ -41,26 +51,30 @@ Andrew Fu
 
 Juliet Kozlov
 - Wind Sound
+- Great Communicator
 - Picture Sound
 
 
-Dylan
-- Dialog System
+Dylan Mac
+- Dialog System Groundwork
 
 
-Aj
-- Menu System
+Ajay Sathish Preetha
+- Menu System Groundwork
+- Settings Menu Groundwork
+- Pause Menu Groundwork
+- Keybinding Groundwork
 
 
 Jun Choi
 - Former Club President
 - Former Game Design Head
-- Club Registration
 
 
 Playtesting
+
 Note: Playtesters provided feedback and ideas many of which are now a part of the game
----
+
 1st Round of Playtesters
 - Anirudh Sunkad
 - Linda Khalfa
@@ -88,7 +102,7 @@ Note: Playtesters provided feedback and ideas many of which are now a part of th
 - Winston Zhou
 - Eric Li
 - Juliet Kozlov
-- Alec Appelian (Camera Film Roll Secrets)
+- Alec Apelian (Camera Film Roll Secrets)
 - Alexis Joystick
 - George Matta
 - Arman Akhtari
@@ -102,9 +116,9 @@ Current Board Members
 - Game Design Head: Nguyen Do
 - Secretary: Cody Cascalla
 - Publicist: Minerva You
-- Treasuer: Neeraj B
+- Treasuer: Neeraj Bhuvaneshwaran
 
-Special thanks to Mr. BLANK our club advisor, who provided us a space to meet during the development of the game.
+Special thanks to Mr. Frat our club advisor, who provided us a space to meet during the development of the game.
 
 
 Sounds generated from sfxr.me
