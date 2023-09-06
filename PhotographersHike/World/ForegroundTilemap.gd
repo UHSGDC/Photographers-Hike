@@ -52,7 +52,7 @@ func _generate_foreground_tiles() -> void:
 	for tile_pos in level_tilemap.get_used_cells():
 		var tile_id = level_tilemap.get_cellv(tile_pos)		
 		match tile_id:
-			Level.STONE, Level.COBBLESTONE:
+			Level.STONE:
 				_set_tile_above(tile_pos, Foreground.STONE_ROCK, 0.3)
 				_set_tile_above(tile_pos, Foreground.GREEN_PLANT, 0.1)
 				_set_tile_on(tile_pos, Foreground.GREEN_DRIP, 0.1)
