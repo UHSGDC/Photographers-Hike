@@ -73,7 +73,7 @@ Jun Choi
 
 Playtesting
 
-Note: Playtesters provided feedback and ideas many of which are now a part of the game
+Playtesters provided feedback and ideas many of which are now a part of the game
 
 1st Round of Playtesters
 - Anirudh Sunkad
@@ -107,6 +107,10 @@ Note: Playtesters provided feedback and ideas many of which are now a part of th
 - George Matta
 - Arman Akhtari
 - Miryam Greenstein
+- Neeraj Bhuvaneshwaran
+- Armia Asgari
+- Sly Moaleji
+- Agam Randhawa
 
 
 Current Board Members
@@ -132,4 +136,4 @@ Stock sounds from pixabay.com
 - Picture taking sound
 
 
-Game inspired by Celeste, A Short Hike, and Pokemon Snap
+Game inspired by Celeste, A Short Hike, and Pokémon Snap™
