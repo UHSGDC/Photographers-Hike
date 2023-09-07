@@ -80,12 +80,13 @@ _global_script_class_icons={
 
 [application]
 
-config/name="PhotographersHike"
+config/name="Photographer's Hike"
 run/main_scene="res://Game.tscn"
 boot_splash/image="res://Assets/Art/Logo.png"
 boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
 config/icon="res://Assets/Art/Logo.png"
+config/macos_native_icon="res://Assets/Art/Logo.icns"
 config/windows_native_icon="res://Assets/Art/Logo.ico"
 
 [autoload]
@@ -98,6 +99,7 @@ MusicPlayer="*res://Audio/MusicPlayer.tscn"
 
 window/size/width=480
 window/size/height=288
+window/size/fullscreen=true
 window/size/test_width=1440
 window/size/test_height=864
 window/vsync/use_vsync=false
@@ -144,7 +146,7 @@ interact={
 }
 pause={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777218,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 menu_up={
