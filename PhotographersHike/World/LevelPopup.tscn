@@ -12,4 +12,4 @@ script = ExtResource( 1 )
 
 [node name="Popup" parent="CanvasLayer" instance=ExtResource( 2 )]
 
-[connection signal="body_entered" from="." to="." method="_on_LevelPopup_body_entered"]
+[connection signal="area_entered" from="." to="." method="_on_LevelPopup_area_entered"]
